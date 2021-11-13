@@ -90,3 +90,12 @@ that you can understand what actions will and will not be tolerated.
 ### [Contributing Guide](./CONTRIBUTING.md)
 
 Read our contributing guide to learn about how to propose bugfixes and improvements and contribute to ThymeSave!
+
+# Deployment of silverware for the managed service
+
+Deployments are done automatically using CloudFlare Pages.
+
+To deploy to production merge to the `production` branch.
+
+For all other commits an automatic preview environment is created, for more information please see
+the [docs](https://developers.cloudflare.com/pages/platform/preview-deployments).
