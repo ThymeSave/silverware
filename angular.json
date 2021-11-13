@@ -1,0 +1,235 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "silverware": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/silverware",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "silverware:build:production"
+            },
+            "development": {
+              "browserTarget": "silverware:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "silverware:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "@thymesave/ingredients": {
+      "projectType": "library",
+      "root": "projects/thymesave/ingredients",
+      "sourceRoot": "projects/thymesave/ingredients/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/thymesave/ingredients/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/thymesave/ingredients/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/thymesave/ingredients/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/thymesave/ingredients/src/test.ts",
+            "tsConfig": "projects/thymesave/ingredients/tsconfig.spec.json",
+            "karmaConfig": "projects/thymesave/ingredients/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@thymesave/translations": {
+      "projectType": "library",
+      "root": "projects/thymesave/translations",
+      "sourceRoot": "projects/thymesave/translations/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/thymesave/translations/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/thymesave/translations/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/thymesave/translations/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/thymesave/translations/src/test.ts",
+            "tsConfig": "projects/thymesave/translations/tsconfig.spec.json",
+            "karmaConfig": "projects/thymesave/translations/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@thymesave/core": {
+      "projectType": "library",
+      "root": "projects/thymesave/core",
+      "sourceRoot": "projects/thymesave/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/thymesave/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/thymesave/core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/thymesave/core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/thymesave/core/src/test.ts",
+            "tsConfig": "projects/thymesave/core/tsconfig.spec.json",
+            "karmaConfig": "projects/thymesave/core/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@thymesave/plugin": {
+      "projectType": "library",
+      "root": "projects/thymesave/plugin",
+      "sourceRoot": "projects/thymesave/plugin/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/thymesave/plugin/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/thymesave/plugin/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/thymesave/plugin/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/thymesave/plugin/src/test.ts",
+            "tsConfig": "projects/thymesave/plugin/tsconfig.spec.json",
+            "karmaConfig": "projects/thymesave/plugin/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "silverware"
+}

@@ -1,0 +1,34 @@
+fail_fast: true
+repos:
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: check-json
+        exclude: tsconfig.*\.json
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: check-symlinks
+      - id: check-vcs-permalinks
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: check-case-conflict
+      - id: check-toml
+      - id: check-xml
+      - id: fix-byte-order-marker
+      - id: destroyed-symlinks
+
+  - repo: git://github.com/syntaqx/git-hooks
+    rev: v0.0.16
+    hooks:
+      - id: circleci-config-validate
+      - id: shellcheck
+        additional_dependencies: []
+
+  - repo: git://github.com/matthorgan/pre-commit-conventional-commits
+    rev: 20fb963
+    hooks:
+      - id: conventional-commit-check
+        stages: [commit-msg]
