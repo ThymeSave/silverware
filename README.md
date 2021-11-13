@@ -1,6 +1,11 @@
 silverware
 ===
-<!-- TODO Fancy badges -->
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+[![CircleCI](https://circleci.com/gh/ThymeSave/silverware/tree/main.svg?style=shield)](https://circleci.com/gh/ThymeSave/silverware/tree/main)
+[![Go Report Card](https://goreportcard.com/badge/github.com/thymesave/silverware)](https://goreportcard.com/report/github.com/thymesave/silverware)
+[![GitHub Release](https://img.shields.io/github/v/tag/thymesave/silverware.svg?label=version)](https://github.com/thymesave/silverware/releases)
+[![pre-commit](https://img.shields.io/badge/%E2%9A%93%20%20pre--commit-enabled-success)](https://pre-commit.com/)
+[![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
 
 Mono repository for the entire frontend application
 
