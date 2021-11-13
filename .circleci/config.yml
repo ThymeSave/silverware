@@ -34,22 +34,6 @@ jobs:
           paths:
             - ./dist
           root: .
-  deploy:
-    executor: node
-    parameters:
-      hook-uuid:
-        type: string
-    steps:
-      - attach_workspace:
-          at: .
-      - run:
-          name: Install curl
-          command: |
-            sudo apt update
-            sudo apt install -y curl
-      - run:
-          name: Query webhook
-          command: curl -XPOST https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/<<parameters.hook-uuid>>
 
 workflows:
   continious:
@@ -68,7 +52,3 @@ workflows:
               only: /.*/
             tags:
               only: /.*/
-      - deploy:
-          hook-uuid: $HOOK_UUID_PROD
-          requires:
-            - build
