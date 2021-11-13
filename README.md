@@ -1,6 +1,11 @@
 silverware
 ===
-<!-- TODO Fancy badges -->
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+[![codecov](https://codecov.io/gh/ThymeSave/silverware/branch/main/graph/badge.svg?token=LHb7ZmLKM2)](https://codecov.io/gh/ThymeSave/silverware)
+[![CircleCI](https://circleci.com/gh/ThymeSave/silverware/tree/main.svg?style=shield)](https://circleci.com/gh/ThymeSave/silverware/tree/main)
+[![GitHub Release](https://img.shields.io/github/v/tag/thymesave/silverware.svg?label=version)](https://github.com/thymesave/silverware/releases)
+[![pre-commit](https://img.shields.io/badge/%E2%9A%93%20%20pre--commit-enabled-success)](https://pre-commit.com/)
+[![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
 
 Mono repository for the entire frontend application
 
@@ -90,3 +95,12 @@ that you can understand what actions will and will not be tolerated.
 ### [Contributing Guide](./CONTRIBUTING.md)
 
 Read our contributing guide to learn about how to propose bugfixes and improvements and contribute to ThymeSave!
+
+# Deployment of silverware for the managed service
+
+Deployments are done automatically using CloudFlare Pages.
+
+To deploy to production merge to the `production` branch.
+
+For all other commits an automatic preview environment is created, for more information please see
+the [docs](https://developers.cloudflare.com/pages/platform/preview-deployments).
