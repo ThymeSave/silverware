@@ -1,0 +1,45 @@
+coverage:
+  status:
+    project:
+      silverware:
+        target: auto
+        flags:
+          - silverware
+      core:
+        target: auto
+        flags:
+          - core
+      ingredients:
+        target: auto
+        flags:
+          - ingredients
+      plugin:
+        target: auto
+        flags:
+          - plugin
+      translations:
+        target: auto
+        flags:
+          - translations
+
+flags:
+  silverware:
+    paths:
+      - coverage/silverware/report-locv/lconv.info
+    carryforward: true
+  core:
+    paths:
+      - coverage/thymesave/core/report-locv/lconv.info
+    carryforward: true
+  ingredients:
+    paths:
+      - coverage/thymesave/ingredients/report-locv/lconv.info
+    carryforward: true
+  plugin:
+    paths:
+      - coverage/thymesave/plugin/report-locv/lconv.info
+    carryforward: true
+  translations:
+    paths:
+      - coverage/thymesave/translations/report-locv/lconv.info
+    carryforward: true
