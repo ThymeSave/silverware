@@ -2,11 +2,6 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
 
-## Code scaffolding
-
-Run `ng generate component component-name --project translations` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project translations`.
-> Note: Don't forget to add `--project translations` or else it will be added to the default project in your `angular.json` file.
-
 ## Build
 
 Run `ng build translations` to build the project. The build artifacts will be stored in the `dist/` directory.
