@@ -6,6 +6,10 @@ repos:
       - id: check-json
         exclude: tsconfig.*\.json
       - id: pretty-format-json
+        exclude: (tsconfig|package|ng-package|angular).*\.json
+        args: [
+            --autofix
+        ]
       - id: check-merge-conflict
       - id: check-yaml
       - id: detect-private-key

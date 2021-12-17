@@ -1,3 +1,7 @@
 {
-  "ok": "Ok"
+  "cancel": "Cancel",
+  "close": "Close",
+  "ok": "Ok",
+  "open": "Open",
+  "save": "Save"
 }
