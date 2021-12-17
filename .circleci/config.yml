@@ -13,12 +13,24 @@ commands:
   install_dependencies:
     steps:
       - node/install-packages
+      - run:
+          name: Remove lock file
+          command: rm /tmp/node-project-package.json
       - node/install-packages:
           app-dir: projects/thymesave/core
+      - run:
+          name: Remove lock file
+          command: rm /tmp/node-project-package.json
       - node/install-packages:
           app-dir: projects/thymesave/ingredients
+      - run:
+          name: Remove lock file
+          command: rm /tmp/node-project-package.json
       - node/install-packages:
           app-dir: projects/thymesave/plugin
+      - run:
+          name: Remove lock file
+          command: rm /tmp/node-project-package.json
       - node/install-packages:
           app-dir: projects/thymesave/translations
 
