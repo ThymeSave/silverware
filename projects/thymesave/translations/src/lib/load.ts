@@ -38,8 +38,13 @@ const loadTranslationByKey = (language: Language, languageProperty: keyof Langua
  * @param {number} amount Amount of ingredients to get the translation for
  * @returns Ingredient text for translation key
  */
-export const loadIngredientByKey = (language: Language, translationKey: string, amount: number): string => {
+export const loadIngredientByKey = (language: Language, translationKey: string, amount: number = 1): string => {
   const translations = loadTranslationByKey(language, "ingredients", translationKey);
+
+  // not found -> no array
+  if(!Array.isArray(translations)) {
+    return translationKey;
+  }
 
   // only one value -> not pluralizable
   if (translations.length == 1) {
