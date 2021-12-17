@@ -59,12 +59,21 @@ describe("loadUnitByKey", () => {
     });
   });
 
-  it("should return the translation key in each property of the returned object", () => {
+  it("should return the translation key in each property of the returned object in case of an non existing unit", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "foo.bar", 1);
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
       short: "foo.bar",
       long: "foo.bar"
+    });
+  });
+
+  it("should return the correct plural long term", () => {
+    const unitDetails = loadUnitByKey(Languages.en_US, "cup", 2);
+    expect(unitDetails).not.toBeNull();
+    expect(unitDetails).toEqual({
+      short: "c",
+      long: "cups"
     });
   });
 });
