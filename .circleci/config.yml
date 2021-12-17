@@ -9,12 +9,25 @@ executors:
     docker:
       - image: cimg/node:16.13.0-browsers
 
+commands:
+  install_dependencies:
+    steps:
+      - node/install-packages
+      - node/install-packages:
+          app-dir: projects/thymesave/core
+      - node/install-packages:
+          app-dir: projects/thymesave/ingredients
+      - node/install-packages:
+          app-dir: projects/thymesave/plugin
+      - node/install-packages:
+          app-dir: projects/thymesave/translations
+
 jobs:
   test:
     executor: node
     steps:
       - checkout
-      - node/install-packages
+      - install_dependencies
       - browser-tools/install-chrome
       - run:
           name: Run ng test
@@ -26,13 +39,13 @@ jobs:
     executor: node
     steps:
       - checkout
-      - node/install-packages
+      - install_dependencies
       - run:
           name: Build
           command: npm run build
       - store_artifacts:
           path: ./dist
-          destination: angular-dist
+          destination: dist
       - persist_to_workspace:
           paths:
             - ./dist
