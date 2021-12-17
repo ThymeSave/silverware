@@ -10,27 +10,26 @@ executors:
       - image: cimg/node:16.13.0-browsers
 
 commands:
+  remove_node_orb_lock:
+    steps:
+      - run:
+          name: Remove lock files
+          command: |
+            rm /tmp/node-project-package.json
+            rm /tmp/node-project-lockfile
   install_dependencies:
     steps:
       - node/install-packages
-      - run:
-          name: Remove lock file
-          command: rm /tmp/node-project-package.json
+      - remove_node_orb_lock
       - node/install-packages:
           app-dir: projects/thymesave/core
-      - run:
-          name: Remove lock file
-          command: rm /tmp/node-project-package.json
+      - remove_node_orb_lock
       - node/install-packages:
           app-dir: projects/thymesave/ingredients
-      - run:
-          name: Remove lock file
-          command: rm /tmp/node-project-package.json
+      - remove_node_orb_lock
       - node/install-packages:
           app-dir: projects/thymesave/plugin
-      - run:
-          name: Remove lock file
-          command: rm /tmp/node-project-package.json
+      - remove_node_orb_lock
       - node/install-packages:
           app-dir: projects/thymesave/translations
 
