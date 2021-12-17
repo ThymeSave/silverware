@@ -1,13 +1,13 @@
-import { loadUIByKey, loadIngredientByKey, Languages, loadUnitByKey } from "../public-api";
+import { loadUITextByKey, loadIngredientByKey, Languages, loadUnitByKey } from "../public-api";
 
 describe("loadUIByKey", () => {
   it("should load existing translations", () => {
-    const translation = loadUIByKey(Languages.en_US, "ok");
+    const translation = loadUITextByKey(Languages.en_US, "ok");
     expect(translation).toBe("Ok");
   });
 
   it("should return the key for missing translations", () => {
-    const translation = loadUIByKey(Languages.en_US, "foo.bar");
+    const translation = loadUITextByKey(Languages.en_US, "foo.bar");
     expect(translation).toBe("foo.bar");
   });
 });

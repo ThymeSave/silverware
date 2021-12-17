@@ -50,7 +50,7 @@ export const loadIngredientByKey = (language: Language, translationKey: string, 
  * @param {string} translationKey Key of the translation
  * @returns UI text for translation key
  */
-export const loadUIByKey = (language: Language, translationKey: string): string => loadTranslationByKey(language, "ui", translationKey) as string;
+export const loadUITextByKey = (language: Language, translationKey: string): string => loadTranslationByKey(language, "ui", translationKey) as string;
 
 /**
  *
