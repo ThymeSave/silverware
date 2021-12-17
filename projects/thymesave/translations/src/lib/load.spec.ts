@@ -1,4 +1,4 @@
-import { loadUIByKey, loadIngredientByKey, Languages } from "../public-api";
+import { loadUIByKey, loadIngredientByKey, Languages, loadUnitByKey } from "../public-api";
 
 describe("loadUIByKey", () => {
   it("should load existing translations", () => {
@@ -48,3 +48,23 @@ describe("loadIngredientsByKey", () => {
     expect(ingredient).toBe("non.existing");
   });
 });
+
+describe("loadUnitByKey", () => {
+  it("should return the correct details based on an existing key", () => {
+    const unitDetails = loadUnitByKey(Languages.en_US, "gram", 1);
+    expect(unitDetails).not.toBeNull();
+    expect(unitDetails).toEqual({
+      short: "g",
+      long: "gram"
+    });
+  });
+
+  it("should return the translation key in each property of the returned object", () => {
+    const unitDetails = loadUnitByKey(Languages.en_US, "foo.bar", 1);
+    expect(unitDetails).not.toBeNull();
+    expect(unitDetails).toEqual({
+      short: "foo.bar",
+      long: "foo.bar"
+    });
+  });
+})
