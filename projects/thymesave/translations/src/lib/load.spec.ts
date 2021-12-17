@@ -67,4 +67,4 @@ describe("loadUnitByKey", () => {
       long: "foo.bar"
     });
   });
-})
+});
