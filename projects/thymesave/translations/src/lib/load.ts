@@ -1,6 +1,6 @@
 import { en_US } from "./languages";
 import { Language, ResolvedUnitTranslation, UnitTranslationDetail } from "./model";
-import {pluralize} from "./util";
+import { pluralize } from "./util";
 
 const DEFAULT_LANGUAGE = en_US
 
@@ -15,9 +15,9 @@ const loadTranslationByKey = (language: Language, languageProperty: keyof Langua
 
 /**
  *
- * @param {Language} language Language for the translation
- * @param {string} translationKey Key of the translation
- * @param {number} amount Amount of ingredients to get the translation for
+ * @param language Language for the translation
+ * @param translationKey Key of the translation
+ * @param amount Amount of ingredients to get the translation for
  * @returns Ingredient text for translation key
  */
 export const loadIngredientByKey = (language: Language, translationKey: string, amount: number = 1): string => {
@@ -33,17 +33,17 @@ export const loadIngredientByKey = (language: Language, translationKey: string, 
 
 /**
  *
- * @param {Language} language Language for the translation
- * @param {string} translationKey Key of the translation
+ * @param language Language for the translation
+ * @param translationKey Key of the translation
  * @returns UI text for translation key
  */
 export const loadUITextByKey = (language: Language, translationKey: string): string => loadTranslationByKey(language, "ui", translationKey) as string;
 
 /**
  *
- * @param {Language} language Language for the translation
- * @param {string} translationKey Key of the translation
- * @param {number} amount Amount of mass to get the translation for
+ * @param language Language for the translation
+ * @param translationKey Key of the translation
+ * @param amount Amount of mass to get the translation for
  * @returns Unit text for translation key
  */
 export const loadUnitByKey = (language: Language, translationKey: string, amount: number = 1): ResolvedUnitTranslation => {
