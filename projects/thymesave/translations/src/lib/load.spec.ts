@@ -51,7 +51,7 @@ describe("loadIngredientsByKey", () => {
 
 describe("loadUnitByKey", () => {
   it("should return the correct details based on an existing key", () => {
-    const unitDetails = loadUnitByKey(Languages.en_US, "gram", 1);
+    const unitDetails = loadUnitByKey(Languages.en_US, "gram");
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
       short: "g",
