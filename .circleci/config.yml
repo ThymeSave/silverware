@@ -9,12 +9,36 @@ executors:
     docker:
       - image: cimg/node:16.13.0-browsers
 
+commands:
+  remove_node_orb_lock:
+    steps:
+      - run:
+          name: Remove lock files
+          command: |
+            rm /tmp/node-project-package.json
+            rm /tmp/node-project-lockfile
+  install_dependencies:
+    steps:
+      - node/install-packages
+      - remove_node_orb_lock
+      - node/install-packages:
+          app-dir: projects/thymesave/core
+      - remove_node_orb_lock
+      - node/install-packages:
+          app-dir: projects/thymesave/ingredients
+      - remove_node_orb_lock
+      - node/install-packages:
+          app-dir: projects/thymesave/plugin
+      - remove_node_orb_lock
+      - node/install-packages:
+          app-dir: projects/thymesave/translations
+
 jobs:
   test:
     executor: node
     steps:
       - checkout
-      - node/install-packages
+      - install_dependencies
       - browser-tools/install-chrome
       - run:
           name: Run ng test
@@ -26,13 +50,13 @@ jobs:
     executor: node
     steps:
       - checkout
-      - node/install-packages
+      - install_dependencies
       - run:
           name: Build
           command: npm run build
       - store_artifacts:
           path: ./dist
-          destination: angular-dist
+          destination: dist
       - persist_to_workspace:
           paths:
             - ./dist

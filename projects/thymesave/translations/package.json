@@ -1,7 +1,12 @@
 {
   "name": "@thymesave/translations",
+  "description": "Translation functionality for ThymeSave",
   "version": "0.0.1",
   "dependencies": {
+    "string-similarity": "^4.0.4",
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.10"
   }
 }

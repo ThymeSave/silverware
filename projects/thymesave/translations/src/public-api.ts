@@ -1,7 +1,4 @@
-/*
- * Public API Surface of translations
- */
-
-export * from './lib/translations.service';
-export * from './lib/translations.component';
-export * from './lib/translations.module';
+export * as Languages from "./lib/languages";
+export * from "./lib/load";
+export { Language, UnitTranslation, ResolvedUnitTranslation } from "./lib/model";
+export { matchUnitByText, matchIngredientByText } from "./lib/matching";

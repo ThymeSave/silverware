@@ -1,24 +1,27 @@
 coverage:
+  range: 70..100
+  round: down
+  precision: 2
   status:
     project:
       silverware:
-        target: auto
+        target: 90%
         flags:
           - silverware
       core:
-        target: auto
+        target: 90%
         flags:
           - core
       ingredients:
-        target: auto
+        target: 90%
         flags:
           - ingredients
       plugin:
-        target: auto
+        target: 90%
         flags:
           - plugin
       translations:
-        target: auto
+        target: 90%
         flags:
           - translations
 
