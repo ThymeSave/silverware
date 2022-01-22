@@ -1,4 +1,6 @@
-{
+import { UnitTranslation } from "../../lib/model";
+
+const units: UnitTranslation = {
   "cup": {
     "long": [
       "cup",
@@ -49,3 +51,5 @@
     "short": "lb"
   }
 }
+
+export default units;

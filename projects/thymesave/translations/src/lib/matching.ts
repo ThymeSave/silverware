@@ -1,6 +1,5 @@
 import { Language, PluralizableTranslation } from "./model";
-
-const stringSimilarity = require("string-similarity")
+import stringSimilarity from "string-similarity";
 const SIMILARITY_EXACT = 1;
 
 const sortMatches = (a: Match, b: Match) => b.similarity - a.similarity;
