@@ -1,5 +1,16 @@
 import { Ingredient } from "./model";
 
-const ingredients = require("../resources/ingredients.json");
+const CATEGORY_VEGETABLE = "vegetable";
 
-export default ingredients as { [key: string]: Ingredient };;
+const ingredients: { [key: string]: Ingredient } = {
+  "ginger": {
+    category: CATEGORY_VEGETABLE,
+    scalable: true
+  },
+  "potato": {
+    category: CATEGORY_VEGETABLE,
+    scalable: true
+  }
+};
+
+export default ingredients;

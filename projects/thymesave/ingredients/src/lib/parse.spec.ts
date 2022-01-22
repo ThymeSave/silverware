@@ -46,6 +46,15 @@ describe("parseIngredientInformation", () => {
     expect(parsed.isRange).toBeTrue();
   });
 
+  it("should parse information with unit and textual range amount with spaces", () => {
+    const parsed = parseIngredientInformation("one - three pieces ginger");
+    expect(parsed.ingredient).toBe("ginger");
+    expect(parsed.unit).toBe("pieces");
+    expect(parsed.minAmount).toBe('one');
+    expect(parsed.maxAmount).toBe('three');
+    expect(parsed.isRange).toBeTrue();
+  });
+
   it("should parse information with unit and multi word ingredient", () => {
     const parsed = parseIngredientInformation("1 piece red onion");
     expect(parsed.ingredient).toBe("red onion");
@@ -58,6 +67,14 @@ describe("parseIngredientInformation", () => {
     expect(parsed.ingredient).toBe("carrot");
     expect(parsed.unit).toBeNull();
     expect(parsed.minAmount).toBe(100)
+    expect(parsed.isRange).toBeFalse();
+  });
+
+  it("should parse information without unit and single character amount", () => {
+    const parsed = parseIngredientInformation("1 carrot");
+    expect(parsed.ingredient).toBe("carrot");
+    expect(parsed.unit).toBeNull();
+    expect(parsed.minAmount).toBe(1)
     expect(parsed.isRange).toBeFalse();
   });
 });
