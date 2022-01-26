@@ -3,7 +3,7 @@
  */
 export interface Ingredient {
   /**
-   * Category for the ingredient, e.g. vegetable
+   * Category technical key for the ingredient, e.g. vegetable
    */
   category: string
   /**

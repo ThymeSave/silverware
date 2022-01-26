@@ -1,8 +1,8 @@
 import { RecipeIngredient } from "./model";
 
-const REGEXP_AMOUNT_UNIT_WITHOUT_RANGE = new RegExp('^(\\d+|\\w+\\s)\\s{0,}(\\w+)\\s{1,}(.+)$');
-const REGEXP_AMOUNT_UNIT_WITH_RANGE = new RegExp('^(\\w+)\\s{0,}-\\s{0,}(\\w+)\\s?(\\w+)\\s+(.+)$');
-const REGEXP_AMOUNT_WITHOUT_UNIT = new RegExp('^(\\d+)\\b\\s(\\w+)$');
+const REGEXP_AMOUNT_UNIT_WITHOUT_RANGE = /^(\d+|\w+\s)\s*(\w+)\s+(.+)$/
+const REGEXP_AMOUNT_UNIT_WITH_RANGE = /^(\w+)\s*-\s*(\w+)\s?(\w+)\s+(.+)$/
+const REGEXP_AMOUNT_WITHOUT_UNIT = /^(\d+)\b\s(\w+)$/
 
 const isText = (val : string) => isNaN(val as any);
 const convertToAmount = (val : string) => isText(val) ? val.trim() : parseFloat(val)
@@ -17,7 +17,7 @@ export const parseIngredientInformation = (raw: string): RecipeIngredient => {
 
   let matches = raw.match(REGEXP_AMOUNT_WITHOUT_UNIT);
   if (matches != null && matches.length == 3) {
-    const amount = isText(matches[1]) ? matches[1] : parseFloat(matches[1])
+    const amount = convertToAmount(matches[1])
     return {
       ingredient: matches[2],
       unit: null,
