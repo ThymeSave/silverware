@@ -1,4 +1,5 @@
 import { parseIngredientInformation } from "../public-api";
+import { IngredientParseError } from "./parse";
 
 describe("parseIngredientInformation", () => {
   it("should parse information with unit and numeric amount", () => {
@@ -77,4 +78,8 @@ describe("parseIngredientInformation", () => {
     expect(parsed.minAmount).toBe(1)
     expect(parsed.isRange).toBeFalse();
   });
+
+  it("should throw an error for invalid ingredient text",() => {
+    expect(() => parseIngredientInformation("foo.bar")).toThrow(new IngredientParseError("foo.bar"));
+  })
 });

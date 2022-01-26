@@ -1,4 +1,5 @@
 import { loadIngredientByKey } from "../public-api";
+import { IngredientNotFoundError } from "./load";
 
 describe("loadIngredientByKey", () => {
   it("should load exiting ingredients by key", () => {
@@ -8,6 +9,6 @@ describe("loadIngredientByKey", () => {
   });
 
   it("should throw an error in case of non existing ingredients", () => {
-    expect(() => loadIngredientByKey("foobar")).toThrow(new Error("Ingredient with key foobar not found"));
+    expect(() => loadIngredientByKey("foobar")).toThrow(new IngredientNotFoundError("foobar"));
   });
 });

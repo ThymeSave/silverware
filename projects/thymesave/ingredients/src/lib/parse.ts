@@ -4,8 +4,20 @@ const REGEXP_AMOUNT_UNIT_WITHOUT_RANGE = /^(\d+|\w+\s)\s*(\w+)\s+(.+)$/
 const REGEXP_AMOUNT_UNIT_WITH_RANGE = /^(\w+)\s*-\s*(\w+)\s?(\w+)\s+(.+)$/
 const REGEXP_AMOUNT_WITHOUT_UNIT = /^(\d+)\b\s(\w+)$/
 
-const isText = (val : string) => isNaN(val as any);
-const convertToAmount = (val : string) => isText(val) ? val.trim() : parseFloat(val)
+const isText = (val: string) => isNaN(val as any);
+const convertToAmount = (val: string) => isText(val) ? val.trim() : parseFloat(val)
+
+/**
+ * Error in case an ingredient text can not be parsed
+ */
+export class IngredientParseError extends Error {
+  public readonly raw: String
+
+  constructor(raw: String) {
+    super(`Failed to parse ingredient from '${raw}'`);
+    this.raw = raw;
+  }
+}
 
 /**
  * Parse ingredient information from textual representation.
@@ -53,6 +65,5 @@ export const parseIngredientInformation = (raw: string): RecipeIngredient => {
     };
   }
 
-  // TODO Refactor into custom error type
-  throw Error(`Failed to parse ingredient: ${raw}`)
+  throw new IngredientParseError(raw)
 }
