@@ -7,7 +7,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.10",
     "@types/string-similarity": "^4.0.0"
+    "@types/node": "^16.11.22"
   }
 }
