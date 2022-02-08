@@ -1,14 +1,28 @@
 import { Ingredient } from "./model";
 
-const CATEGORY_VEGETABLE = "vegetable";
+enum VegetableCategory {
+  Vegetable = "vegetable",
+};
+
+enum MeatCategory {
+  Meat = 'meat',
+  Beef = 'beef',
+  Chicken = 'chicken',
+  Pork = 'pork',
+}
+
+export const IngredientCategory = {
+  ...VegetableCategory,
+  ...MeatCategory,
+};
 
 const ingredients: { [key: string]: Ingredient } = {
   "ginger": {
-    category: CATEGORY_VEGETABLE,
+    category: IngredientCategory.Vegetable,
     scalable: true
   },
   "potato": {
-    category: CATEGORY_VEGETABLE,
+    category: IngredientCategory.Vegetable,
     scalable: true
   }
 };
