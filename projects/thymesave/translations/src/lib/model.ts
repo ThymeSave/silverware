@@ -8,7 +8,7 @@ export type SingleValueTranslation = { [key: string]: string };
  * Key value map for translations that can have multiple values, where the first is singular and the second is plural.
  * If the translation can not be pluralized only one value is returned
  */
-export type PluralizableTranslation = { [key: string]: string[1] | string[2] };
+export type PluralizableTranslation = { [key: string]: string[] };
 
 /**
  * Structure for UnitTranslations elements

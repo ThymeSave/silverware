@@ -1,6 +1,6 @@
-const ingredients = require("./ingredients.json");
-const ui = require("./ui.json");
-const units = require("./units.json");
+import ingredients from "./ingredients";
+import ui from "./ui"
+import units from "./units"
 
 export {
     ingredients, ui, units

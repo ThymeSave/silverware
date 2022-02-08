@@ -41,8 +41,18 @@ jobs:
       - install_dependencies
       - browser-tools/install-chrome
       - run:
+          name: Run ng lint
+          command: npm run lint
+      - run:
           name: Run ng test
-          command: npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage
+          environment:
+            NPM_ARGS: '-- --watch=false --browsers=ChromeHeadless --code-coverage'
+          command: |
+            npm run test @thymesave/core ${NPM_ARGS}
+            npm run test @thymesave/translations ${NPM_ARGS}
+            npm run test @thymesave/ingredients ${NPM_ARGS}
+            npm run test @thymesave/plugin ${NPM_ARGS}
+            npm run test ${NPM_ARGS}
       - run:
           name: Upload coverage to codecov.io
           command: bash <(curl -s https://codecov.io/bash)
@@ -53,7 +63,14 @@ jobs:
       - install_dependencies
       - run:
           name: Build
-          command: npm run build
+          environment:
+            NPM_ARGS: ''
+          command: |
+            npm run build @thymesave/core ${NPM_ARGS}
+            npm run build @thymesave/translations ${NPM_ARGS}
+            npm run build @thymesave/ingredients ${NPM_ARGS}
+            npm run build @thymesave/plugin ${NPM_ARGS}
+            npm run build ${NPM_ARGS}
       - store_artifacts:
           path: ./dist
           destination: dist
