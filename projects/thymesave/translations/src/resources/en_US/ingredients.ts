@@ -196,6 +196,10 @@ const ingredients: PluralizableTranslation = {
   "atlantic_wolffish": [
     "atlantic wolffish"
   ],
+  "aubergine": [
+    "aubergine",
+    "aubergines"
+  ],
   "avocado": [
     "avocado",
     "avocados"
@@ -207,6 +211,12 @@ const ingredients: PluralizableTranslation = {
     "babassu palm",
     "babassu palms"
   ],
+  "bacon": [
+    "bacon"
+  ],
+  "bacon_cubes": [
+    "bacon cubes"
+  ],
   "bagel": [
     "bagel",
     "bagels"
@@ -216,6 +226,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "baking_soda": [
     "baking soda"
+  ],
+  "balsamic": [
+    "balsamic"
   ],
   "bamboo_shoots": [
     "bamboo shoots"
@@ -228,9 +241,16 @@ const ingredients: PluralizableTranslation = {
     "barley",
     "barleys"
   ],
+  "basil": [
+    "basil"
+  ],
   "bayberry": [
     "bayberry",
     "bayberries"
+  ],
+  "bay_laurel": [
+    "bay laurel",
+    "bay laurels"
   ],
   "bean": [
     "bean",
@@ -243,6 +263,10 @@ const ingredients: PluralizableTranslation = {
   "beech_nut": [
     "beech nut",
     "beech nuts"
+  ],
+  "beef_roulade": [
+    "beef roulade",
+    "beef roulades"
   ],
   "beefalo": [
     "beefalo"
@@ -601,9 +625,16 @@ const ingredients: PluralizableTranslation = {
   "chicken": [
     "chicken"
   ],
-  "chicken-breast": [
+  "chicken_breast": [
     "chicken breast",
     "chicken breasts"
+  ],
+  "chicken_breast_filet": [
+    "chicken breast filet",
+    "chicken breast filets"
+  ],
+  "chicken_broth": [
+    "chicken broth"
   ],
   "chickpea": [
     "chickpea",
@@ -619,9 +650,13 @@ const ingredients: PluralizableTranslation = {
   "chicory": [
     "chicory"
   ],
-  "chili": [
+  "chilli": [
     "chili",
     "chillis"
+  ],
+  "chilli_pepper": [
+    "chilli pepper",
+    "chilli peppers"
   ],
   "chineese_plum": [
     "chineese plum",
@@ -692,6 +727,9 @@ const ingredients: PluralizableTranslation = {
   "clam": [
     "clam",
     "clams"
+  ],
+  "clarified_butter": [
+    "clarified butter"
   ],
   "clawed_lobster": [
     "clawed lobster",
@@ -951,6 +989,9 @@ const ingredients: PluralizableTranslation = {
   "curd": [
     "curd"
   ],
+  "curry_paste": [
+    "curry paste"
+  ],
   "curry_powder": [
     "curry powder"
   ],
@@ -1167,6 +1208,9 @@ const ingredients: PluralizableTranslation = {
   "fortified_wine": [
     "fortified wine"
   ],
+  "food_starch": [
+    "food starch"
+  ],
   "fox_grape": [
     "fox grape",
     "fox grapes"
@@ -1178,6 +1222,9 @@ const ingredients: PluralizableTranslation = {
   "french_toast": [
     "french toast",
     "french toasts"
+  ],
+  "fresh_cream": [
+    "fresh cream"
   ],
   "freshwater_drum": [
     "freshwater drum"
@@ -1243,6 +1290,10 @@ const ingredients: PluralizableTranslation = {
   ],
   "garlic": [
     "garlic"
+  ],
+  "garlic_glove": [
+    "garlic glove",
+    "garlic gloves"
   ],
   "garlic_powder": [
     "garlic powder"
@@ -1399,6 +1450,9 @@ const ingredients: PluralizableTranslation = {
     "half-highbush blueberry",
     "half-highbush blueberries"
   ],
+  "ham": [
+    "ham"
+  ],
   "hard_wheat": [
     "hard wheat"
   ],
@@ -1416,6 +1470,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "hedge_mustard": [
     "hedge mustard"
+  ],
+  "herb_butter": [
+    "herb butter"
   ],
   "herbal_tea": [
     "herbal tea"
@@ -1580,6 +1637,10 @@ const ingredients: PluralizableTranslation = {
   "king_mackerel": [
     "king mackerel"
   ],
+  "king_prawns": [
+    "king prawn",
+    "king_prawns"
+  ],
   "kiwi": [
     "kiwi",
     "kiwis"
@@ -1612,6 +1673,10 @@ const ingredients: PluralizableTranslation = {
     "lard",
     "lards"
   ],
+  "lasagna_plate": [
+    "lasagna plate",
+    "lasagna plates"
+  ],
   "leather_chiton": [
     "leather chiton",
     "leather chitons"
@@ -1620,8 +1685,7 @@ const ingredients: PluralizableTranslation = {
     "leavening agent"
   ],
   "leek": [
-    "leek",
-    "leeks"
+    "leek"
   ],
   "lemon": [
     "lemon",
@@ -1632,6 +1696,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "lemon_grass": [
     "lemon grass"
+  ],
+  "lemon_juice": [
+    "lemon juice"
   ],
   "lemon_sole": [
     "lemon sole",
@@ -1728,6 +1795,9 @@ const ingredients: PluralizableTranslation = {
     "maitake",
     "maitakes"
   ],
+  "majoram": [
+    "majoram"
+  ],
   "malabar plum": [
     "malabar plum",
     "malabar plums"
@@ -1757,6 +1827,9 @@ const ingredients: PluralizableTranslation = {
     "mango",
     "mangos"
   ],
+  "maple_syrup": [
+    "maple syrup"
+  ],
   "margarine": [
     "margarine"
   ],
@@ -1773,6 +1846,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "marzipan": [
     "marzipan"
+  ],
+  "mascarpone": [
+    "mascarpone"
   ],
   "mate": [
     "mate"
@@ -2231,6 +2307,9 @@ const ingredients: PluralizableTranslation = {
     "peanut",
     "peanuts"
   ],
+  "peanut_butter": [
+    "peanut butter"
+  ],
   "peanut_oil": [
     "peanut oil"
   ],
@@ -2275,6 +2354,10 @@ const ingredients: PluralizableTranslation = {
   ],
   "phyllo_dough": [
     "phyllo dough"
+  ],
+  "pickle": [
+    "pickle",
+    "pickles"
   ],
   "pie": [
     "pie",
@@ -2364,6 +2447,13 @@ const ingredients: PluralizableTranslation = {
   "pork_goulash": [
     "pork goulash"
   ],
+  "pork_mince": [
+    "pork mince"
+  ],
+  "pork_tenderloin": [
+    "pork tenerloin",
+    "pork tenerloins"
+  ],
   "port_wine": [
     "port wine"
   ],
@@ -2399,6 +2489,9 @@ const ingredients: PluralizableTranslation = {
   "pudding": [
     "pudding"
   ],
+  "puff_pastry": [
+    "puff pastry"
+  ],
   "pulses": [
     "pulse",
     "pulses"
@@ -2425,6 +2518,9 @@ const ingredients: PluralizableTranslation = {
   "quail": [
     "quail"
   ],
+  "quills": [
+    "quills"
+  ],
   "quince": [
     "quince"
   ],
@@ -2448,6 +2544,10 @@ const ingredients: PluralizableTranslation = {
   "rainbow_smelt": [
     "rainbow smelt",
     "rainbow smelts"
+  ],
+  "raisin": [
+    "raisin",
+    "raisins"
   ],
   "raisin_bread": [
     "raisin bread",
@@ -2534,6 +2634,12 @@ const ingredients: PluralizableTranslation = {
     "rice bread",
     "rice breads"
   ],
+  "rice_pudding": [
+    "rice pudding"
+  ],
+  "ridged": [
+    "ridged"
+  ],
   "ringed_seal": [
     "ringed seal",
     "ringed seals"
@@ -2543,6 +2649,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "rock_ptarmigan": [
     "rock ptarmigan"
+  ],
+  "rocket": [
+    "rocket"
   ],
   "rocket_salad": [
     "rocket salad"
@@ -2619,6 +2728,9 @@ const ingredients: PluralizableTranslation = {
   "salad_dressing": [
     "salad dressing"
   ],
+  "salami": [
+    "salami"
+  ],
   "salmonberry": [
     "salmonberry",
     "salmonberries"
@@ -2643,6 +2755,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "sauce": [
     "sauce"
+  ],
+  "sauce_binder": [
+    "sauce binder"
   ],
   "sausage": [
     "sausage",
@@ -2725,6 +2840,10 @@ const ingredients: PluralizableTranslation = {
     "shrimp",
     "shrimps"
   ],
+  "sieved_tomatoes": [
+    "sieved tomato",
+    "sieved_tomatoes"
+  ],
   "silver_linden": [
     "silver linden"
   ],
@@ -2764,6 +2883,9 @@ const ingredients: PluralizableTranslation = {
   "soft_necked_garlic": [
     "soft necked garlic"
   ],
+  "soft_wheat_semolina": [
+    "soft wheat semolina"
+  ],
   "sorghum": [
     "sorghum",
     "sorghums"
@@ -2774,6 +2896,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "soup": [
     "soup"
+  ],
+  "sour": [
+    "sour"
   ],
   "sour_cherry": [
     "sour cherry",
@@ -2816,12 +2941,18 @@ const ingredients: PluralizableTranslation = {
   "soybean_oil": [
     "soybean oil"
   ],
+  "spaghetti": [
+    "spaghetti"
+  ],
   "spanish_mackerel": [
     "spanish mackerel"
   ],
   "sparkleberry": [
     "sparkleberry",
     "sparkleberries"
+  ],
+  "split_peas": [
+    "split peas"
   ],
   "spearmint": [
     "spearmint"
@@ -2857,6 +2988,10 @@ const ingredients: PluralizableTranslation = {
   ],
   "spread": [
     "spread"
+  ],
+  "spring_onions": [
+    "spring onion",
+    "spring onions"
   ],
   "squab": [
     "squab",

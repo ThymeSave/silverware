@@ -290,6 +290,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Aquatic
   },
+  "aubergine": {
+    scalable: true,
+    category: IngredientCategory.Vegetable
+  },
   "avocado": {
     scalable: true,
     category: IngredientCategory.Vegetable
@@ -301,6 +305,14 @@ const ingredients: { [key: string]: Ingredient } = {
   "babassu_palm": {
     scalable: true,
     category: IngredientCategory.Herb
+  },
+  "bacon": {
+    scalable: true,
+    category: IngredientCategory.Meat
+  },
+  "bacon_cubes": {
+    scalable: true,
+    category: IngredientCategory.Meat
   },
   "bagel": {
     scalable: true,
@@ -314,6 +326,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: false,
     category: IngredientCategory.Baking
   },
+  "balsamic": {
+    scalable: false,
+    category: IngredientCategory.Herb
+  },
   "bamboo_shoots": {
     scalable: true,
     category: IngredientCategory.Vegetable
@@ -326,9 +342,17 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Cereals
   },
+  "basil": {
+    scalable: true,
+    category: IngredientCategory.Herb
+  },
   "bayberry": {
     scalable: true,
     category: IngredientCategory.Fruits
+  },
+  "bay_laurel": {
+    scalable: true,
+    category: IngredientCategory.Herb
   },
   "bean": {
     scalable: true,
@@ -341,6 +365,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "beech_nut": {
     scalable: true,
     category: IngredientCategory.Nuts
+  },
+  "beef_roulade": {
+    scalable: true,
+    category: IngredientCategory.Beef
   },
   "beefalo": {
     scalable: true,
@@ -746,6 +774,14 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Chicken
   },
+  "chicken_breast_filet": {
+    scalable: true,
+    category: IngredientCategory.Chicken
+  },
+  "chicken_broth": {
+    scalable: true,
+    category: IngredientCategory.Soup
+  },
   "chickpea": {
     scalable: true,
     category: IngredientCategory.Pulse
@@ -762,9 +798,13 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Vegetable
   },
-  "chili": {
+  "chilli": {
     scalable: true,
     category: IngredientCategory.Spice
+  },
+  "chilli_pepper": {
+    scalable: true,
+    category: IngredientCategory.Vegetable
   },
   "chineese_plum": {
     scalable: true,
@@ -845,6 +885,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "clam": {
     scalable: true,
     category: IngredientCategory.Aquatic
+  },
+  "clarified_butter": {
+    scalable: true,
+    category: IngredientCategory.AnimalFat
   },
   "clawed_lobster": {
     scalable: true,
@@ -1146,6 +1190,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Milk
   },
+  "curry_paste": {
+    scalable: true,
+    category: IngredientCategory.Herb
+  },
   "curry_powder": {
     scalable: true,
     category: IngredientCategory.Herb
@@ -1394,6 +1442,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Beverage
   },
+  "food_starch": {
+    scalable: true,
+    category: IngredientCategory.Baking
+  },
   "fox_grape": {
     scalable: true,
     category: IngredientCategory.Fruits
@@ -1405,6 +1457,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "french_toast": {
     scalable: true,
     category: IngredientCategory.Cereals
+  },
+  "fresh_cream": {
+    scalable: true,
+    category: IngredientCategory.Milk
   },
   "freshwater_drum": {
     scalable: true,
@@ -1483,7 +1539,11 @@ const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Vegetable
   },
   "garlic": {
-    scalable: true,
+    scalable: false,
+    category: IngredientCategory.Herb
+  },
+  "garlic_glove": {
+    scalable: false,
     category: IngredientCategory.Herb
   },
   "garlic_powder": {
@@ -1662,6 +1722,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Fruits
   },
+  "ham": {
+    scalable: true,
+    category: IngredientCategory.Meat
+  },
   "hard_wheat": {
     scalable: true,
     category: IngredientCategory.Cereals
@@ -1681,6 +1745,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "hedge_mustard": {
     scalable: true,
     category: IngredientCategory.Herb
+  },
+  "herb_butter": {
+    scalable: false,
+    category: IngredientCategory.AnimalFat
   },
   "herbal_tea": {
     scalable: true,
@@ -1874,6 +1942,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Aquatic
   },
+  "king_prawns": {
+    scalable: true,
+    category: IngredientCategory.Aquatic
+  },
   "kiwi": {
     scalable: true,
     category: IngredientCategory.Fruits
@@ -1910,6 +1982,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.AnimalFat
   },
+  "lasagna_plate": {
+    scalable: true,
+    category: IngredientCategory.Pasta
+  },
   "leather_chiton": {
     scalable: true,
     category: IngredientCategory.Aquatic
@@ -1932,6 +2008,10 @@ const ingredients: { [key: string]: Ingredient } = {
   },
   "lemon_grass": {
     scalable: true,
+    category: IngredientCategory.Herb
+  },
+  "lemon_juice": {
+    scalable: false,
     category: IngredientCategory.Herb
   },
   "lemon_sole": {
@@ -2042,6 +2122,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Vegetable
   },
+  "majoram": {
+    scalable: false,
+    category: IngredientCategory.Herb
+  },
   "malabar plum": {
     scalable: true,
     category: IngredientCategory.Fruits
@@ -2074,6 +2158,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Fruits
   },
+  "maple_syrup": {
+    scalable: true,
+    category: IngredientCategory.Fluids
+  },
   "margarine": {
     scalable: true,
     category: IngredientCategory.VegetableFat
@@ -2093,6 +2181,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "marzipan": {
     scalable: true,
     category: IngredientCategory.Confectioneries
+  },
+  "mascarpone": {
+    scalable: true,
+    category: IngredientCategory.Milk
   },
   "mate": {
     scalable: true,
@@ -2630,6 +2722,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Herb
   },
+  "peanut_butter": {
+    scalable: true,
+    category: IngredientCategory.VegetableFat
+  },
   "pear": {
     scalable: true,
     category: IngredientCategory.Fruits
@@ -2677,6 +2773,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "phyllo_dough": {
     scalable: true,
     category: IngredientCategory.Baking
+  },
+  "pickle": {
+    scalable: true,
+    category: IngredientCategory.Vegetable
   },
   "pie": {
     scalable: true,
@@ -2778,6 +2878,14 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Meat
   },
+  "pork_mince": {
+    scalable: true,
+    category: IngredientCategory.Meat
+  },
+  "pork_tenderloin": {
+    scalable: true,
+    category: IngredientCategory.Pork
+  },
   "port_wine": {
     scalable: true,
     category: IngredientCategory.Beverage
@@ -2818,6 +2926,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Confectioneries
   },
+  "puff_pastry": {
+    scalable: true,
+    category: IngredientCategory.Baking
+  },
   "pulses": {
     scalable: true,
     category: IngredientCategory.Pulse
@@ -2846,6 +2958,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Chicken
   },
+  "quills": {
+    scalable: true,
+    category: IngredientCategory.Pasta
+  },
   "quince": {
     scalable: true,
     category: IngredientCategory.Fruits
@@ -2873,6 +2989,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "rainbow_smelt": {
     scalable: true,
     category: IngredientCategory.Aquatic
+  },
+  "raisin": {
+    scalable: true,
+    category: IngredientCategory.Fruits
   },
   "raisin_bread": {
     scalable: true,
@@ -2974,6 +3094,14 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Cereals
   },
+  "rice_pudding": {
+    scalable: true,
+    category: IngredientCategory.Cereals
+  },
+  "ridged": {
+    scalable: true,
+    category: IngredientCategory.Pasta
+  },
   "ringed_seal": {
     scalable: true,
     category: IngredientCategory.Aquatic
@@ -2985,6 +3113,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "rock_ptarmigan": {
     scalable: true,
     category: IngredientCategory.Chicken
+  },
+  "rocket": {
+    scalable: true,
+    category: IngredientCategory.Vegetable
   },
   "rocket_salad": {
     scalable: true,
@@ -3074,6 +3206,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Baking
   },
+  "salami": {
+    scalable: true,
+    category: IngredientCategory.Meat
+  },
   "salmonberry": {
     scalable: true,
     category: IngredientCategory.Fruits
@@ -3099,6 +3235,10 @@ const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Fruits
   },
   "sauce": {
+    scalable: true,
+    category: IngredientCategory.Baking
+  },
+  "sauce_binder": {
     scalable: true,
     category: IngredientCategory.Baking
   },
@@ -3194,6 +3334,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Aquatic
   },
+  "sieved_tomatoes": {
+    scalable: true,
+    category: IngredientCategory.Vegetable
+  },
   "silver_linden": {
     scalable: true,
     category: IngredientCategory.Herb
@@ -3238,6 +3382,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Herb
   },
+  "soft_wheat_semolina": {
+    scalable: true,
+    category: IngredientCategory.Cereals
+  },
   "sorghum": {
     scalable: true,
     category: IngredientCategory.Cereals
@@ -3249,6 +3397,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "soup": {
     scalable: true,
     category: IngredientCategory.Soup
+  },
+  "sour": {
+    scalable: true,
+    category: IngredientCategory.Milk
   },
   "sour_cherry": {
     scalable: true,
@@ -3298,6 +3450,10 @@ const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Herb
   },
+  "spaghetti": {
+    scalable: true,
+    category: IngredientCategory.Pasta
+  },
   "spanish_mackerel": {
     scalable: true,
     category: IngredientCategory.Aquatic
@@ -3305,6 +3461,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "sparkleberry": {
     scalable: true,
     category: IngredientCategory.Fruits
+  },
+  "split_peas": {
+    scalable: true,
+    category: IngredientCategory.Vegetable
   },
   "spearmint": {
     scalable: true,
@@ -3345,6 +3505,10 @@ const ingredients: { [key: string]: Ingredient } = {
   "spread": {
     scalable: true,
     category: IngredientCategory.Baking
+  },
+  "spring_onions": {
+    scalable: true,
+    category: IngredientCategory.Vegetable
   },
   "squab": {
     scalable: true,
