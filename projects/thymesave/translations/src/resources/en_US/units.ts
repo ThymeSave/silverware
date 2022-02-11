@@ -44,12 +44,19 @@ const units: UnitTranslation = {
     ],
     "short": "ml"
   },
+  "pack": {
+    "long": [
+      "pack",
+      "packs"
+    ],
+    "short": "pck"
+  },
   "pound": {
     "long": [
       "pound"
     ],
     "short": "lb"
-  }
+  },
 }
 
 export default units;
