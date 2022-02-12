@@ -62,7 +62,7 @@ export const IngredientCategory = {
   ...AlcoholCategory,
 }
 
-const ingredients: { [key: string]: Ingredient } = {
+export const ingredients: { [key: string]: Ingredient } = {
   "abalone": {
     scalable: true,
     category: IngredientCategory.Aquatic

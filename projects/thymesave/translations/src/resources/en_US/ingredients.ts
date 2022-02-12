@@ -2195,6 +2195,10 @@ const ingredients: PluralizableTranslation = {
   "other_fruit_product": [
     "fruit product"
   ],
+  "other_onion": [
+    "onion",
+    "onions"
+  ],
   "other_soy_product": [
     "soy product",
     "soy products"
@@ -3243,7 +3247,7 @@ const ingredients: PluralizableTranslation = {
   "turbot": [
     "turbot"
   ],
-  "turkey breast": [
+  "turkey_breast": [
     "turkey breast",
     "turkey breasts"
   ],
