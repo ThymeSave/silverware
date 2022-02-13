@@ -166,7 +166,7 @@ const ingredients: PluralizableTranslation = {
   "asparagus_racemosus": [
     "asparagus racemosus"
   ],
-  "atlantic salmon": [
+  "atlantic_salmon": [
     "atlantic salmon"
   ],
   "atlantic_cod": [
@@ -1901,11 +1901,9 @@ const ingredients: PluralizableTranslation = {
   "milk_substitute": [
     "milk substitute"
   ],
-
   "milk_three_percent_fat": [
     "milk (3% fat)"
   ],
-
   "milk_two_percent_fat": [
     "milk (2% fat)"
   ],
@@ -2021,7 +2019,7 @@ const ingredients: PluralizableTranslation = {
     "nanking cherry",
     "nanking cherries"
   ],
-  "napa cabbage": [
+  "napa_cabbage": [
     "napa cabbage",
     "napa cabbages"
   ],

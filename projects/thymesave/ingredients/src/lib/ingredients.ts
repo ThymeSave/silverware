@@ -254,7 +254,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Vegetable
   },
-  "atlantic salmon": {
+  "atlantic_salmon": {
     scalable: true,
     category: IngredientCategory.Aquatic
   },
@@ -2382,7 +2382,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
     category: IngredientCategory.Fruits
   },
-  "napa cabbage": {
+  "napa_cabbage": {
     scalable: true,
     category: IngredientCategory.Vegetable
   },
