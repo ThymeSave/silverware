@@ -101,7 +101,9 @@ jobs:
 workflows:
   continious:
     jobs:
-      - generate-translation-report
+      - generate-translation-report:
+          requires:
+            - test
       - test:
           filters:
             branches:
