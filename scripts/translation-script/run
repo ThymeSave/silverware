@@ -4,13 +4,12 @@ set -e
 root="${PWD}"
 
 echo "Build generate-translations architect ..."
-cd ../../projects/thymesave/translations/generate-translations-report
+cd projects/thymesave/translations/generate-translations-report
 tsc
 
-cd "${root}"
-
 echo "Build generate-ingredient architect ..."
-cd ../../projects/thymesave/ingredients/generate-ingredient-report
+cd "${root}"
+cd projects/thymesave/ingredients/generate-ingredient-report
 tsc
 
 echo "Compile report script ..."
@@ -18,10 +17,10 @@ cd "${root}"
 tsc
 
 echo "Generating json reports ..."
-cd ../..
+cd "${root}"
 ng run @thymesave/translations:generate-report
 ng run @thymesave/ingredients:generate-report
 
 echo "Run report generation ..."
 cd "${root}"
-node index.js
+node "$(dirname "$0")/index.js"
