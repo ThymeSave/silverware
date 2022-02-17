@@ -24,4 +24,5 @@ npx ng run @thymesave/ingredients:generate-report
 
 echo "Run report generation ..."
 cd "${root}"
+npx tsc@"${TSC_VERSION}"
 node "$(dirname "$0")/index.js"
