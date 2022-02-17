@@ -129,6 +129,14 @@
             "target": "/tmp/ingredients.json"
           }
         },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/thymesave/ingredients/src/test.ts",
+            "tsConfig": "projects/thymesave/ingredients/tsconfig.spec.json",
+            "karmaConfig": "projects/thymesave/ingredients/karma.conf.js"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
