@@ -6,7 +6,7 @@ const translations = JSON.parse(fs.readFileSync(translationsPath, 'UTF-8'))
 const ingredients = JSON.parse(fs.readFileSync(ingredientsPath, "UTF-8"))
 
 const total = ingredients.length
-const coverage = {}
+const coverage : any = {}
 const languages = new Set()
 
 for (const ingredient of ingredients) {
@@ -71,7 +71,7 @@ let report = `<!DOCTYPE html>
     </tr>
 </thead>
 <tbody>
-    ${ingredients.sort().map(key => {
+    ${ingredients.sort().map((key : any) => {
   const translation = translations[key] || [].sort();
   return `<tr>
            <td style="width: 200px;">${key}</td>

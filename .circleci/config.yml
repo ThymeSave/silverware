@@ -56,6 +56,15 @@ jobs:
       - run:
           name: Upload coverage to codecov.io
           command: bash <(curl -s https://codecov.io/bash)
+  generate-translation-report:
+    executor: node
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: Run translation report script
+          command: |
+            ./scripts/translation-script/run
   build:
     executor: node
     steps:
