@@ -2,7 +2,6 @@ import { BuilderOutput, createBuilder } from '@angular-devkit/architect';
 import { JsonObject } from '@angular-devkit/core';
 import * as Languages from "../src/lib/languages";
 import * as fs from "fs";
-
 interface Options extends JsonObject {
   target: string;
 }
@@ -19,7 +18,7 @@ export default createBuilder<Options>((options, context) => {
         translations.set(key, translatedIn)
       }
     }
-    fs.writeFileSync(options.target,JSON.stringify(Object.fromEntries(translations)))
+    fs.writeFileSync(options.target, JSON.stringify(Object.fromEntries(translations)))
     resolve({
       success: true
     })

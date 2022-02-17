@@ -32,6 +32,10 @@ commands:
       - remove_node_orb_lock
       - node/install-packages:
           app-dir: projects/thymesave/translations
+      - remove_node_orb_lock
+      - node/install-packages:
+          app-dir: scripts/translation-report
+      - remove_node_orb_lock
 
 jobs:
   test:
@@ -67,7 +71,10 @@ jobs:
             npm run generate-translation-report
       - store_artifacts:
           path: scripts/translation-report/report.html
-          destination: reports/translations
+          destination: reports/translations.html
+      - store_artifacts:
+          path: scripts/translation-report/report.json
+          destination: reports/translations.json
   build:
     executor: node
     steps:
