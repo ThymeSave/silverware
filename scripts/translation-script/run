@@ -1,20 +1,21 @@
 #!/bin/bash
+TSC_VERSION="2.0.4"
 set -e
 
 root="${PWD}"
 
 echo "Build generate-translations architect ..."
 cd projects/thymesave/translations/generate-translations-report
-tsc
+npx tsc@"${TSC_VERSION}"
 
 echo "Build generate-ingredient architect ..."
 cd "${root}"
 cd projects/thymesave/ingredients/generate-ingredient-report
-tsc
+npx tsc@"${TSC_VERSION}"
 
 echo "Compile report script ..."
 cd "${root}"
-tsc
+npx tsc@"${TSC_VERSION}"
 
 echo "Generating json reports ..."
 cd "${root}"

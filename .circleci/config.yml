@@ -64,7 +64,6 @@ jobs:
       - run:
           name: Run translation report script
           command: |
-            sudo npm i -g tsc@2.0.4
             ./scripts/translation-script/run
   build:
     executor: node
