@@ -67,7 +67,7 @@ jobs:
             npm run generate-translation-report
       - store_artifacts:
           path: scripts/translation-report/report.html
-          destination: reports/
+          destination: reports/translations
   build:
     executor: node
     steps:
