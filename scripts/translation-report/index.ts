@@ -11,6 +11,10 @@ const coverage: any = {};
 const languages = new Set();
 const ingredientTranslations: any = {};
 
+Handlebars.registerHelper("increment", function (num : number) {
+  return ++num
+});
+
 for (const ingredient of ingredients) {
   if (!translations[ingredient]) {
     continue;
