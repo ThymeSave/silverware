@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "postinstall": "if [ -z \"$CI\" ]; then pre-commit install && pre-commit install --hook-type commit-msg; fi;",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "generate-translation-report": "./scripts/translation-report/run"
   },
   "private": true,
   "dependencies": {

@@ -32,6 +32,10 @@ commands:
       - remove_node_orb_lock
       - node/install-packages:
           app-dir: projects/thymesave/translations
+      - remove_node_orb_lock
+      - node/install-packages:
+          app-dir: scripts/translation-report
+      - remove_node_orb_lock
 
 jobs:
   test:
@@ -56,6 +60,21 @@ jobs:
       - run:
           name: Upload coverage to codecov.io
           command: bash <(curl -s https://codecov.io/bash)
+  generate-translation-report:
+    executor: node
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: Run translation report script
+          command: |
+            npm run generate-translation-report
+      - store_artifacts:
+          path: scripts/translation-report/report.html
+          destination: reports/translations.html
+      - store_artifacts:
+          path: scripts/translation-report/report.json
+          destination: reports/translations.json
   build:
     executor: node
     steps:
@@ -82,6 +101,9 @@ jobs:
 workflows:
   continious:
     jobs:
+      - generate-translation-report:
+          requires:
+            - test
       - test:
           filters:
             branches:

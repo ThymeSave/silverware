@@ -1,6 +1,6 @@
 import { UnitTranslation } from "../../lib/model";
 
-const units : UnitTranslation = {
+const units: UnitTranslation = {
   "cup": {
     "long": [
       "Tasse",
@@ -43,6 +43,13 @@ const units : UnitTranslation = {
       "Milliliter"
     ],
     "short": "ml"
+  },
+  "pack": {
+    "long": [
+      "Päckchen",
+      "Packungen"
+    ],
+    "short": "Pck"
   },
   "pound": {
     "long": [

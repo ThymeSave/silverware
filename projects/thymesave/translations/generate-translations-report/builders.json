@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "generate": {
+      "description": "Generate translations report",
+      "implementation": "./",
+      "schema": "./schema.json"
+    }
+  }
+}

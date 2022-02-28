@@ -3,8 +3,8 @@ import { SingleValueTranslation } from "../../lib/model";
 const ui : SingleValueTranslation =  {
   "cancel": "Abbrechen",
   "close": "Schliessen",
-  "ok": "Best\u00e4tigen",
-  "open": "\u00d6ffnen",
+  "ok": "Bestätigen",
+  "open": "Öffnen",
   "save": "Speichern"
 }
 

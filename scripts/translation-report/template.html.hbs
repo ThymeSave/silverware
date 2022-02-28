@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Translation Report</title>
+  <script src="https://unpkg.com/table-sort-js@1.6.8/table-sort.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, serif;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    table, progress {
+      width: 100%;
+    }
+
+    table, tr, td, th {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    input[type=search] {
+      width: 100%;
+      font-size: 1.2em;
+      display: block;
+      margin: 1em auto 1em;
+      padding: .3em;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .translations-table-wrapper {
+      margin: auto;
+      width: 80vw;
+    }
+
+    .coverage--language-code {
+      width: 80px;
+    }
+
+    .coverage {
+      width: 90vw;
+      margin: auto;
+    }
+  </style>
+
+</head>
+<body>
+<h1>Translation Report</h1>
+<h2>Coverage</h2>
+<table class="coverage">
+  <thead>
+  <th>Language</th>
+  <th>Coverage</th>
+  </thead>
+  <tbody>
+  {{#each coverage }}
+    <tr>
+      <td class="coverage--language-code">{{@key}}</td>
+      <td>
+        <progress title="{{this}}/{{../ingredientCount}}" max="{{../ingredientCount}}" value="{{this}}"></progress>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+<h2>Status</h2>
+<div class="translations-table-wrapper">
+  <input id="search" type="search" placeholder="Search for translation key"/>
+  <table class="translations-table table-sort table-arrows">
+    <thead>
+    <tr>
+      <th data-sort-index="0">Key</th>
+      {{#each languages}}
+        <th data-sort-index="{{increment @key}}">{{this}}</th>
+      {{/each}}
+    </tr>
+    </thead>
+    <tbody>
+    {{#each ingredientTranslations as | ingredientTranslation |}}
+      <tr data-translation-key="{{ @key }}">
+        <td>{{@key}}</td>
+        {{#each ../languages as | language |}}
+          <td data-language="{{language}}">{{# if (lookup ingredientTranslation language)}}✅{{else}}❌{{/if}}</td>
+        {{/each}}
+      </tr>
+    {{/each }}
+    </tbody>
+  </table>
+</div>
+<script>
+  const search = document.querySelector("input[type=search]");
+  search.addEventListener("change", e => {
+    let searchText = e.target.value;
+    const rows = document.querySelectorAll(".translations-table>tbody>tr");
+    rows.forEach(row => {
+      if (row.dataset.translationKey.includes(searchText)) {
+        row.classList.remove("hidden");
+      } else {
+        row.classList.add("hidden");
+      }
+    })
+  });
+</script>
+</body>
+</html>
