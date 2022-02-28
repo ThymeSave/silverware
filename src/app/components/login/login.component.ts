@@ -7,12 +7,7 @@ import { AuthService } from "@auth0/auth0-angular";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-
+export class LoginComponent {
   constructor(public authService: AuthService) {
   }
-
-  ngOnInit(): void {
-  }
-
 }
