@@ -1,0 +1,28 @@
+#!/bin/bash
+TSC_VERSION="2.0.4"
+set -e
+
+root="${PWD}"
+
+echo "Build generate-translations architect ..."
+cd projects/thymesave/translations/generate-translations-report
+npx tsc@"${TSC_VERSION}"
+
+echo "Build generate-ingredient architect ..."
+cd "${root}"
+cd projects/thymesave/ingredients/generate-ingredient-report
+npx tsc@"${TSC_VERSION}"
+
+echo "Compile report script ..."
+cd "${root}"
+npx tsc@"${TSC_VERSION}"
+
+echo "Generating json reports ..."
+cd "${root}"
+npx ng run @thymesave/translations:generate-report
+npx ng run @thymesave/ingredients:generate-report
+
+echo "Run report generation ..."
+cd "$(dirname "${BASH_SOURCE[0]}")"
+npx tsc@"${TSC_VERSION}"
+node index.js
