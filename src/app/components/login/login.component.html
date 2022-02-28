@@ -1,0 +1,8 @@
+<ng-container *ngIf="(authService.isAuthenticated$ | async); else loggedIn">
+  <pre>{{(authService.idTokenClaims$ | async) | json  }}</pre>
+  <button (click)="authService.logout({ returnTo: 'http://localhost:4200/' })">Log out</button>
+</ng-container>
+
+<ng-template #loggedIn>
+  <button (click)="authService.loginWithRedirect()">Log in</button>
+</ng-template>

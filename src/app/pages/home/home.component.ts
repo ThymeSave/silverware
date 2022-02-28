@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 
+import { AuthService } from '@auth0/auth0-angular';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +9,7 @@ import { Component} from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor() {
+  constructor(public authService : AuthService) {
   }
 
 }
