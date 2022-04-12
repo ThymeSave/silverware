@@ -8,21 +8,31 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { LoginComponent } from './components/login/login.component';
 import { FunnelConfig } from "../helper/loadFunnelConfig";
+import { ShellComponent } from './pages/shell/shell.component';
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    LoginComponent,
+    ShellComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule.forRoot(),
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    FlexLayoutModule,
+    MatMenuModule,
   ],
   providers: [
     {
