@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from "@auth0/auth0-angular";
 
 @Component({
@@ -6,12 +6,9 @@ import { AuthService } from "@auth0/auth0-angular";
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
 })
-export class ShellComponent implements OnInit {
+export class ShellComponent {
 
-  constructor(public authService : AuthService) {
-  }
-
-  ngOnInit(): void {
+  constructor(public authService: AuthService) {
   }
 
 }
