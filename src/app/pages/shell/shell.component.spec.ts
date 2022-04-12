@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShellComponent } from './shell.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 describe('ShellComponent', () => {
   let component: ShellComponent;
@@ -9,6 +10,12 @@ describe('ShellComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ShellComponent ],
+      imports: [
+        AuthModule.forRoot({
+          clientId:"foo",
+          domain:"bar",
+        }),
+      ],
     })
     .compileComponents();
   });
