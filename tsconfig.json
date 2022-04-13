@@ -2,6 +2,10 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": [
+      "jasmine",
+      "node"
+    ],
     "paths": {
       "@thymesave/core": [
         "dist/thymesave/core/thymesave-core",
@@ -33,6 +37,8 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",

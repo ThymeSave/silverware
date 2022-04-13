@@ -11,6 +11,18 @@ Mono repository for the entire frontend application
 
 # Development
 
+## Required tools
+
+- [Node.js 16+](https://nodejs.org)
+- [pre-commit](https://pre-commit.com/)
+
+## Setup
+
+To set up the project locally:
+
+1. Install dependencies: `npm i` (*NOTE: This also installs pre-commit hooks*)
+2. Run tests to verify your setup `npm run test`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change

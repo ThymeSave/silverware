@@ -12,6 +12,8 @@ We love your input! We want to make contributing to this project as easy and tra
 
 We use github to host code, to track issues and feature requests, as well as accept pull requests.
 
+For coding conventions please see [CODING_CONVENTIONS.md](./CODING_CONVENTIONS.md)
+
 ## We Use [CircleCI](https://circleci.com/product/), So All Code Changes Happen Through Pull Requests
 
 Pull requests are the best way to propose changes to the codebase (we use [CircleCI](https://circleci.com/product/)). We

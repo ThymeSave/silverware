@@ -1,0 +1,9 @@
+{
+  "name": "translation-report",
+  "description": "Generate translation reports",
+  "main": "index.js",
+  "types": "./index.d.ts",
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}

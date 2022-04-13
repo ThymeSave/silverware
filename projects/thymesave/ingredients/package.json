@@ -1,7 +1,11 @@
 {
   "name": "@thymesave/ingredients",
+  "description": "Ingredient parsing and information for ThymeSave",
   "version": "0.0.1",
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.26"
   }
 }
