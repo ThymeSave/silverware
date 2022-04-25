@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "dependencies": {
     "string-similarity": "^4.0.4",
-    "tslib": "^2.3.0"
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@types/string-similarity": "^4.0.0",
