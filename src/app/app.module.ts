@@ -2,7 +2,7 @@ import { Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AuthClientConfig, AuthModule } from '@auth0/auth0-angular';
+import { AuthClientConfig, AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatMenuModule } from "@angular/material/menu";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatMenuModule } from "@angular/material/menu";
     MatIconModule,
     FlexLayoutModule,
     MatMenuModule,
+    HttpClientModule,
   ],
   providers: [
     {

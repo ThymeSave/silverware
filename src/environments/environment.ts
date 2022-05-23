@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  funnelBaseUrl: 'https://funnel.thymesave.app',
 };
 
 /*
