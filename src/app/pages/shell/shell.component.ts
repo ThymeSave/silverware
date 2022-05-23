@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from "@auth0/auth0-angular";
 
+import { StorageService } from 'src/app/services/storage.service';
+
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html',
@@ -8,7 +10,9 @@ import { AuthService } from "@auth0/auth0-angular";
 })
 export class ShellComponent {
 
-  constructor(public authService: AuthService) {
-  }
+  constructor(
+    public authService: AuthService,
+    public storageService: StorageService,
+  ) { }
 
 }
