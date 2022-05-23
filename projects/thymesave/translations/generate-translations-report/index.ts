@@ -1,12 +1,15 @@
-import { BuilderOutput, createBuilder } from '@angular-devkit/architect';
-import { JsonObject } from '@angular-devkit/core';
-import * as Languages from "../src/lib/languages";
 import * as fs from "fs";
+import * as Languages from "../src/lib/languages";
+
+import { JsonObject } from '@angular-devkit/core';
+import { Builder } from '@angular-devkit/architect/src/internal';
+import { BuilderOutput, createBuilder } from '@angular-devkit/architect';
+
 interface Options extends JsonObject {
   target: string;
 }
 
-export default createBuilder<Options>((options, context) => {
+const builderFunction: Builder<Options & JsonObject> = createBuilder<Options>((options, context) => {
   return new Promise<BuilderOutput>((resolve, _) => {
     context.reportStatus(`Executing ...`);
     let translations = new Map<String, String[]>()
@@ -24,3 +27,5 @@ export default createBuilder<Options>((options, context) => {
     })
   });
 });
+
+export default builderFunction;
