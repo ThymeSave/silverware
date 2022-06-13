@@ -1,4 +1,4 @@
-import { RecipeIngredient } from "./model";
+import { ParsedRecipeIngredient } from "@thymesave/core";
 
 const REGEXP_AMOUNT_UNIT_WITHOUT_RANGE = /^(\d+|\w+\s)\s*(\w+)\s+(.+)$/
 const REGEXP_AMOUNT_UNIT_WITH_RANGE = /^(\w+)\s*-\s*(\w+)\s?(\w+)\s+(.+)$/
@@ -24,7 +24,7 @@ export class IngredientParseError extends Error {
  * This <b>does not include</b> translations parsing!
  * @param raw Raw text
  */
-export const parseIngredientInformation = (raw: string): RecipeIngredient => {
+export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient => {
   raw = raw.trim();
 
   let matches = raw.match(REGEXP_AMOUNT_WITHOUT_UNIT);
