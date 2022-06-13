@@ -99,20 +99,20 @@ jobs:
           root: .
 
 workflows:
-  continious:
+  continuous:
     jobs:
       - generate-translation-report:
           requires:
             - test
       - test:
+          requires:
+            - build
           filters:
             branches:
               only: /.*/
             tags:
               only: /.*/
       - build:
-          requires:
-            - test
           filters:
             branches:
               only: /.*/
