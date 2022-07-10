@@ -10,6 +10,10 @@ executors:
       - image: cimg/node:16.13.0-browsers
 
 commands:
+  attach_artifacts:
+    steps:
+      - attach_workspace:
+          at: .
   remove_node_orb_lock:
     steps:
       - run:
@@ -44,8 +48,7 @@ jobs:
       - checkout
       - install_dependencies
       - browser-tools/install-chrome
-      - attach_workspace:
-          at: .
+      - attach_artifacts
       - run:
           name: Run ng lint
           command: npm run lint
@@ -67,6 +70,7 @@ jobs:
     steps:
       - checkout
       - install_dependencies
+      - attach_artifacts
       - run:
           name: Run translation report script
           command: |
