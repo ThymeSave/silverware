@@ -256,6 +256,6 @@
   },
   "defaultProject": "silverware",
   "cli": {
-    "analytics": false
+    "analytics": "a52b11b2-964d-41c8-a53e-551267ea5617"
   }
 }
