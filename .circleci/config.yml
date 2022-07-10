@@ -44,6 +44,8 @@ jobs:
       - checkout
       - install_dependencies
       - browser-tools/install-chrome
+      - attach_workspace:
+          at: .
       - run:
           name: Run ng lint
           command: npm run lint
