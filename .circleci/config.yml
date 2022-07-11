@@ -86,14 +86,8 @@ jobs:
       - install_dependencies
       - run:
           name: Build
-          environment:
-            NPM_ARGS: ''
           command: |
-            npm run build @thymesave/core ${NPM_ARGS}
-            npm run build @thymesave/translations ${NPM_ARGS}
-            npm run build @thymesave/ingredients ${NPM_ARGS}
-            npm run build @thymesave/plugin ${NPM_ARGS}
-            npm run build ${NPM_ARGS}
+            npm run build
       - store_artifacts:
           path: ./dist
           destination: dist
