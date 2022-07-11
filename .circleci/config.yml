@@ -46,7 +46,6 @@ jobs:
     executor: node
     steps:
       - checkout
-      - install_dependencies
       - browser-tools/install-chrome
       - attach_artifacts
       - run:
@@ -69,7 +68,6 @@ jobs:
     executor: node
     steps:
       - checkout
-      - install_dependencies
       - attach_artifacts
       - run:
           name: Run translation report script
@@ -102,6 +100,8 @@ jobs:
       - persist_to_workspace:
           paths:
             - ./dist
+            - ./projects/thymesave/*/node_modules
+            - ./node_modules
           root: .
 
 workflows:
@@ -109,7 +109,7 @@ workflows:
     jobs:
       - generate-translation-report:
           requires:
-            - test
+            - build
       - test:
           requires:
             - build
