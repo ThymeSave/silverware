@@ -2,6 +2,7 @@ import { Observable } from "rxjs";
 import { Recipe } from "../models/recipe";
 import { FunnelCORSProxyErrorResponse, FunnelCORSProxySuccessResponse } from "../models/funnel";
 import { SERVICE_NAME_FUNNEL_CORS_PROXY, FunnelCorsService, Service } from "./services";
+import { ComponentContext } from "./context";
 
 export enum ImporterType {
   /**
@@ -14,12 +15,8 @@ export enum ImporterType {
   MANUAL
 }
 
-export interface ImporterContext {
-  getService<T extends Service>(name : string) : T
-}
-
 export abstract class Importer<T> {
-  constructor(protected readonly context : ImporterContext) {
+  constructor(protected readonly context : ComponentContext) {
   }
 
   /**
