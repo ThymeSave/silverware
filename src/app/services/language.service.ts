@@ -7,7 +7,6 @@ import { Languages } from "@thymesave/translations";
 export class LanguageService {
 
   constructor() {
-
   }
 
   get userLanguage() {
