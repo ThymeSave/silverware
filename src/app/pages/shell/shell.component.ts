@@ -9,6 +9,18 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./shell.component.scss'],
 })
 export class ShellComponent {
+  readonly menuItems = [
+    {
+      icon: "restaurant_menu",
+      title: "recipes",
+      link: "/recipes",
+    },
+    {
+      icon: "settings",
+      title: 'settings',
+      link: '/settings',
+    },
+  ];
 
   constructor(
     public authService: AuthService,

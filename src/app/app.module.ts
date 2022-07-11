@@ -16,6 +16,9 @@ import { MatIconModule } from "@angular/material/icon";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatMenuModule } from "@angular/material/menu";
 import { HttpClientModule } from '@angular/common/http';
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { I18nPipe } from './core/i18n.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NotFoundComponent,
     ShellComponent,
+    I18nPipe,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule,
     MatMenuModule,
     HttpClientModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [
     {
