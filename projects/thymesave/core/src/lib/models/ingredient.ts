@@ -13,11 +13,19 @@ export interface Ingredient {
 }
 
 /**
- * Low level representation of an parsed ingredient.
- *
- * It does <b>not</b> include translated texts
+ * Ingredient component for a recipe
  */
-export interface RecipeIngredient {
+export interface RecipeIngredient extends Ingredient, BaseRecipeIngredient {
+  /**
+   * Key to localize the ingredient text
+   */
+  translationKey : string
+}
+
+/**
+ * Base ingredient
+ */
+interface BaseRecipeIngredient {
   /**
    * Parsed unit, can be null if the ingredient has no unit specified
    */
@@ -38,6 +46,14 @@ export interface RecipeIngredient {
    * Specifies if the recipe ingredient is used as a range
    */
   isRange: boolean
+}
+
+/**
+ * Low level representation of an parsed ingredient.
+ *
+ * It does <b>not</b> include translated texts
+ */
+export interface ParsedRecipeIngredient extends BaseRecipeIngredient {
   /**
    * Parsed ingredient text representation
    */

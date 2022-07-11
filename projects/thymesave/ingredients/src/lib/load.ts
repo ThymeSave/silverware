@@ -1,5 +1,5 @@
 import ingredients from "./ingredients";
-import { Ingredient } from "./model";
+import { Ingredient } from "@thymesave/core";
 
 export class IngredientNotFoundError extends Error {
   public readonly key : string;

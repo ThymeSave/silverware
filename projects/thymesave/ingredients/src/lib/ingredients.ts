@@ -1,4 +1,4 @@
-import { Ingredient } from "./model";
+import { Ingredient } from "@thymesave/core";
 
 enum VegetableCategory {
   Vegetable = "vegetable",

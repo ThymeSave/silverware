@@ -7,9 +7,13 @@ orbs:
 executors:
   node:
     docker:
-      - image: cimg/node:16.13.0-browsers
+      - image: cimg/node:18.4.0-browsers
 
 commands:
+  attach_artifacts:
+    steps:
+      - attach_workspace:
+          at: .
   remove_node_orb_lock:
     steps:
       - run:
@@ -42,8 +46,8 @@ jobs:
     executor: node
     steps:
       - checkout
-      - install_dependencies
       - browser-tools/install-chrome
+      - attach_artifacts
       - run:
           name: Run ng lint
           command: npm run lint
@@ -64,7 +68,7 @@ jobs:
     executor: node
     steps:
       - checkout
-      - install_dependencies
+      - attach_artifacts
       - run:
           name: Run translation report script
           command: |
@@ -96,23 +100,25 @@ jobs:
       - persist_to_workspace:
           paths:
             - ./dist
+            - ./projects/thymesave/*/node_modules
+            - ./node_modules
           root: .
 
 workflows:
-  continious:
+  continuous:
     jobs:
       - generate-translation-report:
           requires:
-            - test
+            - build
       - test:
+          requires:
+            - build
           filters:
             branches:
               only: /.*/
             tags:
               only: /.*/
       - build:
-          requires:
-            - test
           filters:
             branches:
               only: /.*/

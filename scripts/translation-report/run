@@ -6,11 +6,14 @@ root="${PWD}"
 
 echo "[BUILD] Build generate-translations architect ..."
 cd projects/thymesave/translations/generate-translations-report
+npm link ../../../../dist/thymesave/core
 npx tsc@"${TSC_VERSION}"
 
 echo "[BUILD] Build generate-ingredient architect ..."
-cd "${root}"
-cd projects/thymesave/ingredients/generate-ingredient-report
+cd "${root}/projects/thymesave/ingredients/"
+npm link ../../../dist/thymesave/core
+cd generate-ingredient-report
+npm link ../../../../dist/thymesave/core
 npx tsc@"${TSC_VERSION}"
 
 echo "[BUILD] Compile report script ..."
@@ -24,5 +27,6 @@ npx ng run @thymesave/ingredients:generate-report
 
 echo "[RUN  ] Run report generation ..."
 cd "$(dirname "${BASH_SOURCE[0]}")"
+npm i
 npx tsc@"${TSC_VERSION}"
 node index.js

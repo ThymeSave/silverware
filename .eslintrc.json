@@ -1,7 +1,5 @@
 {
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": [],
   "overrides": [
     {
       "extends": [
