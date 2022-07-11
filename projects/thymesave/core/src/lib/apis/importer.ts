@@ -47,7 +47,7 @@ export abstract class URLImporter<T> extends Importer<T> {
    * @private
    */
   private fetchContent(url : URL) : Observable<FunnelCORSProxyErrorResponse | FunnelCORSProxySuccessResponse> {
-    return this.context.getService<FunnelCorsService>(SERVICE_NAME_FUNNEL_CORS_PROXY).fetch(url)
+    return this.context.getService<FunnelCorsService>(SERVICE_NAME_FUNNEL_CORS_PROXY).fetch(url);
   }
 }
 

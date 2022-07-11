@@ -1,4 +1,5 @@
 import { Importer, Service } from "@thymesave/core"
+import { PluginRegistry } from "./registry";
 
 export type Version = "builtin" | `${number}.${number}.${number}`
 
@@ -20,6 +21,11 @@ export interface PluginDescriptorInformation {
    * Version of the plugin
    */
   version: Version
+
+  /**
+   * Register automatically, set to false to disable automatic registration
+   */
+  autoRegister ?: boolean
 }
 
 /**
@@ -31,8 +37,15 @@ export function PluginDescriptor(descriptor: PluginDescriptorInformation) {
   return function <T extends { new(...args: any[]): {} }>(constructor: T) {
     return class extends constructor implements PluginDescriptorInformation {
       name = descriptor.name;
-      description = descriptor.description
-      version = descriptor.version
+      description = descriptor.description;
+      version = descriptor.version;
+
+      constructor(..._: any[]) {
+        super();
+        if(descriptor.autoRegister ?? true) {
+          PluginRegistry.register(this as any);
+        }
+      }
     }
   }
 }
@@ -60,13 +73,13 @@ export abstract class Plugin implements PluginDescriptorInformation {
    * List with importers provided
    */
   get importer(): Array<Importer<any>> {
-    return []
+    return [];
   }
 
   /**
    * List with services provided
    */
   get services(): Array<Service> {
-    return []
+    return [];
   }
 }

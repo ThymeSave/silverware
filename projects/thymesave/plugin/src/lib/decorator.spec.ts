@@ -1,6 +1,11 @@
 import { Plugin, PluginDescriptor } from "./decorator";
+import { PluginRegistry } from "./registry";
 
 describe("Plugin decorator", () => {
+  beforeEach(() => {
+    PluginRegistry['plugins'] = [];
+  });
+
   it("should allow new object creation", () => {
     @PluginDescriptor({
       name: "test",
@@ -11,8 +16,8 @@ describe("Plugin decorator", () => {
 
     }
 
-    expect(new SamplePlugin()).toBeDefined()
-  })
+    expect(new SamplePlugin()).toBeDefined();
+  });
 
   it("should propagate the descriptor properties", () => {
     @PluginDescriptor({
@@ -24,9 +29,9 @@ describe("Plugin decorator", () => {
 
     }
     const instance = new SamplePlugin();
-    expect(instance.name).toBe("test")
-    expect(instance.description).toBe("Plugin to test functionality")
-  })
+    expect(instance.name).toBe("test");
+    expect(instance.description).toBe("Plugin to test functionality");
+  });
 
   it("should allow versions", () => {
     @PluginDescriptor({
@@ -56,6 +61,6 @@ describe("Plugin decorator", () => {
 
     }
 
-    expect(true).toBeTrue()
-  })
+    expect(true).toBeTrue();
+  });
 })
