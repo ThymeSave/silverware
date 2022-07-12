@@ -235,7 +235,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "proj ects/thymesave/plugin/ng-package.json"
+            "project": "projects/thymesave/plugin/ng-package.json"
           },
           "configurations": {
             "production": {
