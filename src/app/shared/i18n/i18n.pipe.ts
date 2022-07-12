@@ -10,7 +10,6 @@ import { map, switchMap } from "rxjs";
 export class I18nPipe implements PipeTransform {
   constructor(private languageService: LanguageService,
               private injector: Injector) {
-    this.asyncPipe = new AsyncPipe(injector.get(ChangeDetectorRef));
   }
 
   transform(value: string): string  {
