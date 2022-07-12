@@ -1,0 +1,19 @@
+<div>
+  <form [formGroup]="settingsForm" fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "language" | i18n }}</mat-label>
+      <mat-select formControlName="language">
+        <mat-option *ngFor="let lang of availableLanguages"
+                    [value]="lang">
+          {{ languageIcons[lang] }} {{ ("language." + lang) | i18n }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="save()"
+            color="success"
+            mat-raised-button>
+      <mat-icon>save</mat-icon>
+      {{ 'save' | i18n }}
+    </button>
+  </form>
+</div>

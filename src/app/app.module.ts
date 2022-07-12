@@ -1,15 +1,6 @@
 import { Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AuthClientConfig, AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { FunnelConfig } from "../helper/loadFunnelConfig";
-import { ShellComponent } from './pages/shell/shell.component';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -18,7 +9,22 @@ import { MatMenuModule } from "@angular/material/menu";
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
-import { I18nPipe } from './core/i18n.pipe';
+
+import { AuthClientConfig, AuthModule } from '@auth0/auth0-angular';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { FunnelConfig } from "../helper/loadFunnelConfig";
+import { ShellComponent } from './pages/shell/shell.component';
+import { SharedModule } from "./shared/shared.module";
+import { SettingsComponent } from './pages/settings/settings.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -26,7 +32,7 @@ import { I18nPipe } from './core/i18n.pipe';
     HomeComponent,
     NotFoundComponent,
     ShellComponent,
-    I18nPipe,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +47,16 @@ import { I18nPipe } from './core/i18n.pipe';
     HttpClientModule,
     MatSidenavModule,
     MatListModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    MatSelectModule,
   ],
   providers: [
     {

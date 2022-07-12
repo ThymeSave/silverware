@@ -1,14 +1,25 @@
 import PouchDB from 'pouchdb';
 import plugin from 'pouchdb-upsert'
 
-import { BehaviorSubject, from, map, Observable, of, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  filter,
+  firstValueFrom,
+  from,
+  lastValueFrom,
+  map,
+  Observable,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
-import { BaseDocument } from '../models/BaseDocument';
+import { BaseDocument } from '../../models/BaseDocument';
 
 interface DbInitializeResponse {
   dbName: string;
@@ -23,7 +34,7 @@ export class StorageService {
   private pouchLocal: PouchDB.Database | null = null;
 
   private dbSubject = new BehaviorSubject<PouchDB.Database | null>(null);
-  db$ = this.dbSubject.asObservable();
+  db$ = this.dbSubject.asObservable().pipe(filter(db => !!db));
 
   constructor(
     private http: HttpClient,
@@ -51,6 +62,7 @@ export class StorageService {
    * @returns
    */
   upsert(entityType: string, id: string, diffFunc: PouchDB.UpsertDiffCallback<BaseDocument>): Observable<PouchDB.UpsertResponse> {
+    console.debug("Upsert doc of entity type",entityType, "with id", id)
     return this.db$.pipe(switchMap(db =>
       from(db!.upsert<BaseDocument>(`${entityType}:${id}`, doc => {
         const diffFuncResult = diffFunc(doc);
@@ -66,6 +78,12 @@ export class StorageService {
         }
       })),
     ));
+  }
+
+  getLatest<T extends BaseDocument>(entityType: string, id: string) : Observable<T> {
+    // @ts-ignore
+    return this.db$
+      .pipe(switchMap(db => from(db!.get(`${entityType}:${id}`, {latest: true}))))
   }
 
   private init(token: string): Observable<DbInitializeResponse> {
