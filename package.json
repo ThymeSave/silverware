@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build:libs": "ng build @thymesave/core && ng build @thymesave/translations && ng build @thymesave/ingredients && ng build @thymesave/plugin",
-    "build:app": "ng build --prod",
+    "build:app": "ng build",
     "build": "npm run build:libs && npm run build:app",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
