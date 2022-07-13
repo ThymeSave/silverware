@@ -1,8 +1,8 @@
 import { Observable } from "rxjs";
-import { Recipe } from "../models/recipe";
 import { FunnelCORSProxyErrorResponse, FunnelCORSProxySuccessResponse } from "../models/funnel";
-import { SERVICE_NAME_FUNNEL_CORS_PROXY, FunnelCorsService, Service } from "./services";
+import { Recipe } from "../models/recipe";
 import { ComponentContext } from "./context";
+import { SERVICE_NAME_FUNNEL_CORS_PROXY, FunnelCorsService} from "./services";
 
 export enum ImporterType {
   /**

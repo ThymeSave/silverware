@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "./pages/home/home.component";
-import { NotFoundComponent } from "./pages/not-found/not-found.component";
-import { ShellComponent } from "./pages/shell/shell.component";
-import { SettingsComponent } from "./pages/settings/settings.component";
+
+import { HomeComponent } from "@/pages/home/home.component";
+import { NotFoundComponent } from "@/pages/not-found/not-found.component";
+import { SettingsComponent } from "@/pages/settings/settings.component";
+import { ShellComponent } from "@/pages/shell/shell.component";
 
 const routes: Routes = [
   {

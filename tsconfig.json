@@ -7,6 +7,12 @@
       "node"
     ],
     "paths": {
+      "@/*": [
+        "src/app/*"
+      ],
+      "@helper/*": [
+        "src/helper/*"
+      ],
       "@thymesave/core": [
         "dist/thymesave/core/thymesave-core",
         "dist/thymesave/core"

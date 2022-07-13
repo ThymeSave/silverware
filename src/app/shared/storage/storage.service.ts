@@ -1,25 +1,25 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import PouchDB from 'pouchdb';
-import plugin from 'pouchdb-upsert'
-
+import plugin from 'pouchdb-upsert';
 import {
   BehaviorSubject,
-  filter,
-  firstValueFrom,
-  from,
-  lastValueFrom,
-  map,
   Observable,
+  catchError,
+  filter,
+  from,
+  map,
   of,
   switchMap,
   tap,
+  throwError,
 } from 'rxjs';
-import { AuthService } from '@auth0/auth0-angular';
 
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { saveValue } from "@/helper/simpleStorage";
+import { BaseDocument } from '@/models/BaseDocument';
 
-import { environment } from 'src/environments/environment';
-import { BaseDocument } from '../../models/BaseDocument';
+import { environment } from '../../../environments/environment';
 
 interface DbInitializeResponse {
   dbName: string;
@@ -53,6 +53,10 @@ export class StorageService {
     ).subscribe();
   }
 
+  public build_id(entityType: string, id: string): string {
+    return `${entityType}:${id}`;
+  }
+
   /**
    * Upserts a base document entity and corrects the entitys entitiyType based on the provided functions parameter.
    *
@@ -61,11 +65,11 @@ export class StorageService {
    * @param {PouchDB.UpsertDiffCallback<BaseDocument>} diffFunc Used to evaluate if a update needs to happen
    * @returns
    */
-  upsert(entityType: string, id: string, diffFunc: PouchDB.UpsertDiffCallback<BaseDocument>): Observable<PouchDB.UpsertResponse> {
-    console.debug("Upsert doc of entity type",entityType, "with id", id)
+  public upsert<T extends BaseDocument>(entityType: string, id: string, diffFunc: (doc: T) => Partial<T> | boolean): Observable<PouchDB.UpsertResponse | T> {
+    console.debug("Upsert doc of entity type", entityType, "with id", id);
     return this.db$.pipe(switchMap(db =>
-      from(db!.upsert<BaseDocument>(`${entityType}:${id}`, doc => {
-        const diffFuncResult = diffFunc(doc);
+      from(db!.upsert<BaseDocument>(this.build_id(entityType, id), doc => {
+        const diffFuncResult = diffFunc(doc as T);
         if (!!diffFuncResult) {
           doc.$entityType = entityType;
           return doc;
@@ -80,30 +84,49 @@ export class StorageService {
     ));
   }
 
-  getLatest<T extends BaseDocument>(entityType: string, id: string) : Observable<T> {
-    // @ts-ignore
+  /**
+   * Get latest version of a document by id
+   * @param entityType Entity type to query
+   * @param id Id of the document
+   */
+  public getLatest<T extends BaseDocument>(entityType: string, id: string): Observable<T> {
     return this.db$
-      .pipe(switchMap(db => from(db!.get(`${entityType}:${id}`, {latest: true}))))
+      .pipe(switchMap(db => from(db!.get(this.build_id(entityType, id), {latest: true})))) as Observable<T>;
   }
 
-  private init(token: string): Observable<DbInitializeResponse> {
+  private fetchDBName(token: string): Observable<string> {
     return this.http.put<DbInitializeResponse>(`${environment.funnelBaseUrl}/self-service/db`, {}, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }).pipe(tap((dbResponse) => {
-      this.pouchRemote = new PouchDB(`${environment.funnelBaseUrl}/service/couchdb/${dbResponse.dbName}`, {
-        fetch(url, options) {
-          options!.credentials = 'omit';
-          (options?.headers! as any).set('Authorization', `Bearer ${token}`);
-          return PouchDB.fetch(url, options);
-        },
-      });
-      this.pouchLocal = new PouchDB('ThymeSave');
-      this.pouchLocal.sync(this.pouchRemote, {
-        live: true,
-        retry: true,
-      }).on('error', console.warn);
-    }));
+    }).pipe(
+      map(response => response.dbName),
+      tap(dbName => saveValue("funnelDBName", dbName)),
+      catchError(_ => {
+        const fallbackDbName = localStorage.getItem("funnelDBName");
+        if (!fallbackDbName) {
+          return throwError(() => new Error("No fallback database found"));
+        }
+        return of(fallbackDbName as string);
+      }),
+    );
+  }
+
+  private init(token: string): Observable<string> {
+    return this.fetchDBName(token)
+      .pipe(tap(dbName => {
+        this.pouchRemote = new PouchDB(`${environment.funnelBaseUrl}/service/couchdb/${dbName}`, {
+          fetch(url, options) {
+            options!.credentials = 'omit';
+            (options?.headers! as any).set('Authorization', `Bearer ${token}`);
+            return PouchDB.fetch(url, options);
+          },
+        });
+        this.pouchLocal = new PouchDB('ThymeSave');
+        this.pouchLocal.sync(this.pouchRemote, {
+          live: true,
+          retry: true,
+        }).on('error', console.warn);
+      }));
   }
 }

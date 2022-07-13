@@ -1,30 +1,30 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Inject, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from "@angular/material/toolbar";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { MatMenuModule } from "@angular/material/menu";
-import { HttpClientModule } from '@angular/common/http';
-import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
-
+import { MatMenuModule } from "@angular/material/menu";
+import { MatSelectModule } from "@angular/material/select";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { AuthClientConfig, AuthModule } from '@auth0/auth0-angular';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { FunnelConfig } from "../helper/loadFunnelConfig";
-import { ShellComponent } from './pages/shell/shell.component';
-import { SharedModule } from "./shared/shared.module";
-import { SettingsComponent } from './pages/settings/settings.component';
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatInputModule } from "@angular/material/input";
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { AppRoutingModule } from '@/app-routing.module';
+import { AppComponent } from '@/app.component';
+import { FunnelConfig } from "@/helper/loadFunnelConfig";
+import { HomeComponent } from '@/pages/home/home.component';
+import { NotFoundComponent } from '@/pages/not-found/not-found.component';
+import { SettingsComponent } from '@/pages/settings/settings.component';
+import { ShellComponent } from '@/pages/shell/shell.component';
+import { SharedModule } from "@/shared/shared.module";
+
 import { environment } from '../environments/environment';
-import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [

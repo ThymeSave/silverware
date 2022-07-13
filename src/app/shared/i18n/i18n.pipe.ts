@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Injector, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { loadUITextByKey } from "@thymesave/translations"
+import { loadUITextByKey } from "@thymesave/translations";
+
 import { LanguageService } from "./language.service";
-import { map, switchMap } from "rxjs";
 
 @Pipe({
   name: 'i18n',
@@ -13,6 +13,6 @@ export class I18nPipe implements PipeTransform {
   }
 
   transform(value: string): string  {
-    return loadUITextByKey(this.languageService.currentLanguage, value)
+    return loadUITextByKey(this.languageService.currentLanguage, value);
   }
 }

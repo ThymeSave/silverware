@@ -31,9 +31,9 @@
     "pouchdb": "^7.3.0",
     "pouchdb-upsert": "^2.2.0",
     "rxjs": "~7.5.5",
+    "string-similarity": "^4.0.4",
     "tslib": "^2.4.0",
-    "zone.js": "~0.11.6",
-    "string-similarity": "^4.0.4"
+    "zone.js": "~0.11.6"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.1400.5",
@@ -53,6 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.29.0",
     "eslint": "^8.18.0",
+    "eslint-plugin-import": "^2.26.0",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.1",

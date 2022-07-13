@@ -8,6 +8,7 @@
        fxLayoutAlign="start center"
        fxLayoutGap=".25em">
     <img class="app-logo"
+         alt="ThymeSave"
          src="assets/img/logo.svg"
          aria-label="ThymeSave Logo">
     <span>ThymeSave</span>
@@ -15,8 +16,9 @@
   <button mat-icon-button
           *ngIf="(authService.user$ | async) as user; else logIn"
           [matMenuTriggerFor]="menu">
-    <img [alt]="user?.preferred_username"
+    <img [alt]="user?.preferred_username ?? 'profile'"
          class="user-picture"
+         width="64"
          [src]="user?.picture">
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="authService.logout({  })">

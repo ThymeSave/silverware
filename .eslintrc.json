@@ -4,7 +4,8 @@
     {
       "extends": [
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:import/errors"
       ],
       "files": [
         "*.ts"
@@ -35,6 +36,70 @@
         "comma-dangle": [
           "error",
           "always-multiline"
+        ],
+        "import/newline-after-import": [
+          "error",
+          {
+            "count": 1
+          }
+        ],
+        "import/no-unresolved": "off",
+        "import/order": [
+          "error",
+          {
+            "alphabetize": {
+              "caseInsensitive": true,
+              "order": "asc"
+            },
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index",
+              "object",
+              "type"
+            ],
+            "newlines-between": "always",
+            "pathGroups": [
+              {
+                "group": "external",
+                "pattern": "@thymesave/**",
+                "position": "after"
+              },
+              {
+                "group": "internal",
+                "pattern": "@models/**"
+              },
+              {
+                "group": "internal",
+                "pattern": "./**"
+              },
+              {
+                "group": "internal",
+                "pattern": "../*"
+              },
+              {
+                "group": "internal",
+                "pattern": "@/**"
+              },
+              {
+                "group": "external",
+                "pattern": "rxjs"
+              }
+            ]
+          }
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1
+          }
+        ],
+        "semi": [
+          "error",
+          "always"
         ]
       }
     },

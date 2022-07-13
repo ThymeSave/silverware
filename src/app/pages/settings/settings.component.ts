@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { LanguageService } from "../../shared/i18n/language.service";
-import { SettingsService } from "../../settings/settings.service";
+import { FormControl, FormGroup } from '@angular/forms';
+
+import { SettingsService } from "@/settings/settings.service";
+import { LanguageService } from "@/shared/i18n/language.service";
 
 @Component({
   selector: 'app-settings',
@@ -11,7 +12,7 @@ import { SettingsService } from "../../settings/settings.service";
 export class SettingsComponent implements OnInit {
   settingsForm = new FormGroup({
     language: new FormControl(""),
-  })
+  });
 
   constructor(private languageService: LanguageService,
               public settingsService: SettingsService) {
@@ -29,8 +30,8 @@ export class SettingsComponent implements OnInit {
     this.settingsService.settings$?.subscribe(settings => {
       this.settingsForm.patchValue({
         language: settings!!.language,
-      })
-    })
+      });
+    });
   }
 
   getDirtyValues() {
@@ -42,11 +43,12 @@ export class SettingsComponent implements OnInit {
         let currentControl = form.controls[key];
 
         if (currentControl.dirty) {
-          if (currentControl.controls)
+          if (currentControl.controls) {
             // @ts-ignore
             dirtyValues[key] = this.getDirtyValues(currentControl);
-          else
+          } else {
             dirtyValues[key] = currentControl.value;
+          }
         }
       });
 
@@ -54,11 +56,11 @@ export class SettingsComponent implements OnInit {
   }
 
   save() {
-    const dirty = this.getDirtyValues()
+    const dirty = this.getDirtyValues();
 
     if (dirty.language) {
       this.settingsService.setLanguage(this.settingsForm.getRawValue().language!!)
-      location.reload()
+        .subscribe((_ => location.reload()));
     }
   }
 }
