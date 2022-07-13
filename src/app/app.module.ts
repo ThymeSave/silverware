@@ -25,6 +25,7 @@ import { ShellComponent } from '@/pages/shell/shell.component';
 import { SharedModule } from "@/shared/shared.module";
 
 import { environment } from '../environments/environment';
+import { PwaModule } from "@/pwa/pwa.module";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { environment } from '../environments/environment';
       registrationStrategy: 'registerWhenStable:20000',
     }),
     MatSelectModule,
+    PwaModule,
   ],
   providers: [
     {

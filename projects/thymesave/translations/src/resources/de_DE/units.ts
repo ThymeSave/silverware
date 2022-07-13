@@ -4,60 +4,60 @@ const units: UnitTranslation = {
   "cup": {
     "long": [
       "Tasse",
-      "Tassen"
+      "Tassen",
     ],
-    "short": "Ta"
+    "short": "Ta",
   },
   "deciliter": {
     "long": [
-      "Deziliter"
+      "Deziliter",
     ],
-    "short": "dl"
+    "short": "dl",
   },
   "gram": {
     "long": [
-      "Gramm"
+      "Gramm",
     ],
-    "short": "g"
+    "short": "g",
   },
   "kilogram": {
     "long": [
-      "Kilogramm"
+      "Kilogramm",
     ],
-    "short": "kg"
+    "short": "kg",
   },
   "liter": {
     "long": [
-      "Liter"
+      "Liter",
     ],
-    "short": "l"
+    "short": "l",
   },
   "milligram": {
     "long": [
-      "Milligramm"
+      "Milligramm",
     ],
-    "short": "mg"
+    "short": "mg",
   },
   "milliliter": {
     "long": [
-      "Milliliter"
+      "Milliliter",
     ],
-    "short": "ml"
+    "short": "ml",
   },
   "pack": {
     "long": [
       "Päckchen",
-      "Packungen"
+      "Packungen",
     ],
-    "short": "Pck"
+    "short": "Pck",
   },
   "pound": {
     "long": [
       "Pfund",
-      "Pfunde"
+      "Pfunde",
     ],
-    "short": "Pfund"
-  }
-}
+    "short": "Pfund",
+  },
+};
 
 export default units;

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from "@auth0/auth0-angular";
 
+import { AppUpdateService } from "@/pwa/app-update.service";
 import { StorageService } from '@/shared/storage/storage.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class ShellComponent {
   constructor(
     public authService: AuthService,
     public storageService: StorageService,
+    public appUpdateService : AppUpdateService,
   ) {
   }
 }

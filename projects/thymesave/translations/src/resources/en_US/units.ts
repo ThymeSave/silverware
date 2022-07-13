@@ -4,59 +4,59 @@ const units: UnitTranslation = {
   "cup": {
     "long": [
       "cup",
-      "cups"
+      "cups",
     ],
-    "short": "c"
+    "short": "c",
   },
   "deciliter": {
     "long": [
-      "deciliter"
+      "deciliter",
     ],
-    "short": "dl"
+    "short": "dl",
   },
   "gram": {
     "long": [
-      "gram"
+      "gram",
     ],
-    "short": "g"
+    "short": "g",
   },
   "kilogram": {
     "long": [
-      "kilogram"
+      "kilogram",
     ],
-    "short": "kg"
+    "short": "kg",
   },
   "liter": {
     "long": [
-      "liter"
+      "liter",
     ],
-    "short": "l"
+    "short": "l",
   },
   "milligram": {
     "long": [
-      "milligram"
+      "milligram",
     ],
-    "short": "mg"
+    "short": "mg",
   },
   "milliliter": {
     "long": [
-      "milliliter"
+      "milliliter",
     ],
-    "short": "ml"
+    "short": "ml",
   },
   "pack": {
     "long": [
       "pack",
-      "packs"
+      "packs",
     ],
-    "short": "pck"
+    "short": "pck",
   },
   "pound": {
     "long": [
-      "pound"
+      "pound",
     ],
-    "short": "lb"
+    "short": "lb",
   },
-}
+};
 
 export default units;
