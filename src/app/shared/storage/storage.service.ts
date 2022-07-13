@@ -45,7 +45,7 @@ export class StorageService {
     // Initialize pouch db instance
     this.authService.isAuthenticated$.pipe(
       switchMap(_ => this.authService.getIdTokenClaims()),
-      switchMap(claims => claims ? this.init(claims.__raw) : of(null)),
+      switchMap(claims => claims ? this.initPouchDB(claims.__raw) : of(null)),
       map(returnValue => {
         const dbValue = returnValue ? this.pouchLocal : null;
         this.dbSubject.next(dbValue);
@@ -53,13 +53,17 @@ export class StorageService {
     ).subscribe();
   }
 
+  /**
+   * Build document id by entity type and id
+   * @param entityType Entity type to use
+   * @param id Unique identifier for the document
+   */
   public build_id(entityType: string, id: string): string {
     return `${entityType}:${id}`;
   }
 
   /**
    * Upserts a base document entity and corrects the entitys entitiyType based on the provided functions parameter.
-   *
    * @param {string} entityType The base type for this entity
    * @param {string} id The unique identifier for this document
    * @param {PouchDB.UpsertDiffCallback<BaseDocument>} diffFunc Used to evaluate if a update needs to happen
@@ -112,7 +116,7 @@ export class StorageService {
     );
   }
 
-  private init(token: string): Observable<string> {
+  private initPouchDB(token: string): Observable<string> {
     return this.fetchDBName(token)
       .pipe(tap(dbName => {
         this.pouchRemote = new PouchDB(`${environment.funnelBaseUrl}/service/couchdb/${dbName}`, {

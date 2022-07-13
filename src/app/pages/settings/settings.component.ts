@@ -26,7 +26,7 @@ export class SettingsComponent implements OnInit {
     return this.languageService.languageIcons;
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.settingsService.settings$?.subscribe(settings => {
       this.settingsForm.patchValue({
         language: settings!!.language,
@@ -34,7 +34,7 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  getDirtyValues() {
+  private getDirtyValues() {
     const form: any = this.settingsForm;
     let dirtyValues: any = {};
 
@@ -55,7 +55,7 @@ export class SettingsComponent implements OnInit {
     return dirtyValues;
   }
 
-  save() {
+  public save() {
     const dirty = this.getDirtyValues();
 
     if (dirty.language) {
