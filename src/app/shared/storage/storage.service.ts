@@ -16,7 +16,7 @@ import {
   throwError,
 } from 'rxjs';
 
-import { saveValue } from "@/helper/simpleStorage";
+import { CACHE_DB_NAME, saveValue } from "@/helper/simpleStorage";
 import { BaseDocument } from '@/models/BaseDocument';
 
 import { environment } from '../../../environments/environment';
@@ -105,9 +105,9 @@ export class StorageService {
       },
     }).pipe(
       map(response => response.dbName),
-      tap(dbName => saveValue("funnelDBName", dbName)),
+      tap(dbName => saveValue(CACHE_DB_NAME, dbName)),
       catchError(_ => {
-        const fallbackDbName = localStorage.getItem("funnelDBName");
+        const fallbackDbName = localStorage.getItem(CACHE_DB_NAME);
         if (!fallbackDbName) {
           return throwError(() => new Error("No fallback database found"));
         }
@@ -121,8 +121,9 @@ export class StorageService {
       .pipe(tap(dbName => {
         this.pouchRemote = new PouchDB(`${environment.funnelBaseUrl}/service/couchdb/${dbName}`, {
           fetch(url, options) {
-            options!.credentials = 'omit';
-            (options?.headers! as any).set('Authorization', `Bearer ${token}`);
+            const optionsToPatch = options ?? {};
+            optionsToPatch.credentials = 'omit';
+            (optionsToPatch.headers as Headers).set('Authorization', `Bearer ${token}`);
             return PouchDB.fetch(url, options);
           },
         });
