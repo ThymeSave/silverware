@@ -1,0 +1,8 @@
+#!/bin/bash
+set -ev
+
+for file in "$@"
+do
+    npm run lint -- --lint-file-patterns "$file"
+done
+

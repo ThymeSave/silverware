@@ -37,3 +37,11 @@ repos:
     hooks:
       - id: conventional-commit-check
         stages: [commit-msg]
+  - repo: local
+    hooks:
+      - id: ng-lint
+        name: Run ng lint
+        entry: .hooks/lint
+        language: script
+        files: '.*\.(ts|js)$'
+
