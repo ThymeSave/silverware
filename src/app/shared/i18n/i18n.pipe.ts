@@ -1,4 +1,4 @@
-import { Injector, Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { loadUITextByKey } from "@thymesave/translations";
 
 import { LanguageService } from "./language.service";
@@ -11,8 +11,7 @@ import { LanguageService } from "./language.service";
   pure: false,
 })
 export class I18nPipe implements PipeTransform {
-  constructor(private languageService: LanguageService,
-              private injector: Injector) {
+  constructor(private languageService: LanguageService) {
   }
 
   public transform(value: string): string  {

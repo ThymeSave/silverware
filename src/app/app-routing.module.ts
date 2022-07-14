@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from "@/pages/home/home.component";
 import { NotFoundComponent } from "@/pages/not-found/not-found.component";
-import { SettingsComponent } from "@/pages/settings/settings.component";
 import { ShellComponent } from "@/pages/shell/shell.component";
 
 const routes: Routes = [
@@ -17,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        component: SettingsComponent,
+        loadChildren: () => import("@/settings/settings.module").then(m => m.SettingsModule),
       },
       {
         path: '**',

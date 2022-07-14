@@ -20,9 +20,9 @@ import { AppComponent } from '@/app.component';
 import { FunnelConfig } from "@/helper/loadFunnelConfig";
 import { HomeComponent } from '@/pages/home/home.component';
 import { NotFoundComponent } from '@/pages/not-found/not-found.component';
-import { SettingsComponent } from '@/pages/settings/settings.component';
 import { ShellComponent } from '@/pages/shell/shell.component';
 import { PwaModule } from "@/pwa/pwa.module";
+import { SettingsComponent } from '@/settings/pages/settings/settings.component';
 import { SharedModule } from "@/shared/shared.module";
 
 import { environment } from '../environments/environment';

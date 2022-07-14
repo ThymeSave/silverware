@@ -1,31 +1,34 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from "@auth0/auth0-angular";
 import { BehaviorSubject, Observable, filter, map } from "rxjs";
 
 import { Settings } from "./settings";
+import { EntityService } from "@/shared/storage/base";
 import { StorageService } from "@/shared/storage/storage.service";
 
 @Injectable({
   providedIn: 'root',
 })
-export class SettingsService {
+export class SettingsService extends EntityService<Settings> {
   private readonly settingsSubject = new BehaviorSubject<Settings | null>(null);
   public readonly settings$ = this.settingsSubject
     .asObservable()
     .pipe(filter(s => !!s));
 
-  constructor(private storageService: StorageService,
-              private authService: AuthService) {
-    this.storageService.db$.pipe(
-      map(() =>
-        this.storageService.getLatest<Settings>("settings", "default")
-          .pipe(map(s => this.settingsSubject.next(s as Settings)))
-          .subscribe(),
-      )).subscribe();
+  get entityType(): string {
+    return "settings";
   }
 
-  public setLanguage(lang: string) : Observable<any> {
-    return this.storageService.upsert<Settings>("settings", "default", doc => {
+  constructor(storageService: StorageService) {
+    super(storageService);
+    this.onDatabaseAvailable(() =>
+      this.getLatest("default")
+        .pipe(map(s => this.settingsSubject.next(s as Settings)))
+        .subscribe(),
+    );
+  }
+
+  public setLanguage(lang: string): Observable<any> {
+    return this.upsert("default", doc => {
       doc.language = lang;
       return doc;
     });

@@ -25,6 +25,8 @@ interface DbInitializeResponse {
   dbName: string;
 }
 
+export type UpsertDiffFunc<T> = (doc: T) => Partial<T> | boolean
+
 @Injectable({
   providedIn: 'root',
 })
@@ -69,7 +71,7 @@ export class StorageService {
    * @param {PouchDB.UpsertDiffCallback<BaseDocument>} diffFunc Used to evaluate if a update needs to happen
    * @returns
    */
-  public upsert<T extends BaseDocument>(entityType: string, id: string, diffFunc: (doc: T) => Partial<T> | boolean): Observable<PouchDB.UpsertResponse | T> {
+  public upsert<T extends BaseDocument>(entityType: string, id: string, diffFunc: UpsertDiffFunc<T>): Observable<PouchDB.UpsertResponse | T> {
     console.debug("Upsert doc of entity type", entityType, "with id", id);
     return this.db$.pipe(switchMap(db =>
       from(db!.upsert<BaseDocument>(this.build_id(entityType, id), doc => {
