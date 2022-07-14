@@ -1,4 +1,4 @@
-import { BaseDocument } from "../models/BaseDocument";
+import { BaseDocument } from "@/models/BaseDocument";
 
 type SettingsEntityType = "settings"
 

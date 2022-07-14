@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: () => import("@/settings/settings.module").then(m => m.SettingsModule),
       },
       {
+        path: 'recipes',
+        loadChildren: () => import("@/recipes/recipes.module").then(m => m.RecipesModule),
+      },
+      {
         path: '**',
         component: NotFoundComponent,
       },

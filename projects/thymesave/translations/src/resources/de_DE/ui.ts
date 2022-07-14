@@ -13,8 +13,9 @@ const ui: SingleValueTranslation = {
   "ok": "Bestätigen",
   "open": "Öffnen",
   "recipes": "Rezepte",
+  "recipes.new": "Neues Rezept",
   "save": "Speichern",
   "settings": "Einstellungen",
-}
+};
 
 export default ui;

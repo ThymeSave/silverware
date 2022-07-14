@@ -17,7 +17,7 @@ $fontConfig: (
   body-2: mat.define-typography-level(16px, 24px, 500, 'EB Garamond', 0.0179em),
   body-1: mat.define-typography-level(16px, 26px, 400, 'EB Garamond', 0.0179em),
   button: mat.define-typography-level(16px, 18px, 500, 'EB Garamond', 0.0893em),
-  caption: mat.define-typography-level(12px, 20px, 400, 'EB Garamond', 0.0333em),
+  caption: mat.define-typography-level(16px, 20px, 400, 'EB Garamond', 0.0333em),
   input: mat.define-typography-level(inherit, 1.7, 400, 'EB Garamond', 1.5px)
 );
 
@@ -138,4 +138,8 @@ $altTheme: (
   .mat-badge-content {
     font-family: 'EB Garamond', serif;
   }
+}
+
+.mat-tooltip {
+  font-size: 14px !important;
 }

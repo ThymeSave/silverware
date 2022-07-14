@@ -13,6 +13,7 @@ const ui: SingleValueTranslation = {
   "ok": "Ok",
   "open": "Open",
   "recipes": "Recipes",
+  "recipes.new": "New recipe",
   "save": "Save",
   "settings": "Settings",
 };
