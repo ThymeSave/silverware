@@ -19,7 +19,7 @@ export class LanguageService {
     this.settingsService.settings$
       .pipe(map(s => {
         this.currentLanguageIdentifier = s?.language!!;
-        this.currentLanguage = this.getLanguageByIdentifier(this.currentLanguageIdentifier)
+        this.currentLanguage = this.getLanguageByIdentifier(this.currentLanguageIdentifier);
         return this.currentLanguage;
       }))
       .subscribe();

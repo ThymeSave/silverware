@@ -17,7 +17,7 @@ export class AppUpdateService {
         filter(event => event.type == "VERSION_READY"),
         tap(event => {
           let readyEvent = (event as VersionReadyEvent);
-          console.debug("Update available from", readyEvent.currentVersion, "to", readyEvent.latestVersion)
+          console.debug("Update available from", readyEvent.currentVersion, "to", readyEvent.latestVersion);
         }),
         first(),
       )
