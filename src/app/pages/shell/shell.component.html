@@ -38,7 +38,7 @@
         <a *ngFor="let item of menuItems"
            [routerLink]=[item.link]
            (click)="sidenav.close()"
-           routerLinkActive="list-item-active"
+           routerLinkActive="nav-active"
            mat-list-item>
           <mat-icon matListIcon>{{ item.icon }}</mat-icon>
           {{ item.title | i18n }}
