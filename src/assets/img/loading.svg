@@ -3,42 +3,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/"
      width="100%" height="100%" viewBox="0 0 2048 2048" version="1.1" xml:space="preserve"
      style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:7.92683;">
-    <style>
-      @keyframes spin {
+  <style>
+      @keyframes spin-hours {
         from {
-          transform: rotate(0deg) translateX(50px) translateY(50px);
-        }
-
-        12.5% {
-          transform: rotate(30deg) translateX(50px) translateY(50px);
+          transform: rotate(-30deg) translateX(100px) translateY(-220px);
         }
 
         25% {
-          transform: rotate(60deg) translateX(50px) translateY(50px);
-        }
-
-        37.5% {
-          transform: rotate(90deg) translateX(50px) translateY(50px);
+          transform: rotate(50deg) translateX(-60px) translateY(-100px);
         }
 
         50% {
-          transform: rotate(180deg) translateX(50px) translateY(50px);
-        }
-
-        62.5% {
-          transform: rotate(210deg) translateX(50px) translateY(50px);
+          transform: rotate(140deg) translateX(100px) translateY(160px);
         }
 
         75% {
-          transform: rotate(240deg) translateX(50px) translateY(50px);
-        }
-
-        86.5% {
-          transform: rotate(270deg) translateX(50px) translateY(50px);
+          transform: rotate(220deg) translateX(350px) translateY(100px);
         }
 
         to {
-          transform: rotate(360deg) translateX(50px) translateY(50px);
+          transform: rotate(310deg) translateX(200px) translateY(-220px);
+        }
+      }
+
+      @keyframes spin-minutes {
+        from {
+          transform: rotate(0deg) translateX(-30px) translateY(0px);
+        }
+
+        25% {
+          transform: rotate(120deg) translateX(140px) translateY(350px);
+        }
+
+        50% {
+          transform: rotate(220deg) translateX(300px) translateY(220px);
+        }
+
+        75 % {
+          transform: rotate(310deg) translateX(200px) translateY(-3px);
+        }
+
+        100% {
+          transform: rotate(360deg) translateX(-18px) translateY(-5px);
         }
       }
 
@@ -47,17 +53,23 @@
         margin: auto;
       }
 
-      #Clock-hands {
-        transform: translateX(10px);
-        animation: spin 2s cubic-bezier(.4,2.08,.55,.44) infinite;
+      #Thyme-hours {
+        animation: spin-hours 2s infinite ease-in-out;
+        transform-origin: center center;
+      }
+
+      #Thyme-minutes {
+        animation: spin-minutes 1s infinite linear;
         transform-origin: center center;
       }
     </style>
   <g id="Flat">
+
         <g id="Thyme-clock" serif:id="Thyme clock">
             <g id="Clock-hands" serif:id="Clock hands"
                transform="matrix(0.99999,-0.0043895,0.0043895,0.99999,132.032,191.915)">
-                <g id="Thyme-hours" serif:id="Thyme hours">
+                <g id="Thyme-hours" serif:id="Thyme hours"
+                   transform="matrix(0.338293,0.831173,-0.831173,0.338293,1361.24,-285.359)">
                     <g id="Trunk" transform="matrix(1,0,0,1,70.3628,-67.5073)">
                         <path d="M818.047,1134.36C970.086,929.456 1028.79,869.547 1232.81,696.652"
                               style="fill:none;stroke:white;stroke-width:50.96px;"/>
@@ -86,7 +98,7 @@
                           style="fill:none;stroke:white;stroke-width:47.19px;"/>
                     </g>
                 </g>
-                <g id="Thyme-minutes" serif:id="Thyme minutes">
+              <g id="Thyme-minutes" serif:id="Thyme minutes" transform="matrix(1,0,0,1,50.5227,31.9657)">
                     <path id="Trunk1" serif:id="Trunk"
                           d="M513.951,332.501C705.009,592.975 738.556,628.176 904.796,915.842"
                           style="fill:none;stroke:white;stroke-width:35.57px;"/>
