@@ -34,7 +34,7 @@ export interface FunnelConfig {
  * loadFunnelConfig from API
  */
 export const loadFunnelConfig = () => {
-  const minWaitTimeMS = isDevMode() ? 0 : 200;
+  const minWaitTimeMS = isDevMode() ? 0 : 500;
   const due = new Date(Date.now() + minWaitTimeMS);
   return fromFetch('https://funnel.thymesave.app/')
     .pipe(
