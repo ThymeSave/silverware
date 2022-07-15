@@ -19,7 +19,7 @@ const ui: SingleValueTranslation = {
   "recipes.title": "Title",
   "save": "Save",
   "settings": "Settings",
-  "offline.hint": "App is running offlilne",
+  "offline.hint": "App is running offline",
 };
 
 export default ui;
