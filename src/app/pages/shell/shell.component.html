@@ -19,8 +19,7 @@
     <button mat-icon-button
             *ngIf="(authService.user$ | async) as user; else logIn"
             [matMenuTriggerFor]="menu">
-      <img [alt]="user?.preferred_username ?? 'profile'"
-           class="user-picture"
+      <img class="user-picture"
            height="58"
            [src]="user?.picture">
       <mat-menu #menu="matMenu">

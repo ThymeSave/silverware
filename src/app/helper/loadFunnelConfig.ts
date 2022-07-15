@@ -1,3 +1,16 @@
+import {
+  catchError,
+  first,
+  of,
+  tap,
+  throwError,
+  timeout,
+  from,
+  delay,
+  switchMap,
+} from "rxjs";
+import { fromFetch } from "rxjs/fetch";
+
 import { CACHE_FUNNEL_CONFIG, loadValue, saveValue } from "@/helper/simpleStorage";
 
 /**
@@ -19,20 +32,31 @@ export interface FunnelConfig {
 /**
  * loadFunnelConfig from API
  */
-export const loadFunnelConfig = async (): Promise<FunnelConfig> => {
-  try {
-    // TODO Load from config file to allow self hosting
-    const raw = await fetch('https://funnel.thymesave.app/');
-    const json = await raw.json();
-    const parsedConfig = json as FunnelConfig;
-    saveValue<FunnelConfig>(CACHE_FUNNEL_CONFIG, parsedConfig);
-    return Promise.resolve(parsedConfig);
-  } catch (e) {
-    const cachedConfig = loadValue<FunnelConfig>(CACHE_FUNNEL_CONFIG);
-    if (cachedConfig != null) {
-      return Promise.resolve(cachedConfig);
-    }
-    // TODO Make fancy
-    throw e;
-  }
+export const loadFunnelConfig = () => {
+  const SECOND = 1000;
+  const due = new Date(Date.now() + (20 * SECOND));
+  return fromFetch('https://funnel.thymesave.app/')
+    .pipe(
+      first(),
+      timeout({
+        each: 1500,
+      }),
+      switchMap(r => from(r.json())),
+      delay(due),
+      tap(parsedConfig => {
+        // @ts-ignore
+        if (parsedConfig != {}) {
+          saveValue<FunnelConfig>(CACHE_FUNNEL_CONFIG, parsedConfig);
+        }
+      }),
+      catchError(err => {
+        console.warn("Could not fetch funnel config", err);
+        const cachedConfig = loadValue<FunnelConfig>(CACHE_FUNNEL_CONFIG);
+        if (cachedConfig != null) {
+          console.debug("Return cached funnel config", cachedConfig);
+          return of(cachedConfig);
+        }
+        return throwError(() => err);
+      }),
+    );
 };

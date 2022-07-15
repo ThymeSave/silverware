@@ -15,6 +15,15 @@
       }
     },
     {
+      "installMode": "prefetch",
+      "name": "fonts",
+      "resources": {
+        "urls": [
+          "https://fonts.googleapis.com/**"
+        ]
+      }
+    },
+    {
       "installMode": "lazy",
       "name": "assets",
       "resources": {
