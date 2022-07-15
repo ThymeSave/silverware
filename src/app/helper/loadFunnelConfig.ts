@@ -1,3 +1,4 @@
+import { isDevMode } from '@angular/core';
 import {
   catchError,
   first,
@@ -33,8 +34,8 @@ export interface FunnelConfig {
  * loadFunnelConfig from API
  */
 export const loadFunnelConfig = () => {
-  const SECOND = 1000;
-  const due = new Date(Date.now() + (20 * SECOND));
+  const minWaitTimeMS = isDevMode() ? 0 : 200;
+  const due = new Date(Date.now() + minWaitTimeMS);
   return fromFetch('https://funnel.thymesave.app/')
     .pipe(
       first(),
@@ -54,7 +55,8 @@ export const loadFunnelConfig = () => {
         const cachedConfig = loadValue<FunnelConfig>(CACHE_FUNNEL_CONFIG);
         if (cachedConfig != null) {
           console.debug("Return cached funnel config", cachedConfig);
-          return of(cachedConfig);
+          return of(cachedConfig)
+            .pipe(delay(due));
         }
         return throwError(() => err);
       }),

@@ -31,12 +31,11 @@ export type UpsertDiffFunc<T> = (doc: T) => Partial<T> | boolean
   providedIn: 'root',
 })
 export class StorageService {
-
   private pouchRemote: PouchDB.Database | null = null;
   private pouchLocal: PouchDB.Database | null = null;
 
   private dbSubject = new BehaviorSubject<PouchDB.Database | null>(null);
-  db$ = this.dbSubject.asObservable().pipe(filter(db => !!db));
+  public db$ = this.dbSubject.asObservable().pipe(filter(db => !!db));
 
   constructor(
     private http: HttpClient,

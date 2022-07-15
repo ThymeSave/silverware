@@ -10,18 +10,22 @@
     <div fxLayout="row"
          fxLayoutAlign="start center"
          fxLayoutGap=".25em">
-      <img class="app-logo"
-           alt="ThymeSave"
-           src="assets/img/logo.svg"
-           aria-label="ThymeSave Logo">
+      <svg class="app-logo" >
+        <image width="100%" xlink:href="assets/img/logo.svg"></image>
+      </svg>
       <span>ThymeSave</span>
+      <mat-icon [matTooltip]="'offline.hint' | i18n"
+                *ngIf="!online"
+                color="warning">
+        offline_bolt
+      </mat-icon>
     </div>
     <button mat-icon-button
             *ngIf="(authService.user$ | async) as user; else logIn"
             [matMenuTriggerFor]="menu">
       <img class="user-picture"
            height="58"
-           [src]="user?.picture">
+           [src]="user?.picture ?? 'assets/img/logo.svg'">
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="authService.logout({  })">
           <mat-icon>logout</mat-icon>

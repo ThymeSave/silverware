@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new',
@@ -6,8 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./new.component.scss'],
 })
 export class NewComponent {
+  form = new FormGroup({
+    title: new FormControl(""),
+  });
 
-  constructor() {
+  constructor(private router : Router) {
+  }
+
+  public async save() {
+    await this.router.navigate(["/recipes"]);
   }
 
 }

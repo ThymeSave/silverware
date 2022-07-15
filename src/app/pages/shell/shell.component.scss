@@ -27,3 +27,9 @@ mat-sidenav-content {
 .nav-active {
   background: var(--primary-color) !important;
 }
+
+.app-logo {
+  &.online {
+    color: red !important;
+  }
+}
