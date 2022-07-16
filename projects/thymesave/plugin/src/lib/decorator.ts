@@ -74,6 +74,7 @@ export class Plugin implements PluginDescriptorInformation {
   /**
    * List with importers provided
    */
+  // TODO Refactor return type to allow more customization
   get importer(): RecipeImporterList {
     return [];
   }

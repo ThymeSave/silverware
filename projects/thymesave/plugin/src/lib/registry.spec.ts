@@ -1,11 +1,11 @@
-import { ComponentContext, ImporterType, Recipe, URLImporter } from "@thymesave/core";
+import { ComponentContext, ImporterType, Recipe, URLImporter, URLImporterPayload } from "@thymesave/core";
 import { Observable, of } from "rxjs";
 
 import { Plugin, PluginDescriptor } from "./decorator";
 import { FilterImporterByType, PluginAlreadyRegisteredError, PluginRegistry } from "./registry";
 
 class TestImporter extends URLImporter<Recipe> {
-  import(context: ComponentContext, payload: Recipe): Observable<Recipe> {
+  import(context: ComponentContext, payload: URLImporterPayload): Observable<Recipe> {
     return of({
       uuid: "",
       description: "",

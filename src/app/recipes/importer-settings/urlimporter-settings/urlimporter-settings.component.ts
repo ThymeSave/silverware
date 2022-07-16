@@ -1,6 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
-import { createLogger } from "@helper/log";
 import { URLImporterPayload } from "@thymesave/core";
 
 @Component({
@@ -9,8 +8,6 @@ import { URLImporterPayload } from "@thymesave/core";
   styleUrls: ['./urlimporter-settings.component.scss'],
 })
 export class URLImporterSettingsComponent {
-  private logger = createLogger("URLImporterSettingsComponent");
-
   public form = new FormGroup({
     url: new FormControl("", [Validators.required, this.urlValidator()]),
   });

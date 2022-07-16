@@ -67,7 +67,7 @@ describe("parseIngredientInformation", () => {
     const parsed = parseIngredientInformation("100 carrot");
     expect(parsed.ingredient).toBe("carrot");
     expect(parsed.unit).toBeNull();
-    expect(parsed.minAmount).toBe(100)
+    expect(parsed.minAmount).toBe(100);
     expect(parsed.isRange).toBeFalse();
   });
 
@@ -75,11 +75,43 @@ describe("parseIngredientInformation", () => {
     const parsed = parseIngredientInformation("1 carrot");
     expect(parsed.ingredient).toBe("carrot");
     expect(parsed.unit).toBeNull();
-    expect(parsed.minAmount).toBe(1)
+    expect(parsed.minAmount).toBe(1);
     expect(parsed.isRange).toBeFalse();
   });
 
   it("should throw an error for invalid ingredient text",() => {
     expect(() => parseIngredientInformation("foo.bar")).toThrow(new IngredientParseError("foo.bar"));
-  })
+  });
+
+  it("should work with amount as fraction", () => {
+    const parsed = parseIngredientInformation("1/2 carrot");
+    expect(parsed.ingredient).toBe("carrot");
+    expect(parsed.unit).toBeNull();
+    expect(parsed.minAmount).toBe(0.5);
+    expect(parsed.isRange).toBeFalse();
+  });
+
+  it("should work with amount as whole number and fraction", () => {
+    const parsed = parseIngredientInformation("1 1/2 carrot");
+    expect(parsed.ingredient).toBe("carrot");
+    expect(parsed.unit).toBeNull();
+    expect(parsed.minAmount).toBe(1.5);
+    expect(parsed.isRange).toBeFalse();
+  });
+
+  it("should work with amount as fraction plus unit", () => {
+    const parsed = parseIngredientInformation("1/2 cups nuts");
+    expect(parsed.ingredient).toBe("nuts");
+    expect(parsed.unit).toBe("cups");
+    expect(parsed.minAmount).toBe(.5);
+    expect(parsed.isRange).toBeFalse();
+  });
+
+  it("should work with amount as whole number and fraction plus unit", () => {
+    const parsed = parseIngredientInformation("1 1/2 carrot");
+    expect(parsed.ingredient).toBe("carrot");
+    expect(parsed.unit).toBeNull();
+    expect(parsed.minAmount).toBe(1.5);
+    expect(parsed.isRange).toBeFalse();
+  });
 });

@@ -1,5 +1,5 @@
-import { Instruction } from "./instruction"
-import { Ingredient } from "./ingredient";
+import { RecipeIngredient } from "./ingredient";
+import { Instruction } from "./instruction";
 
 export type RecipeBase64Image = string
 
@@ -10,7 +10,7 @@ export interface Recipe {
   /**
    * Globally unique identifier
    */
-  uuid: string;
+  uuid ?: string;
   /**
    * Human-readable title
    */
@@ -26,7 +26,7 @@ export interface Recipe {
   /**
    * Ingredients the recipe consists of
    */
-  ingredients : Ingredient[]
+  ingredients : RecipeIngredient[]
   /**
    * Image encoded as base64, may be omitted if no image is present
    */

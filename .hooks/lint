@@ -3,6 +3,6 @@ set -ev
 
 for file in "$@"
 do
-    npm run lint -- --lint-file-patterns "$file"
+    npm run lint -- --lint-file-patterns "$file" --quiet
 done
 
