@@ -1,4 +1,4 @@
-import { Importer, Recipe } from "@thymesave/core";
+import { Importer, ImporterType, Recipe, RecipeImporterList } from "@thymesave/core";
 
 import { Plugin } from "./decorator";
 
@@ -10,6 +10,8 @@ export class PluginAlreadyRegisteredError extends Error {
 }
 
 export type ImporterFilter = (importer: Importer<Recipe>) => boolean
+
+export const FilterImporterByType = (type : ImporterType) => ((importer : Importer<any>) => importer.type == type);
 
 export class PluginRegistry {
   private static plugins: Array<Plugin> = [];
@@ -28,7 +30,7 @@ export class PluginRegistry {
     return this.plugins;
   }
 
-  public static getImporter(filter ?: ImporterFilter) {
+  public static getImporter(filter ?: ImporterFilter) : RecipeImporterList {
     let importerFilter = !filter ? (_: any) => true : filter;
 
     return this.getRegistered()

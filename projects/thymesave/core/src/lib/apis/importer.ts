@@ -24,12 +24,19 @@ export abstract class Importer<T> {
   abstract get type(): ImporterType
 
   /**
+   * Name of the importer to display
+   */
+  abstract get name(): string
+
+  /**
    * Run the import with specified input
    * @param context Context provided to importer
    * @param payload Input to the given recipe
    */
   abstract import(context: ComponentContext, payload: T): Observable<Recipe>
 }
+
+export type RecipeImporterList = Array<Importer<Recipe>>
 
 export abstract class URLImporter<T> extends Importer<T> {
   get type() {

@@ -2,7 +2,7 @@ import { ComponentContext, ImporterType, Recipe, URLImporter } from "@thymesave/
 import { Observable, of } from "rxjs";
 
 import { Plugin, PluginDescriptor } from "./decorator";
-import { PluginAlreadyRegisteredError, PluginRegistry } from "./registry";
+import { FilterImporterByType, PluginAlreadyRegisteredError, PluginRegistry } from "./registry";
 
 class TestImporter extends URLImporter<Recipe> {
   import(context: ComponentContext, payload: Recipe): Observable<Recipe> {
@@ -14,6 +14,10 @@ class TestImporter extends URLImporter<Recipe> {
       title: "",
       instructions: [],
     });
+  }
+
+  get name(): string {
+    return "";
   }
 
 }
@@ -60,14 +64,14 @@ describe("PluginRegistry", () => {
 
   it("should return importers when filter match", () => {
     PluginRegistry.register(new TestPlugin());
-    const importer = PluginRegistry.getImporter(importer => importer.type == ImporterType.URL);
+    const importer = PluginRegistry.getImporter(FilterImporterByType(ImporterType.URL));
     expect(importer.length).toBe(1);
     expect(importer[0]).toBeInstanceOf(TestImporter);
   });
 
   it("should return no importers when filter does not match", () => {
     PluginRegistry.register(new TestPlugin());
-    const importer = PluginRegistry.getImporter(importer => importer.type == ImporterType.MANUAL);
+    const importer = PluginRegistry.getImporter(FilterImporterByType(ImporterType.MANUAL));
     expect(importer.length).toBe(0);
   });
 });

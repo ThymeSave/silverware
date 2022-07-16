@@ -1,4 +1,4 @@
-import { Importer, Recipe, Service } from "@thymesave/core";
+import {  Service, RecipeImporterList } from "@thymesave/core";
 
 import { PluginRegistry } from "./registry";
 
@@ -74,7 +74,7 @@ export class Plugin implements PluginDescriptorInformation {
   /**
    * List with importers provided
    */
-  get importer(): Array<Importer<Recipe>> {
+  get importer(): RecipeImporterList {
     return [];
   }
 

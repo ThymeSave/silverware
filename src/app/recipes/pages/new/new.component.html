@@ -1,9 +1,34 @@
-<mat-stepper linear="true" orientation="vertical">
-  <mat-step [label]="'recipes.choose_importer' | i18n">
-    <p>TODO: Build selector screen for importer</p>
-    <button mat-button matStepperNext>Next</button>
+<mat-stepper [linear]="true" orientation="vertical" #stepper>
+  <mat-step [label]="'recipes.choose_importer' | i18n" completed="false" editable="false">
+    <mat-list>
+      <!-- Import by URL -->
+      <div mat-subheader>{{ 'recipes.importer_url' | i18n }}</div>
+      <mat-list-item matRipple
+                     (click)="selectImporter(importer)"
+                     class="importer-option"
+                     *ngFor="let importer of urlImporter">
+        <mat-icon mat-list-icon>language</mat-icon>
+        {{importer.name}}
+      </mat-list-item>
+
+      <!-- Import manual etc -->
+      <div mat-subheader>{{ 'recipes.importer_misc' | i18n }}</div>
+      <mat-list-item matRipple
+                     (click)="selectImporter(importer)"
+                     class="importer-option"
+                     *ngFor="let importer of manualImporter">
+        <mat-icon mat-list-icon>language</mat-icon>
+        {{importer.name}}
+      </mat-list-item>
+    </mat-list>
   </mat-step>
-  <mat-step [label]="'recipes.verify' | i18n">
+  <mat-step [label]="'recipes.importer_parameter' | i18n" completed="false" editable="false">
+    <p>TODO: Show component with parameters based on selected importer type</p>
+  </mat-step>
+  <mat-step [label]="'recipes.import_pending' | i18n" completed="false" editable="false">
+    <p>TODO Implement loading with possibility to cancel</p>
+  </mat-step>
+  <mat-step [label]="'recipes.verify' | i18n" completed="false" editable="false">
     <form [formGroup]="form">
       <mat-form-field appearance="fill" fxFlexFill>
         <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
