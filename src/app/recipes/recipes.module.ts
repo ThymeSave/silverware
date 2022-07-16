@@ -12,6 +12,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule, Routes } from "@angular/router";
 
+import { URLImporterSettingsComponent } from './importer-settings/urlimporter-settings/urlimporter-settings.component';
 import { NewComponent } from './pages/new/new.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { SharedModule } from "@/shared/shared.module";
@@ -31,6 +32,7 @@ const routes: Routes = [
   declarations: [
     OverviewComponent,
     NewComponent,
+    URLImporterSettingsComponent,
   ],
   imports: [
     CommonModule,

@@ -18,6 +18,7 @@ const ui: SingleValueTranslation = {
   "recipes.importer_misc": "Sonstige",
   'recipes.importer_parameter': "Parameter eintragen",
   "recipes.import_pending": "Import läuft",
+  "recipes.importer.url.url-field": "Öffentlich erreichbare Internet-Adresse",
   "recipes.new": "Neues Rezept",
   "recipes.title": "Titel",
   "recipes.verify": "Prüfen und übernehmen",

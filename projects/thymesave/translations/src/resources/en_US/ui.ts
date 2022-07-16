@@ -18,6 +18,7 @@ const ui: SingleValueTranslation = {
   "recipes.importer_misc": "Miscellaneous",
   'recipes.importer_parameter': "Set parameters",
   "recipes.import_pending": "Import is running",
+  "recipes.importer.url.url-field": "Publicly available URL",
   "recipes.new": "New recipe",
   "recipes.title": "Title",
   "recipes.verify": "Verify and submit",

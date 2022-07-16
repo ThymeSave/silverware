@@ -17,6 +17,8 @@ export enum ImporterType {
   MANUAL
 }
 
+export interface ImporterPayload {}
+
 export abstract class Importer<T> {
   /**
    * Type specifies which inputs the importer can take and influence how the UI is displayed
@@ -33,15 +35,26 @@ export abstract class Importer<T> {
    * @param context Context provided to importer
    * @param payload Input to the given recipe
    */
-  abstract import(context: ComponentContext, payload: T): Observable<Recipe>
+  abstract import(context: ComponentContext, payload: ImporterPayload): Observable<T>
 }
 
 export type RecipeImporterList = Array<Importer<Recipe>>
+
+export interface URLImporterPayload extends ImporterPayload {
+  url : string
+}
 
 export abstract class URLImporter<T> extends Importer<T> {
   get type() {
     return ImporterType.URL;
   }
+
+  /**
+   * Run the import with specified input
+   * @param context Context provided to importer
+   * @param payload Input to the given recipe
+   */
+  abstract override import(context: ComponentContext, payload: URLImporterPayload): Observable<T>
 
   /**
    * Fetch URL content using funnel cors proxy.

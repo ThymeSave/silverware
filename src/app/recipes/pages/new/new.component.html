@@ -23,7 +23,7 @@
     </mat-list>
   </mat-step>
   <mat-step [label]="'recipes.importer_parameter' | i18n" completed="false" editable="false">
-    <p>TODO: Show component with parameters based on selected importer type</p>
+    <app-url-importer-settings (saved)="urlImporterSaved($event)" *ngIf="isURLImporter"></app-url-importer-settings>
   </mat-step>
   <mat-step [label]="'recipes.import_pending' | i18n" completed="false" editable="false">
     <p>TODO Implement loading with possibility to cancel</p>
