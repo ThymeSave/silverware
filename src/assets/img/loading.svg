@@ -3,70 +3,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/"
      width="100%" height="100%" viewBox="0 0 2048 2048" version="1.1" xml:space="preserve"
      style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:7.92683;">
-  <style>
-      @keyframes spin-hours {
-        from {
-          transform: rotate(-30deg) translateX(100px) translateY(-220px);
+    <g id="Flat">
+      <style>
+        @keyframes spin-hours {
+          from {
+            transform: rotate(0deg) translateX(200px) translateY(200px);
+          }
+
+          8.333333333333334% {
+            transform: rotate(30.0deg) translateX(200px) translateY(200px);
+          }
+
+          16.666666666666668% {
+            transform: rotate(65.0deg) translateX(200px) translateY(200px);
+          }
+
+          25.0% {
+            transform: rotate(90.0deg) translateX(200px) translateY(200px);
+          }
+
+          33.333333333333336% {
+            transform: rotate(120.0deg) translateX(200px) translateY(200px);
+          }
+
+          41.66666666666667% {
+            transform: rotate(155.0deg) translateX(200px) translateY(200px);
+          }
+
+          50.00000000000001% {
+            transform: rotate(180.0deg) translateX(200px) translateY(200px);
+          }
+
+          58.33333333333334% {
+            transform: rotate(210.0deg) translateX(200px) translateY(200px);
+          }
+
+          66.66666666666667% {
+            transform: rotate(245.0deg) translateX(200px) translateY(200px);
+          }
+
+          75.0% {
+            transform: rotate(270.0deg) translateX(200px) translateY(200px);
+          }
+
+          83.33333333333333% {
+            transform: rotate(300.0deg) translateX(200px) translateY(200px);
+          }
+
+          91.66666666666666% {
+            transform: rotate(335.0deg) translateX(200px) translateY(200px);
+          }
+
+          to {
+            transform: rotate(360.0deg) translateX(200px) translateY(200px);
+          }
         }
 
-        25% {
-          transform: rotate(50deg) translateX(-60px) translateY(-100px);
+        @keyframes spin-minutes {
+          from {
+            transform: rotate(0deg) translateX(50px) translateY(50px);
+          }
+
+          to {
+            transform: rotate(360deg) translateX(50px) translateY(50px);
+          }
         }
 
-        50% {
-          transform: rotate(140deg) translateX(100px) translateY(160px);
+        svg {
+          width: 300px;
+          margin: auto;
         }
 
-        75% {
-          transform: rotate(220deg) translateX(350px) translateY(100px);
+        #Clock-hands-hours {
+          animation: spin-hours 19s cubic-bezier(.93,-0.01,.22,1.2) infinite;
+          transform-origin: center center;
         }
 
-        to {
-          transform: rotate(310deg) translateX(200px) translateY(-220px);
+        #Clock-hands-minutes {
+          animation: spin-minutes 1.6s linear infinite;
+          transform-origin: center center;
         }
-      }
-
-      @keyframes spin-minutes {
-        from {
-          transform: rotate(0deg) translateX(-30px) translateY(0px);
-        }
-
-        25% {
-          transform: rotate(120deg) translateX(140px) translateY(350px);
-        }
-
-        50% {
-          transform: rotate(220deg) translateX(300px) translateY(220px);
-        }
-
-        75 % {
-          transform: rotate(310deg) translateX(200px) translateY(-3px);
-        }
-
-        100% {
-          transform: rotate(360deg) translateX(-18px) translateY(-5px);
-        }
-      }
-
-      svg {
-        width: 300px;
-        margin: auto;
-      }
-
-      #Thyme-hours {
-        animation: spin-hours 2s infinite ease-in-out;
-        transform-origin: center center;
-      }
-
-      #Thyme-minutes {
-        animation: spin-minutes 1s infinite linear;
-        transform-origin: center center;
-      }
-    </style>
-  <g id="Flat">
-
-        <g id="Thyme-clock" serif:id="Thyme clock">
-            <g id="Clock-hands" serif:id="Clock hands"
+      </style>
+      <g id="Thyme-clock" serif:id="Thyme clock">
+            <g id="Clock-hands-hours" serif:id="Clock hands"
                transform="matrix(0.99999,-0.0043895,0.0043895,0.99999,132.032,191.915)">
                 <g id="Thyme-hours" serif:id="Thyme hours"
                    transform="matrix(0.338293,0.831173,-0.831173,0.338293,1361.24,-285.359)">
@@ -98,45 +117,52 @@
                           style="fill:none;stroke:white;stroke-width:47.19px;"/>
                     </g>
                 </g>
-              <g id="Thyme-minutes" serif:id="Thyme minutes" transform="matrix(1,0,0,1,50.5227,31.9657)">
+            </g>
+        <g id="Clock-hands-minutes" serif:id="Clock hands"
+           transform="matrix(0.99999,-0.0043895,0.0043895,0.99999,132.032,191.915)">
+                <g id="Thyme-minutes" serif:id="Thyme minutes" transform="matrix(1,0,0,1,50.5227,31.9657)">
                     <path id="Trunk1" serif:id="Trunk"
                           d="M513.951,332.501C705.009,592.975 738.556,628.176 904.796,915.842"
                           style="fill:none;stroke:white;stroke-width:35.57px;"/>
-                <g id="Leaf4" serif:id="Leaf"
-                   transform="matrix(0.811248,-0.520625,0.540103,0.841599,-872.763,-455.604)">
+                  <g id="Leaf4" serif:id="Leaf"
+                     transform="matrix(0.811248,-0.520625,0.540103,0.841599,-872.763,-455.604)">
                         <path
                           d="M769.193,1204.44C769.193,1204.44 714.326,1264.52 714.326,1308.34C714.326,1352.16 769.193,1412.24 769.193,1412.24C769.193,1412.24 824.059,1352.16 824.059,1308.34C824.059,1264.52 769.193,1204.44 769.193,1204.44Z"
                           style="fill:none;stroke:white;stroke-width:36.22px;"/>
                     </g>
-                <g id="Leaf5" serif:id="Leaf" transform="matrix(0.581092,0.813838,-0.813838,0.581092,1227.54,-1104.9)">
+                  <g id="Leaf5" serif:id="Leaf"
+                     transform="matrix(0.581092,0.813838,-0.813838,0.581092,1227.54,-1104.9)">
                         <path
                           d="M769.193,1204.44C769.193,1204.44 714.326,1264.52 714.326,1308.34C714.326,1352.16 769.193,1412.24 769.193,1412.24C769.193,1412.24 824.059,1352.16 824.059,1308.34C824.059,1264.52 769.193,1204.44 769.193,1204.44Z"
                           style="fill:none;stroke:white;stroke-width:35.57px;"/>
                     </g>
-                <g id="Leaf6" serif:id="Leaf" transform="matrix(0.547928,0.767389,-0.68945,0.492277,1201.96,-795.762)">
+                  <g id="Leaf6" serif:id="Leaf"
+                     transform="matrix(0.547928,0.767389,-0.68945,0.492277,1201.96,-795.762)">
                         <path
                           d="M769.193,1204.44C769.193,1204.44 714.326,1264.52 714.326,1308.34C714.326,1352.16 769.193,1412.24 769.193,1412.24C769.193,1412.24 824.059,1352.16 824.059,1308.34C824.059,1264.52 769.193,1204.44 769.193,1204.44Z"
                           style="fill:none;stroke:white;stroke-width:39.68px;"/>
                     </g>
-                <g id="Leaf7" serif:id="Leaf" transform="matrix(0.553449,0.775122,-0.733954,0.524054,1139.74,-636.772)">
+                  <g id="Leaf7" serif:id="Leaf"
+                     transform="matrix(0.553449,0.775122,-0.733954,0.524054,1139.74,-636.772)">
                         <path
                           d="M769.193,1204.44C769.193,1204.44 714.326,1264.52 714.326,1308.34C714.326,1352.16 769.193,1412.24 769.193,1412.24C769.193,1412.24 824.059,1352.16 824.059,1308.34C824.059,1264.52 769.193,1204.44 769.193,1204.44Z"
                           style="fill:none;stroke:white;stroke-width:38.35px;"/>
                     </g>
-                <g id="Leaf8" serif:id="Leaf" transform="matrix(0.581092,0.813838,-0.813838,0.581092,1054.44,-985.467)">
+                  <g id="Leaf8" serif:id="Leaf"
+                     transform="matrix(0.581092,0.813838,-0.813838,0.581092,1054.44,-985.467)">
                         <path
                           d="M769.193,1204.44C769.193,1204.44 714.326,1264.52 714.326,1308.34C714.326,1352.16 769.193,1412.24 769.193,1412.24C769.193,1412.24 824.059,1352.16 824.059,1308.34C824.059,1264.52 769.193,1204.44 769.193,1204.44Z"
                           style="fill:none;stroke:white;stroke-width:35.57px;"/>
                     </g>
                 </g>
             </g>
-          <g id="Bezel">
+        <g id="Bezel">
                 <g id="Bezel-outline" serif:id="Bezel outline" transform="matrix(1.08313,0,0,1.0838,-218.422,-153.584)">
                     <path
                       d="M1147.07,247.741C1610.01,247.741 1985.87,623.592 1985.87,1086.54C1985.87,1549.48 1610.01,1925.33 1147.07,1925.33C684.127,1925.33 308.276,1549.48 308.276,1086.54C308.276,623.592 684.127,247.741 1147.07,247.741ZM1147.07,285.248C1589.31,285.248 1948.34,644.3 1948.34,1086.54C1948.34,1528.77 1589.31,1887.82 1147.07,1887.82C704.834,1887.82 345.806,1528.77 345.806,1086.54C345.806,644.3 704.834,285.248 1147.07,285.248Z"
                       style="fill:white;"/>
                 </g>
-            <g id="Bezel-divisions" serif:id="Bezel divisions">
+          <g id="Bezel-divisions" serif:id="Bezel divisions">
                     <g id="Main-divisions" serif:id="Main divisions">
                         <g id="Division-group" serif:id="Division group" transform="matrix(1,0,0,1,12.3198,0)">
                             <g id="Division-strong" serif:id="Division strong"
