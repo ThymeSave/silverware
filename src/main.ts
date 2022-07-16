@@ -1,10 +1,18 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { loadFunnelConfig } from "@helper/loadFunnelConfig";
+import { createLogger } from "@helper/log";
+import { PluginRegistry } from "@thymesave/plugin";
 import { catchError, first, throwError } from "rxjs";
 
 import { environment } from './environments/environment';
 import { AppModule } from '@/app.module';
-import { loadFunnelConfig } from "@/helper/loadFunnelConfig";
+
+import "@plugins/builtin";
+
+const logger = createLogger("main");
+
+logger.debug("Registered builtin plugins", PluginRegistry.getRegistered());
 
 if (environment.production) {
   enableProdMode();
@@ -19,12 +27,11 @@ loadFunnelConfig()
     }),
   )
   .subscribe(funnelConfig => {
-    console.log(funnelConfig);
     // @ts-ignore Set for factory method in app module
     window.funnelConfig = funnelConfig;
+    logger.debug("Funnel config loaded", funnelConfig);
 
     // Initialize app module
     platformBrowserDynamic().bootstrapModule(AppModule)
-      .catch(err => console.error(err));
+      .catch(logger.error);
   });
-

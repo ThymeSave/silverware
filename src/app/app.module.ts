@@ -18,7 +18,6 @@ import { AuthClientConfig, AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from '@/app.component';
-import { FunnelConfig } from "@/helper/loadFunnelConfig";
 import { HomeComponent } from '@/pages/home/home.component';
 import { NotFoundComponent } from '@/pages/not-found/not-found.component';
 import { ShellComponent } from '@/pages/shell/shell.component';
@@ -27,6 +26,8 @@ import { SettingsComponent } from '@/settings/pages/settings/settings.component'
 import { SharedModule } from "@/shared/shared.module";
 
 import { environment } from '../environments/environment';
+
+import { FunnelConfig } from "@/../helper/loadFunnelConfig";
 
 @NgModule({
   declarations: [

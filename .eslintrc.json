@@ -74,6 +74,10 @@
               },
               {
                 "group": "internal",
+                "pattern": "@plugins/**"
+              },
+              {
+                "group": "internal",
                 "pattern": "./**"
               },
               {

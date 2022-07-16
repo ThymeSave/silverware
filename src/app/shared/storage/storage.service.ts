@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { createLogger } from "@helper/log";
+import { CACHE_DB_NAME, saveValue } from "@helper/simpleStorage";
 import PouchDB from 'pouchdb';
 import plugin from 'pouchdb-upsert';
 import {
@@ -16,7 +18,6 @@ import {
   throwError,
 } from 'rxjs';
 
-import { CACHE_DB_NAME, saveValue } from "@/helper/simpleStorage";
 import { BaseDocument } from '@/models/BaseDocument';
 
 import { environment } from '../../../environments/environment';
@@ -33,6 +34,8 @@ export type UpsertDiffFunc<T> = (doc: T) => Partial<T> | boolean
 export class StorageService {
   private pouchRemote: PouchDB.Database | null = null;
   private pouchLocal: PouchDB.Database | null = null;
+
+  private logger = createLogger("StorageService");
 
   private dbSubject = new BehaviorSubject<PouchDB.Database | null>(null);
   public db$ = this.dbSubject.asObservable().pipe(filter(db => !!db));
@@ -71,7 +74,7 @@ export class StorageService {
    * @returns
    */
   public upsert<T extends BaseDocument>(entityType: string, id: string, diffFunc: UpsertDiffFunc<T>): Observable<PouchDB.UpsertResponse | T> {
-    console.debug("Upsert doc of entity type", entityType, "with id", id);
+    this.logger.debug(`Upsert doc of entity type ${entityType} with id ${id}`);
     return this.db$.pipe(switchMap(db =>
       from(db!.upsert<BaseDocument>(this.build_id(entityType, id), doc => {
         const diffFuncResult = diffFunc(doc as T);
@@ -95,6 +98,7 @@ export class StorageService {
    * @param id Id of the document
    */
   public getLatest<T extends BaseDocument>(entityType: string, id: string): Observable<T> {
+    this.logger.debug(`Get latest doc of entityType ${entityType} with id ${id}`);
     return this.db$
       .pipe(switchMap(db => from(db!.get(this.build_id(entityType, id), {latest: true})))) as Observable<T>;
   }
