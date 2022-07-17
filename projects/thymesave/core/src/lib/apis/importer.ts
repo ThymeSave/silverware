@@ -1,10 +1,10 @@
-import { Observable } from "rxjs";
+import { from, Observable, switchMap } from "rxjs";
 
 import { ComponentContext } from "./context";
 import { SERVICE_NAME_FUNNEL_CORS_PROXY, FunnelCorsService } from "./services";
 
 import { FunnelCORSProxyErrorResponse, FunnelCORSProxySuccessResponse } from "../models/funnel";
-import { Recipe } from "../models/recipe";
+import { RawRecipe, Recipe } from "../models/recipe";
 
 export enum ImporterType {
   /**
@@ -17,6 +17,8 @@ export enum ImporterType {
   MANUAL
 }
 
+export type EntityType = "recipe";
+
 export interface ImporterPayload {
 }
 
@@ -25,6 +27,11 @@ export abstract class Importer<T> {
    * Type specifies which inputs the importer can take and influence how the UI is displayed
    */
   abstract get type(): ImporterType
+
+  /**
+   * Specifies the entity type the importer can process
+   */
+  abstract get entityType() : EntityType
 
   /**
    * Name of the importer to display
@@ -95,7 +102,7 @@ export abstract class Importer<T> {
   }
 }
 
-export type RecipeImporterList = Array<Importer<Recipe>>
+export type RecipeImporterList = Array<Importer<RawRecipe>>
 
 export interface URLImporterPayload extends ImporterPayload {
   url: string
@@ -126,13 +133,32 @@ export abstract class URLImporter<T> extends Importer<T> {
    * @param url URL to fetch
    * @private
    */
-  protected fetchContent(context: ComponentContext, url: URL): Observable<FunnelCORSProxyErrorResponse | FunnelCORSProxySuccessResponse> {
+  public fetchContent(context: ComponentContext, url: URL): Observable<FunnelCORSProxyErrorResponse | FunnelCORSProxySuccessResponse> {
     return context.getService<FunnelCorsService>(SERVICE_NAME_FUNNEL_CORS_PROXY).fetch(url);
+  }
+}
+
+export abstract class RecipeURLImporter extends URLImporter<RawRecipe> {
+  override get entityType(): EntityType {
+    return "recipe";
+  }
+
+  public abstract parseFromHTML(context: ComponentContext, rawHTML : string) : Promise<RawRecipe>;
+
+  public override import(context: ComponentContext, payload: URLImporterPayload): Observable<RawRecipe> {
+    return this.fetchContent(context, new URL(payload.url))
+      .pipe(switchMap(raw => from(this.parseFromHTML(context, raw as string))));
   }
 }
 
 export abstract class ManualImporter<T> extends Importer<T> {
   get type() {
     return ImporterType.MANUAL;
+  }
+}
+
+export abstract class RecipeManualImporter extends Importer<RawRecipe> {
+  override get entityType(): EntityType {
+    return "recipe";
   }
 }

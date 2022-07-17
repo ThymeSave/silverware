@@ -5,8 +5,9 @@ import { createLogger } from "@helper/log";
 import { PluginRegistry } from "@thymesave/plugin";
 import { catchError, first, throwError } from "rxjs";
 
-import { environment } from './environments/environment';
 import { AppModule } from '@/app.module';
+
+import { environment } from '@/../environments/environment';
 
 import "@plugins/builtin";
 

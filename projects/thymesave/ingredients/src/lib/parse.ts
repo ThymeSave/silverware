@@ -7,9 +7,9 @@ const REGEXP_AMOUNT_UNIT_WITH_RANGE = /^(\w+)\s*-\s*(\w+)\s?(\w+)\s+(.+)$/;
 // <amount> <thing>
 const REGEXP_AMOUNT_WITHOUT_UNIT = /^(\d+)\b\s(\w+)$/;
 // <amount as fraction> <thing>
-const REGEXP_AMOUNT_FRACTION_WITHOUT_UNIT = /^(\d+)\/(\d+)\b\s(.+)$/;
+const REGEXP_AMOUNT_FRACTION_WITHOUT_UNIT = /^(\d+)\/(\d+)\s*\b\s(.+)$/;
 // <amount as fraction> <unit> <thing>
-const REGEXP_AMOUNT_FRACTION_WITH_UNIT = /^(\d+)\/(\d+)\s*(\w+)\s(.+)$/;
+const REGEXP_AMOUNT_FRACTION_WITH_UNIT = /^(\d+)\/(\d+)\s*\b\s(.+)\b\s(.+)$/;
 // <whole amount> <additional amount as fraction> <thing>
 const REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITHOUT_UNIT = /^(\d+)\s*(\d+)\/(\d+)\b\s(.+)$/;
 // <whole amount> <additional amount as fraction> <unit> <thing>
@@ -48,6 +48,19 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
       isRange: false,
       minAmount: amount,
       maxAmount: amount,
+    };
+  }
+
+  matches = raw.match(REGEXP_AMOUNT_FRACTION_WITH_UNIT);
+  if (matches != null) {
+    const amount = parseFloat(matches[1]) / parseFloat(matches[2]);
+    return {
+      ingredient: matches[4],
+      minAmount: amount,
+      maxAmount: amount,
+      unit: matches[3],
+      isNumeric: true,
+      isRange: false,
     };
   }
 
@@ -99,19 +112,6 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
       minAmount: amount,
       maxAmount: amount,
       unit: null,
-      isNumeric: true,
-      isRange: false,
-    };
-  }
-
-  matches = raw.match(REGEXP_AMOUNT_FRACTION_WITH_UNIT);
-  if (matches != null) {
-    const amount = parseFloat(matches[1]) / parseFloat(matches[2]);
-    return {
-      ingredient: matches[4],
-      minAmount: amount,
-      maxAmount: amount,
-      unit: matches[3],
       isNumeric: true,
       isRange: false,
     };

@@ -1,5 +1,7 @@
 <mat-stepper [linear]="true" orientation="vertical" #stepper>
-  <mat-step [label]="'recipes.choose_importer' | i18n" completed="false" editable="false">
+  <mat-step [label]="'recipes.choose_importer' | i18n"
+            completed="false"
+            editable="false">
     <mat-list>
       <!-- Import by URL -->
       <div mat-subheader>{{ 'recipes.importer_url' | i18n }}</div>
@@ -26,16 +28,38 @@
     <app-url-importer-settings (saved)="urlImporterSaved($event)" *ngIf="isURLImporter"></app-url-importer-settings>
   </mat-step>
   <mat-step [label]="'recipes.import_pending' | i18n" completed="false" editable="false">
-    <p>TODO Implement loading with possibility to cancel</p>
+    <div *ngIf="importLoading"
+         fxLayoutAlign="center center"
+         fxLayoutGap="12px"
+         fxLayout="column">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <button (click)="cancel()"
+              mat-raised-button
+              color="accent">
+        {{ 'cancel' | i18n }}
+      </button>
+    </div>
+    <div *ngIf="importFailed">
+      <!-- TODO Fine tune error handling -->
+      <h1 class="mat-h1">{{ 'recipes.import_failed' }}</h1>
+      <p class="caption">
+        {{ 'recipes.import_failed_explanation' }}
+      </p>
+      <mat-card class="error-details">
+        <pre><code>{{ importFailedErr | json }}</code></pre>
+      </mat-card>
+    </div>
   </mat-step>
-  <mat-step [label]="'recipes.verify' | i18n" completed="false" editable="false">
+  <mat-step [label]="'recipes.verify' | i18n"
+            completed="false"
+            editable="false">
     <form [formGroup]="form">
       <mat-form-field appearance="fill" fxFlexFill>
         <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
         <input matInput
                formControlName="title">
       </mat-form-field>
-      <p>TODO: Add rest of fields</p>
+      <p>TODO: Add rest of fields and convert into standalone component</p>
       <button color="primary"
               fxFlexFill
               (click)="save()"

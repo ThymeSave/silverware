@@ -18,6 +18,8 @@ const ui: SingleValueTranslation = {
   "recipes.importer_misc": "Sonstige",
   'recipes.importer_parameter': "Parameter eintragen",
   "recipes.import_pending": "Import läuft",
+  "recipes.import_failed": "Import fehlgeschlagen",
+  "recipes.import_failed_explanation": "Der Import des Rezept ist fehlgeschlagen, unterhalb finden Sie weitere Informationen die du an die Entwickler weitergeben kannst.",
   "recipes.importer.url.url-field": "Öffentlich erreichbare Internet-Adresse",
   "recipes.new": "Neues Rezept",
   "recipes.title": "Titel",

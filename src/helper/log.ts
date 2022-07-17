@@ -24,7 +24,7 @@ export function createLogger(component: string): Logger {
     warn(...args) {
       console.warn(prefixMessage("\x1B[93mWARN\x1B[0m", component, args[0]), ...args.slice(1));
     },
-    error(message: string, ...args) {
+    error(...args) {
       console.error(prefixMessage("\x1B[91mERROR\x1B[0m", component, args[0]), ...args.slice(1));
     },
   };

@@ -25,8 +25,7 @@ import { PwaModule } from "@/pwa/pwa.module";
 import { SettingsComponent } from '@/settings/pages/settings/settings.component';
 import { SharedModule } from "@/shared/shared.module";
 
-import { environment } from '../environments/environment';
-
+import { environment } from '@/../environments/environment';
 import { FunnelConfig } from "@/../helper/loadFunnelConfig";
 
 @NgModule({

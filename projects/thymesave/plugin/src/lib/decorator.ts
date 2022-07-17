@@ -1,4 +1,4 @@
-import {  Service, RecipeImporterList } from "@thymesave/core";
+import {  Service, RecipeImporterList, Importer } from "@thymesave/core";
 
 import { PluginRegistry } from "./registry";
 
@@ -75,7 +75,7 @@ export class Plugin implements PluginDescriptorInformation {
    * List with importers provided
    */
   // TODO Refactor return type to allow more customization
-  get importer(): RecipeImporterList {
+  get importer(): Importer<any>[] {
     return [];
   }
 
