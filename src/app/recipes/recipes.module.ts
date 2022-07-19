@@ -14,7 +14,8 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule, Routes } from "@angular/router";
 
-import { URLImporterSettingsComponent } from './importer-settings/urlimporter-settings/urlimporter-settings.component';
+import { ParsedRecipeEditorComponent } from './import/parsed-recipe-editor/parsed-recipe-editor.component';
+import { URLImporterSettingsComponent } from './import/urlimporter-settings/urlimporter-settings.component';
 import { NewRecipeComponent } from './pages/new/new-recipe.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { SharedModule } from "@/shared/shared.module";
@@ -35,6 +36,7 @@ const routes: Routes = [
     OverviewComponent,
     NewRecipeComponent,
     URLImporterSettingsComponent,
+    ParsedRecipeEditorComponent,
   ],
     imports: [
         CommonModule,

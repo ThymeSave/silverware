@@ -1,0 +1,52 @@
+<!-- TODO Make fancy -->
+<form [formGroup]="form" fxLayout="column">
+  <mat-form-field appearance="fill" fxFlexFill>
+    <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
+    <input matInput
+           formControlName="title">
+  </mat-form-field>
+  <ng-container formArrayName="ingredients">
+    <button mat-raised-button (click)="addIngredient()">Add</button>
+    <ng-container *ngFor="let ingredientsForm of ingredients.controls; let i = index;">
+      <div [formGroup]="ingredientsForm" fxFlex fxFlexFill fxLayoutAlign="space-around">
+        <mat-form-field appearance="fill">
+          <mat-label>minAmount</mat-label>
+          <input matInput formControlName="minAmount">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>maxAmount</mat-label>
+          <input matInput formControlName="maxAmount">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>ingredient</mat-label>
+          <input matInput formControlName="translationKey">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>unit</mat-label>
+          <input matInput formControlName="unit">
+        </mat-form-field>
+        <button (click)="ingredients.removeAt(i)" color="primary" mat-raised-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container formArrayName="instructions">
+    <ng-container *ngFor="let instructionControl of instructions.controls; let i = index;">
+      <mat-form-field>
+        <mat-label>instruction {{i + 1}}</mat-label>
+        <input matInput [formControl]="instructionControl">
+      </mat-form-field>
+      <button (click)="instructions.removeAt(i)" color="primary" mat-raised-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </ng-container>
+  </ng-container>
+  <!-- TODO Add save action -->
+  <button color="primary"
+          fxFlexFill
+          mat-raised-button>
+    <mat-icon>save</mat-icon>
+    {{ 'save' | i18n }}
+  </button>
+</form>

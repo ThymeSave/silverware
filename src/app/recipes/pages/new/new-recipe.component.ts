@@ -26,9 +26,6 @@ import { RecipeImporterService } from "@/recipes/recipe-importer.service";
 export class NewRecipeComponent implements OnInit {
   private logger = createLogger("NewComponent");
 
-  public form = new FormGroup({
-    title: new FormControl(""),
-  });
   public importer: Importer<RawRecipe> | null = null;
   @ViewChild("stepper") private stepper !: MatStepper;
 
@@ -100,7 +97,6 @@ export class NewRecipeComponent implements OnInit {
 
   public cancel() {
     this.stepper.reset();
-    this.form.reset();
 
     this.importLoading = false;
     this.importFailed = false;
