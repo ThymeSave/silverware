@@ -27,6 +27,5 @@ describe("ChowdownSingleRecipeImporter", () => {
     expect(r.description).toBe("From Angie’s mom");
     expect(r.ingredients.length).toBe(9);
     expect(r.image).toBeDefined();
-    expect(r.image!!.length).toBe(17875);
   });
 });
