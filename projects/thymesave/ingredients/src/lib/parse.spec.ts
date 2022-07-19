@@ -107,11 +107,44 @@ describe("parseIngredientInformation", () => {
     expect(parsed.isRange).toBeFalse();
   });
 
+  it("should work with amount as fraction plus unit and multi word ingredient", () => {
+    const parsed = parseIngredientInformation("1/2 cups baking soda");
+    expect(parsed.ingredient).toBe("baking soda");
+    expect(parsed.unit).toBe("cups");
+    expect(parsed.minAmount).toBe(.5);
+    expect(parsed.isRange).toBeFalse();
+  });
+
+  it("should work with amount as whole numer and fraction plus unit and multi word ingredient", () => {
+    const parsed = parseIngredientInformation("1 1/2 cups baking soda");
+    expect(parsed.ingredient).toBe("baking soda");
+    expect(parsed.unit).toBe("cups");
+    expect(parsed.minAmount).toBe(1.5);
+    expect(parsed.isRange).toBeFalse();
+  });
+
   it("should work with amount as whole number and fraction plus unit", () => {
     const parsed = parseIngredientInformation("1 1/2 carrot");
     expect(parsed.ingredient).toBe("carrot");
     expect(parsed.unit).toBeNull();
     expect(parsed.minAmount).toBe(1.5);
+    expect(parsed.isRange).toBeFalse();
+  });
+
+  it("should parse without amount and multi word ingredient", () => {
+    const parsed = parseIngredientInformation("1 tsp baking powder");
+    expect(parsed.ingredient).toBe("baking powder");
+    expect(parsed.unit).toBe("tsp");
+    expect(parsed.minAmount).toBe(1);
+    expect(parsed.isRange).toBeFalse();
+  });
+
+  it("should parse textual amounts", () => {
+    const parsed = parseIngredientInformation("pinch salt");
+    expect(parsed.ingredient).toBe("salt");
+    expect(parsed.unit).toBe("pinch");
+    expect(parsed.minAmount).toBe(0);
+    expect(parsed.maxAmount).toBe(0);
     expect(parsed.isRange).toBeFalse();
   });
 });

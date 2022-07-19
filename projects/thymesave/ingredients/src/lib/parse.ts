@@ -9,11 +9,13 @@ const REGEXP_AMOUNT_WITHOUT_UNIT = /^(\d+)\b\s(\w+)$/;
 // <amount as fraction> <thing>
 const REGEXP_AMOUNT_FRACTION_WITHOUT_UNIT = /^(\d+)\/(\d+)\s*\b\s(.+)$/;
 // <amount as fraction> <unit> <thing>
-const REGEXP_AMOUNT_FRACTION_WITH_UNIT = /^(\d+)\/(\d+)\s*\b\s(.+)\b\s(.+)$/;
+const REGEXP_AMOUNT_FRACTION_WITH_UNIT = /^(\d+)\/(\d+)\s*\b\s(\w+)\b\s(.+)$/;
 // <whole amount> <additional amount as fraction> <thing>
 const REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITHOUT_UNIT = /^(\d+)\s*(\d+)\/(\d+)\b\s(.+)$/;
 // <whole amount> <additional amount as fraction> <unit> <thing>
-const REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITH_UNIT = /^(\d+)\s*(\d+)\/\s*(\w+)\b\s(.+)$/;
+const REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITH_UNIT = /^(\d+)\s*(\d+)\/(\d+)\b\s*(\w+)\b\s*(.+)$/;
+// <textual amount> <ingredient>
+const REGEXP_TEXTUAL_AMOUNT = /^(\w+)\b\s*(\w*)$/;
 
 const isText = (val: string) => isNaN(val as any);
 const convertToAmount = (val: string) => isText(val) ? val.trim() : parseFloat(val);
@@ -89,6 +91,21 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     };
   }
 
+  matches = raw.match(REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITH_UNIT);
+  if (matches != null) {
+    const wholeAmount = parseFloat(matches[0]);
+    const fractionAmount = parseFloat(matches[2]) / parseFloat(matches[3]);
+    const amount = wholeAmount + fractionAmount;
+    return {
+      ingredient: matches[5],
+      minAmount: amount,
+      maxAmount: amount,
+      unit: matches[4],
+      isNumeric: true,
+      isRange: false,
+    };
+  }
+
   matches = raw.match(REGEXP_AMOUNT_FRACTION_WITHOUT_UNIT);
   if (matches != null) {
     const amount = parseFloat(matches[1]) / parseFloat(matches[2]);
@@ -117,14 +134,13 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     };
   }
 
-  matches = raw.match(REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITH_UNIT);
-  if (matches != null) {
-    const amount = parseFloat(matches[1]) / parseFloat(matches[2]);
+  matches = raw.match(REGEXP_TEXTUAL_AMOUNT);
+  if(matches != null) {
     return {
-      ingredient: matches[5],
-      minAmount: amount,
-      maxAmount: amount,
-      unit: matches[4],
+      ingredient: matches[2],
+      minAmount: 0,
+      maxAmount: 0,
+      unit: matches[1],
       isNumeric: true,
       isRange: false,
     };
