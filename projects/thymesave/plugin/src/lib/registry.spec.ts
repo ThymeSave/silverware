@@ -1,12 +1,12 @@
-import { ComponentContext, ImporterType, Recipe, URLImporter, URLImporterPayload } from "@thymesave/core";
+import { ComponentContext, ImporterType, Recipe, URLImporter, URLImporterPayload, RecipeURLImporter, RawRecipe } from "@thymesave/core";
 import { Observable, of } from "rxjs";
 
 import { Plugin, PluginDescriptor } from "./decorator";
 import { FilterImporterByType, PluginAlreadyRegisteredError, PluginRegistry } from "./registry";
 
-class TestImporter extends URLImporter<Recipe> {
-  import(context: ComponentContext, payload: URLImporterPayload): Observable<Recipe> {
-    return of({
+class TestImporter extends RecipeURLImporter {
+  public override parseFromHTML(context: ComponentContext, rawHTML : string): Promise<RawRecipe> {
+    return Promise.resolve({
       uuid: "",
       description: "",
       ingredients: [],
