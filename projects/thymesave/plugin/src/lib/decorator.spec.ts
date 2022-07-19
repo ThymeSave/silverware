@@ -10,7 +10,7 @@ describe("Plugin decorator", () => {
     @PluginDescriptor({
       name: "test",
       description: "foo goes to bar",
-      version: "builtin"
+      version: "builtin",
     })
     class SamplePlugin {
 
@@ -23,7 +23,7 @@ describe("Plugin decorator", () => {
     @PluginDescriptor({
       name: "test",
       description: "Plugin to test functionality",
-      version: "builtin"
+      version: "builtin",
     })
     class SamplePlugin extends Plugin {
 
@@ -37,7 +37,8 @@ describe("Plugin decorator", () => {
     @PluginDescriptor({
       name: "version-type-test",
       description: "Dummy to test typing",
-      version: "1.1.11"
+      version: "1.1.11",
+      autoRegister: false,
     })
     class VersionPluginTest1 extends Plugin {
 
@@ -46,7 +47,8 @@ describe("Plugin decorator", () => {
     @PluginDescriptor({
       name: "version-type-test",
       description: "Dummy to test typing",
-      version: "builtin"
+      version: "builtin",
+      autoRegister: false,
     })
     class VersionPluginTest2 extends Plugin {
 
@@ -55,7 +57,8 @@ describe("Plugin decorator", () => {
     @PluginDescriptor({
       name: "version-type-test",
       description: "Dummy to test typing",
-      version: "builtin"
+      version: "builtin",
+      autoRegister: false,
     })
     class VersionPluginTest3 extends Plugin {
 
@@ -63,4 +66,4 @@ describe("Plugin decorator", () => {
 
     expect(true).toBeTrue();
   });
-})
+});
