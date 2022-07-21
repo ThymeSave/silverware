@@ -12,3 +12,9 @@
     width: 74.67px;
   }
 }
+
+@media(min-width: 1200px) {
+  ::ng-deep.mat-form-field-infix {
+    width: 363px;
+  }
+}

@@ -1,6 +1,10 @@
-<ng-container [formGroup]="formGroup">
+<div fxFlex
+     fxLayoutGap="20px"
+     fxLayout.lt-md="column"
+     fxLayoutAlign="center center"
+     [formGroup]="formGroup">
   <div class="amount-unit">
-    <mat-checkbox formControlName="isRange" class="example-margin">Range</mat-checkbox>
+    <mat-slide-toggle color="primary" formControlName="isRange" class="example-margin">Range</mat-slide-toggle>
     <mat-form-field class="amount">
       <mat-label>{{ 'min' | i18n }}</mat-label>
       <input matInput formControlName="minAmount">
@@ -29,4 +33,4 @@
           mat-fab>
     <mat-icon>delete</mat-icon>
   </button>
-</ng-container>
+</div>

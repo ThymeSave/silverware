@@ -1,5 +1,11 @@
 .add-button-container {
   margin-bottom: 30px;
+  width: 100%;
+
+  button {
+    margin: auto;
+    display: block;
+  }
 }
 .full-width-field {
   width: 100%;
@@ -7,4 +13,9 @@
 
 form {
   margin-top: 20px;
+}
+
+img {
+  margin: auto;
+  display: block;
 }

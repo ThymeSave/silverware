@@ -1,8 +1,7 @@
 <!-- TODO Make fancy -->
 <form [formGroup]="form" fxFlex fxLayout="column" fxLayoutGap="20px">
-  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
-    <img fxFlex.gt-md="20%" [src]="recipe?.image">
-    <div fxFlex.gt-md="30%" fxLayoutAlign="center start" fxLayout="column" class="full-width-field">
+  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start" fxLayoutGap="20px">
+    <div fxFlex.gt-md="50%" fxLayoutAlign="center start" fxLayout="column" class="full-width-field">
       <mat-form-field class="full-width-field">
         <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
         <input matInput
@@ -14,25 +13,23 @@
         <textarea formControlName="description" matInput></textarea>
       </mat-form-field>
     </div>
+    <div fxFlex.gt-md="50%">
+      <img [src]="recipe?.image">
+    </div>
   </div>
 
   <div fxFlex fxFlexFill fxLayout.lt-xl="column">
     <div formArrayName="ingredients"
          fxLayout="column"
+         fxLayoutAlign="start start"
          fxLayoutGap.lt-md="50px"
-         fxFlex.gt-lg="40%">
+         fxFlex.gt-lg="50%">
       <app-parsed-recipe-editor-ingredient
         *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
         [formGroup]="ingredientsFormGroup"
-        (deleted)="ingredients.removeAt(i)"
-        fxFlex
-        fxLayoutGap="20px"
-        fxLayout.lt-md="column"
-        fxLayoutAlign="center center">
+        (deleted)="ingredients.removeAt(i)">
       </app-parsed-recipe-editor-ingredient>
-      <div fxFlex
-           fxLayoutAlign="center center"
-           class="add-button-container">
+      <div class="add-button-container">
         <button mat-fab
                 color="primary"
                 (click)="addIngredient()">
@@ -41,21 +38,14 @@
       </div>
     </div>
     <div formArrayName="instructions"
-         fxFlex.gt-lg="60%"
+         fxFlex.gt-lg="50%"
          fxLayout="column">
       <app-parsed-recipe-editor-instruction
-        fxFlex
-        fxFlexFill
-        fxLayoutAlign="center center"
-        fxLayoutGap="20px"
         *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
         [formGroup]="instructionsFormGroup"
         (deleted)="instructions.removeAt(i)">
       </app-parsed-recipe-editor-instruction>
-      <div fxFlexFill
-           fxFlex
-           fxLayoutAlign="center center"
-           class="add-button-container">
+      <div class="add-button-container">
         <button mat-fab
                 color="primary"
                 fxLayoutAlign="center center"
