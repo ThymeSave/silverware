@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
+import { createLogger } from "@helper/log";
 import { ParsedRecipe } from "@thymesave/core";
 
 @Component({
@@ -8,6 +10,8 @@ import { ParsedRecipe } from "@thymesave/core";
   styleUrls: ['./parsed-recipe-editor.component.scss'],
 })
 export class ParsedRecipeEditorComponent {
+  public logger = createLogger("ParsedRecipeEditorComponent");
+
   private _recipe !: ParsedRecipe;
 
   @Input() set recipe(value: ParsedRecipe) {
@@ -17,26 +21,35 @@ export class ParsedRecipeEditorComponent {
     }
     this.form.patchValue({
       title: this._recipe.title,
+      description: this._recipe.description,
     });
     this._recipe.ingredients
       .map(ingredient => this.fb.group({
-        // @ts-ignore TODO Fix to actually display chooser
         "translationKey": this.fb.control(ingredient.ingredient),
         "minAmount": this.fb.control(ingredient.minAmount),
         "maxAmount": this.fb.control(ingredient.maxAmount),
         "unit": this.fb.control(ingredient.unit),
+        "isRange": this.fb.control(ingredient.isRange),
       }))
-      .forEach(item => this.ingredients.push(item as any as FormGroup));
-    this._recipe.instructions.map(instruction => this.fb.control(instruction.text))
-      .forEach(item => this.instructions.push(item as any as FormControl));
+      .forEach(item => this.ingredients.push(item));
+    this._recipe.instructions
+      .map(instruction => this.fb.group({
+        'text': this.fb.control(instruction.text),
+      }))
+      .forEach(item => this.instructions.push(item));
   }
 
   get recipe(): ParsedRecipe {
     return this._recipe;
   }
 
+  constructor(private fb: FormBuilder,
+              public router: Router) {
+  }
+
   public form = this.fb.group({
     title: this.fb.control(""),
+    description: this.fb.control(""),
     ingredients: this.fb.array([]),
     instructions: this.fb.array([]),
   });
@@ -46,21 +59,28 @@ export class ParsedRecipeEditorComponent {
   }
 
   get instructions() {
-    return this.form.controls["instructions"] as any as FormArray<FormControl>;
+    return this.form.controls["instructions"] as any as FormArray<FormGroup>;
   }
 
   public addIngredient() {
     this.ingredients.push(
       this.fb.group({
-        "translationKey": new FormControl(""),
-        "minAmount": new FormControl(0),
-        "maxAmount": new FormControl(0),
-        "unit": new FormControl(""),
+        "translationKey": this.fb.control(""),
+        "minAmount": this.fb.control(0),
+        "maxAmount": this.fb.control(0),
+        "unit": this.fb.control(""),
       }),
     );
   }
 
-  constructor(private fb: FormBuilder) {
+  public addInstruction() {
+    this.instructions.push(this.fb.group({
+      text: this.fb.control(""),
+    }));
   }
 
+  public async save() {
+    this.logger.info(this.form.getRawValue());
+    await this.router.navigate(["/recipes"]);
+  }
 }

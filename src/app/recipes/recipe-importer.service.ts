@@ -9,8 +9,10 @@ import {
   Instruction,
 } from "@thymesave/core";
 import { parseIngredientInformation, IngredientParseError, propagateParseError } from "@thymesave/ingredients";
+import { matchUnitByText } from "@thymesave/translations";
 import { map } from "rxjs";
 
+import { LanguageService } from "@/shared/i18n/language.service";
 import { ContextService } from "@/shared/plugins/context.service";
 
 @Injectable({
@@ -18,13 +20,17 @@ import { ContextService } from "@/shared/plugins/context.service";
 })
 export class RecipeImporterService {
 
-  constructor(private contextService : ContextService) {
+  constructor(private contextService: ContextService,
+              private languageService: LanguageService) {
   }
 
   private parseIngredients(raw: string[]) {
     return raw.map(text => {
       try {
-        return parseIngredientInformation(text);
+        const ingredient = parseIngredientInformation(text);
+        if (ingredient.unit)
+          ingredient.unit = this.parseUnit(ingredient.unit);
+        return ingredient;
       } catch (e: any | IngredientParseError) {
         return propagateParseError(e);
       }
@@ -36,6 +42,12 @@ export class RecipeImporterService {
       .map(text => ({
         text,
       }));
+  }
+
+  private parseUnit(unit: string) {
+    const language = this.languageService.currentLanguage;
+    const matches = matchUnitByText(language, unit, {});
+    return matches.length > 0 ? matches[0].key : unit;
   }
 
   private parseRecipe(raw: RawRecipe): ParsedRecipe {

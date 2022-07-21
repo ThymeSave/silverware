@@ -1,0 +1,9 @@
+<ng-container [formGroup]="formGroup">
+  <mat-form-field fxFlex="100%">
+    <mat-label>instruction</mat-label>
+    <input matInput formControlName="text">
+  </mat-form-field>
+  <button color="primary" (click)="emitDelete()" mat-fab>
+    <mat-icon>delete</mat-icon>
+  </button>
+</ng-container>

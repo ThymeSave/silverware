@@ -1,8 +1,10 @@
 import { SingleValueTranslation } from "../../lib/model";
 
 const ui: SingleValueTranslation = {
+  "add": "Add",
   "cancel": "Cancel",
   "close": "Close",
+  "ingredient": "Ingredient",
   "update.heading": "Update available",
   "update.description": "Click on Ok to install the update now, otherwise it will be installed the next time you start the app.",
   "language": "language",
@@ -10,6 +12,8 @@ const ui: SingleValueTranslation = {
   "language.en_US": "english",
   "login": "Login",
   "logout": "Logout",
+  "min": "Min",
+  "max": "Max",
   "ok": "Ok",
   "open": "Open",
   "recipes": "Recipes",
@@ -27,6 +31,7 @@ const ui: SingleValueTranslation = {
   "save": "Save",
   "settings": "Settings",
   "offline.hint": "App is running offline",
+  "unit": "Unit",
 };
 
 export default ui;

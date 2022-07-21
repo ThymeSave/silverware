@@ -1,0 +1,32 @@
+<ng-container [formGroup]="formGroup">
+  <div class="amount-unit">
+    <mat-checkbox formControlName="isRange" class="example-margin">Range</mat-checkbox>
+    <mat-form-field class="amount">
+      <mat-label>{{ 'min' | i18n }}</mat-label>
+      <input matInput formControlName="minAmount">
+    </mat-form-field>
+    <ng-container *ngIf="formGroup.value.isRange">
+      <span>-</span>
+      <mat-form-field class="amount" >
+        <mat-label>{{ 'max' | i18n }}</mat-label>
+        <input matInput
+               formControlName="maxAmount">
+      </mat-form-field>
+    </ng-container>
+    <div class="max-unit-placeholder"
+         *ngIf="!formGroup.value.isRange"></div>
+    <app-unit-selector [formGroup]="formGroup"
+                       formControlName="unit">
+    </app-unit-selector>
+  </div>
+  <mat-form-field>
+    <mat-label>{{ 'ingredient' | i18n }}</mat-label>
+    <input matInput
+           formControlName="translationKey">
+  </mat-form-field>
+  <button (click)="emitDelete()"
+          color="primary"
+          mat-fab>
+    <mat-icon>delete</mat-icon>
+  </button>
+</ng-container>
