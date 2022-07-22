@@ -18,6 +18,7 @@ const ui: SingleValueTranslation = {
   "open": "Open",
   "recipes": "Recipes",
   "recipes.choose_importer": "Select importer",
+  "recipes.description": "Description",
   "recipes.importer_url": "From Web URL",
   "recipes.importer_misc": "Miscellaneous",
   'recipes.importer_parameter': "Set parameters",

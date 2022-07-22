@@ -5,6 +5,7 @@ const ui: SingleValueTranslation = {
   "cancel": "Abbrechen",
   "close": "Schliessen",
   "ingredient": "Zutat",
+
   "update.heading": "Aktualisierung verfügbar",
   "update.description": "Mit einem Klick auf Bestätigen jetzt aktualisieren oder erst beim nächsten Start aktualisieren.",
   "language": "Sprache",
@@ -17,6 +18,7 @@ const ui: SingleValueTranslation = {
   "ok": "Bestätigen",
   "open": "Öffnen",
   "recipes": "Rezepte",
+  "recipes.description": "Beschreibung",
   "recipes.choose_importer": "Importer selektieren",
   "recipes.importer_url": "Via URL aus dem Internet",
   "recipes.importer_misc": "Sonstige",
