@@ -1,10 +1,12 @@
 <div fxLayout="row wrap"
-      fxLayoutGap="20px"
+     fxLayoutGap="20px"
      fxLayoutAlign="center center"
      [formGroup]="formGroup">
   <app-drag-handle></app-drag-handle>
   <div class="amount-unit" fxFlex.gt-lg="230px">
-    <mat-slide-toggle color="primary" formControlName="isRange" class="example-margin">Range</mat-slide-toggle>
+    <mat-slide-toggle color="primary"
+                      formControlName="isRange"
+                      class="example-margin">Range</mat-slide-toggle>
     <mat-form-field class="amount">
       <mat-label>{{ 'min' | i18n }}</mat-label>
       <input matInput formControlName="minAmount">
