@@ -1,4 +1,3 @@
-<!-- TODO Make fancy -->
 <form [formGroup]="form" fxFlex fxLayout="column">
   <div fxFlex
        fxLayout.gt-md="row"
@@ -22,7 +21,7 @@
       </mat-form-field>
     </div>
     <div fxFlex.gt-md="50%" *ngIf="recipe?.image">
-      <img [src]="recipe?.image">
+      <img [alt]="recipe.title" [src]="recipe?.image">
     </div>
   </div>
 
@@ -33,13 +32,15 @@
     <div formArrayName="ingredients"
          cdkDropList
          (cdkDropListDropped)="droppedIngredient($event)"
-         class="recipe-editor-column"
+         class="recipe-editor-column ingredients"
          fxLayout="column"
          fxLayoutAlign="start stretch"
          fxLayoutGap.lt-md="10px"
          fxFlex.gt-lg="50%">
       <app-parsed-recipe-editor-ingredient
         cdkDrag
+        cdkDragBoundary=".ingredients"
+        cdkDragLockAxis="y"
         *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
         [formGroup]="ingredientsFormGroup"
         (deleted)="ingredients.removeAt(i)">
@@ -53,13 +54,15 @@
       </div>
     </div>
     <div formArrayName="instructions"
-         class="recipe-editor-column"
+         class="recipe-editor-column instructions"
          cdkDropList
          (cdkDropListDropped)="droppedInstruction($event)"
          fxFlex.gt-lg="50%"
          fxLayout="column">
       <app-parsed-recipe-editor-instruction
         cdkDrag
+        cdkDragBoundary=".instructions"
+        cdkDragLockAxis="y"
         *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
         [formGroup]="instructionsFormGroup"
         (deleted)="instructions.removeAt(i)">
