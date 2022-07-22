@@ -1,0 +1,13 @@
+<mat-form-field>
+  <mat-label>{{ 'ingredient' | i18n }}</mat-label>
+  <!-- TODO Actually filter -->
+  <input type="text" matInput [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-optgroup *ngFor="let group of ingredientService.groupedByCategory"
+                  [label]="group.name">
+      <mat-option *ngFor="let ingredient of group.ingredients">
+        {{ingredient.name | i18n}}
+      </mat-option>
+    </mat-optgroup>
+  </mat-autocomplete>
+</mat-form-field>

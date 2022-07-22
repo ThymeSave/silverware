@@ -1,42 +1,45 @@
 <form [formGroup]="form" fxFlex fxLayout="column">
   <div fxFlex
        fxLayout.gt-md="row"
+       fxLayoutGap="30px"
        fxLayout.lt-md="column-reverse"
-       fxLayoutAlign="start"
-       fxLayoutGap="20px">
-    <div fxFlex.gt-md="50%"
-         fxFlex.lt-md="100%"
-         fxLayoutAlign="start start"
-         fxLayout="column"
-         class="full-width-field">
-      <mat-form-field class="full-width-field">
+       fxLayoutAlign="start">
+    <mat-card fxLayoutAlign="start stretch"
+              fxLayout="column"
+              fxFlex
+              class="full-width-field">
+      <mat-form-field fxFlex="100%">
         <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
         <input matInput
                fxFlexFill
                formControlName="title">
       </mat-form-field>
-      <mat-form-field class="full-width-field">
+      <mat-form-field fxFlex="100%">
         <mat-label>{{'recipes.description' | i18n}}</mat-label>
         <textarea formControlName="description" matInput></textarea>
       </mat-form-field>
-    </div>
-    <div fxFlex.gt-md="50%" *ngIf="recipe?.image">
+    </mat-card>
+    <div fxLayoutAlign="start center"
+         *ngIf="recipe?.image">
+      <!-- TODO Make editable -->
       <img [alt]="recipe.title" [src]="recipe?.image">
     </div>
   </div>
 
   <div fxFlex
-       fxFlexFill
        fxLayout="row"
+       fxLayoutGap="30px"
+       class="recipe-details"
        fxLayout.lt-xl="column">
-    <div formArrayName="ingredients"
-         cdkDropList
-         (cdkDropListDropped)="droppedIngredient($event)"
-         class="recipe-editor-column ingredients"
-         fxLayout="column"
-         fxLayoutAlign="start stretch"
-         fxLayoutGap.lt-md="10px"
-         fxFlex.gt-lg="50%">
+    <mat-card formArrayName="ingredients"
+              cdkDropList
+              (cdkDropListDropped)="droppedIngredient($event)"
+              class="recipe-editor-column ingredients"
+              fxLayout="column"
+              fxLayoutAlign="start stretch"
+              fxLayoutGap.lt-md="10px"
+              fxLayoutGap="0px"
+              fxFlex.gt-lg="50%">
       <app-parsed-recipe-editor-ingredient
         cdkDrag
         cdkDragBoundary=".ingredients"
@@ -52,13 +55,13 @@
           <mat-icon>add</mat-icon>
         </button>
       </div>
-    </div>
-    <div formArrayName="instructions"
-         class="recipe-editor-column instructions"
-         cdkDropList
-         (cdkDropListDropped)="droppedInstruction($event)"
-         fxFlex.gt-lg="50%"
-         fxLayout="column">
+    </mat-card>
+    <mat-card formArrayName="instructions"
+              class="recipe-editor-column instructions"
+              cdkDropList
+              (cdkDropListDropped)="droppedInstruction($event)"
+              fxFlex.gt-lg="50%"
+              fxLayout="column">
       <app-parsed-recipe-editor-instruction
         cdkDrag
         cdkDragBoundary=".instructions"
@@ -75,12 +78,11 @@
           <mat-icon>add</mat-icon>
         </button>
       </div>
-    </div>
+    </mat-card>
   </div>
 
   <!-- TODO Add save action -->
   <button color="primary"
-          fxFlexFill
           (click)="save()"
           mat-raised-button>
     <mat-icon>save</mat-icon>

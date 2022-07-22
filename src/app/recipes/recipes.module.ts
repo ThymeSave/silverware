@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatCheckboxModule} from "@angular/material/checkbox";
@@ -18,6 +19,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule, Routes } from "@angular/router";
 
+import { IngredientSelectorComponent } from './common/ingredient-selector/ingredient-selector.component';
 import { UnitSelectorComponent } from './common/unit-selector/unit-selector.component';
 import { ParsedRecipeEditorIngredientComponent } from './import/parsed-recipe-editor-ingredient/parsed-recipe-editor-ingredient.component';
 import { ParsedRecipeEditorInstructionComponent } from './import/parsed-recipe-editor-instruction/parsed-recipe-editor-instruction.component';
@@ -47,29 +49,31 @@ const routes: Routes = [
     ParsedRecipeEditorIngredientComponent,
     ParsedRecipeEditorInstructionComponent,
     UnitSelectorComponent,
+    IngredientSelectorComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        MatButtonModule,
-        MatIconModule,
-        MatTooltipModule,
-        SharedModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FlexModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatStepperModule,
-        MatListModule,
-        MatRippleModule,
-        MatProgressBarModule,
-        MatCardModule,
-        MatCheckboxModule,
-        MatSelectModule,
-        MatSlideToggleModule,
-        DragDropModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    SharedModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FlexModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatStepperModule,
+    MatListModule,
+    MatRippleModule,
+    MatProgressBarModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    DragDropModule,
+    MatAutocompleteModule,
+  ],
 })
 export class RecipesModule {
 }

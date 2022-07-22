@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from "@angular/forms";
 import { MatStepper } from "@angular/material/stepper";
 import { Router } from '@angular/router';
 import { createLogger } from "@helper/log";
 import {
   Importer,
   ImporterType,
-  Recipe,
   RecipeImporterList,
   ImporterPayload,
   RawRecipe,
@@ -14,9 +12,9 @@ import {
 } from "@thymesave/core";
 import { URLImporterPayload } from "@thymesave/core";
 import { FilterImporterByType, PluginRegistry } from "@thymesave/plugin";
-import { BehaviorSubject, filter, finalize } from "rxjs";
+import { BehaviorSubject, catchError, filter, finalize, of } from "rxjs";
 
-import { RecipeImporterService } from "@/recipes/recipe-importer.service";
+import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
 
 @Component({
   selector: 'app-new-recipe',
@@ -79,8 +77,12 @@ export class NewRecipeComponent implements OnInit {
     this.completeCurrentStep();
 
     this.importerService.runRecipeImporter(this.importer as any as Importer<RawRecipe>, payload)
-      .pipe(finalize(() => this.importLoading = false))
-      .subscribe(this.succeedImport.bind(this), err => this.failImport(err));
+      .pipe(
+        finalize(() => this.importLoading = false),
+        catchError(err => this.failImport(err)),
+        filter(r => r != null),
+      )
+      .subscribe((recipe: ParsedRecipe | null) => this.succeedImport(recipe!!));
   }
 
   private succeedImport(recipe: ParsedRecipe) {
@@ -93,6 +95,7 @@ export class NewRecipeComponent implements OnInit {
     this.importFailed = true;
     this.importFailedErr = err;
     this.logger.error(`Import failed`, err);
+    return of(null);
   }
 
   public cancel() {
