@@ -116,6 +116,11 @@ $altTheme: (
   @include mat.all-component-themes($altTheme);
 }
 
+body {
+  background: map-get($mat-dark-theme-background, background);
+  color: $light-text
+}
+
 // Specific component overrides, pieces that are not in line with the general theming
 
 // Handle buttons appropriately, with respect to line-height

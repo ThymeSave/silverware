@@ -1,8 +1,8 @@
-<div fxLayoutGap="20px"
-     fxLayout="row wrap"
+<div fxLayout="row wrap"
+      fxLayoutGap="20px"
      fxLayoutAlign="center center"
      [formGroup]="formGroup">
-  <mat-icon>drag_handle</mat-icon>
+  <app-drag-handle></app-drag-handle>
   <div class="amount-unit" fxFlex.gt-lg="230px">
     <mat-slide-toggle color="primary" formControlName="isRange" class="example-margin">Range</mat-slide-toggle>
     <mat-form-field class="amount">

@@ -24,5 +24,26 @@ img {
 
 .recipe-editor-column {
   padding: 20px;
+  background: inherit;
 }
 
+/* Animate items as they're being sorted. */
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Animate an item that has been dropped. */
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  background: inherit;
+  color: inherit;
+}
+
+app-parsed-recipe-editor-ingredient,
+app-parsed-recipe-editor-instruction {
+  padding-left: 10px;
+  padding-right: 10px;
+}
