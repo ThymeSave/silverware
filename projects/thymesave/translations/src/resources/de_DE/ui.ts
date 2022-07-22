@@ -5,7 +5,6 @@ const ui: SingleValueTranslation = {
   "cancel": "Abbrechen",
   "close": "Schliessen",
   "ingredient": "Zutat",
-
   "update.heading": "Aktualisierung verfügbar",
   "update.description": "Mit einem Klick auf Bestätigen jetzt aktualisieren oder erst beim nächsten Start aktualisieren.",
   "language": "Sprache",

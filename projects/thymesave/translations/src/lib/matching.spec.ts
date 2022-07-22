@@ -1,7 +1,7 @@
 import { Languages } from "../public-api";
 import { findMatches, matchIngredientByText, matchUnitByText } from "./matching";
 
-const DEFAULT_MATCH_OPTIONS = {maxMatches: 10, minSimilarity: .5}
+const DEFAULT_MATCH_OPTIONS = {maxMatches: 10, minSimilarity: .5};
 
 describe("findMatches", () => {
   it("should return a single value for exact matches", () => {
@@ -9,14 +9,14 @@ describe("findMatches", () => {
       {
         "key.one": ["Text"],
         "key.two": ["potato"],
-        "key.three": ["foobar"]
+        "key.three": ["foobar"],
       }, "Text", DEFAULT_MATCH_OPTIONS);
     expect(matches).toEqual([
       {
         key: "key.one",
         variant: "Text",
-        similarity: 1.000
-      }
+        similarity: 1.000,
+      },
     ]);
   });
 
@@ -26,19 +26,19 @@ describe("findMatches", () => {
         "key.one": ["potat"],
         "key.two": ["potato"],
         "key.three": ["shrimp"],
-        "key.four": ["tomato"]
-      }, "potatoh", DEFAULT_MATCH_OPTIONS)
+        "key.four": ["tomato"],
+      }, "potatoh", DEFAULT_MATCH_OPTIONS);
     expect(matches).toEqual([
       {
         key: "key.two",
         variant: "potato",
-        similarity: 0.9091
+        similarity: 0.9091,
       },
       {
         key: "key.one",
         variant: "potat",
-        similarity: 0.8000
-      }
+        similarity: 0.8000,
+      },
     ]);
   });
 
@@ -46,8 +46,8 @@ describe("findMatches", () => {
     const matches = findMatches({
       "key.one": ["foo"],
       "key.two": ["bar"],
-      "key.three": ["foobar"]
-    }, "Test", DEFAULT_MATCH_OPTIONS)
+      "key.three": ["foobar"],
+    }, "Test", DEFAULT_MATCH_OPTIONS);
     expect(matches.length).toBe(0);
   });
 });

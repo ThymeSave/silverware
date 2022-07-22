@@ -1,5 +1,7 @@
-import { Language, PluralizableTranslation } from "./model";
 import stringSimilarity from "string-similarity";
+
+import { Language, PluralizableTranslation } from "./model";
+
 const SIMILARITY_EXACT = 1;
 
 const sortMatches = (a: Match, b: Match) => b.similarity - a.similarity;
@@ -69,14 +71,14 @@ export const findMatches = (variants: MatchSourceVariants | PluralizableTranslat
           {
             key,
             variant,
-            similarity
-          }
-        ]
+            similarity,
+          },
+        ];
       } else if (similarity >= minSimilarity) {
         matches.push({
           key,
           variant,
-          similarity
+          similarity,
         });
       }
     }
@@ -114,9 +116,9 @@ export const matchUnitByText = (language: Language, text: string, options: Match
 
     variants[key] = [
       unit.short,
-      ...unit.long
+      ...unit.long,
     ];
   }
 
   return findMatches(variants, text, options);
-}
+};
