@@ -1,9 +1,13 @@
-<div [formGroup]="formGroup" fxFlex fxLayout="row" fxLayoutGap="25px">
+<div [formGroup]="formGroup"
+     fxLayoutGap="20px"
+     fxLayoutAlign="center center"
+     fxLayout="row">
+  <mat-icon>drag_handle</mat-icon>
   <mat-form-field class="full-width-field">
     <mat-label>instruction</mat-label>
     <input matInput formControlName="text">
   </mat-form-field>
-  <button color="primary" (click)="emitDelete()" mat-fab>
+  <button (click)="emitDelete()" mat-mini-fab>
     <mat-icon>delete</mat-icon>
   </button>
 </div>

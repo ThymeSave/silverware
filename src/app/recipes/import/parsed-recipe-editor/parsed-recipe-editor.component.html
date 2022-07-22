@@ -1,7 +1,13 @@
 <!-- TODO Make fancy -->
-<form [formGroup]="form" fxFlex fxLayout="column" fxLayoutGap="20px">
-  <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start" fxLayoutGap="20px">
-    <div fxFlex.gt-md="50%" fxLayoutAlign="center start" fxLayout="column" class="full-width-field">
+<form [formGroup]="form" fxFlex fxLayout="column">
+  <div fxFlex fxLayout="row"
+       fxLayout.lt-md="column"
+       fxLayoutAlign="start"
+       fxLayoutGap="20px">
+    <div fxFlex.gt-md="50%"
+         fxLayoutAlign="start start"
+         fxLayout="column"
+         class="full-width-field">
       <mat-form-field class="full-width-field">
         <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
         <input matInput
@@ -13,18 +19,24 @@
         <textarea formControlName="description" matInput></textarea>
       </mat-form-field>
     </div>
-    <div fxFlex.gt-md="50%">
+    <div fxFlex.gt-md="50%" *ngIf="recipe?.image">
       <img [src]="recipe?.image">
     </div>
   </div>
 
-  <div fxFlex fxFlexFill fxLayout.lt-xl="column">
+  <div fxFlex
+       fxFlexFill
+       fxLayout.lt-xl="column">
     <div formArrayName="ingredients"
+         cdkDropList
+         (cdkDropListDropped)="droppedIngredient($event)"
+         class="recipe-editor-column"
          fxLayout="column"
-         fxLayoutAlign="start start"
-         fxLayoutGap.lt-md="50px"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap.lt-md="10px"
          fxFlex.gt-lg="50%">
       <app-parsed-recipe-editor-ingredient
+        cdkDrag
         *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
         [formGroup]="ingredientsFormGroup"
         (deleted)="ingredients.removeAt(i)">
@@ -38,9 +50,13 @@
       </div>
     </div>
     <div formArrayName="instructions"
+         class="recipe-editor-column"
+         cdkDropList
+         (cdkDropListDropped)="droppedInstruction($event)"
          fxFlex.gt-lg="50%"
          fxLayout="column">
       <app-parsed-recipe-editor-instruction
+        cdkDrag
         *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
         [formGroup]="instructionsFormGroup"
         (deleted)="instructions.removeAt(i)">

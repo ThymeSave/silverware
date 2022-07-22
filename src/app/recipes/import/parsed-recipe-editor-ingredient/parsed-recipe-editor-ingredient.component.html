@@ -1,9 +1,9 @@
-<div fxFlex
-     fxLayoutGap="20px"
-     fxLayout.lt-md="column"
+<div fxLayoutGap="20px"
+     fxLayout="row wrap"
      fxLayoutAlign="center center"
      [formGroup]="formGroup">
-  <div class="amount-unit">
+  <mat-icon>drag_handle</mat-icon>
+  <div class="amount-unit" fxFlex.gt-lg="230px">
     <mat-slide-toggle color="primary" formControlName="isRange" class="example-margin">Range</mat-slide-toggle>
     <mat-form-field class="amount">
       <mat-label>{{ 'min' | i18n }}</mat-label>
@@ -19,18 +19,18 @@
     </ng-container>
     <div class="max-unit-placeholder"
          *ngIf="!formGroup.value.isRange"></div>
-    <app-unit-selector [formGroup]="formGroup"
-                       formControlName="unit">
-    </app-unit-selector>
   </div>
-  <mat-form-field>
+  <app-unit-selector [formGroup]="formGroup"
+                     fxFlex
+                     formControlName="unit">
+  </app-unit-selector>
+  <mat-form-field fxFlex>
     <mat-label>{{ 'ingredient' | i18n }}</mat-label>
     <input matInput
            formControlName="translationKey">
   </mat-form-field>
   <button (click)="emitDelete()"
-          color="primary"
-          mat-fab>
+          mat-mini-fab>
     <mat-icon>delete</mat-icon>
   </button>
 </div>

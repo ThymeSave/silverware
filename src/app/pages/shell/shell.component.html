@@ -1,7 +1,6 @@
 <div class="shell">
   <mat-toolbar fxLayout="row"
-               fxLayoutAlign="space-between center"
-               fxLayoutGap="1em">
+               fxLayoutAlign="space-between center">
     <button (click)="sidenav.toggle()"
             [disabled]="(authService.isAuthenticated$ | async) === false"
             mat-icon-button>

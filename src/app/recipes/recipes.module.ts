@@ -1,3 +1,4 @@
+import {DragDropModule} from "@angular/cdk/drag-drop";
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from "@angular/flex-layout";
@@ -47,27 +48,28 @@ const routes: Routes = [
     ParsedRecipeEditorInstructionComponent,
     UnitSelectorComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FlexModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    MatListModule,
-    MatRippleModule,
-    MatProgressBarModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatSlideToggleModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        SharedModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FlexModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        MatListModule,
+        MatRippleModule,
+        MatProgressBarModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        DragDropModule,
+    ],
 })
 export class RecipesModule {
 }

@@ -1,3 +1,4 @@
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Component, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -77,6 +78,20 @@ export class ParsedRecipeEditorComponent {
     this.instructions.push(this.fb.group({
       text: this.fb.control(""),
     }));
+  }
+
+  private swap(formArray: FormArray<FormGroup>, previousIndex: number, newIndex: number) {
+    let tempVal = formArray.at(previousIndex);
+    formArray.removeAt(previousIndex);
+    formArray.insert(newIndex,tempVal);
+  }
+
+  public droppedIngredient(event: CdkDragDrop<any[]>) {
+    this.swap(this.ingredients, event.previousIndex, event.currentIndex);
+  }
+
+  public droppedInstruction(event: CdkDragDrop<any[]>) {
+    this.swap(this.instructions, event.previousIndex, event.currentIndex);
   }
 
   public async save() {
