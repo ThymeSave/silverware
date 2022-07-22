@@ -1,4 +1,4 @@
-<mat-stepper [linear]="true" #stepper>
+<mat-stepper [linear]="true" #stepper  [@.disabled]="true">
   <mat-step [label]="'recipes.choose_importer' | i18n"
             completed="false"
             editable="false">
