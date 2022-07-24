@@ -65,8 +65,14 @@ export class ParsedRecipeEditorComponent implements OnInit {
   }
 
   private mapIngredientToFormGroup(ingredient: Partial<ParsedRecipeIngredient>) {
+    const hasTranslationMatches = (ingredient.translationMatches as any ?? []).length > 0;
+    const translationKey = (hasTranslationMatches && ingredient.translationMatches) ?
+      ingredient.translationMatches[0].key : null;
+    const translationMatches = (hasTranslationMatches && ingredient.translationMatches) ?
+      ingredient.translationMatches.map(tm => this.fb.control(tm.variant)) : [];
     return this.fb.group({
-      "translationKey": this.fb.control(ingredient.ingredient ?? ""),
+      "translationKey": this.fb.control(translationKey),
+      "translationMatches": this.fb.array(translationMatches),
       "minAmount": this.fb.control(ingredient.minAmount ?? 0),
       "maxAmount": this.fb.control(ingredient.maxAmount ?? 0),
       "unit": this.fb.control(ingredient.unit ?? null),
@@ -98,6 +104,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   public async save() {
     this.logger.info("Saved",this.form.getRawValue());
+    // TODO Persist and add form validation
     await this.router.navigate(["/recipes"]);
   }
 }

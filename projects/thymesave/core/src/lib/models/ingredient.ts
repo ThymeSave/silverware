@@ -62,5 +62,5 @@ export interface ParsedRecipeIngredient extends BaseRecipeIngredient {
   /**
    * Potential translations
    */
-  translationMatches ?: { key: string, variant: string, similarity: number }
+  translationMatches ?: { key: string, variant: string, similarity: number }[]
 }

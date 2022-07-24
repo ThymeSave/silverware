@@ -16,6 +16,9 @@
           "tsconfig.json"
         ]
       },
+      "plugins": [
+        "decorator-position"
+      ],
       "rules": {
         "@angular-eslint/component-selector": [
           "error",
@@ -36,6 +39,14 @@
         "comma-dangle": [
           "error",
           "always-multiline"
+        ],
+        "decorator-position/decorator-position": [
+          "error",
+          {
+            "methods": "above",
+            "printWidth": 100,
+            "properties": "prefer-inline"
+          }
         ],
         "import/newline-after-import": [
           "error",

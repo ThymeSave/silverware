@@ -7,7 +7,7 @@ import {
   Instruction,
 } from "@thymesave/core";
 import { parseIngredientInformation, IngredientParseError, propagateParseError } from "@thymesave/ingredients";
-import { matchUnitByText } from "@thymesave/translations";
+import { matchIngredientByText, matchUnitByText } from "@thymesave/translations";
 import { map } from "rxjs";
 
 import { LanguageService } from "@/shared/i18n/language.service";
@@ -26,8 +26,10 @@ export class RecipeImporterService {
     return raw.map(text => {
       try {
         const ingredient = parseIngredientInformation(text);
-        if (ingredient.unit)
+        if (ingredient.unit) {
           ingredient.unit = this.parseUnit(ingredient.unit);
+        }
+        ingredient.translationMatches = matchIngredientByText(this.languageService.currentLanguage, ingredient.ingredient, {});
         return ingredient;
       } catch (e: any | IngredientParseError) {
         return propagateParseError(e);
