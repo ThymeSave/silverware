@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatStepper } from "@angular/material/stepper";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { createLogger } from "@helper/log";
 import {
   Importer,
@@ -12,7 +12,8 @@ import {
 } from "@thymesave/core";
 import { URLImporterPayload } from "@thymesave/core";
 import { FilterImporterByType, PluginRegistry } from "@thymesave/plugin";
-import { BehaviorSubject, catchError, filter, finalize, of } from "rxjs";
+import { first as _first } from "lodash";
+import { BehaviorSubject, catchError, filter, finalize, first, of } from "rxjs";
 
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
 
@@ -21,7 +22,7 @@ import { RecipeImporterService } from "@/recipes/services/recipe-importer.servic
   templateUrl: './new-recipe.component.html',
   styleUrls: ['./new-recipe.component.scss'],
 })
-export class NewRecipeComponent implements OnInit {
+export class NewRecipeComponent implements OnInit, AfterViewInit {
   private logger = createLogger("NewComponent");
 
   public importer: Importer<RawRecipe> | null = null;
@@ -43,7 +44,47 @@ export class NewRecipeComponent implements OnInit {
   public parsedRecipe !: ParsedRecipe;
 
   constructor(private router: Router,
-              private importerService: RecipeImporterService) {
+              private route: ActivatedRoute,
+              private importerService: RecipeImporterService,
+              private ref: ChangeDetectorRef) {
+  }
+
+  public loadImporterFromURL() {
+    this.route.queryParams
+      .pipe(first())
+      .subscribe(queryParameters => {
+        // Try loading name
+        try {
+          const importerName = queryParameters['importerName'];
+          const importer = this.findImporterByName(importerName);
+          if (importer) {
+            this.importerSubject.next(importer);
+            this.completeCurrentStep();
+          }
+        } catch (e) {
+          this.logger.warn("Failed to parse importer name from URL, if you haven't specified it, just ignore this.");
+        }
+
+        // Try loading parameters
+        try {
+          const settings = queryParameters['importerSettings'];
+          const parsedSettings = JSON.parse(decodeURIComponent(atob(settings)));
+          this.logger.debug("Parsed settings from URL", parsedSettings);
+          this.runImportStep(parsedSettings);
+        } catch (e) {
+          this.logger.warn("Failed to parse importer settings from URL, if you haven't specified any, just ignore this.");
+        }
+
+        // prevent NG0100
+        this.ref.detectChanges();
+      });
+  }
+
+  private findImporterByName(name: string): Importer<RawRecipe> | undefined {
+    return _first(PluginRegistry
+      .getImporter()
+      .filter(i => i.name == name),
+    );
   }
 
   public async save() {
@@ -59,6 +100,10 @@ export class NewRecipeComponent implements OnInit {
     this.importer$
       .pipe(filter(i => i != null))
       .subscribe(this.setImporter.bind(this));
+  }
+
+  public ngAfterViewInit() {
+    this.loadImporterFromURL();
   }
 
   private setImporter(importer: Importer<RawRecipe> | null) {

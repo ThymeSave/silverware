@@ -2,7 +2,7 @@
      fxLayoutGap="20px"
      fxLayoutAlign="center center"
      [formGroup]="formGroup">
-  <app-drag-handle></app-drag-handle>
+  <ng-content></ng-content>
   <div class="amount-unit" fxFlex fxFlex.gt-lg="150px">
     <mat-form-field class="amount">
       <mat-label>{{ 'min' | i18n }}</mat-label>

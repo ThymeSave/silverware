@@ -1,43 +1,27 @@
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { Component, Input } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { createLogger } from "@helper/log";
-import { ParsedRecipe } from "@thymesave/core";
+import { Ingredient, Instruction, ParsedRecipe, ParsedRecipeIngredient, RawRecipe } from "@thymesave/core";
 
 @Component({
   selector: 'app-parsed-recipe-editor',
   templateUrl: './parsed-recipe-editor.component.html',
   styleUrls: ['./parsed-recipe-editor.component.scss'],
 })
-export class ParsedRecipeEditorComponent {
+export class ParsedRecipeEditorComponent implements OnInit {
   public logger = createLogger("ParsedRecipeEditorComponent");
 
   private _recipe !: ParsedRecipe;
 
-  @Input() set recipe(value: ParsedRecipe) {
+  @Input()
+  set recipe(value: ParsedRecipe) {
     this._recipe = value;
     if (!this._recipe) {
       return;
     }
-    this.form.patchValue({
-      title: this._recipe.title,
-      description: this._recipe.description,
-    });
-    this._recipe.ingredients
-      .map(ingredient => this.fb.group({
-        "translationKey": this.fb.control(ingredient.ingredient),
-        "minAmount": this.fb.control(ingredient.minAmount),
-        "maxAmount": this.fb.control(ingredient.maxAmount),
-        "unit": this.fb.control(ingredient.unit),
-        "isRange": this.fb.control(ingredient.isRange),
-      }))
-      .forEach(item => this.ingredients.push(item));
-    this._recipe.instructions
-      .map(instruction => this.fb.group({
-        'text': this.fb.control(instruction.text),
-      }))
-      .forEach(item => this.instructions.push(item));
+    this.initForm(this.recipe);
   }
 
   get recipe(): ParsedRecipe {
@@ -48,12 +32,7 @@ export class ParsedRecipeEditorComponent {
               public router: Router) {
   }
 
-  public form = this.fb.group({
-    title: this.fb.control(""),
-    description: this.fb.control(""),
-    ingredients: this.fb.array([]),
-    instructions: this.fb.array([]),
-  });
+  public form !: FormGroup;
 
   get ingredients() {
     return this.form.controls["ingredients"] as any as FormArray<FormGroup>;
@@ -63,39 +42,62 @@ export class ParsedRecipeEditorComponent {
     return this.form.controls["instructions"] as any as FormArray<FormGroup>;
   }
 
+  public ngOnInit() {
+    this.initForm({});
+  }
+
+  private initForm(recipe: Partial<ParsedRecipe>) {
+    const ingredients = recipe.ingredients ? recipe.ingredients.map(this.mapIngredientToFormGroup.bind(this)) : [];
+    const instructions = recipe.instructions ? recipe.instructions.map(this.mapInstructionToFormGroup.bind(this)) : [];
+
+    this.form = this.fb.group({
+      title: this.fb.control(recipe.title),
+      description: this.fb.control(recipe.description),
+      ingredients: this.fb.array(ingredients),
+      instructions: this.fb.array(instructions),
+    });
+  }
+
+  private mapInstructionToFormGroup(instruction: Partial<Instruction>) {
+    return this.fb.group({
+      'text': this.fb.control(instruction.text ?? ""),
+    });
+  }
+
+  private mapIngredientToFormGroup(ingredient: Partial<ParsedRecipeIngredient>) {
+    return this.fb.group({
+      "translationKey": this.fb.control(ingredient.ingredient ?? ""),
+      "minAmount": this.fb.control(ingredient.minAmount ?? 0),
+      "maxAmount": this.fb.control(ingredient.maxAmount ?? 0),
+      "unit": this.fb.control(ingredient.unit ?? null),
+      "isRange": this.fb.control(ingredient.isRange ?? false),
+    });
+  }
+
   public addIngredient() {
-    this.ingredients.push(
-      this.fb.group({
-        "translationKey": this.fb.control(""),
-        "minAmount": this.fb.control(0),
-        "maxAmount": this.fb.control(0),
-        "unit": this.fb.control(""),
-      }),
-    );
+    this.ingredients.push(this.mapIngredientToFormGroup({}));
   }
 
   public addInstruction() {
-    this.instructions.push(this.fb.group({
-      text: this.fb.control(""),
-    }));
+    this.instructions.push(this.mapInstructionToFormGroup({}));
   }
 
-  private swap(formArray: FormArray<FormGroup>, previousIndex: number, newIndex: number) {
+  private swapFormArrayEntry(formArray: FormArray<FormGroup>, previousIndex: number, newIndex: number) {
     let tempVal = formArray.at(previousIndex);
     formArray.removeAt(previousIndex);
-    formArray.insert(newIndex,tempVal);
+    formArray.insert(newIndex, tempVal);
   }
 
   public droppedIngredient(event: CdkDragDrop<any[]>) {
-    this.swap(this.ingredients, event.previousIndex, event.currentIndex);
+    this.swapFormArrayEntry(this.ingredients, event.previousIndex, event.currentIndex);
   }
 
   public droppedInstruction(event: CdkDragDrop<any[]>) {
-    this.swap(this.instructions, event.previousIndex, event.currentIndex);
+    this.swapFormArrayEntry(this.instructions, event.previousIndex, event.currentIndex);
   }
 
   public async save() {
-    this.logger.info(this.form.getRawValue());
+    this.logger.info("Saved",this.form.getRawValue());
     await this.router.navigate(["/recipes"]);
   }
 }
