@@ -12,7 +12,6 @@ repos:
         ]
       - id: check-merge-conflict
       - id: check-yaml
-      - id: detect-private-key
       - id: check-symlinks
       - id: check-vcs-permalinks
       - id: trailing-whitespace

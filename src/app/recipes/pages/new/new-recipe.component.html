@@ -1,0 +1,62 @@
+<mat-stepper [linear]="true" #stepper  [@.disabled]="true">
+  <mat-step [label]="'recipes.choose_importer' | i18n"
+            completed="false"
+            editable="false">
+    <mat-list>
+      <!-- Import by URL -->
+      <div mat-subheader>{{ 'recipes.importer_url' | i18n }}</div>
+      <mat-list-item matRipple
+                     (click)="selectImporter(importer)"
+                     class="importer-option"
+                     *ngFor="let importer of urlImporter">
+        <mat-icon mat-list-icon>language</mat-icon>
+        {{importer.name}}
+      </mat-list-item>
+
+      <!-- Import manual etc -->
+      <div mat-subheader>{{ 'recipes.importer_misc' | i18n }}</div>
+      <mat-list-item matRipple
+                     (click)="selectImporter(importer)"
+                     class="importer-option"
+                     *ngFor="let importer of manualImporter">
+        <mat-icon mat-list-icon>language</mat-icon>
+        {{importer.name}}
+      </mat-list-item>
+    </mat-list>
+  </mat-step>
+  <mat-step [label]="'recipes.importer_parameter' | i18n" completed="false" editable="false">
+    <app-url-importer-settings (saved)="urlImporterSaved($event)" *ngIf="isURLImporter"></app-url-importer-settings>
+  </mat-step>
+  <mat-step [label]="'recipes.import_pending' | i18n" completed="false" editable="false">
+    <div *ngIf="importLoading"
+         fxLayoutAlign="center center"
+         fxLayoutGap="12px"
+         fxLayout="column">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <button (click)="cancel()"
+              mat-raised-button
+              color="accent">
+        {{ 'cancel' | i18n }}
+      </button>
+    </div>
+    <div *ngIf="importFailed">
+      <!-- TODO Fine tune error handling -->
+      <h1 class="mat-h1">{{ 'recipes.import_failed' }}</h1>
+      <p class="caption">
+        {{ 'recipes.import_failed_explanation' }}
+      </p>
+      <mat-card class="error-details">
+        <pre><code>{{ importFailedErr | json }}</code></pre>
+      </mat-card>
+    </div>
+  </mat-step>
+  <mat-step [label]="'recipes.verify' | i18n"
+            completed="false"
+            editable="false">
+   <app-parsed-recipe-editor [recipe]="parsedRecipe" *ngIf="!importFailed"></app-parsed-recipe-editor>
+  </mat-step>
+</mat-stepper>
+<div>
+
+</div>
+

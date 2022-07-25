@@ -51,11 +51,24 @@ const units: UnitTranslation = {
     ],
     "short": "pck",
   },
+  "pinch": {
+    "long": [
+      "pinch",
+      "pinches",
+    ],
+    "short": "pinch",
+  },
   "pound": {
     "long": [
       "pound",
     ],
     "short": "lb",
+  },
+  "tsp": {
+    "long": [
+      "tablespoon",
+    ],
+    "short": "tsp",
   },
 };
 

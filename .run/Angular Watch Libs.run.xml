@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Angular Watch Libs" type="CompoundRunConfigurationType">
+    <toRun name="build:libs:watch:core" type="js.build_tools.npm" />
+    <toRun name="build:libs:watch:ingredients" type="js.build_tools.npm" />
+    <toRun name="build:libs:watch:plugin" type="js.build_tools.npm" />
+    <toRun name="build:libs:watch:translations" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>

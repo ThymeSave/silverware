@@ -1,0 +1,18 @@
+.amount-unit {
+  & > * {
+    display: inline-block;
+  }
+
+  & .amount {
+    width: 70px;
+    text-align: center;
+  }
+
+  .max-unit-placeholder {
+    width: 74.67px;
+  }
+}
+
+.button-placeholder {
+  width: 21px;
+}

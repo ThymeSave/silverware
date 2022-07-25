@@ -1,0 +1,107 @@
+<form [formGroup]="form" fxFlex
+      fxFlex.gt-lg="70%"
+      fxFlex.gt-md="90%"
+      fxLayout="column">
+  <div fxFlex
+       fxLayout.gt-md="row"
+       fxLayoutGap="30px"
+       fxLayout.lt-md="column-reverse"
+       fxLayoutAlign="start">
+    <mat-card fxLayoutAlign="start stretch"
+              fxLayout="column"
+              fxFlex
+              class="full-width-field">
+      <mat-form-field fxFlex="100%">
+        <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
+        <input matInput
+               fxFlexFill
+               formControlName="title">
+      </mat-form-field>
+      <mat-form-field fxFlex="100%">
+        <mat-label>{{'recipes.description' | i18n}}</mat-label>
+        <textarea formControlName="description" matInput></textarea>
+      </mat-form-field>
+    </mat-card>
+    <div fxLayoutAlign="start center"
+         class="photo"
+         *ngIf="recipe?.image">
+      <button mat-icon-button
+              (click)="uploadPhoto()"
+              class="photo-change-button">
+        <mat-icon>add_a_photo</mat-icon>
+      </button>
+      <img [alt]="recipe.title" [src]="recipe?.image">
+    </div>
+  </div>
+
+  <div fxFlex
+       fxLayout="row"
+       fxLayoutGap="30px"
+       class="recipe-details"
+       fxLayout.lt-xl="column">
+    <mat-card formArrayName="ingredients"
+              cdkDropList
+              (cdkDropListDropped)="droppedIngredient($event)"
+              class="recipe-editor-column ingredients"
+              fxLayout="column"
+              fxLayoutAlign="start stretch"
+              fxLayoutGap.lt-md="10px"
+              fxLayoutGap="0px"
+              fxFlex.gt-lg="50%">
+      <app-parsed-recipe-editor-ingredient
+        cdkDrag
+        cdkDragBoundary=".ingredients"
+        cdkDragLockAxis="y"
+        *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
+        [formGroup]="ingredientsFormGroup"
+        (deleted)="ingredients.removeAt(i)">
+        <app-drag-handle cdkDragHandle></app-drag-handle>
+      </app-parsed-recipe-editor-ingredient>
+      <div class="add-button-container">
+        <button mat-fab
+                color="blue"
+                (click)="addIngredient()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+    <mat-card formArrayName="instructions"
+              class="recipe-editor-column instructions"
+              cdkDropList
+              (cdkDropListDropped)="droppedInstruction($event)"
+              fxFlex.gt-lg="50%"
+              fxLayout="column">
+      <app-parsed-recipe-editor-instruction
+        cdkDrag
+        cdkDragBoundary=".instructions"
+        cdkDragLockAxis="y"
+        *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
+        [formGroup]="instructionsFormGroup"
+        (deleted)="instructions.removeAt(i)">
+        <app-drag-handle cdkDragHandle></app-drag-handle>
+      </app-parsed-recipe-editor-instruction>
+      <div class="add-button-container">
+        <button mat-fab
+                color="blue"
+                fxLayoutAlign="center center"
+                (click)="addInstruction()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div fxFlex
+       fxLayout="row"
+       fxLayoutAlign="end">
+    <div fxFlex="33.333%">
+      <button color="primary"
+              type="submit"
+              (click)="save()"
+              mat-raised-button>
+        <mat-icon>save</mat-icon>
+        {{ 'save' | i18n }}
+      </button>
+    </div>
+  </div>
+</form>

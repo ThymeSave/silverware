@@ -1,10 +1,11 @@
 import { Observable } from "rxjs";
+
 import { FunnelCORSProxyErrorResponse, FunnelCORSProxySuccessResponse } from "../models/funnel";
 
 export interface Service {
 }
 
-export const SERVICE_NAME_FUNNEL_CORS_PROXY = "FUNNEL_CORS_SERVICE"
+export const SERVICE_NAME_FUNNEL_CORS_PROXY = "FUNNEL_CORS_SERVICE";
 
 /**
  * Service to fetch website content serverside to bypass CORS and other security features of browsers

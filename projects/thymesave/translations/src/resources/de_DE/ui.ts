@@ -1,8 +1,10 @@
 import { SingleValueTranslation } from "../../lib/model";
 
 const ui: SingleValueTranslation = {
+  "add": "Hinzufügen",
   "cancel": "Abbrechen",
   "close": "Schliessen",
+  "ingredient": "Zutat",
   "update.heading": "Aktualisierung verfügbar",
   "update.description": "Mit einem Klick auf Bestätigen jetzt aktualisieren oder erst beim nächsten Start aktualisieren.",
   "language": "Sprache",
@@ -10,16 +12,27 @@ const ui: SingleValueTranslation = {
   "language.en_US": "englisch",
   "login": "Anmelden",
   "logout": "Abmelden",
+  "min": "Min",
+  "max": "Max",
   "ok": "Bestätigen",
   "open": "Öffnen",
   "recipes": "Rezepte",
-  "recipes.check": "Prüfen und übernehmen",
+  "recipes.description": "Beschreibung",
   "recipes.choose_importer": "Importer selektieren",
+  "recipes.importer_url": "Via URL aus dem Internet",
+  "recipes.importer_misc": "Sonstige",
+  'recipes.importer_parameter': "Parameter eintragen",
+  "recipes.import_pending": "Import läuft",
+  "recipes.import_failed": "Import fehlgeschlagen",
+  "recipes.import_failed_explanation": "Der Import des Rezept ist fehlgeschlagen, unterhalb finden Sie weitere Informationen die du an die Entwickler weitergeben kannst.",
+  "recipes.importer.url.url-field": "Öffentlich erreichbare Internet-Adresse",
   "recipes.new": "Neues Rezept",
   "recipes.title": "Titel",
+  "recipes.verify": "Prüfen und übernehmen",
   "save": "Speichern",
   "settings": "Einstellungen",
   "offline.hint": "App läuft offline",
+  "unit": "Einheit",
 };
 
 export default ui;

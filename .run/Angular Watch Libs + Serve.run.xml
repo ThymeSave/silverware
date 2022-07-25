@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Angular Watch Libs + Serve" type="CompoundRunConfigurationType">
+    <toRun name="Angular Watch Libs" type="CompoundRunConfigurationType" />
+    <toRun name="start with sleep" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>
