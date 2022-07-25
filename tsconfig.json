@@ -20,6 +20,10 @@
         "dist/thymesave/core/thymesave-core",
         "dist/thymesave/core"
       ],
+      "@thymesave/core/*": [
+        "dist/thymesave/core/thymesave-core/*",
+        "dist/thymesave/core/*"
+      ],
       "@thymesave/ingredients": [
         "dist/thymesave/ingredients/thymesave-ingredients",
         "dist/thymesave/ingredients"
