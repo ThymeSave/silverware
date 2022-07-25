@@ -81,6 +81,7 @@ export abstract class Importer<T> {
       sourceReader.onload = _ => {
         const img = new Image();
         img.src = sourceReader.result as string;
+        img.onerror = reject;
         img.onload = () => {
           const canvas = document.createElement('canvas');
           const width = Math.min(500, img.width);
@@ -92,9 +93,9 @@ export abstract class Importer<T> {
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           ctx.canvas.toBlob((blob) => {
             const compressedReader = new FileReader();
+            compressedReader.onerror = reject;
             compressedReader.readAsDataURL(blob as Blob);
             compressedReader.onloadend = () => resolve(compressedReader.result as string);
-            compressedReader.onerror = reject;
           }, 'image/jpeg', .3);
         };
       };

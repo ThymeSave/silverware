@@ -5,16 +5,23 @@ export class ChowdownSingleRecipeImporter extends RecipeURLImporter {
     return "Chowdown Single Recipe";
   }
 
-  public override async parseFromHTML(_ : ComponentContext, rawHTML: string): Promise<RawRecipe> {
+  public override async parseFromHTML(_: ComponentContext, rawHTML: string): Promise<RawRecipe> {
     const parsedDocument = this.createDocument(rawHTML);
-    const imageSrc = (parsedDocument.querySelector("[itemprop='image']") as any)?.src;
+
+    let image = undefined;
+    try {
+      const rawImageSrc = (parsedDocument.querySelector("[itemprop='image']") as any)?.src;
+      image = rawImageSrc ? await this.imageURLToBase64(rawImageSrc) : undefined;
+    } catch (e) {
+      // ignore
+    }
 
     return {
       title: parsedDocument.title,
       description: parsedDocument.querySelector("[itemprop='description']")?.textContent ?? "",
       ingredients: this.extractTextFromNodes(parsedDocument.querySelectorAll("[itemprop='recipeIngredient']")),
       instructions: this.extractTextFromNodes(parsedDocument.querySelectorAll("[itemprop='recipeInstructions']>li")),
-      image: imageSrc ? await this.imageURLToBase64(imageSrc) : undefined,
+      image,
     };
   }
 }
