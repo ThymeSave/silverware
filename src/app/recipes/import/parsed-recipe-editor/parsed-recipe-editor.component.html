@@ -86,11 +86,17 @@
     </mat-card>
   </div>
 
-  <button color="primary"
-          type="submit"
-          (click)="save()"
-          mat-raised-button>
-    <mat-icon>save</mat-icon>
-    {{ 'save' | i18n }}
-  </button>
+  <div fxFlex
+       fxLayout="row"
+       fxLayoutAlign="end">
+    <div fxFlex="33.333%">
+      <button color="primary"
+              type="submit"
+              (click)="save()"
+              mat-raised-button>
+        <mat-icon>save</mat-icon>
+        {{ 'save' | i18n }}
+      </button>
+    </div>
+  </div>
 </form>
