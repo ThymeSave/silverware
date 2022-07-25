@@ -1,6 +1,7 @@
 import { from, Observable, switchMap } from "rxjs";
 
 import { ComponentContext } from "./context";
+import { imageToBase64 } from "./image";
 import { SERVICE_NAME_FUNNEL_CORS_PROXY, FunnelCorsService } from "./services";
 
 import { FunnelCORSProxyErrorResponse, FunnelCORSProxySuccessResponse } from "../models/funnel";
@@ -73,33 +74,8 @@ export abstract class Importer<T> {
   protected async imageURLToBase64(url: string): Promise<string> {
     const blob = await fetch(url)
       .then(r => r.blob());
-    const sourceReader = new FileReader();
-    sourceReader.readAsDataURL(blob);
 
-    return new Promise((resolve, reject) => {
-      sourceReader.onerror = reject;
-      sourceReader.onload = _ => {
-        const img = new Image();
-        img.src = sourceReader.result as string;
-        img.onerror = reject;
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const width = Math.min(500, img.width);
-          const scaleFactor = width / img.width;
-          canvas.width = width;
-          canvas.height = img.height * scaleFactor;
-
-          const ctx = canvas.getContext('2d')!!;
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          ctx.canvas.toBlob((blob) => {
-            const compressedReader = new FileReader();
-            compressedReader.onerror = reject;
-            compressedReader.readAsDataURL(blob as Blob);
-            compressedReader.onloadend = () => resolve(compressedReader.result as string);
-          }, 'image/jpeg', .3);
-        };
-      };
-    });
+    return imageToBase64(blob);
   }
 }
 

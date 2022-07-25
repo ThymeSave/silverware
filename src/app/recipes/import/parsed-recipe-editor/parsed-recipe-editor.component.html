@@ -23,8 +23,13 @@
       </mat-form-field>
     </mat-card>
     <div fxLayoutAlign="start center"
+         class="photo"
          *ngIf="recipe?.image">
-      <!-- TODO Make editable -->
+      <button mat-icon-button
+              (click)="uploadPhoto()"
+              class="photo-change-button">
+        <mat-icon>add_a_photo</mat-icon>
+      </button>
       <img [alt]="recipe.title" [src]="recipe?.image">
     </div>
   </div>

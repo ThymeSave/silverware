@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { createLogger } from "@helper/log";
 import { Ingredient, Instruction, ParsedRecipe, ParsedRecipeIngredient, RawRecipe } from "@thymesave/core";
 
+import { imageToBase64 } from "../../../../../projects/thymesave/core/src/lib/apis/image";
+
 @Component({
   selector: 'app-parsed-recipe-editor',
   templateUrl: './parsed-recipe-editor.component.html',
@@ -102,8 +104,41 @@ export class ParsedRecipeEditorComponent implements OnInit {
     this.swapFormArrayEntry(this.instructions, event.previousIndex, event.currentIndex);
   }
 
+  private createImageFileInput() {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    return input;
+  }
+
+  public async uploadPhoto() {
+    try {
+      await new Promise<void>((resolve, reject) => {
+        const input = this.createImageFileInput();
+        input.click();
+        input.addEventListener("change", () => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(input!!.files!![0]);
+          fileReader.onerror = reject;
+          fileReader.onload = async () => {
+            try {
+              const blob = await fetch(fileReader.result as string)
+                .then(r => r.blob());
+              this._recipe.image = await imageToBase64(blob as Blob);
+              resolve();
+            } catch (e) {
+              reject(e);
+            }
+          };
+        });
+      });
+    } catch (e) {
+      this.logger.warn("Failed updating image, ignoring.", e);
+    }
+  }
+
   public async save() {
-    this.logger.info("Saved",this.form.getRawValue());
+    this.logger.info("Saved", this.form.getRawValue());
     // TODO Persist and add form validation
     await this.router.navigate(["/recipes"]);
   }
