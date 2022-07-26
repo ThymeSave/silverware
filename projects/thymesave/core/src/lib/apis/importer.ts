@@ -44,6 +44,7 @@ export abstract class Importer<T> {
    * @param context Context provided to importer
    * @param payload Input to the given recipe
    */
+  // TODO Make able to also import multiple
   abstract import(context: ComponentContext, payload: ImporterPayload): Observable<T>
 
   /**
