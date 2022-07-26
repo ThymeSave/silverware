@@ -8,10 +8,6 @@ export type RecipeBase64Image = string
  */
 export interface BaseRecipe {
   /**
-   * Globally unique identifier
-   */
-  uuid ?: string;
-  /**
    * Human-readable title
    */
   title: string;
