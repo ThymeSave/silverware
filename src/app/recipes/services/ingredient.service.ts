@@ -6,7 +6,7 @@ import { flatMap, chain } from "lodash";
 
 import { LanguageService } from "@/shared/i18n/language.service";
 
-export type FlattenedIngredient = { category: string, scalable: boolean, name: string, localized : string }
+export type FlattenedIngredient = { category: string, scalable: boolean, name: string, localized: string }
 export type IngredientsGroupedByCategory = { name: string, ingredients: FlattenedIngredient[] }[]
 
 @Injectable({

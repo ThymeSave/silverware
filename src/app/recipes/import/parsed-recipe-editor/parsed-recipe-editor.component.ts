@@ -1,11 +1,19 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup, ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { createLogger } from "@helper/log";
-import { Ingredient, Instruction, ParsedRecipe, ParsedRecipeIngredient, RawRecipe } from "@thymesave/core";
+import { Instruction, ParsedRecipe, ParsedRecipeIngredient, RawRecipe, imageToBase64 } from "@thymesave/core";
 
-import { imageToBase64 } from "../../../../../projects/thymesave/core/src/lib/apis/image";
+import { IngredientService } from "@/recipes/services/ingredient.service";
 
 @Component({
   selector: 'app-parsed-recipe-editor',
@@ -31,7 +39,8 @@ export class ParsedRecipeEditorComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-              public router: Router) {
+              public router: Router,
+              private ingredientService : IngredientService) {
   }
 
   public form !: FormGroup;
@@ -48,21 +57,26 @@ export class ParsedRecipeEditorComponent implements OnInit {
     this.initForm({});
   }
 
+  private translationKeyValidator : ValidatorFn = (control : AbstractControl) : ValidationErrors | null => {
+    const value = control.getRawValue();
+    return this.ingredientService.allKeys.indexOf(value) == -1 ? { value: false } : null;
+  };
+
   private initForm(recipe: Partial<ParsedRecipe>) {
     const ingredients = recipe.ingredients ? recipe.ingredients.map(this.mapIngredientToFormGroup.bind(this)) : [];
     const instructions = recipe.instructions ? recipe.instructions.map(this.mapInstructionToFormGroup.bind(this)) : [];
 
     this.form = this.fb.group({
-      title: this.fb.control(recipe.title),
-      description: this.fb.control(recipe.description),
-      ingredients: this.fb.array(ingredients),
-      instructions: this.fb.array(instructions),
+      title: this.fb.control(recipe.title, [Validators.required]),
+      description: this.fb.control(recipe.description, [Validators.required]),
+      ingredients: this.fb.array(ingredients, [Validators.required]),
+      instructions: this.fb.array(instructions, [Validators.required]),
     });
   }
 
   private mapInstructionToFormGroup(instruction: Partial<Instruction>) {
     return this.fb.group({
-      'text': this.fb.control(instruction.text ?? ""),
+      'text': this.fb.control(instruction.text ?? "", [Validators.required]),
     });
   }
 
@@ -73,9 +87,9 @@ export class ParsedRecipeEditorComponent implements OnInit {
     const translationMatches = (hasTranslationMatches && ingredient.translationMatches) ?
       ingredient.translationMatches.map(tm => this.fb.control(tm.key)) : [];
     return this.fb.group({
-      "translationKey": this.fb.control(translationKey),
+      "translationKey": this.fb.control(translationKey, [Validators.required, this.translationKeyValidator]),
       "translationMatches": this.fb.array(translationMatches),
-      "minAmount": this.fb.control(ingredient.minAmount ?? 0),
+      "minAmount": this.fb.control(ingredient.minAmount ?? 0, [Validators.required]),
       "maxAmount": this.fb.control(ingredient.maxAmount ?? 0),
       "unit": this.fb.control(ingredient.unit ?? null),
       "isRange": this.fb.control(ingredient.isRange ?? false),
@@ -139,7 +153,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   public async save() {
     this.logger.info("Saved", this.form.getRawValue());
-    // TODO Persist and add form validation
+    // TODO Persist
     await this.router.navigate(["/recipes"]);
   }
 }

@@ -22,6 +22,8 @@
                      formControlName="unit">
   </app-unit-selector>
   <app-ingredient-selector formControlName="translationKey"
+                           [formParent]="formGroup"
+                           [formGroup]="formGroup"
                            [preFilter]="preFilter">
     <ng-container *ngIf="hasTranslationMatches">
       <button *ngIf="!filterByTranslationMatches"
@@ -41,7 +43,7 @@
   </app-ingredient-selector>
 
   <button (click)="emitDelete()"
-          mat-mini-fab>
-    <mat-icon>delete</mat-icon>
+          mat-icon-button>
+    <mat-icon>close</mat-icon>
   </button>
 </div>

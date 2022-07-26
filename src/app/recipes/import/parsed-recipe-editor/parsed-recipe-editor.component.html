@@ -19,7 +19,9 @@
       </mat-form-field>
       <mat-form-field fxFlex="100%">
         <mat-label>{{'recipes.description' | i18n}}</mat-label>
-        <textarea formControlName="description" matInput></textarea>
+        <textarea [rows]="(recipe?.description?.split('\n')?.length ?? 0) + 1"
+                  formControlName="description"
+                  matInput></textarea>
       </mat-form-field>
     </mat-card>
     <div fxLayoutAlign="start center"
@@ -97,6 +99,7 @@
     <div fxFlex="33.333%">
       <button color="primary"
               type="submit"
+              [disabled]="!form.valid"
               (click)="save()"
               mat-raised-button>
         <mat-icon>save</mat-icon>

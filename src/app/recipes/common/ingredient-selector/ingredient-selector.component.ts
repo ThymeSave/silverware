@@ -1,5 +1,14 @@
 import { Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormArray,
+  FormControl,
+  FormGroup,
+  NgControl, ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from "@angular/forms";
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 import { getSimilarity } from "@thymesave/translations";
 import { cloneDeep } from "lodash";
@@ -35,10 +44,20 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
     this.filterChanged.next(null);
   }
 
+  @Input()
+  @Optional()
+  public set formParent(formParent : FormGroup | FormArray | undefined) {
+    if(!formParent) {
+      return;
+    }
+
+    this.searchControl.setParent(formParent);
+  }
+
   private filterChanged = new BehaviorSubject(null);
   public filterChanged$ = this.filterChanged.asObservable();
 
-  public searchControl = new FormControl("");
+  public searchControl = new FormControl("", [Validators.required]);
 
   public filteredOptions !: Observable<IngredientsGroupedByCategory>;
 
@@ -85,6 +104,8 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
       .pipe(
         switchMap(_ => of(this._filter(this.searchControl.value || ""))),
       );
+    this.searchControl.valueChanges
+      .subscribe(_ => this.onChange(this.searchControl.value ?? ""));
   }
 
   public registerOnChange(changeCallback: any): void {
