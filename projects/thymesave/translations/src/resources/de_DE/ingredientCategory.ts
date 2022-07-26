@@ -1,0 +1,37 @@
+import { SingleValueTranslation } from "../../lib/model";
+
+const ingredientCategory: SingleValueTranslation = {
+  vegetable: "Gemüse",
+  herbs: "Kräuter",
+  nuts: "Nüsse",
+  cereals: "Cerealien",
+  gourds: "Kürbisgewächse",
+  fruits: "Früchte",
+  pulses: "Hülsenfrüchte",
+  beverages: "Getränke",
+  cheese: "Käse",
+  milk: "Milchprodukte",
+  coffee: "Kaffee",
+  tea: "Tees",
+  baking: "Backwaren",
+  eggs: "Eier",
+  confectioneries: "Süßwaren",
+  dough: "Teig",
+  soup: "Suppe",
+  spice: "Gewürze",
+  snack: "Snack",
+  afters: "Desserts",
+  pasta: "Nudeln",
+  fluids: "Flüssigkeit",
+  meat: "Fleisch",
+  beef: "Rindfleisch",
+  chicken: "Geflügel",
+  pork: "Schweinefleisch",
+  aquatic: "Meerestiere",
+  vegetable_fat: "Pflanzliches Fett",
+  animal_fat: "Tierisches Fett",
+  fat: "Fett",
+  liquor: "Likör",
+};
+
+export default ingredientCategory;

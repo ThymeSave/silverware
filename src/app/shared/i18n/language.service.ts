@@ -56,7 +56,7 @@ export class LanguageService {
    * @param identifier Language identifier
    */
   public getLanguageByIdentifier(identifier: string): Language {
-    return (Languages as { [key: string]: Language })[identifier] as Language;
+    return (Languages as any)[identifier] as Language;
   }
 
   /**

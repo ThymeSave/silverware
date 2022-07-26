@@ -32,7 +32,7 @@ export class ParsedRecipeEditorIngredientComponent implements OnInit {
   }
 
   public get hasTranslationMatches() {
-    return this.translationMatches.length > 1;
+    return this.translationMatches.length > 0;
   }
 
   private createPreFilter() {

@@ -43,6 +43,14 @@ export const loadUITextByKey = (language: Language, translationKey: string): str
  *
  * @param language Language for the translation
  * @param translationKey Key of the translation
+ * @returns Ingredient category text for translation key
+ */
+export const loadIngredientCategoryByKey = (language : Language, translationKey : string) : string => loadTranslationByKey(language, "ingredientCategory", translationKey) as string;
+
+/**
+ *
+ * @param language Language for the translation
+ * @param translationKey Key of the translation
  * @param amount Amount of mass to get the translation for
  * @returns Unit text for translation key
  */
@@ -63,5 +71,3 @@ export const loadUnitByKey = (language: Language, translationKey: string, amount
     long: pluralize(unitDetails.long, amount),
   };
 };
-
-// TODO Add ingredient category translation load helper

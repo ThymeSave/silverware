@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
+import { getSimilarity } from "@thymesave/translations";
 import { cloneDeep } from "lodash";
 import { BehaviorSubject, debounce, merge, Observable, of, startWith, switchMap, tap, timer } from "rxjs";
 
@@ -57,9 +58,9 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
   }
 
   private filterIngredientBySearchTerm(ingredient: FlattenedIngredient, search: string) {
+    const similarity = getSimilarity( search, ingredient.name);
     return this._preFilter(ingredient) &&
-      // TODO Replace with string distance match
-      (search == "" || ingredient.name.includes(search));
+      (search == "" || similarity >= 0.5);
   }
 
   private _filter(search: string) {

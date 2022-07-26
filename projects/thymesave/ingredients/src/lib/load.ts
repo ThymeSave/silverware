@@ -19,8 +19,7 @@ export const loadIngredientByKey = (key: string): Ingredient => {
   const ingredient = ingredients[key];
 
   if (!ingredient) {
-    // TODO Refactor into custom error type
-    throw Error(`Ingredient with key ${key} not found`);
+    throw new IngredientNotFoundError(key);
   }
 
   return ingredient;

@@ -71,7 +71,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
     const translationKey = (hasTranslationMatches && ingredient.translationMatches) ?
       ingredient.translationMatches[0].key : null;
     const translationMatches = (hasTranslationMatches && ingredient.translationMatches) ?
-      ingredient.translationMatches.map(tm => this.fb.control(tm.variant)) : [];
+      ingredient.translationMatches.map(tm => this.fb.control(tm.key)) : [];
     return this.fb.group({
       "translationKey": this.fb.control(translationKey),
       "translationMatches": this.fb.array(translationMatches),

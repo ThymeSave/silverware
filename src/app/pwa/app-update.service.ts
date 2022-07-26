@@ -34,7 +34,6 @@ export class AppUpdateService {
       },
     });
 
-    // TODO Add user notification via central message service, driven by observable
     ref.afterClosed()
       .pipe(
         filter(doUpdate => doUpdate === true),

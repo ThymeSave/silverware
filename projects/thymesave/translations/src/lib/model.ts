@@ -43,5 +43,6 @@ export interface ResolvedUnitTranslation {
 export interface Language {
   ui: SingleValueTranslation,
   ingredients: PluralizableTranslation,
+  ingredientCategory : UnitTranslation,
   units: UnitTranslation,
 }

@@ -1,4 +1,4 @@
-import { Importer, ImporterType, Recipe, RecipeImporterList } from "@thymesave/core";
+import { Importer, ImporterType, RawRecipe, Recipe, RecipeImporterList } from "@thymesave/core";
 
 import { Plugin } from "./decorator";
 
@@ -9,7 +9,7 @@ export class PluginAlreadyRegisteredError extends Error {
   }
 }
 
-export type ImporterFilter = (importer: Importer<Recipe>) => boolean
+export type ImporterFilter = (importer: Importer<RawRecipe>) => boolean
 
 export const FilterImporterByType = (type : ImporterType) => ((importer : Importer<any>) => importer.type == type);
 
