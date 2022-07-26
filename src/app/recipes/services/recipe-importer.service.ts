@@ -4,9 +4,14 @@ import {
   RawRecipe,
   ImporterPayload,
   ParsedRecipe,
-  Instruction,
+  Instruction, Recipe,
 } from "@thymesave/core";
-import { parseIngredientInformation, IngredientParseError, propagateParseError } from "@thymesave/ingredients";
+import {
+  parseIngredientInformation,
+  IngredientParseError,
+  propagateParseError,
+  loadIngredientByKey,
+} from "@thymesave/ingredients";
 import { matchIngredientByText, matchUnitByText } from "@thymesave/translations";
 import { map } from "rxjs";
 
@@ -57,6 +62,33 @@ export class RecipeImporterService {
       image: raw.image,
       ingredients: this.parseIngredients(raw.ingredients),
       instructions: this.parseInstructions(raw.instructions),
+    };
+  }
+
+  /**
+   * Finalize raw recipe information
+   * @param raw
+   */
+  public finalize(raw: ParsedRecipe): Recipe {
+    return {
+      ingredients: raw.ingredients
+        .map((i : any) => {
+          console.log(i);
+          const ingredient = loadIngredientByKey(i.translationKey);
+          return {
+            ...ingredient,
+            translationKey: i.translationKey,
+            unit: i.unit,
+            minAmount: i.minAmount,
+            maxAmount: i.maxAmount ?? i.minAmount,
+            isNumeric: !isNaN((i.minAmount ?? "") as number) && !isNaN((i.maxAmount ?? 0) as number),
+            isRange: i.minAmount != i.maxAmount,
+          };
+        }),
+      instructions: raw.instructions,
+      title: raw.title,
+      description: raw.description,
+      image: raw.image,
     };
   }
 

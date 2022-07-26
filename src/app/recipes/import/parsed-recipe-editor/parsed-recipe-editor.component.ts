@@ -14,6 +14,8 @@ import { createLogger } from "@helper/log";
 import { Instruction, ParsedRecipe, ParsedRecipeIngredient, RawRecipe, imageToBase64 } from "@thymesave/core";
 
 import { IngredientService } from "@/recipes/services/ingredient.service";
+import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
+import { RecipeService } from "@/recipes/services/recipe.service";
 
 @Component({
   selector: 'app-parsed-recipe-editor',
@@ -40,7 +42,9 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               public router: Router,
-              private ingredientService : IngredientService) {
+              private ingredientService: IngredientService,
+              private importerService: RecipeImporterService,
+              private recipeService: RecipeService) {
   }
 
   public form !: FormGroup;
@@ -57,9 +61,9 @@ export class ParsedRecipeEditorComponent implements OnInit {
     this.initForm({});
   }
 
-  private translationKeyValidator : ValidatorFn = (control : AbstractControl) : ValidationErrors | null => {
+  private translationKeyValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const value = control.getRawValue();
-    return this.ingredientService.allKeys.indexOf(value) == -1 ? { value: false } : null;
+    return this.ingredientService.allKeys.indexOf(value) == -1 ? {value: false} : null;
   };
 
   private initForm(recipe: Partial<ParsedRecipe>) {
@@ -68,6 +72,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
     this.form = this.fb.group({
       title: this.fb.control(recipe.title, [Validators.required]),
+      image: this.fb.control(recipe.image),
       description: this.fb.control(recipe.description, [Validators.required]),
       ingredients: this.fb.array(ingredients, [Validators.required]),
       instructions: this.fb.array(instructions, [Validators.required]),
@@ -138,7 +143,11 @@ export class ParsedRecipeEditorComponent implements OnInit {
             try {
               const blob = await fetch(fileReader.result as string)
                 .then(r => r.blob());
-              this._recipe.image = await imageToBase64(blob as Blob);
+              const image = await imageToBase64(blob as Blob);
+              this.form.patchValue({
+                image,
+              });
+              this._recipe.image = image;
               resolve();
             } catch (e) {
               reject(e);
@@ -152,8 +161,11 @@ export class ParsedRecipeEditorComponent implements OnInit {
   }
 
   public async save() {
-    this.logger.info("Saved", this.form.getRawValue());
-    // TODO Persist
-    await this.router.navigate(["/recipes"]);
+    const finalized = this.importerService.finalize(this.form.getRawValue());
+    this.logger.info("Saved", finalized);
+    this.recipeService.insert(finalized)
+      .subscribe(() => {
+        this.router.navigate(["/recipes"]);
+      });
   }
 }

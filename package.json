@@ -35,10 +35,12 @@
     "@auth0/auth0-angular": "^1.10.0",
     "lodash": "^4.17.21",
     "pouchdb": "^7.3.0",
+    "pouchdb-find": "^7.3.0",
     "pouchdb-upsert": "^2.2.0",
     "rxjs": "~7.5.5",
     "string-similarity": "^4.0.4",
     "tslib": "^2.4.0",
+    "uuid": "^8.3.2",
     "zone.js": "~0.11.6"
   },
   "devDependencies": {
@@ -57,6 +59,7 @@
     "@types/pouchdb": "^6.4.0",
     "@types/pouchdb-upsert": "^2.2.6",
     "@types/string-similarity": "^4.0.0",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.29.0",
     "eslint": "^8.18.0",
