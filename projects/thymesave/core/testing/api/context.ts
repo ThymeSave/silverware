@@ -9,7 +9,7 @@ import {
   RawRecipe,
   SERVICE_NAME_FUNNEL_CORS_PROXY,
 } from "@thymesave/core";
-import { Observable, of } from "rxjs";
+import { Observable, of, throwError } from "rxjs";
 
 import { runImporter } from "./importer";
 
@@ -21,11 +21,11 @@ export class FunnelCorsMockService implements FunnelCorsService, Service {
   fetch(url: URL): Observable<FunnelCORSProxyErrorResponse | FunnelCORSProxySuccessResponse> {
     for (const [key, value] of this.responses.entries()) {
       if (url.toString().match(key)) {
-        return of(value);
+        return of(value as FunnelCORSProxySuccessResponse);
       }
     }
 
-    throw Error("No response found");
+    throw new Error("No response found");
   }
 
 }

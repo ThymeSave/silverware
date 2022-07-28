@@ -32,7 +32,7 @@ export abstract class Importer<T> {
   /**
    * Specifies the entity type the importer can process
    */
-  abstract get entityType() : EntityType
+  abstract get entityType(): EntityType
 
   /**
    * Name of the importer to display
@@ -52,7 +52,7 @@ export abstract class Importer<T> {
    * @param nodes Nodes to extract textContent from
    * @protected
    */
-  protected extractTextFromNodes(nodes : NodeList) : string[] {
+  protected extractTextFromNodes(nodes: NodeList): string[] {
     return Array.from(nodes)
       .filter(el => !!el)
       .map(el => el.textContent as string);
@@ -63,10 +63,11 @@ export abstract class Importer<T> {
    * @param rawHTML Raw HTML input
    * @protected
    */
-  protected createDocument(rawHTML : string) {
+  protected createDocument(rawHTML: string) {
     const parser = new DOMParser();
     return parser.parseFromString(rawHTML, "text/html");
   }
+
   /**
    * Fetch publicly available image from URL and return base64 encoded URL.
    * Also handles default resizing and compression
@@ -121,7 +122,16 @@ export abstract class RecipeURLImporter extends URLImporter<RawRecipe> {
     return "recipe";
   }
 
-  public abstract parseFromHTML(context: ComponentContext, rawHTML : string) : Promise<RawRecipe>;
+  /**
+   * The default method used internally by import, simplifying the logic you need to write.
+   *
+   * If you need more control override import instead
+   * @param context Context for plugin
+   * @param rawHTML RAW html loaded form url
+   */
+  public parseFromHTML(context: ComponentContext, rawHTML: string): Promise<RawRecipe> {
+    throw new Error("not implemented");
+  }
 
   public override import(context: ComponentContext, payload: URLImporterPayload): Observable<RawRecipe> {
     return this.fetchContent(context, new URL(payload.url))

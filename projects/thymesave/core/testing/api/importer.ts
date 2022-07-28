@@ -1,6 +1,6 @@
 import { Importer, ComponentContext, ImporterPayload, ParsedRecipe } from "@thymesave/core";
-import { firstValueFrom } from "rxjs";
+import { firstValueFrom, Observable } from "rxjs";
 
 export const runImporter = async(importer : Importer<any>, context : ComponentContext, payload : ImporterPayload) : Promise<ParsedRecipe> => {
-  return await firstValueFrom(importer.import(context, payload));
+  return await firstValueFrom(importer.import(context, payload)  as any as Observable<ParsedRecipe>);
 };
