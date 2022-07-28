@@ -1,6 +1,6 @@
 import { Plugin, PluginDescriptor } from "@thymesave/plugin";
 
-import { ChowdownSingleRecipeImporter } from "./importer";
+import { ChowdownAllRecipeImporter, ChowdownSingleRecipeImporter } from "./importer";
 
 @PluginDescriptor({
   name: "chowdown",
@@ -10,7 +10,8 @@ import { ChowdownSingleRecipeImporter } from "./importer";
 export class ChowdownPlugin extends Plugin {
   override get importer() {
     return [
-       new ChowdownSingleRecipeImporter(),
+      new ChowdownSingleRecipeImporter(),
+      new ChowdownAllRecipeImporter(),
     ];
   }
 }

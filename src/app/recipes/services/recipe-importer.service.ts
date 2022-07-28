@@ -93,7 +93,8 @@ export class RecipeImporterService {
   }
 
   public runRecipeImporter(importer: Importer<RawRecipe>, payload: ImporterPayload) {
+    // TODO Always use all recipes
     return importer.import(this.contextService.createContext(), payload)
-      .pipe(map(raw => this.parseRecipe(raw)));
+      .pipe(map(raw => this.parseRecipe(raw[0])));
   }
 }

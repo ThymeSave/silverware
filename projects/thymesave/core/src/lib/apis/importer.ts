@@ -44,8 +44,7 @@ export abstract class Importer<T> {
    * @param context Context provided to importer
    * @param payload Input to the given recipe
    */
-  // TODO Make able to also import multiple
-  abstract import(context: ComponentContext, payload: ImporterPayload): Observable<T>
+  abstract import(context: ComponentContext, payload: ImporterPayload): Observable<T[]>
 
   /**
    * Extract all text context from given node list
@@ -61,11 +60,12 @@ export abstract class Importer<T> {
   /**
    * Create document from given html input
    * @param rawHTML Raw HTML input
+   * @param baseURL Base url for document
    * @protected
    */
-  protected createDocument(rawHTML: string) {
+  protected createDocument(baseURL : URL, rawHTML: string) {
     const parser = new DOMParser();
-    return parser.parseFromString(rawHTML, "text/html");
+    return parser.parseFromString(`${rawHTML}<base href='${baseURL.toString()}'>`, "text/html");
   }
 
   /**
@@ -97,7 +97,7 @@ export abstract class URLImporter<T> extends Importer<T> {
    * @param context Context provided to importer
    * @param payload Input to the given recipe
    */
-  abstract override import(context: ComponentContext, payload: URLImporterPayload): Observable<T>
+  abstract override import(context: ComponentContext, payload: URLImporterPayload): Observable<T[]>
 
   /**
    * Fetch URL content using funnel cors proxy.
@@ -128,14 +128,16 @@ export abstract class RecipeURLImporter extends URLImporter<RawRecipe> {
    * If you need more control override import instead
    * @param context Context for plugin
    * @param rawHTML RAW html loaded form url
+   * @param url URL
    */
-  public parseFromHTML(context: ComponentContext, rawHTML: string): Promise<RawRecipe> {
+  public parseFromHTML(context: ComponentContext, rawHTML: string, url : URL): Promise<RawRecipe[]> {
     throw new Error("not implemented");
   }
 
-  public override import(context: ComponentContext, payload: URLImporterPayload): Observable<RawRecipe> {
-    return this.fetchContent(context, new URL(payload.url))
-      .pipe(switchMap(raw => from(this.parseFromHTML(context, raw as string))));
+  public override import(context: ComponentContext, payload: URLImporterPayload): Observable<RawRecipe[]> {
+    const url = new URL(payload.url);
+    return this.fetchContent(context, url)
+      .pipe(switchMap(raw => from(this.parseFromHTML(context, String(raw), url))));
   }
 }
 
