@@ -1,10 +1,9 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup, ValidationErrors,
   ValidatorFn,
   Validators,
@@ -15,7 +14,6 @@ import { Instruction, ParsedRecipe, Recipe, ParsedRecipeIngredient, imageToBase6
 
 import { IngredientService } from "@/recipes/services/ingredient.service";
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
-import { RecipeService } from "@/recipes/services/recipe.service";
 
 @Component({
   selector: 'app-parsed-recipe-editor',
@@ -28,11 +26,11 @@ export class ParsedRecipeEditorComponent implements OnInit {
   private _recipe !: ParsedRecipe;
 
   @Input()
-  set recipe(value: ParsedRecipe) {
-    this._recipe = value;
-    if (!this._recipe) {
+  set recipe(value: ParsedRecipe | null) {
+    if(value == null) {
       return;
     }
+    this._recipe = value;
     this.initForm(this.recipe);
   }
 
@@ -52,8 +50,8 @@ export class ParsedRecipeEditorComponent implements OnInit {
   constructor(private fb: FormBuilder,
               public router: Router,
               private ingredientService: IngredientService,
-              private importerService: RecipeImporterService,
-              private recipeService: RecipeService) {
+              private ref: ChangeDetectorRef,
+              private importerService: RecipeImporterService) {
   }
 
   public form !: FormGroup;
@@ -72,7 +70,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   private translationKeyValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const value = control.getRawValue();
-    return this.ingredientService.allKeys.indexOf(value) == -1 ? {value: false} : null;
+    return this.ingredientService.allKeys.indexOf(value) == -1 ? {translationKey: false} : null;
   };
 
   private initForm(recipe: Partial<ParsedRecipe>) {
@@ -86,6 +84,10 @@ export class ParsedRecipeEditorComponent implements OnInit {
       instructions: this.fb.array(instructions, [Validators.required]),
       title: this.fb.control(recipe.title, [Validators.required]),
     });
+
+    ingredients.map(i => i.controls['translationKey'].markAllAsTouched());
+    this.form.updateValueAndValidity();
+    this.ref.detectChanges();
   }
 
   private mapInstructionToFormGroup(instruction: Partial<Instruction>) {

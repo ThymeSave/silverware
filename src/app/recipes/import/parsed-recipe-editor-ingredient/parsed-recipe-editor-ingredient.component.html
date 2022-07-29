@@ -3,10 +3,13 @@
      fxLayoutAlign="center center"
      [formGroup]="formGroup">
   <ng-content></ng-content>
-  <div class="amount-unit" fxFlex fxFlex.gt-lg="150px">
+  <div class="amount-unit"
+       fxFlex
+       fxFlex.gt-lg="150px">
     <mat-form-field class="amount">
       <mat-label>{{ 'min' | i18n }}</mat-label>
-      <input matInput formControlName="minAmount">
+      <input matInput
+             formControlName="minAmount">
     </mat-form-field>
     <ng-container>
       <span>-</span>
@@ -22,6 +25,7 @@
                      formControlName="unit">
   </app-unit-selector>
   <app-ingredient-selector formControlName="translationKey"
+                           [validateOnInit]="true"
                            [formParent]="formGroup"
                            [formGroup]="formGroup"
                            [preFilter]="preFilter">

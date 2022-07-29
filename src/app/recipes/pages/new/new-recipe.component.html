@@ -1,5 +1,5 @@
-<div class="screen-hint"
-     *ngIf="!forceUsageOnMobile"
+<div *ngIf="!forceUsageOnMobile"
+     class="screen-hint"
      fxHide
      fxShow.xs
      fxLayoutGap="30px"
@@ -21,8 +21,8 @@
     </button>
   </div>
 </div>
-<mat-stepper [linear]="true"
-             #stepper
+<mat-stepper #stepper
+             [linear]="true"
              [@.disabled]="true">
   <mat-step [label]="'recipes.choose_importer' | i18n"
             completed="false"
@@ -71,7 +71,6 @@
       </button>
     </div>
     <div *ngIf="importFailed">
-      <!-- TODO Fine tune error handling -->
       <h1 class="mat-h1">{{ 'recipes.import.failed' | i18n }}</h1>
       <p class="caption">
         {{ 'recipes.import.failed_explanation' | i18n }}
@@ -84,12 +83,12 @@
   <mat-step [label]="'recipes.verify' | i18n"
             completed="false"
             editable="false">
-   <app-parsed-recipe-editor [recipe]="parsedRecipe"
-                             [recipeIndex]="recipeIndex"
-                             [totalRecipes]="totalRecipes"
-                             (canceled)="cancelEdit()"
-                             (saved)="saveEdit($event)"
-                             [hasMultipleRecipes]="hasMultipleRecipes"
-                             *ngIf="!importFailed"></app-parsed-recipe-editor>
+    <app-parsed-recipe-editor *ngIf="!importFailed"
+                              [recipe]="parsedRecipe"
+                              [recipeIndex]="recipeIndex"
+                              [totalRecipes]="totalRecipes"
+                              (canceled)="cancelEdit()"
+                              (saved)="saveEdit($event)"
+                              [hasMultipleRecipes]="hasMultipleRecipes"></app-parsed-recipe-editor>
   </mat-step>
 </mat-stepper>

@@ -27,24 +27,23 @@ import { LanguageService } from "@/shared/i18n/language.service";
 export class NewRecipeComponent implements OnInit, AfterViewInit {
   private logger = createLogger("NewComponent");
 
-  public importer: Importer<RawRecipe> | null = null;
   @ViewChild("stepper") private stepper !: MatStepper;
 
-  public urlImporter !: RecipeImporterList;
-  public isURLImporter: boolean = false;
-
-  public manualImporter !: RecipeImporterList;
-  private isManualImporter: boolean = false;
-
   private readonly importerSubject = new BehaviorSubject<Importer<RawRecipe> | null>(null);
-  public readonly importer$ = this.importerSubject;
-
+  public readonly importer$ = this.importerSubject.asObservable();
+  public importer: Importer<RawRecipe> | null = null;
+  public isURLImporter = false;
+  public urlImporter !: RecipeImporterList;
+  public manualImporter !: RecipeImporterList;
+  private isManualImporter = false;
   public importLoading = false;
   public importFailed = false;
   public importFailedErr !: Error;
 
+  private readonly parsedRecipesSubject = new BehaviorSubject<ParsedRecipe[]>([]);
+  public readonly parsedRecipes$ = this.parsedRecipesSubject.asObservable();
   public parsedRecipes: ParsedRecipe[] = [];
-  public parsedRecipe !: ParsedRecipe;
+  public parsedRecipe: ParsedRecipe | null = null;
   public recipeIndex = 1;
   public totalRecipes = 1;
 
@@ -54,7 +53,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
               private route: ActivatedRoute,
               private importerService: RecipeImporterService,
               private recipeService: RecipeService,
-              public languageService : LanguageService,
+              public languageService: LanguageService,
               private ref: ChangeDetectorRef) {
   }
 
@@ -115,6 +114,9 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     this.importer$
       .pipe(filter(i => i != null))
       .subscribe(this.setImporter.bind(this));
+
+    this.parsedRecipes$
+      .subscribe(this.setParsedRecipes.bind(this));
   }
 
   public ngAfterViewInit() {
@@ -123,9 +125,24 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
 
   private setImporter(importer: Importer<RawRecipe> | null) {
     this.logger.debug("Selected importer", importer);
+
+    this.importLoading = false;
+    this.importFailed = false;
+
     this.importer = importer;
+
     this.isManualImporter = importer?.type == ImporterType.MANUAL;
     this.isURLImporter = importer?.type == ImporterType.URL;
+  }
+
+  private setParsedRecipes(parsedRecipes: ParsedRecipe[]) {
+    this.parsedRecipes = parsedRecipes;
+    if(this.parsedRecipes.length > 0) {
+      this.parsedRecipe = parsedRecipes[0];
+    }
+
+    this.recipeIndex = 1;
+    this.totalRecipes = parsedRecipes.length;
   }
 
   public urlImporterSaved(urlImporterPayload: URLImporterPayload) {
@@ -146,16 +163,14 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
   }
 
   private succeedImport(recipes: ParsedRecipe[]) {
+    this.logger.debug("Imported", recipes);
+
     if (recipes.length == 0) {
       this.failImport(new Error("no_recipe_found"));
       return;
     }
 
-    this.logger.debug("Imported", recipes);
-
-    this.parsedRecipes = recipes;
-    this.parsedRecipe = recipes[0];
-    this.totalRecipes = recipes.length;
+    this.parsedRecipesSubject.next(recipes);
 
     this.completeCurrentStep();
   }
@@ -170,17 +185,8 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
   public cancel() {
     this.stepper.reset();
 
-    this.importLoading = false;
-    this.importFailed = false;
-
-    this.recipeIndex = 1;
-    this.totalRecipes = this.parsedRecipes.length;
-
+    this.parsedRecipesSubject.next([]);
     this.importerSubject.next(null);
-  }
-
-  public cancelEdit() {
-    this.loadNewRecipeOrCancel();
   }
 
   public loadNewRecipeOrCancel() {
@@ -190,6 +196,10 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     } else {
       this.cancel();
     }
+  }
+
+  public cancelEdit() {
+    this.loadNewRecipeOrCancel();
   }
 
   public saveEdit(finalized: Recipe) {
@@ -219,5 +229,4 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
   public forceUsageOnMobileDevice() {
     this.forceUsageOnMobile = true;
   }
-
 }

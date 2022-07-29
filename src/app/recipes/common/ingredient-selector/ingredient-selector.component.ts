@@ -1,12 +1,10 @@
-import { Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import {
-  AbstractControl,
   ControlValueAccessor,
   FormArray,
   FormControl,
   FormGroup,
-  NgControl, ValidationErrors,
-  ValidatorFn,
+  NgControl,
   Validators,
 } from "@angular/forms";
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
@@ -24,13 +22,16 @@ export type PreFilterFunction = (ingredient: FlattenedIngredient) => boolean;
 
 @Component({
   selector: 'app-ingredient-selector',
-  templateUrl: './ingredient-selector.component.html',
   styleUrls: ['./ingredient-selector.component.html'],
+  templateUrl: './ingredient-selector.component.html',
 })
 export class IngredientSelectorComponent implements ControlValueAccessor, OnInit {
-  @Input() public selected: string | null = null;
 
   @ViewChild("matAutocomplete") private autocomplete !: MatAutocomplete;
+
+  @Input() public validateOnInit ?: boolean;
+
+  @Input() public selected: string | null = null;
 
   /**
    * Prefilter all ingredients by this function
@@ -46,20 +47,18 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
 
   @Input()
   @Optional()
-  public set formParent(formParent : FormGroup | FormArray | undefined) {
-    if(!formParent) {
+  public set formParent(formParent: FormGroup | FormArray | undefined) {
+    if (!formParent) {
       return;
     }
-
     this.searchControl.setParent(formParent);
   }
 
   private filterChanged = new BehaviorSubject(null);
   public filterChanged$ = this.filterChanged.asObservable();
+  public filteredOptions !: Observable<IngredientsGroupedByCategory>;
 
   public searchControl = new FormControl("", [Validators.required]);
-
-  public filteredOptions !: Observable<IngredientsGroupedByCategory>;
 
   public onChange = (_: string) => {
   };
@@ -70,6 +69,7 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
   private _allCopy = cloneDeep(this.ingredientService.groupedByCategory);
 
   constructor(public ingredientService: IngredientService,
+              private ref: ChangeDetectorRef,
               @Optional() public ngControl ?: NgControl) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -77,7 +77,7 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
   }
 
   private filterIngredientBySearchTerm(ingredient: FlattenedIngredient, search: string) {
-    const similarity = getSimilarity( search, ingredient.name);
+    const similarity = getSimilarity(search, ingredient.name);
     return this._preFilter(ingredient) &&
       (search == "" || similarity >= 0.5);
   }
@@ -106,6 +106,12 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
       );
     this.searchControl.valueChanges
       .subscribe(_ => this.onChange(this.searchControl.value ?? ""));
+
+    if (this.validateOnInit) {
+      this.searchControl.markAllAsTouched();
+      this.searchControl.updateValueAndValidity();
+      this.ref.detectChanges();
+    }
   }
 
   public registerOnChange(changeCallback: any): void {
