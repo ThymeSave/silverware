@@ -14,6 +14,12 @@ export interface PluginDescriptorInformation {
   name: string
 
   /**
+   * Globally unique identifier for the plugin.
+   * Recommendation is to use your in reverse appending your plugin e. g. com.example.MyPlugin
+   */
+  identifier : string
+
+  /**
    * Short informational description about what it provides and it is useful for
    */
   description: string
@@ -65,6 +71,12 @@ export class Plugin implements PluginDescriptorInformation {
    * Short informational description about what it provides and it is useful for
    */
   public description: string = "";
+
+  /**
+   * Globally unique identifier for the plugin.
+   * Recommendation is to use your in reverse appending your plugin e. g. com.example.MyPlugin
+   */
+  public identifier : string = "";
 
   /**
    * Version of the plugin

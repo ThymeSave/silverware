@@ -1,5 +1,5 @@
 import { RawRecipe, RecipeURLImporter, ComponentContext, URLImporterPayload } from "@thymesave/core";
-import { forkJoin, from, map, Observable, switchMap} from "rxjs";
+import { forkJoin, from, map, Observable, switchMap } from "rxjs";
 
 abstract class BaseChowdownImporter extends RecipeURLImporter {
   protected async parseFromChowdownHTML(url: URL, rawHTML: string): Promise<RawRecipe[]> {
@@ -12,19 +12,38 @@ abstract class BaseChowdownImporter extends RecipeURLImporter {
       // ignore
     }
 
-    return [{
-      title: document.title,
-      description: document.querySelector("[itemprop='description']")?.textContent ?? "",
-      ingredients: this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeIngredient']")),
-      instructions: this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeInstructions']>li")),
-      image,
-    }];
+    const ingredients = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeIngredient']"));
+    const instructions = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeInstructions']>li"));
+
+    if (ingredients.length == 0 && instructions.length == 0) {
+      return [];
+    }
+
+    return [
+      {
+        description: document.querySelector("[itemprop='description']")?.textContent ?? "",
+        image,
+        ingredients: ingredients,
+        instructions: instructions,
+        title: document.title,
+      },
+    ];
   }
 }
 
 export class ChowdownSingleRecipeImporter extends BaseChowdownImporter {
-  public override get name() {
-    return "Chowdown Single Recipe";
+  public override getName(locale: string) {
+    switch (locale) {
+      case "de_DE":
+        return "Chowdown - Einzelnes Rezept";
+
+      default:
+        return "Chowdown - Single Recipe";
+    }
+  }
+
+  public override get identifier(): string {
+    return "SingleRecipeImporter";
   }
 
   public override async parseFromHTML(_: ComponentContext, rawHTML: string, url: URL): Promise<RawRecipe[]> {
@@ -33,8 +52,18 @@ export class ChowdownSingleRecipeImporter extends BaseChowdownImporter {
 }
 
 export class ChowdownAllRecipeImporter extends BaseChowdownImporter {
-  get name(): string {
-    return "Chowdown All Recipe";
+  public override getName(locale: string) {
+    switch (locale) {
+      case "de_DE":
+        return "Chowdown - Alle Rezepte";
+
+      default:
+        return "Chowdown - All Recipes";
+    }
+  }
+
+  public override get identifier(): string {
+    return "AllRecipeImporter";
   }
 
   private getRecipeURLsFromIndex(url: URL, rawHTML: string) {

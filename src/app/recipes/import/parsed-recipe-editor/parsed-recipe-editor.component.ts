@@ -11,7 +11,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { createLogger } from "@helper/log";
-import { Instruction, ParsedRecipe,  Recipe, ParsedRecipeIngredient, imageToBase64 } from "@thymesave/core";
+import { Instruction, ParsedRecipe, Recipe, ParsedRecipeIngredient, imageToBase64 } from "@thymesave/core";
 
 import { IngredientService } from "@/recipes/services/ingredient.service";
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
@@ -19,8 +19,8 @@ import { RecipeService } from "@/recipes/services/recipe.service";
 
 @Component({
   selector: 'app-parsed-recipe-editor',
-  templateUrl: './parsed-recipe-editor.component.html',
   styleUrls: ['./parsed-recipe-editor.component.scss'],
+  templateUrl: './parsed-recipe-editor.component.html',
 })
 export class ParsedRecipeEditorComponent implements OnInit {
   public logger = createLogger("ParsedRecipeEditorComponent");
@@ -35,6 +35,9 @@ export class ParsedRecipeEditorComponent implements OnInit {
     }
     this.initForm(this.recipe);
   }
+
+  @Input() public recipeIndex !: number;
+  @Input() public totalRecipes !: number;
 
   @Input() public hasMultipleRecipes !: boolean;
 
@@ -77,11 +80,11 @@ export class ParsedRecipeEditorComponent implements OnInit {
     const instructions = recipe.instructions ? recipe.instructions.map(this.mapInstructionToFormGroup.bind(this)) : [];
 
     this.form = this.fb.group({
-      title: this.fb.control(recipe.title, [Validators.required]),
-      image: this.fb.control(recipe.image),
       description: this.fb.control(recipe.description, [Validators.required]),
+      image: this.fb.control(recipe.image),
       ingredients: this.fb.array(ingredients, [Validators.required]),
       instructions: this.fb.array(instructions, [Validators.required]),
+      title: this.fb.control(recipe.title, [Validators.required]),
     });
   }
 
@@ -98,12 +101,12 @@ export class ParsedRecipeEditorComponent implements OnInit {
     const translationMatches = (hasTranslationMatches && ingredient.translationMatches) ?
       ingredient.translationMatches.map(tm => this.fb.control(tm.key)) : [];
     return this.fb.group({
+      "isRange": this.fb.control(ingredient.isRange ?? false),
+      "maxAmount": this.fb.control(ingredient.maxAmount ?? 0),
+      "minAmount": this.fb.control(ingredient.minAmount ?? 0, [Validators.required]),
       "translationKey": this.fb.control(translationKey, [Validators.required, this.translationKeyValidator]),
       "translationMatches": this.fb.array(translationMatches),
-      "minAmount": this.fb.control(ingredient.minAmount ?? 0, [Validators.required]),
-      "maxAmount": this.fb.control(ingredient.maxAmount ?? 0),
       "unit": this.fb.control(ingredient.unit ?? null),
-      "isRange": this.fb.control(ingredient.isRange ?? false),
     });
   }
 

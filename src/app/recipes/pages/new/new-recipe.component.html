@@ -35,7 +35,7 @@
                      class="importer-option"
                      *ngFor="let importer of urlImporter">
         <mat-icon mat-list-icon>language</mat-icon>
-        {{importer.name}}
+        {{importer.getName(languageService.currentLanguageIdentifier)}}
       </mat-list-item>
 
       <!-- Import manual etc -->
@@ -45,7 +45,7 @@
                      class="importer-option"
                      *ngFor="let importer of manualImporter">
         <mat-icon mat-list-icon>language</mat-icon>
-        {{importer.name}}
+        {{importer.getName(languageService.currentLanguageIdentifier)}}
       </mat-list-item>
     </mat-list>
   </mat-step>
@@ -85,6 +85,8 @@
             completed="false"
             editable="false">
    <app-parsed-recipe-editor [recipe]="parsedRecipe"
+                             [recipeIndex]="recipeIndex"
+                             [totalRecipes]="totalRecipes"
                              (canceled)="cancelEdit()"
                              (saved)="saveEdit($event)"
                              [hasMultipleRecipes]="hasMultipleRecipes"

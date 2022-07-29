@@ -3,8 +3,9 @@ import { Plugin, PluginDescriptor } from "@thymesave/plugin";
 import { ChowdownAllRecipeImporter, ChowdownSingleRecipeImporter } from "./importer";
 
 @PluginDescriptor({
-  name: "chowdown",
   description: "Builtin plugin to provide chowdown functionality",
+  identifier: "com.github.thymesave.ChowdownPlugin",
+  name: "chowdown",
   version: "builtin",
 })
 export class ChowdownPlugin extends Plugin {

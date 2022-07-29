@@ -30,14 +30,23 @@ export abstract class Importer<T> {
   abstract get type(): ImporterType
 
   /**
+   * Unique identifier within the plugin
+   */
+  abstract get identifier() : string
+
+  /**
    * Specifies the entity type the importer can process
    */
   abstract get entityType(): EntityType
 
   /**
    * Name of the importer to display
+   * @param languageCode Code of the language to use, for a list of all language
+   * code take the Languages object from @thymesave/translations as base.
+   *
+   * If you dont want your plugin name to be localized simply ignore the language code parameter
    */
-  abstract get name(): string
+  abstract getName(languageCode : string): string
 
   /**
    * Run the import with specified input

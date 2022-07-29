@@ -17,6 +17,7 @@ import { BehaviorSubject, catchError, filter, finalize, first, from, map, of, sw
 
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
 import { RecipeService } from "@/recipes/services/recipe.service";
+import { LanguageService } from "@/shared/i18n/language.service";
 
 @Component({
   selector: 'app-new-recipe',
@@ -44,6 +45,8 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
 
   public parsedRecipes: ParsedRecipe[] = [];
   public parsedRecipe !: ParsedRecipe;
+  public recipeIndex = 1;
+  public totalRecipes = 1;
 
   public forceUsageOnMobile = false;
 
@@ -51,6 +54,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
               private route: ActivatedRoute,
               private importerService: RecipeImporterService,
               private recipeService: RecipeService,
+              public languageService : LanguageService,
               private ref: ChangeDetectorRef) {
   }
 
@@ -64,7 +68,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
       .subscribe(queryParameters => {
         // Try loading name
         try {
-          const importerName = queryParameters['importerName'];
+          const importerName = queryParameters['importerIdentifier'];
           const importer = this.findImporterByName(importerName);
           if (importer) {
             this.importerSubject.next(importer);
@@ -76,7 +80,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
 
         // Try loading parameters
         try {
-          const settings = queryParameters['importerSettings'];
+          const settings = queryParameters['importerPayload'];
           const parsedSettings = JSON.parse(decodeURIComponent(atob(settings)));
           this.logger.debug("Parsed settings from URL", parsedSettings);
           this.runImportStep(parsedSettings);
@@ -89,11 +93,11 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
       });
   }
 
-  private findImporterByName(name: string): Importer<RawRecipe> | undefined {
+  private findImporterByName(identifier: string): Importer<RawRecipe> | undefined {
     return _first(PluginRegistry
       .getImporter()
-      .filter(i => i.name == name),
-    );
+      .filter(i => i.identifier == identifier),
+    )?.importer;
   }
 
   public async save() {
@@ -102,9 +106,11 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
 
   public ngOnInit() {
     this.urlImporter = PluginRegistry
-      .getImporter(FilterImporterByType(ImporterType.URL));
+      .getImporter(FilterImporterByType(ImporterType.URL))
+      .map(i => i.importer);
     this.manualImporter = PluginRegistry
-      .getImporter(FilterImporterByType(ImporterType.MANUAL));
+      .getImporter(FilterImporterByType(ImporterType.MANUAL))
+      .map(i => i.importer);
 
     this.importer$
       .pipe(filter(i => i != null))
@@ -149,6 +155,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
 
     this.parsedRecipes = recipes;
     this.parsedRecipe = recipes[0];
+    this.totalRecipes = recipes.length;
 
     this.completeCurrentStep();
   }
@@ -166,6 +173,9 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     this.importLoading = false;
     this.importFailed = false;
 
+    this.recipeIndex = 1;
+    this.totalRecipes = this.parsedRecipes.length;
+
     this.importerSubject.next(null);
   }
 
@@ -176,6 +186,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
   public loadNewRecipeOrCancel() {
     if (this.hasMultipleRecipes) {
       this.parsedRecipe = this.parsedRecipes.pop()!!;
+      this.recipeIndex++;
     } else {
       this.cancel();
     }

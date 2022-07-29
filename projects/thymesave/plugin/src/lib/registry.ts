@@ -11,7 +11,9 @@ export class PluginAlreadyRegisteredError extends Error {
 
 export type ImporterFilter = (importer: Importer<RawRecipe>) => boolean
 
-export const FilterImporterByType = (type : ImporterType) => ((importer : Importer<any>) => importer.type == type);
+export const FilterImporterByType = (type: ImporterType) => ((importer: Importer<any>) => importer.type == type);
+
+export type IdentifiableImporter = {importer: Importer<RawRecipe>, identifier: string}
 
 export class PluginRegistry {
   private static plugins: Array<Plugin> = [];
@@ -30,12 +32,19 @@ export class PluginRegistry {
     return this.plugins;
   }
 
-  public static getImporter(filter ?: ImporterFilter) : RecipeImporterList {
+  public static getImporter(filter ?: ImporterFilter) : IdentifiableImporter[] {
     let importerFilter = !filter ? (_: any) => true : filter;
 
     return this.getRegistered()
-      .flatMap(p => p.importer)
+      .flatMap(plugin => plugin.importer.map(importer => ({
+        importer,
+        plugin,
+      })))
       .flat()
-      .filter(importer => importerFilter(importer));
+      .map(info => ({
+        identifier: info.plugin.identifier + "." + info.importer.identifier,
+        importer: info.importer,
+      }))
+      .filter(importerInfo => importerFilter(importerInfo.importer));
   }
 }

@@ -5,6 +5,7 @@
   button {
     margin: auto;
     display: block;
+    background: var(--accent-color)
   }
 }
 
@@ -84,5 +85,10 @@ mat-form-field {
 }
 
 .description {
+  font-size: 1.1rem;
+}
+
+.recipe-index-info {
+  text-align: center;
   font-size: 1.1rem;
 }
