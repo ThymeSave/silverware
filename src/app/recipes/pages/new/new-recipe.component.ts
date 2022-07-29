@@ -20,8 +20,8 @@ import { RecipeService } from "@/recipes/services/recipe.service";
 
 @Component({
   selector: 'app-new-recipe',
-  templateUrl: './new-recipe.component.html',
   styleUrls: ['./new-recipe.component.scss'],
+  templateUrl: './new-recipe.component.html',
 })
 export class NewRecipeComponent implements OnInit, AfterViewInit {
   private logger = createLogger("NewComponent");
@@ -44,6 +44,8 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
 
   public parsedRecipes: ParsedRecipe[] = [];
   public parsedRecipe !: ParsedRecipe;
+
+  public forceUsageOnMobile = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -139,7 +141,6 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
 
   private succeedImport(recipes: ParsedRecipe[]) {
     if (recipes.length == 0) {
-      // TODO Make pretty
       this.failImport(new Error("no_recipe_found"));
       return;
     }
@@ -202,6 +203,10 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
   public selectImporter(importer: Importer<RawRecipe>) {
     this.importerSubject.next(importer);
     this.completeCurrentStep();
+  }
+
+  public forceUsageOnMobileDevice() {
+    this.forceUsageOnMobile = true;
   }
 
 }

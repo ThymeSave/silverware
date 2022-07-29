@@ -1,7 +1,7 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from "@angular/flex-layout";
+import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
@@ -31,12 +31,12 @@ import { SharedModule } from "@/shared/shared.module";
 
 const routes: Routes = [
   {
-    path: '',
     component: OverviewComponent,
+    path: '',
   },
   {
-    path: 'new',
     component: NewRecipeComponent,
+    path: 'new',
   },
 ];
 
@@ -51,29 +51,30 @@ const routes: Routes = [
     UnitSelectorComponent,
     IngredientSelectorComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FlexModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatStepperModule,
-    MatListModule,
-    MatRippleModule,
-    MatProgressBarModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatSlideToggleModule,
-    DragDropModule,
-    MatAutocompleteModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        SharedModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FlexModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatStepperModule,
+        MatListModule,
+        MatRippleModule,
+        MatProgressBarModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        DragDropModule,
+        MatAutocompleteModule,
+        FlexLayoutModule,
+    ],
 })
 export class RecipesModule {
 }

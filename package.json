@@ -65,6 +65,7 @@
     "eslint": "^8.18.0",
     "eslint-plugin-decorator-position": "^5.0.1",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.1",

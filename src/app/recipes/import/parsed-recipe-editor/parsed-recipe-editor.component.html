@@ -1,6 +1,7 @@
 <form [formGroup]="form" fxFlex
-      fxFlex.gt-lg="85%"
-      fxFlex.gt-md="90%"
+      fxFlex.lt-md="100%"
+      fxFlex.gt-lg="70%"
+      fxFlex.gt-md="75%"
       fxLayout="column">
   <div fxFlex
        class="import-actions"
@@ -33,9 +34,9 @@
        fxLayout.lt-md="column-reverse"
        fxLayoutAlign="start">
     <div fxLayoutAlign="start stretch"
-              fxLayout="column"
-              fxFlex="100%"
-              class="full-width-field">
+         fxLayout="column"
+         fxFlex="100%"
+         class="full-width-field">
       <div>
         <mat-form-field class="importer-input title">
           <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
@@ -44,7 +45,7 @@
                  formControlName="title">
         </mat-form-field>
       </div>
-        <div>
+      <div>
         <mat-form-field class="importer-input description"
                         appearance="fill">
           <mat-label>{{'recipes.description' | i18n}}</mat-label>

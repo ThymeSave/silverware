@@ -17,7 +17,8 @@
         ]
       },
       "plugins": [
-        "decorator-position"
+        "decorator-position",
+        "sort-keys-fix"
       ],
       "rules": {
         "@angular-eslint/component-selector": [
@@ -115,6 +116,9 @@
         "semi": [
           "error",
           "always"
+        ],
+        "sort-keys-fix/sort-keys-fix": [
+          "error"
         ]
       }
     },

@@ -6,6 +6,10 @@ import { catchError, map, Observable, switchMap, throwError } from "rxjs";
 
 import { environment } from "@/../environments/environment";
 
+export class FunnelError extends Error {
+  public static readonly UNKNOWN = new FunnelError("unknown");
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +19,7 @@ export class FunnelService implements FunnelCorsService {
               private authService: AuthService) {
   }
 
-  public fetch(url: URL): Observable<FunnelCORSProxyErrorResponse | FunnelCORSProxySuccessResponse> {
+  public fetch(url: URL): Observable<FunnelCORSProxySuccessResponse> {
     // @ts-ignore
     return this.authService.getIdTokenClaims()
       .pipe(
@@ -23,25 +27,25 @@ export class FunnelService implements FunnelCorsService {
         switchMap(token =>
           this.http
             .get(`${environment.funnelBaseUrl}/service/cors-proxy/`, {
-              responseType: "text",
-              params: {
-                'url': url.toString(),
-              },
               headers: {
                 Authorization: `Bearer ${token}`,
               },
+              params: {
+                'url': url.toString(),
+              },
+              responseType: "text",
             })
             .pipe(
               catchError(e => {
                 if (!(e instanceof HttpErrorResponse)) {
-                  return throwError(e);
+                  return throwError(() => new FunnelError("unknown"));
                 }
 
                 try {
-                  const parsed = JSON.parse(e.error);
-                  return throwError(() => parsed as FunnelCORSProxyErrorResponse);
+                  const parsed = JSON.parse(e.error) as FunnelCORSProxyErrorResponse;
+                  return throwError(() => new FunnelError(`funnel.${parsed.errorStatus}`));
                 } catch {
-                  return throwError(() => e.message);
+                  return throwError(() => FunnelError.UNKNOWN);
                 }
               }),
               map(r => r as FunnelCORSProxySuccessResponse),

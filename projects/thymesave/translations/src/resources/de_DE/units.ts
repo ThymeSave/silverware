@@ -1,75 +1,75 @@
 import { UnitTranslation } from "../../lib/model";
 
 const units: UnitTranslation = {
-  "cup": {
-    "long": [
+  cup: {
+    long: [
       "Tasse",
       "Tassen",
     ],
-    "short": "Ta",
+    short: "Ta",
   },
-  "deciliter": {
-    "long": [
+  deciliter: {
+    long: [
       "Deziliter",
     ],
-    "short": "dl",
+    short: "dl",
   },
-  "gram": {
-    "long": [
+  gram: {
+    long: [
       "Gramm",
     ],
-    "short": "g",
+    short: "g",
   },
-  "kilogram": {
-    "long": [
+  kilogram: {
+    long: [
       "Kilogramm",
     ],
-    "short": "kg",
+    short: "kg",
   },
-  "liter": {
-    "long": [
+  liter: {
+    long: [
       "Liter",
     ],
-    "short": "l",
+    short: "l",
   },
-  "milligram": {
-    "long": [
+  milligram: {
+    long: [
       "Milligramm",
     ],
-    "short": "mg",
+    short: "mg",
   },
-  "milliliter": {
-    "long": [
+  milliliter: {
+    long: [
       "Milliliter",
     ],
-    "short": "ml",
+    short: "ml",
   },
-  "pack": {
-    "long": [
+  pack: {
+    long: [
       "Päckchen",
       "Packungen",
     ],
-    "short": "Pck",
+    short: "Pck",
   },
-  "pinch": {
-    "long": [
+  pinch: {
+    long: [
       "Prise",
       "Prisen",
     ],
-    "short": "Prise",
+    short: "Prise",
   },
-  "pound": {
-    "long": [
+  pound: {
+    long: [
       "Pfund",
       "Pfunde",
     ],
-    "short": "Pfund",
+    short: "Pfund",
   },
-  "tsp": {
-    "long": [
+  tsp: {
+    long: [
       "Teelöffel",
     ],
-    "short": "TL",
+    short: "TL",
   },
 };
 

@@ -1,3 +1,26 @@
+<div class="screen-hint"
+     *ngIf="!forceUsageOnMobile"
+     fxHide
+     fxShow.xs
+     fxLayoutGap="30px"
+     fxLayoutAlign="center center"
+     fxLayout="column">
+  <div>
+    <mat-icon>screen_rotation</mat-icon>
+  </div>
+  <div>
+    <p>
+      {{ 'recipes.import.hint_screen_to_small' | i18n }}
+    </p>
+  </div>
+  <div>
+    <button mat-raised-button
+            (click)="forceUsageOnMobileDevice()"
+            color="warn">
+      {{ 'recipes.import.hint_screen_to_small_proceed' | i18n }}
+    </button>
+  </div>
+</div>
 <mat-stepper [linear]="true"
              #stepper
              [@.disabled]="true">
@@ -6,7 +29,7 @@
             editable="false">
     <mat-list>
       <!-- Import by URL -->
-      <div mat-subheader>{{ 'recipes.importer_url' | i18n }}</div>
+      <div mat-subheader>{{ 'recipes.import.url' | i18n }}</div>
       <mat-list-item matRipple
                      (click)="selectImporter(importer)"
                      class="importer-option"
@@ -16,7 +39,7 @@
       </mat-list-item>
 
       <!-- Import manual etc -->
-      <div mat-subheader>{{ 'recipes.importer_misc' | i18n }}</div>
+      <div mat-subheader>{{ 'recipes.import.importer.misc' | i18n }}</div>
       <mat-list-item matRipple
                      (click)="selectImporter(importer)"
                      class="importer-option"
@@ -26,13 +49,13 @@
       </mat-list-item>
     </mat-list>
   </mat-step>
-  <mat-step [label]="'recipes.importer_parameter' | i18n"
+  <mat-step [label]="'recipes.import.importer.parameter' | i18n"
             completed="false"
             editable="false">
     <app-url-importer-settings (saved)="urlImporterSaved($event)"
                                *ngIf="isURLImporter"></app-url-importer-settings>
   </mat-step>
-  <mat-step [label]="'recipes.import_pending' | i18n"
+  <mat-step [label]="'recipes.import.pending' | i18n"
             completed="false"
             editable="false">
     <div *ngIf="importLoading"
@@ -49,12 +72,12 @@
     </div>
     <div *ngIf="importFailed">
       <!-- TODO Fine tune error handling -->
-      <h1 class="mat-h1">{{ 'recipes.import_failed' }}</h1>
+      <h1 class="mat-h1">{{ 'recipes.import.failed' | i18n }}</h1>
       <p class="caption">
-        {{ 'recipes.import_failed_explanation' }}
+        {{ 'recipes.import.failed_explanation' | i18n }}
       </p>
       <mat-card class="error-details">
-        <pre><code>{{ importFailedErr | json }}</code></pre>
+        <pre><code>{{ ('recipes.import.errors.' + (importFailedErr.message || "unknown")) | i18n }}</code></pre>
       </mat-card>
     </div>
   </mat-step>
