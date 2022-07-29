@@ -25,7 +25,7 @@ export class FunnelCorsMockService implements FunnelCorsService, Service {
       }
     }
 
-    throw new Error("No response found");
+    throw new Error(`No response found for url ${url}`);
   }
 
 }
@@ -45,7 +45,7 @@ export class TestContext implements ComponentContext {
     return callback(this);
   }
 
-  public runImporter<T extends Importer<RawRecipe>>(importer: T, payload: ImporterPayload) {
+  public runImporter<T extends Importer<any>>(importer: T, payload: ImporterPayload) {
     return this.runWith(async context => runImporter(importer, context, payload));
   }
 
