@@ -1,32 +1,36 @@
-import { ComponentContext, ImporterType, Recipe, URLImporter, URLImporterPayload, RecipeURLImporter, RawRecipe } from "@thymesave/core";
-import { Observable, of } from "rxjs";
+import { ComponentContext, ImporterType, RecipeURLImporter, RawRecipe } from "@thymesave/core";
 
 import { Plugin, PluginDescriptor } from "./decorator";
 import { FilterImporterByType, PluginAlreadyRegisteredError, PluginRegistry } from "./registry";
 
 class TestImporter extends RecipeURLImporter {
-  public override parseFromHTML(context: ComponentContext, rawHTML : string): Promise<RawRecipe> {
-    return Promise.resolve({
-      uuid: "",
+  public override parseFromHTML(context: ComponentContext, rawHTML : string, _ : URL): Promise<RawRecipe[]> {
+    return Promise.resolve([{
       description: "",
-      ingredients: [],
       image: "",
-      title: "",
+      ingredients: [],
       instructions: [],
-    });
+      title: "",
+      uuid: "",
+    }]);
   }
 
-  get name(): string {
+  getName(): string {
     return "";
+  }
+
+  get identifier(): string {
+    return "test";
   }
 
 }
 
 @PluginDescriptor({
-  name: "test",
-  description: "test description",
-  version: "builtin",
   autoRegister: false,
+  description: "test description",
+  identifier: "test",
+  name: "test",
+  version: "builtin",
 })
 class TestPlugin extends Plugin {
   override get importer() {
@@ -59,14 +63,14 @@ describe("PluginRegistry", () => {
     PluginRegistry.register(new TestPlugin());
     const importer = PluginRegistry.getImporter();
     expect(importer.length).toBe(1);
-    expect(importer[0]).toBeInstanceOf(TestImporter);
+    expect(importer[0].importer).toBeInstanceOf(TestImporter);
   });
 
   it("should return importers when filter match", () => {
     PluginRegistry.register(new TestPlugin());
     const importer = PluginRegistry.getImporter(FilterImporterByType(ImporterType.URL));
     expect(importer.length).toBe(1);
-    expect(importer[0]).toBeInstanceOf(TestImporter);
+    expect(importer[0].importer).toBeInstanceOf(TestImporter);
   });
 
   it("should return no importers when filter does not match", () => {

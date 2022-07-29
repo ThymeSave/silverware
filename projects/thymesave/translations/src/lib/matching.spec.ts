@@ -59,7 +59,7 @@ describe("matchIngredientByText", () => {
   });
 
   it("should return no matches for non-existing ingredients", () => {
-    const matches = matchIngredientByText(Languages.en_US, "foo.bar");
+    const matches = matchIngredientByText(Languages.en_US, "foo.bar234234231413412341234");
     expect(matches.length).toBe(0);
   });
 });
