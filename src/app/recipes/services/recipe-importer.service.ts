@@ -57,11 +57,11 @@ export class RecipeImporterService {
 
   private parseRecipe(raw: RawRecipe): ParsedRecipe {
     return {
-      title: raw.title,
       description: raw.description,
       image: raw.image,
       ingredients: this.parseIngredients(raw.ingredients),
       instructions: this.parseInstructions(raw.instructions),
+      title: raw.title,
     };
   }
 
@@ -71,24 +71,24 @@ export class RecipeImporterService {
    */
   public finalize(raw: ParsedRecipe): Recipe {
     return {
+      description: raw.description,
+      image: raw.image,
       ingredients: raw.ingredients
         .map((i : any) => {
           console.log(i);
           const ingredient = loadIngredientByKey(i.translationKey);
           return {
             ...ingredient,
-            translationKey: i.translationKey,
-            unit: i.unit,
-            minAmount: i.minAmount,
-            maxAmount: i.maxAmount ?? i.minAmount,
             isNumeric: !isNaN((i.minAmount ?? "") as number) && !isNaN((i.maxAmount ?? 0) as number),
             isRange: i.minAmount != i.maxAmount,
+            maxAmount: i.maxAmount ?? i.minAmount,
+            minAmount: i.minAmount,
+            translationKey: i.translationKey,
+            unit: i.unit,
           };
         }),
       instructions: raw.instructions,
       title: raw.title,
-      description: raw.description,
-      image: raw.image,
     };
   }
 

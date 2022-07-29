@@ -4,8 +4,8 @@ import { URLImporterPayload } from "@thymesave/core";
 
 @Component({
   selector: 'app-url-importer-settings',
-  templateUrl: './urlimporter-settings.component.html',
   styleUrls: ['./urlimporter-settings.component.scss'],
+  templateUrl: './urlimporter-settings.component.html',
 })
 export class URLImporterSettingsComponent {
   public form = new FormGroup({

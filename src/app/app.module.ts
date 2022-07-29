@@ -29,14 +29,15 @@ import { environment } from '@/../environments/environment';
 import { FunnelConfig } from "@/../helper/loadFunnelConfig";
 
 @NgModule({
-  declarations: [
+  bootstrap: [AppComponent],
+    declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
     ShellComponent,
     SettingsComponent,
   ],
-    imports: [
+  imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -69,15 +70,14 @@ import { FunnelConfig } from "@/../helper/loadFunnelConfig";
       useFactory: () => window.funnelConfig,
     },
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(@Inject("funnelConfig") funnelConfig: FunnelConfig, config: AuthClientConfig) {
     // Modify auth0 config with actual values
     config.set({
+      cacheLocation: 'localstorage',
       clientId: funnelConfig.oidc.clientId,
       domain: new URL(funnelConfig.oidc.configUrl).host,
-      cacheLocation: 'localstorage',
     });
   }
 }

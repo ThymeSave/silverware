@@ -5,8 +5,8 @@ import { PreFilterFunction } from "@/recipes/common/ingredient-selector/ingredie
 
 @Component({
   selector: 'app-parsed-recipe-editor-ingredient',
-  templateUrl: './parsed-recipe-editor-ingredient.component.html',
   styleUrls: ['./parsed-recipe-editor-ingredient.component.scss'],
+  templateUrl: './parsed-recipe-editor-ingredient.component.html',
 })
 export class ParsedRecipeEditorIngredientComponent implements OnInit {
 

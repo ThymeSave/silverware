@@ -7,8 +7,8 @@ import { LanguageService } from "@/shared/i18n/language.service";
 
 @Component({
   selector: 'app-unit-selector',
-  templateUrl: './unit-selector.component.html',
   styleUrls: ['./unit-selector.component.scss'],
+  templateUrl: './unit-selector.component.html',
 })
 export class UnitSelectorComponent implements ControlValueAccessor {
   public selected: UnitTranslationDetail | null = null;

@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-drag-handle',
-  template: `
-    <mat-icon>drag_handle</mat-icon>
-  `,
   styles: [`
   mat-icon {
     cursor: pointer;
@@ -15,6 +12,9 @@ import { Component, OnInit } from '@angular/core';
     }
   }
   `],
+  template: `
+    <mat-icon>drag_handle</mat-icon>
+  `,
 })
 export class DragHandleComponent {
 }

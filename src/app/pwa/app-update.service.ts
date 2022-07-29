@@ -28,10 +28,10 @@ export class AppUpdateService {
 
   private showUpdateDialog() {
     const ref = this.dialog.open(AppUpdateDialogComponent, {
-      width: "500px",
       data: {
         "update": false,
       },
+      width: "500px",
     });
 
     ref.afterClosed()

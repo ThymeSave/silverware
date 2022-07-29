@@ -17,14 +17,14 @@ export class IngredientService {
 
   constructor(private languageService: LanguageService) {
     this._grouped = chain(flatMap(this.allKeys, (entry) => ({
-      name: entry,
       localized: this.localize(entry, 1),
+      name: entry,
       ...this.all[entry],
     })))
       .groupBy("category")
       .map((items, key) => Object.freeze({
-        name: key,
         ingredients: items,
+        name: key,
       }))
       .value();
   }

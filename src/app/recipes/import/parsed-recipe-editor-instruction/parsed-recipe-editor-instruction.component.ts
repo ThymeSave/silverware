@@ -3,8 +3,8 @@ import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-parsed-recipe-editor-instruction',
-  templateUrl: './parsed-recipe-editor-instruction.component.html',
   styleUrls: ['./parsed-recipe-editor-instruction.component.scss'],
+  templateUrl: './parsed-recipe-editor-instruction.component.html',
 })
 export class ParsedRecipeEditorInstructionComponent {
 

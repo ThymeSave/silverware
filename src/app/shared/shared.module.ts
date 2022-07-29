@@ -11,14 +11,14 @@ import { LanguageService } from "./i18n/language.service";
     I18nPipe,
     DragHandleComponent,
   ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-    ],
-  exports: [
+    exports: [
     I18nPipe,
     DragHandleComponent,
   ],
+  imports: [
+        CommonModule,
+        MatIconModule,
+    ],
   providers: [
     LanguageService,
   ],
