@@ -8,14 +8,14 @@ describe("findMatches", () => {
     const matches = findMatches(
       {
         "key.one": ["Text"],
-        "key.two": ["potato"],
         "key.three": ["foobar"],
+        "key.two": ["potato"],
       }, "Text", DEFAULT_MATCH_OPTIONS);
     expect(matches).toEqual([
       {
         key: "key.one",
-        variant: "Text",
         similarity: 1.000,
+        variant: "Text",
       },
     ]);
   });
@@ -23,21 +23,21 @@ describe("findMatches", () => {
   it("should return multiple matches when there is no exact match", () => {
     const matches = findMatches(
       {
-        "key.one": ["potat"],
-        "key.two": ["potato"],
-        "key.three": ["shrimp"],
         "key.four": ["tomato"],
+        "key.one": ["potat"],
+        "key.three": ["shrimp"],
+        "key.two": ["potato"],
       }, "potatoh", DEFAULT_MATCH_OPTIONS);
     expect(matches).toEqual([
       {
         key: "key.two",
-        variant: "potato",
         similarity: 0.9091,
+        variant: "potato",
       },
       {
         key: "key.one",
-        variant: "potat",
         similarity: 0.8000,
+        variant: "potat",
       },
     ]);
   });
@@ -45,8 +45,8 @@ describe("findMatches", () => {
   it("should return no matches, when there is no match over the threshold", () => {
     const matches = findMatches({
       "key.one": ["foo"],
-      "key.two": ["bar"],
       "key.three": ["foobar"],
+      "key.two": ["bar"],
     }, "Test", DEFAULT_MATCH_OPTIONS);
     expect(matches.length).toBe(0);
   });
