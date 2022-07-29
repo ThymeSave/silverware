@@ -1,4 +1,6 @@
-<mat-stepper [linear]="true" #stepper  [@.disabled]="true">
+<mat-stepper [linear]="true"
+             #stepper
+             [@.disabled]="true">
   <mat-step [label]="'recipes.choose_importer' | i18n"
             completed="false"
             editable="false">
@@ -24,10 +26,15 @@
       </mat-list-item>
     </mat-list>
   </mat-step>
-  <mat-step [label]="'recipes.importer_parameter' | i18n" completed="false" editable="false">
-    <app-url-importer-settings (saved)="urlImporterSaved($event)" *ngIf="isURLImporter"></app-url-importer-settings>
+  <mat-step [label]="'recipes.importer_parameter' | i18n"
+            completed="false"
+            editable="false">
+    <app-url-importer-settings (saved)="urlImporterSaved($event)"
+                               *ngIf="isURLImporter"></app-url-importer-settings>
   </mat-step>
-  <mat-step [label]="'recipes.import_pending' | i18n" completed="false" editable="false">
+  <mat-step [label]="'recipes.import_pending' | i18n"
+            completed="false"
+            editable="false">
     <div *ngIf="importLoading"
          fxLayoutAlign="center center"
          fxLayoutGap="12px"
@@ -36,6 +43,7 @@
       <button (click)="cancel()"
               mat-raised-button
               color="accent">
+        <mat-icon>cancel</mat-icon>
         {{ 'cancel' | i18n }}
       </button>
     </div>
@@ -53,10 +61,10 @@
   <mat-step [label]="'recipes.verify' | i18n"
             completed="false"
             editable="false">
-   <app-parsed-recipe-editor [recipe]="parsedRecipe" *ngIf="!importFailed"></app-parsed-recipe-editor>
+   <app-parsed-recipe-editor [recipe]="parsedRecipe"
+                             (canceled)="cancelEdit()"
+                             (saved)="saveEdit($event)"
+                             [hasMultipleRecipes]="hasMultipleRecipes"
+                             *ngIf="!importFailed"></app-parsed-recipe-editor>
   </mat-step>
 </mat-stepper>
-<div>
-
-</div>
-

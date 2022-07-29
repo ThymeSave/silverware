@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
@@ -11,7 +11,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { createLogger } from "@helper/log";
-import { Instruction, ParsedRecipe, ParsedRecipeIngredient, RawRecipe, imageToBase64 } from "@thymesave/core";
+import { Instruction, ParsedRecipe,  Recipe, ParsedRecipeIngredient, imageToBase64 } from "@thymesave/core";
 
 import { IngredientService } from "@/recipes/services/ingredient.service";
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
@@ -35,6 +35,12 @@ export class ParsedRecipeEditorComponent implements OnInit {
     }
     this.initForm(this.recipe);
   }
+
+  @Input() public hasMultipleRecipes !: boolean;
+
+  @Output() public canceled = new EventEmitter<void>();
+
+  @Output() public saved = new EventEmitter<Recipe>();
 
   get recipe(): ParsedRecipe {
     return this._recipe;
@@ -162,10 +168,10 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   public async save() {
     const finalized = this.importerService.finalize(this.form.getRawValue());
-    this.logger.info("Saved", finalized);
-    this.recipeService.insert(finalized)
-      .subscribe(() => {
-        this.router.navigate(["/recipes"]);
-      });
+    this.saved.next(finalized);
+  }
+
+  public cancel() {
+    this.canceled.next();
   }
 }

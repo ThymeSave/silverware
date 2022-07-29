@@ -10,12 +10,13 @@ import {
   RawRecipe,
   ParsedRecipe,
 } from "@thymesave/core";
-import { URLImporterPayload } from "@thymesave/core";
+import { URLImporterPayload, Recipe } from "@thymesave/core";
 import { FilterImporterByType, PluginRegistry } from "@thymesave/plugin";
 import { first as _first } from "lodash";
-import { BehaviorSubject, catchError, filter, finalize, first, of } from "rxjs";
+import { BehaviorSubject, catchError, filter, finalize, first, from, map, of, switchMap } from "rxjs";
 
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
+import { RecipeService } from "@/recipes/services/recipe.service";
 
 @Component({
   selector: 'app-new-recipe',
@@ -41,12 +42,18 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
   public importFailed = false;
   public importFailedErr !: Error;
 
+  public parsedRecipes: ParsedRecipe[] = [];
   public parsedRecipe !: ParsedRecipe;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private importerService: RecipeImporterService,
+              private recipeService: RecipeService,
               private ref: ChangeDetectorRef) {
+  }
+
+  public get hasMultipleRecipes() {
+    return this.parsedRecipes.length > 1;
   }
 
   public loadImporterFromURL() {
@@ -127,12 +134,21 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
         catchError(err => this.failImport(err)),
         filter(r => r != null),
       )
-      .subscribe((recipe: ParsedRecipe | null) => this.succeedImport(recipe!!));
+      .subscribe((recipes: ParsedRecipe[] | null) => this.succeedImport(recipes!!));
   }
 
-  private succeedImport(recipe: ParsedRecipe) {
-    this.logger.debug("Imported", recipe);
-    this.parsedRecipe = recipe;
+  private succeedImport(recipes: ParsedRecipe[]) {
+    if (recipes.length == 0) {
+      // TODO Make pretty
+      this.failImport(new Error("no_recipe_found"));
+      return;
+    }
+
+    this.logger.debug("Imported", recipes);
+
+    this.parsedRecipes = recipes;
+    this.parsedRecipe = recipes[0];
+
     this.completeCurrentStep();
   }
 
@@ -152,6 +168,32 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     this.importerSubject.next(null);
   }
 
+  public cancelEdit() {
+    this.loadNewRecipeOrCancel();
+  }
+
+  public loadNewRecipeOrCancel() {
+    if (this.hasMultipleRecipes) {
+      this.parsedRecipe = this.parsedRecipes.pop()!!;
+    } else {
+      this.cancel();
+    }
+  }
+
+  public saveEdit(finalized: Recipe) {
+    this.logger.info("Saved", finalized);
+    this.recipeService.insert(finalized)
+      .pipe(switchMap(() => {
+        if (this.hasMultipleRecipes) {
+          this.loadNewRecipeOrCancel();
+          return of(null);
+        } else {
+          return from(this.router.navigate(["/recipes"]));
+        }
+      }))
+      .subscribe();
+  }
+
   private completeCurrentStep() {
     this.stepper.selected!!.completed = true;
     this.stepper.next();
@@ -161,4 +203,5 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     this.importerSubject.next(importer);
     this.completeCurrentStep();
   }
+
 }

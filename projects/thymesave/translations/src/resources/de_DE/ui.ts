@@ -3,6 +3,7 @@ import { SingleValueTranslation } from "../../lib/model";
 const ui: SingleValueTranslation = {
   "add": "Hinzufügen",
   "cancel": "Abbrechen",
+  "cancel_next": "Abbrechen und nächstes laden",
   "close": "Schliessen",
   "ingredient": "Zutat",
   "update.heading": "Aktualisierung verfügbar",
@@ -30,6 +31,7 @@ const ui: SingleValueTranslation = {
   "recipes.title": "Titel",
   "recipes.verify": "Prüfen und übernehmen",
   "save": "Speichern",
+  "save_next": "Speichern und Nächstes laden",
   "settings": "Einstellungen",
   "offline.hint": "App läuft offline",
   "unit": "Einheit",

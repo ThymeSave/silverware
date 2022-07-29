@@ -36,7 +36,7 @@ export class ParsedRecipeEditorIngredientComponent implements OnInit {
   }
 
   private createPreFilter() {
-    if (this.filterByTranslationMatches) {
+    if (this.filterByTranslationMatches && this.hasTranslationMatches) {
       this.preFilter = (i) => this.translationMatches.value.indexOf(i.localized) !== -1;
     } else {
       this.preFilter = _ => true;
@@ -44,6 +44,10 @@ export class ParsedRecipeEditorIngredientComponent implements OnInit {
   }
 
   public toggleTranslationMatchButton() {
+    if(!this.hasTranslationMatches) {
+      return;
+    }
+
     this.filterByTranslationMatches = !this.filterByTranslationMatches;
     this.createPreFilter();
   }

@@ -25,20 +25,19 @@
                            [formParent]="formGroup"
                            [formGroup]="formGroup"
                            [preFilter]="preFilter">
-    <ng-container *ngIf="hasTranslationMatches">
-      <button *ngIf="!filterByTranslationMatches"
+    <ng-container>
+      <button *ngIf="filterByTranslationMatches; else translationsMatchButton"
               (click)="toggleTranslationMatchButton()"
-              mat-icon-button>
-        <mat-icon>translate</mat-icon>
-      </button>
-      <button *ngIf="filterByTranslationMatches"
-              (click)="toggleTranslationMatchButton()"
+              [disabled]="!hasTranslationMatches"
               mat-icon-button>
         <mat-icon>search</mat-icon>
       </button>
-    </ng-container>
-    <ng-container *ngIf="!hasTranslationMatches">
-      <div class="button-placeholder"></div>
+      <ng-template #translationsMatchButton>
+        <button (click)="toggleTranslationMatchButton()"
+                mat-icon-button>
+          <mat-icon>translate</mat-icon>
+        </button>
+      </ng-template>
     </ng-container>
   </app-ingredient-selector>
 

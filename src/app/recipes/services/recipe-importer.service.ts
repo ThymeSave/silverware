@@ -13,7 +13,7 @@ import {
   loadIngredientByKey,
 } from "@thymesave/ingredients";
 import { matchIngredientByText, matchUnitByText } from "@thymesave/translations";
-import { map } from "rxjs";
+import { map, Observable } from "rxjs";
 
 import { LanguageService } from "@/shared/i18n/language.service";
 import { ContextService } from "@/shared/plugins/context.service";
@@ -92,9 +92,8 @@ export class RecipeImporterService {
     };
   }
 
-  public runRecipeImporter(importer: Importer<RawRecipe>, payload: ImporterPayload) {
-    // TODO Always use all recipes
+  public runRecipeImporter(importer: Importer<RawRecipe>, payload: ImporterPayload) : Observable<ParsedRecipe[]> {
     return importer.import(this.contextService.createContext(), payload)
-      .pipe(map(raw => this.parseRecipe(raw[0])));
+      .pipe(map(rawRecipes => rawRecipes.map(rawRecipe => this.parseRecipe(rawRecipe))));
   }
 }
