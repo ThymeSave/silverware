@@ -1,13 +1,14 @@
+import { ChowdownPlugin, chowdownResourceBundle } from "@plugins/chowdown/index";
 import { RawRecipe, RecipeURLImporter, ComponentContext, URLImporterPayload } from "@thymesave/core";
 import { forkJoin, from, map, Observable, switchMap } from "rxjs";
 
 abstract class BaseChowdownImporter extends RecipeURLImporter {
   protected async parseFromChowdownHTML(url: URL, rawHTML: string): Promise<RawRecipe[]> {
     const document = this.createDocument(url, rawHTML);
-    let image = undefined;
+    let image : string | undefined = undefined;
     try {
-      const rawImageSrc = (document.querySelector("[itemprop='image']") as any)?.src;
-      image = rawImageSrc ? await this.imageURLToBase64(rawImageSrc) : undefined;
+      const rawImageSrc = (document.querySelector("[itemprop='image']") as HTMLImageElement)?.src;
+      image = await this.imageURLToBase64(rawImageSrc);
     } catch (e) {
       // ignore
     }
@@ -29,18 +30,13 @@ abstract class BaseChowdownImporter extends RecipeURLImporter {
       },
     ];
   }
+
+  public override getName(languageCode: string) {
+    return chowdownResourceBundle.getTranslation(languageCode, `${this.identifier}.name`);
+  }
 }
 
 export class ChowdownSingleRecipeImporter extends BaseChowdownImporter {
-  public override getName(locale: string) {
-    switch (locale) {
-      case "de_DE":
-        return "Chowdown - Einzelnes Rezept";
-
-      default:
-        return "Chowdown - Single Recipe";
-    }
-  }
 
   public override get identifier(): string {
     return "SingleRecipeImporter";
@@ -52,16 +48,6 @@ export class ChowdownSingleRecipeImporter extends BaseChowdownImporter {
 }
 
 export class ChowdownAllRecipeImporter extends BaseChowdownImporter {
-  public override getName(locale: string) {
-    switch (locale) {
-      case "de_DE":
-        return "Chowdown - Alle Rezepte";
-
-      default:
-        return "Chowdown - All Recipes";
-    }
-  }
-
   public override get identifier(): string {
     return "AllRecipeImporter";
   }

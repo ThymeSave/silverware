@@ -44,9 +44,17 @@ export interface ParsedRecipe extends BaseRecipe {
    */
   instructions : Instruction[]
   /**
+   * Raw instructions as parsed from the raw recipe, can be used to make checking the matched inputs easier
+   */
+  rawInstructions : string[]
+  /**
    * Ingredients the recipe consists of
    */
   ingredients : ParsedRecipeIngredient[]
+  /**
+   * Raw ingredients as parsed from the raw recipe, can be used to make checking the matched inputs easier
+   */
+  rawIngredients : string[]
 }
 
 /**

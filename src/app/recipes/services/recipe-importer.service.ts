@@ -63,6 +63,8 @@ export class RecipeImporterService {
       image: raw.image,
       ingredients: this.parseIngredients(raw.ingredients),
       instructions: this.parseInstructions(raw.instructions),
+      rawIngredients: raw.ingredients,
+      rawInstructions: raw.instructions,
       title: raw.title.trim(),
     };
   }
@@ -77,7 +79,6 @@ export class RecipeImporterService {
       image: raw.image,
       ingredients: raw.ingredients
         .map((i : any) => {
-          console.log(i);
           const ingredient = loadIngredientByKey(i.translationKey);
           return {
             ...ingredient,

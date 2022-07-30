@@ -16,6 +16,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatStepperModule } from "@angular/material/stepper";
+import {MatTabsModule} from "@angular/material/tabs";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -74,6 +75,7 @@ const routes: Routes = [
         DragDropModule,
         MatAutocompleteModule,
         FlexLayoutModule,
+        MatTabsModule,
     ],
 })
 export class RecipesModule {

@@ -36,11 +36,9 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   @Input() public recipeIndex !: number;
   @Input() public totalRecipes !: number;
-
   @Input() public hasMultipleRecipes !: boolean;
 
   @Output() public canceled = new EventEmitter<void>();
-
   @Output() public saved = new EventEmitter<Recipe>();
 
   get recipe(): ParsedRecipe {
