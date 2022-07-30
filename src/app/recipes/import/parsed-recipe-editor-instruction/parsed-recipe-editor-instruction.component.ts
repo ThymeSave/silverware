@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-parsed-recipe-editor-instruction',
@@ -12,6 +12,10 @@ export class ParsedRecipeEditorInstructionComponent {
   @Output() public deleted = new EventEmitter<void>();
 
   constructor() { }
+
+  public get text() {
+    return this.formGroup.controls['text'] as FormControl;
+  }
 
   public emitDelete() {
     this.deleted.emit();

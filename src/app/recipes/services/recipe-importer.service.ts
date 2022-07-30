@@ -47,7 +47,7 @@ export class RecipeImporterService {
   private parseInstructions(raw: string[]): Instruction[] {
     return raw
       .map(text => ({
-        text,
+        text: text.trim(),
       }));
   }
 
@@ -59,11 +59,11 @@ export class RecipeImporterService {
 
   private parseRecipe(raw: RawRecipe): ParsedRecipe {
     return {
-      description: raw.description,
+      description: raw.description?.trim(),
       image: raw.image,
       ingredients: this.parseIngredients(raw.ingredients),
       instructions: this.parseInstructions(raw.instructions),
-      title: raw.title,
+      title: raw.title.trim(),
     };
   }
 

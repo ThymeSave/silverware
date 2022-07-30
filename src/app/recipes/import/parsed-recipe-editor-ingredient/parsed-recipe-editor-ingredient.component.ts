@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormGroup } from "@angular/forms";
+import { FormArray, FormControl, FormGroup } from "@angular/forms";
 
 import { PreFilterFunction } from "@/recipes/common/ingredient-selector/ingredient-selector.component";
 
@@ -29,6 +29,14 @@ export class ParsedRecipeEditorIngredientComponent implements OnInit {
 
   public get translationMatches() {
     return this.formGroup.controls['translationMatches'] as FormArray;
+  }
+
+  public get min() {
+    return this.formGroup.controls["minAmount"] as FormControl;
+  }
+
+  public get max() {
+    return this.formGroup.controls["maxAmount"] as FormControl;
   }
 
   public get hasTranslationMatches() {
