@@ -2715,10 +2715,6 @@ export const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Milk,
     scalable: true,
   },
-  "parsely": {
-    category: IngredientCategory.Herb,
-    scalable: true,
-  },
   "parsley": {
     category: IngredientCategory.Herb,
     scalable: true,
