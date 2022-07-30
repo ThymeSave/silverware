@@ -41,7 +41,7 @@ export interface MatchOptions {
 
 export type MatchSourceVariants = { [key: string]: string[] }
 
-export const getSimilarity = (text1 : string, text2 : string) => Number(stringSimilarity.compareTwoStrings(text1, text2).toFixed(4));
+export const getSimilarity = (text1 : string, text2 : string) => Number(stringSimilarity.compareTwoStrings(text1.replace(/\s/g, ''), text2.replace(/\s/g, '')).toFixed(4));
 
 /**
  * Find matches for all given variants and text.
@@ -72,15 +72,15 @@ export const findMatches = (variants: MatchSourceVariants | PluralizableTranslat
         return [
           {
             key,
-            variant,
             similarity,
+            variant,
           },
         ];
       } else if (similarity >= minSimilarity) {
         matches.push({
           key,
-          variant,
           similarity,
+          variant,
         });
       }
     }

@@ -109,7 +109,6 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
 
     if (this.validateOnInit) {
       this.searchControl.markAllAsTouched();
-      this.searchControl.updateValueAndValidity();
       this.ref.detectChanges();
     }
   }
@@ -123,6 +122,11 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
   }
 
   public writeValue(translationKey: string): void {
+    if (this.ingredientService.allKeys.indexOf(translationKey) == -1) {
+      this.selected = null;
+      this.onChange("null");
+      this.onTouched();
+    }
     this.selected = translationKey;
     this.searchControl.setValue(this.ingredientService.localize(this.selected));
   }

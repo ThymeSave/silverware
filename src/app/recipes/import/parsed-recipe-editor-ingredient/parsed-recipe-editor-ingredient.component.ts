@@ -37,7 +37,7 @@ export class ParsedRecipeEditorIngredientComponent implements OnInit {
 
   private createPreFilter() {
     if (this.filterByTranslationMatches && this.hasTranslationMatches) {
-      this.preFilter = (i) => this.translationMatches.value.indexOf(i.localized) !== -1;
+      this.preFilter = (i) => this.translationMatches.value.indexOf(i.name) !== -1;
     } else {
       this.preFilter = _ => true;
     }

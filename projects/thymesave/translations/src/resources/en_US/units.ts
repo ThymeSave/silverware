@@ -44,6 +44,13 @@ const units: UnitTranslation = {
     ],
     short: "ml",
   },
+  ounce: {
+    long: [
+      "Unze",
+      "Unzen",
+    ],
+    short: "oz",
+  },
   pack: {
     long: [
       "pack",

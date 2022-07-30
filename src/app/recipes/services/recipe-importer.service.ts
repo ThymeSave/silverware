@@ -35,6 +35,8 @@ export class RecipeImporterService {
           ingredient.unit = this.parseUnit(ingredient.unit);
         }
         ingredient.translationMatches = matchIngredientByText(this.languageService.currentLanguage, ingredient.ingredient, {});
+        ingredient.minAmount = ingredient.minAmount == 0 ? "" : ingredient.minAmount;
+        ingredient.maxAmount = ingredient.maxAmount == 0 ? "" : ingredient.maxAmount;
         return ingredient;
       } catch (e: any | IngredientParseError) {
         return propagateParseError(e);

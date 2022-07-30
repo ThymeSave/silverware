@@ -45,11 +45,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     const amount = convertToAmount(matches[1]);
     return {
       ingredient: matches[2],
-      unit: null,
       isNumeric: true,
       isRange: false,
-      minAmount: amount,
       maxAmount: amount,
+      minAmount: amount,
+      unit: null,
     };
   }
 
@@ -58,11 +58,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     const amount = parseFloat(matches[1]) / parseFloat(matches[2]);
     return {
       ingredient: matches[4],
-      minAmount: amount,
-      maxAmount: amount,
-      unit: matches[3],
       isNumeric: true,
       isRange: false,
+      maxAmount: amount,
+      minAmount: amount,
+      unit: matches[3],
     };
   }
 
@@ -71,11 +71,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     const amount = convertToAmount(matches[1]);
     return {
       ingredient: matches[3],
-      unit: matches[2],
-      minAmount: amount,
-      maxAmount: amount,
-      isRange: false,
       isNumeric: isText(matches[1]),
+      isRange: false,
+      maxAmount: amount,
+      minAmount: amount,
+      unit: matches[2],
     };
   }
 
@@ -83,11 +83,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
   if (matches != null && matches.length == 5) {
     return {
       ingredient: matches[4],
-      minAmount: convertToAmount(matches[1]),
-      maxAmount: convertToAmount(matches[2]),
-      unit: matches[3],
       isNumeric: !isText(matches[1]) || !isText(matches[2]),
       isRange: true,
+      maxAmount: convertToAmount(matches[2]),
+      minAmount: convertToAmount(matches[1]),
+      unit: matches[3],
     };
   }
 
@@ -98,11 +98,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     const amount = wholeAmount + fractionAmount;
     return {
       ingredient: matches[5],
-      minAmount: amount,
-      maxAmount: amount,
-      unit: matches[4],
       isNumeric: true,
       isRange: false,
+      maxAmount: amount,
+      minAmount: amount,
+      unit: matches[4],
     };
   }
 
@@ -111,11 +111,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     const amount = parseFloat(matches[1]) / parseFloat(matches[2]);
     return {
       ingredient: matches[3],
-      minAmount: amount,
-      maxAmount: amount,
-      unit: null,
       isNumeric: true,
       isRange: false,
+      maxAmount: amount,
+      minAmount: amount,
+      unit: null,
     };
   }
 
@@ -126,11 +126,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
     const amount = wholeAmount + fractionAmount;
     return {
       ingredient: matches[4],
-      minAmount: amount,
-      maxAmount: amount,
-      unit: null,
       isNumeric: true,
       isRange: false,
+      maxAmount: amount,
+      minAmount: amount,
+      unit: null,
     };
   }
 
@@ -138,11 +138,11 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
   if(matches != null) {
     return {
       ingredient: matches[2],
-      minAmount: 0,
-      maxAmount: 0,
-      unit: matches[1],
       isNumeric: true,
       isRange: false,
+      maxAmount: 0,
+      minAmount: 0,
+      unit: matches[1],
     };
   }
 
@@ -156,10 +156,10 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
 export const propagateParseError = (err : IngredientParseError) : ParsedRecipeIngredient => {
   return {
     ingredient: err.raw,
-    unit: null,
-    minAmount: 0,
-    maxAmount: 0,
     isNumeric: false,
     isRange: false,
+    maxAmount: "",
+    minAmount: "",
+    unit: null,
   };
 };

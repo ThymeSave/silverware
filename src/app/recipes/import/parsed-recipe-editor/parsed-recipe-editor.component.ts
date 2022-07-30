@@ -104,8 +104,8 @@ export class ParsedRecipeEditorComponent implements OnInit {
       ingredient.translationMatches.map(tm => this.fb.control(tm.key)) : [];
     return this.fb.group({
       "isRange": this.fb.control(ingredient.isRange ?? false),
-      "maxAmount": this.fb.control(ingredient.maxAmount ?? 0),
-      "minAmount": this.fb.control(ingredient.minAmount ?? 0, [Validators.required]),
+      "maxAmount": this.fb.control(ingredient.maxAmount ?? ""),
+      "minAmount": this.fb.control(ingredient.minAmount ?? ""),
       "translationKey": this.fb.control(translationKey, [Validators.required, this.translationKeyValidator]),
       "translationMatches": this.fb.array(translationMatches),
       "unit": this.fb.control(ingredient.unit ?? null),

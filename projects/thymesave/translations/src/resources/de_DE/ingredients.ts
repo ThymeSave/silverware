@@ -166,9 +166,6 @@ const ingredients: PluralizableTranslation = {
   "asparagus_racemosus": [
     "Racemosus-Spargel",
   ],
-  "atlantic_salmon": [
-    "Atlantiklachs",
-  ],
   "atlantic_cod": [
     "Kabeljau",
   ],
@@ -192,6 +189,9 @@ const ingredients: PluralizableTranslation = {
   "atlantic_pollock": [
     "Seelachs",
     "Seelachs",
+  ],
+  "atlantic_salmon": [
+    "Atlantiklachs",
   ],
   "atlantic_wolffish": [
     "Wolfsbarsch",
@@ -241,13 +241,13 @@ const ingredients: PluralizableTranslation = {
   "basil": [
     "Basilikum",
   ],
-  "bayberry": [
-    "Lorbeere",
-    "Lorbeeren",
-  ],
   "bay_laurel": [
     "Lorbeerblatt",
     "Lorbeerblätter",
+  ],
+  "bayberry": [
+    "Lorbeere",
+    "Lorbeeren",
   ],
   "bean": [
     "Bohne",
@@ -548,12 +548,12 @@ const ingredients: PluralizableTranslation = {
   "celeriac": [
     "Knollenselerie",
   ],
+  "celery": [
+    "Staudensellerie",
+  ],
   "celery leaves": [
     "Staudensellerieblatt",
     "Staudensellerieblätter",
-  ],
-  "celery": [
-    "Staudensellerie",
   ],
   "celery_stalks": [
     "Stangensellerie",
@@ -625,14 +625,14 @@ const ingredients: PluralizableTranslation = {
     "Kichererbse",
     "Kichererbsen",
   ],
+  "chicory": [
+    "Chicorée",
+  ],
   "chicory leaves": [
     "Chicoréeblätter",
   ],
   "chicory roots": [
     "Wurzelwerk",
-  ],
-  "chicory": [
-    "Chicorée",
   ],
   "chilli": [
     "Chilli",
@@ -1164,11 +1164,11 @@ const ingredients: PluralizableTranslation = {
   "focaccia": [
     "Focaccia",
   ],
-  "fortified_wine": [
-    "Likörwein",
-  ],
   "food_starch": [
     "Speisestärke",
+  ],
+  "fortified_wine": [
+    "Likörwein",
   ],
   "fox_grape": [
     "Fuchstraube",
@@ -2839,9 +2839,6 @@ const ingredients: PluralizableTranslation = {
   "sparkleberry": [
     "Sparkleberry",
   ],
-  "split_peas": [
-    "Spalterbsen",
-  ],
   "spearmint": [
     "Minze",
   ],
@@ -2862,6 +2859,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "spirulina": [
     "Spirulina",
+  ],
+  "split_peas": [
+    "Spalterbsen",
   ],
   "spot_croaker": [
     "Makrele",
@@ -3116,11 +3116,11 @@ const ingredients: PluralizableTranslation = {
   "turbot": [
     "Steinbutt",
   ],
-  "turkey_breast": [
-    "Putenbrust",
-  ],
   "turkey": [
     "Truthahn",
+  ],
+  "turkey_breast": [
+    "Putenbrust",
   ],
   "turmeric": [
     "Gelbwurz",
