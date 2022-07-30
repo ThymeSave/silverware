@@ -1,4 +1,4 @@
-import { ResourceBundle } from "./resourceBundle";
+import { ResourceBundle, ResourceBundleBuilder } from "./resourceBundle";
 
 describe("ResourceBundle", () => {
   it("should add single translations", () => {
@@ -39,6 +39,39 @@ describe("ResourceBundle", () => {
       languageCode: "en_US",
       translation: "bar",
     });
-    expect(bundle.getTranslation("nonExistent","foo")).toBe("bar");
+    expect(bundle.getTranslation("nonExistent", "foo")).toBe("bar");
+  });
+
+  it("should allow using the builder", () => {
+    const builder = ResourceBundle.builder();
+    expect(builder).toBeInstanceOf(ResourceBundleBuilder);
+  });
+});
+
+describe("ResourceBundleBuilder", () => {
+  it("should initialize properly", () => {
+    const builder = new ResourceBundleBuilder();
+    expect(builder['resourceBundle']).toBeInstanceOf(ResourceBundle);
+    expect(builder.build()).toBeInstanceOf(ResourceBundle);
+  });
+
+  it("should map translations correctly", () => {
+    const bundle = new ResourceBundleBuilder()
+      .withTranslations({
+        "de_DE": [
+          {
+            key: "bu",
+            translation: "batz",
+          },
+        ],
+        "en_US": [
+          {
+            key: "foo",
+            translation: "bar",
+          },
+        ],
+      }).build();
+    expect(bundle.getTranslation("de_DE", "bu")).toBe("batz");
+    expect(bundle.getTranslation("en_US", "foo")).toBe("bar");
   });
 });
