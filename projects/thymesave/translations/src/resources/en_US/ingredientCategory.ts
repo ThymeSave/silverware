@@ -1,0 +1,38 @@
+import { SingleValueTranslation } from "../../lib/model";
+
+const ingredientCategory: SingleValueTranslation = {
+  afters: "Afters",
+  animal_fat: "Animal fat",
+  aquatic: "Aquatic",
+  baking: "Baking",
+  beef: "Beef",
+  beverages: "Beverages",
+  cereals: "Cereals",
+  cheese: "Cheese",
+  chicken: "Chicken",
+  coffee: "Coffee",
+  confectioneries: "Confectioneries",
+  dip: "Dip",
+  dough: "Dough",
+  eggs: "Eggs",
+  fat: "Fat",
+  fluids: "Fluids",
+  fruits: "Fruits",
+  gourds: "Gourds",
+  herbs: "Herbs",
+  liquor: "Liquor",
+  meat: "Meat",
+  milk: "Milk products",
+  nuts: "Nuts",
+  pasta: "Pasta",
+  pork: "Pork",
+  pulses: "Pulses",
+  snack: "Snack",
+  soup: "Soup",
+  spice: "Spice",
+  tea: "Tea",
+  vegetable: "Vegetables",
+  vegetable_fat: "Vegetable fat",
+};
+
+export default ingredientCategory;

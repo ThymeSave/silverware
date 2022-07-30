@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { SwUpdate, VersionReadyEvent } from "@angular/service-worker";
+import { createLogger } from "@helper/log";
 import { filter, first, from, switchMap, tap } from "rxjs";
 
 import { AppUpdateDialogComponent } from "@/pwa/app-update-dialog/app-update-dialog.component";
@@ -9,6 +10,7 @@ import { AppUpdateDialogComponent } from "@/pwa/app-update-dialog/app-update-dia
   providedIn: 'root',
 })
 export class AppUpdateService {
+  private logger = createLogger("AppUpdateService");
 
   constructor(private readonly swUpdate: SwUpdate,
               public dialog: MatDialog) {
@@ -17,7 +19,7 @@ export class AppUpdateService {
         filter(event => event.type == "VERSION_READY"),
         tap(event => {
           let readyEvent = (event as VersionReadyEvent);
-          console.debug("Update available from", readyEvent.currentVersion, "to", readyEvent.latestVersion);
+          this.logger.debug("Update available from", readyEvent.currentVersion, "to", readyEvent.latestVersion);
         }),
         first(),
       )
@@ -26,18 +28,17 @@ export class AppUpdateService {
 
   private showUpdateDialog() {
     const ref = this.dialog.open(AppUpdateDialogComponent, {
-      width: "500px",
       data: {
         "update": false,
       },
+      width: "500px",
     });
 
-    // TODO Add user notification via central message service, driven by observable
     ref.afterClosed()
       .pipe(
         filter(doUpdate => doUpdate === true),
         switchMap(() => from(this.swUpdate.activateUpdate())),
-        tap(res => console.debug("Update result", res)),
+        tap(res => this.logger.debug("Update result", res)),
         filter(updated => updated === true),
       )
       .subscribe(_ => location.reload());

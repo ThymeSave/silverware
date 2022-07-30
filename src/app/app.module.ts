@@ -18,7 +18,6 @@ import { AuthClientConfig, AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from '@/app.component';
-import { FunnelConfig } from "@/helper/loadFunnelConfig";
 import { HomeComponent } from '@/pages/home/home.component';
 import { NotFoundComponent } from '@/pages/not-found/not-found.component';
 import { ShellComponent } from '@/pages/shell/shell.component';
@@ -26,17 +25,19 @@ import { PwaModule } from "@/pwa/pwa.module";
 import { SettingsComponent } from '@/settings/pages/settings/settings.component';
 import { SharedModule } from "@/shared/shared.module";
 
-import { environment } from '../environments/environment';
+import { environment } from '@/../environments/environment';
+import { FunnelConfig } from "@/../helper/loadFunnelConfig";
 
 @NgModule({
-  declarations: [
+  bootstrap: [AppComponent],
+    declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
     ShellComponent,
     SettingsComponent,
   ],
-    imports: [
+  imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -69,15 +70,14 @@ import { environment } from '../environments/environment';
       useFactory: () => window.funnelConfig,
     },
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(@Inject("funnelConfig") funnelConfig: FunnelConfig, config: AuthClientConfig) {
     // Modify auth0 config with actual values
     config.set({
+      cacheLocation: 'localstorage',
       clientId: funnelConfig.oidc.clientId,
       domain: new URL(funnelConfig.oidc.configUrl).host,
-      cacheLocation: 'localstorage',
     });
   }
 }

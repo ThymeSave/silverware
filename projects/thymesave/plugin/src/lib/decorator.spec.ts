@@ -8,9 +8,10 @@ describe("Plugin decorator", () => {
 
   it("should allow new object creation", () => {
     @PluginDescriptor({
-      name: "test",
       description: "foo goes to bar",
-      version: "builtin"
+      identifier: "",
+      name: "test",
+      version: "builtin",
     })
     class SamplePlugin {
 
@@ -21,9 +22,10 @@ describe("Plugin decorator", () => {
 
   it("should propagate the descriptor properties", () => {
     @PluginDescriptor({
-      name: "test",
       description: "Plugin to test functionality",
-      version: "builtin"
+      identifier: "",
+      name: "test",
+      version: "builtin",
     })
     class SamplePlugin extends Plugin {
 
@@ -35,27 +37,33 @@ describe("Plugin decorator", () => {
 
   it("should allow versions", () => {
     @PluginDescriptor({
-      name: "version-type-test",
+      autoRegister: false,
       description: "Dummy to test typing",
-      version: "1.1.11"
+      identifier: "",
+      name: "version-type-test",
+      version: "1.1.11",
     })
     class VersionPluginTest1 extends Plugin {
 
     }
 
     @PluginDescriptor({
-      name: "version-type-test",
+      autoRegister: false,
       description: "Dummy to test typing",
-      version: "builtin"
+      identifier: "",
+      name: "version-type-test",
+      version: "builtin",
     })
     class VersionPluginTest2 extends Plugin {
 
     }
 
     @PluginDescriptor({
-      name: "version-type-test",
+      autoRegister: false,
       description: "Dummy to test typing",
-      version: "builtin"
+      identifier: "",
+      name: "version-type-test",
+      version: "builtin",
     })
     class VersionPluginTest3 extends Plugin {
 
@@ -63,4 +71,4 @@ describe("Plugin decorator", () => {
 
     expect(true).toBeTrue();
   });
-})
+});

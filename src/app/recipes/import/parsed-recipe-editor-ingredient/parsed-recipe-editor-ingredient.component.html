@@ -1,0 +1,54 @@
+<div fxLayout="row wrap"
+     fxLayoutGap="20px"
+     fxLayoutAlign="center center"
+     [formGroup]="formGroup">
+  <ng-content></ng-content>
+  <div class="amount-unit"
+       fxFlex
+       fxFlex.gt-lg="150px">
+    <mat-form-field class="amount"
+                    [class]="min.value === '' ? 'optional-amount' : ''">
+      <mat-label>{{ 'min' | i18n }}</mat-label>
+      <input matInput
+             formControlName="minAmount">
+    </mat-form-field>
+    <ng-container>
+      <span>-</span>
+      <mat-form-field class="amount"
+                      [class]="max.value === '' ? 'optional-amount' : ''">
+        <mat-label>{{ 'max' | i18n }}</mat-label>
+        <input matInput
+               formControlName="maxAmount">
+      </mat-form-field>
+    </ng-container>
+  </div>
+  <app-unit-selector [formGroup]="formGroup"
+                     fxFlex
+                     formControlName="unit">
+  </app-unit-selector>
+  <app-ingredient-selector formControlName="translationKey"
+                           [validateOnInit]="true"
+                           [formParent]="formGroup"
+                           [formGroup]="formGroup"
+                           [preFilter]="preFilter">
+    <ng-container>
+      <button *ngIf="filterByTranslationMatches; else translationsMatchButton"
+              (click)="toggleTranslationMatchButton()"
+              [disabled]="!hasTranslationMatches"
+              mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+      <ng-template #translationsMatchButton>
+        <button (click)="toggleTranslationMatchButton()"
+                mat-icon-button>
+          <mat-icon>translate</mat-icon>
+        </button>
+      </ng-template>
+    </ng-container>
+  </app-ingredient-selector>
+
+  <button (click)="emitDelete()"
+          mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

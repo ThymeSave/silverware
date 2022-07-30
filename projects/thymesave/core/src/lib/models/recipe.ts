@@ -1,16 +1,12 @@
-import { Instruction } from "./instruction"
-import { Ingredient } from "./ingredient";
+import { ParsedRecipeIngredient, RecipeIngredient } from "./ingredient";
+import { Instruction } from "./instruction";
 
 export type RecipeBase64Image = string
 
 /**
- * Representation of a recipe
+ * Properties every recipe shares
  */
-export interface Recipe {
-  /**
-   * Globally unique identifier
-   */
-  uuid: string;
+export interface BaseRecipe {
   /**
    * Human-readable title
    */
@@ -20,15 +16,57 @@ export interface Recipe {
    */
   description?: string
   /**
+   * Image encoded as base64, may be omitted if no image is present
+   */
+  image ?: RecipeBase64Image
+}
+
+/**
+ * Recipe information as processed by importer
+ */
+export interface RawRecipe extends BaseRecipe {
+  /**
+   * Ordered list of instructions
+   */
+  instructions: string[]
+  /**
+   * Ingredients the recipe consists of
+   */
+  ingredients : string[]
+}
+
+/**
+ * Enhanced recipe information to be reviewed by the user
+ */
+export interface ParsedRecipe extends BaseRecipe {
+  /**
+   * Ordered list of instructions
+   */
+  instructions : Instruction[]
+  /**
+   * Raw instructions as parsed from the raw recipe, can be used to make checking the matched inputs easier
+   */
+  rawInstructions : string[]
+  /**
+   * Ingredients the recipe consists of
+   */
+  ingredients : ParsedRecipeIngredient[]
+  /**
+   * Raw ingredients as parsed from the raw recipe, can be used to make checking the matched inputs easier
+   */
+  rawIngredients : string[]
+}
+
+/**
+ * Representation of a recipe
+ */
+export interface Recipe extends BaseRecipe {
+  /**
    * Ordered list of instructions
    */
   instructions: Instruction[]
   /**
    * Ingredients the recipe consists of
    */
-  ingredients : Ingredient[]
-  /**
-   * Image encoded as base64, may be omitted if no image is present
-   */
-  image ?: RecipeBase64Image
+  ingredients : RecipeIngredient[]
 }

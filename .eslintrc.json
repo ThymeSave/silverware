@@ -16,6 +16,10 @@
           "tsconfig.json"
         ]
       },
+      "plugins": [
+        "decorator-position",
+        "sort-keys-fix"
+      ],
       "rules": {
         "@angular-eslint/component-selector": [
           "error",
@@ -36,6 +40,14 @@
         "comma-dangle": [
           "error",
           "always-multiline"
+        ],
+        "decorator-position/decorator-position": [
+          "error",
+          {
+            "methods": "above",
+            "printWidth": 100,
+            "properties": "prefer-inline"
+          }
         ],
         "import/newline-after-import": [
           "error",
@@ -74,6 +86,10 @@
               },
               {
                 "group": "internal",
+                "pattern": "@plugins/**"
+              },
+              {
+                "group": "internal",
                 "pattern": "./**"
               },
               {
@@ -100,6 +116,9 @@
         "semi": [
           "error",
           "always"
+        ],
+        "sort-keys-fix/sort-keys-fix": [
+          "error"
         ]
       }
     },

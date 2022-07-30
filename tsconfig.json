@@ -10,12 +10,19 @@
       "@/*": [
         "src/app/*"
       ],
+      "@plugins/*": [
+        "src/plugins/*"
+      ],
       "@helper/*": [
         "src/helper/*"
       ],
       "@thymesave/core": [
         "dist/thymesave/core/thymesave-core",
         "dist/thymesave/core"
+      ],
+      "@thymesave/core/*": [
+        "dist/thymesave/core/thymesave-core/*",
+        "dist/thymesave/core/*"
       ],
       "@thymesave/ingredients": [
         "dist/thymesave/ingredients/thymesave-ingredients",

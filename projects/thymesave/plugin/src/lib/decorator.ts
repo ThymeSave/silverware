@@ -1,4 +1,5 @@
-import { Importer, Service } from "@thymesave/core"
+import { Service, Importer, RawRecipe } from "@thymesave/core";
+
 import { PluginRegistry } from "./registry";
 
 export type Version = "builtin" | `${number}.${number}.${number}`
@@ -13,6 +14,12 @@ export interface PluginDescriptorInformation {
   name: string
 
   /**
+   * Globally unique identifier for the plugin.
+   * Recommendation is to use your in reverse appending your plugin e. g. com.example.MyPlugin
+   */
+  identifier : string
+
+  /**
    * Short informational description about what it provides and it is useful for
    */
   description: string
@@ -25,54 +32,61 @@ export interface PluginDescriptorInformation {
   /**
    * Register automatically, set to false to disable automatic registration
    */
-  autoRegister ?: boolean
+  autoRegister?: boolean
 }
 
 /**
- * Plugin descriptor enhancing plugin with more information in a declarative way
+ * Plugin descriptor registers a plugin in the registry
  * @param descriptor Descriptor containing information to assign
  * @constructor
  */
 export function PluginDescriptor(descriptor: PluginDescriptorInformation) {
-  return function <T extends { new(...args: any[]): {} }>(constructor: T) {
-    return class extends constructor implements PluginDescriptorInformation {
-      name = descriptor.name;
-      description = descriptor.description;
-      version = descriptor.version;
+  return function (target: Plugin | any): typeof target {
+    const plugin = new target() as Plugin;
+    Object.assign(plugin, descriptor);
 
-      constructor(..._: any[]) {
-        super();
-        if(descriptor.autoRegister ?? true) {
-          PluginRegistry.register(this as any);
-        }
-      }
+    if (descriptor.autoRegister ?? true) {
+      PluginRegistry.register(plugin);
     }
-  }
+
+    return class extends target {
+      constructor() {
+        super();
+        Object.assign(this, descriptor);
+      }
+    };
+  };
 }
 
 /**
  * Plugin base type
  */
-export abstract class Plugin implements PluginDescriptorInformation {
+export class Plugin implements PluginDescriptorInformation {
   /**
    * Name of the plugin
    */
-  name: string = "";
+  public name: string = "";
 
   /**
    * Short informational description about what it provides and it is useful for
    */
-  description: string = "";
+  public description: string = "";
+
+  /**
+   * Globally unique identifier for the plugin.
+   * Recommendation is to use your in reverse appending your plugin e. g. com.example.MyPlugin
+   */
+  public identifier : string = "";
 
   /**
    * Version of the plugin
    */
-  version: Version = "0.0.0";
+  public version: Version = "0.0.0";
 
   /**
    * List with importers provided
    */
-  get importer(): Array<Importer<any>> {
+  get importer(): Importer<RawRecipe>[] {
     return [];
   }
 

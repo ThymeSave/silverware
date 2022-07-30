@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { createLogger } from "@helper/log";
+import { CACHE_DB_NAME, saveValue } from "@helper/simpleStorage";
 import PouchDB from 'pouchdb';
-import plugin from 'pouchdb-upsert';
+import findPlugin from "pouchdb-find";
+import upsertPlugin from 'pouchdb-upsert';
 import {
   BehaviorSubject,
   Observable,
@@ -13,13 +16,12 @@ import {
   of,
   switchMap,
   tap,
-  throwError,
+  throwError, first, mergeMap,
 } from 'rxjs';
 
-import { CACHE_DB_NAME, saveValue } from "@/helper/simpleStorage";
 import { BaseDocument } from '@/models/BaseDocument';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '@/../environments/environment';
 
 interface DbInitializeResponse {
   dbName: string;
@@ -34,6 +36,8 @@ export class StorageService {
   private pouchRemote: PouchDB.Database | null = null;
   private pouchLocal: PouchDB.Database | null = null;
 
+  private logger = createLogger("StorageService");
+
   private dbSubject = new BehaviorSubject<PouchDB.Database | null>(null);
   public db$ = this.dbSubject.asObservable().pipe(filter(db => !!db));
 
@@ -42,7 +46,8 @@ export class StorageService {
     private authService: AuthService,
   ) {
     // Register pouch db upsert plugin
-    PouchDB.plugin(plugin);
+    PouchDB.plugin(upsertPlugin);
+    PouchDB.plugin(findPlugin);
     // Initialize pouch db instance
     this.authService.isAuthenticated$.pipe(
       switchMap(_ => this.authService.getIdTokenClaims()),
@@ -52,6 +57,16 @@ export class StorageService {
         this.dbSubject.next(dbValue);
       }),
     ).subscribe();
+
+    this.db$.pipe(
+      filter(db => db != null),
+      map(db => {
+        db!!.createIndex({
+          index: {
+            fields: ["$entityType"],
+          },
+        });
+      }));
   }
 
   /**
@@ -71,7 +86,7 @@ export class StorageService {
    * @returns
    */
   public upsert<T extends BaseDocument>(entityType: string, id: string, diffFunc: UpsertDiffFunc<T>): Observable<PouchDB.UpsertResponse | T> {
-    console.debug("Upsert doc of entity type", entityType, "with id", id);
+    this.logger.debug(`Upsert doc of entity type ${entityType} with id ${id}`);
     return this.db$.pipe(switchMap(db =>
       from(db!.upsert<BaseDocument>(this.build_id(entityType, id), doc => {
         const diffFuncResult = diffFunc(doc as T);
@@ -95,8 +110,27 @@ export class StorageService {
    * @param id Id of the document
    */
   public getLatest<T extends BaseDocument>(entityType: string, id: string): Observable<T> {
+    this.logger.debug(`Get latest doc of entityType ${entityType} with id ${id}`);
     return this.db$
       .pipe(switchMap(db => from(db!.get(this.build_id(entityType, id), {latest: true})))) as Observable<T>;
+  }
+
+  private async find<T>(db: PouchDB.Database, filter: PouchDB.Find.FindRequest<any>): Promise<T[]> {
+    const results = await db.find(filter);
+    return results.docs as any as T[];
+  }
+
+  public getAll<T extends BaseDocument>(entityType: string): Observable<T[]> {
+    this.logger.warn(`Get all documents of entityType ${entityType}. Please do not use this for production as it may slow down the app!`);
+    return this.db$
+      .pipe(
+        mergeMap(db => from(this.find(db!!, {
+            selector: {
+              $entityType: entityType,
+            },
+          },
+        )) as any),
+      ) as Observable<T[]>;
   }
 
   private fetchDBName(token: string): Observable<string> {

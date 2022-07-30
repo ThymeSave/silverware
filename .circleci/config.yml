@@ -26,9 +26,6 @@ commands:
       - node/install-packages
       - remove_node_orb_lock
       - node/install-packages:
-          app-dir: projects/thymesave/core
-      - remove_node_orb_lock
-      - node/install-packages:
           app-dir: projects/thymesave/ingredients
       - remove_node_orb_lock
       - node/install-packages:

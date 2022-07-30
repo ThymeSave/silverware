@@ -1,61 +1,95 @@
 import { UnitTranslation } from "../../lib/model";
 
 const units: UnitTranslation = {
-  "cup": {
-    "long": [
+  clove: {
+    long: [
+      "clove",
+      "cloves",
+    ],
+    short: "clove",
+  },
+  cup: {
+    long: [
       "cup",
       "cups",
     ],
-    "short": "c",
+    short: "c",
   },
-  "deciliter": {
-    "long": [
+  deciliter: {
+    long: [
       "deciliter",
     ],
-    "short": "dl",
+    short: "dl",
   },
-  "gram": {
-    "long": [
+  gram: {
+    long: [
       "gram",
     ],
-    "short": "g",
+    short: "g",
   },
-  "kilogram": {
-    "long": [
+  jar: {
+    long: [
+      "jar",
+      "jars",
+    ],
+    short: "jar",
+  },
+  kilogram: {
+    long: [
       "kilogram",
     ],
-    "short": "kg",
+    short: "kg",
   },
-  "liter": {
-    "long": [
+  liter: {
+    long: [
       "liter",
     ],
-    "short": "l",
+    short: "l",
   },
-  "milligram": {
-    "long": [
+  milligram: {
+    long: [
       "milligram",
     ],
-    "short": "mg",
+    short: "mg",
   },
-  "milliliter": {
-    "long": [
+  milliliter: {
+    long: [
       "milliliter",
     ],
-    "short": "ml",
+    short: "ml",
   },
-  "pack": {
-    "long": [
+  ounce: {
+    long: [
+      "Unze",
+      "Unzen",
+    ],
+    short: "oz",
+  },
+  pack: {
+    long: [
       "pack",
       "packs",
     ],
-    "short": "pck",
+    short: "pck",
   },
-  "pound": {
-    "long": [
+  pinch: {
+    long: [
+      "pinch",
+      "pinches",
+    ],
+    short: "pinch",
+  },
+  pound: {
+    long: [
       "pound",
     ],
-    "short": "lb",
+    short: "lb",
+  },
+  tsp: {
+    long: [
+      "tablespoon",
+    ],
+    short: "tsp",
   },
 };
 

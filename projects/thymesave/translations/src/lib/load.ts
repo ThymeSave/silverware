@@ -2,7 +2,7 @@ import { en_US } from "./languages";
 import { Language, ResolvedUnitTranslation, UnitTranslationDetail } from "./model";
 import { pluralize } from "./util";
 
-const DEFAULT_LANGUAGE = en_US
+const DEFAULT_LANGUAGE = en_US;
 
 const loadTranslationByKey = (language: Language, languageProperty: keyof Language, translationKey: string): string | string[] | UnitTranslationDetail => {
   const languagePropertyValue = language[languageProperty];
@@ -11,7 +11,7 @@ const loadTranslationByKey = (language: Language, languageProperty: keyof Langua
   }
 
   return DEFAULT_LANGUAGE[languageProperty][translationKey] ?? translationKey;
-}
+};
 
 /**
  *
@@ -28,8 +28,8 @@ export const loadIngredientByKey = (language: Language, translationKey: string, 
     return translationKey;
   }
 
-  return pluralize(translations, amount)
-}
+  return pluralize(translations, amount);
+};
 
 /**
  *
@@ -38,6 +38,14 @@ export const loadIngredientByKey = (language: Language, translationKey: string, 
  * @returns UI text for translation key
  */
 export const loadUITextByKey = (language: Language, translationKey: string): string => loadTranslationByKey(language, "ui", translationKey) as string;
+
+/**
+ *
+ * @param language Language for the translation
+ * @param translationKey Key of the translation
+ * @returns Ingredient category text for translation key
+ */
+export const loadIngredientCategoryByKey = (language : Language, translationKey : string) : string => loadTranslationByKey(language, "ingredientCategory", translationKey) as string;
 
 /**
  *
@@ -53,13 +61,13 @@ export const loadUnitByKey = (language: Language, translationKey: string, amount
   if (typeof translation == "string") {
     return {
       short: translationKey,
-      long: translationKey
+      long: translationKey,
     };
   }
 
   const unitDetails = translation as UnitTranslationDetail;
   return {
     short: unitDetails.short,
-    long: pluralize(unitDetails.long, amount)
+    long: pluralize(unitDetails.long, amount),
   };
-}
+};

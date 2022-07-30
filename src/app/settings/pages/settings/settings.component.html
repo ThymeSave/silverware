@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="settingsForm" fxLayout="column">
+  <form [formGroup]="settingsForm" (ngSubmit)="save()" fxLayout="column">
     <mat-form-field appearance="fill">
       <mat-label>{{ "language" | i18n }}</mat-label>
       <mat-select formControlName="language">
@@ -9,7 +9,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button (click)="save()"
+    <button type="submit"
             color="success"
             mat-raised-button>
       <mat-icon>save</mat-icon>

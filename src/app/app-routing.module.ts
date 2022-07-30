@@ -7,32 +7,32 @@ import { ShellComponent } from "@/pages/shell/shell.component";
 
 const routes: Routes = [
   {
-    path: '',
-    component: ShellComponent,
     children: [
       {
-        path: '',
         component: HomeComponent,
+        path: '',
       },
       {
-        path: 'settings',
         loadChildren: () => import("@/settings/settings.module").then(m => m.SettingsModule),
+        path: 'settings',
       },
       {
-        path: 'recipes',
         loadChildren: () => import("@/recipes/recipes.module").then(m => m.RecipesModule),
+        path: 'recipes',
       },
       {
-        path: '**',
         component: NotFoundComponent,
+        path: '**',
       },
     ],
+    component: ShellComponent,
+    path: '',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
 })
 export class AppRoutingModule {
 }

@@ -7,20 +7,20 @@ import { StorageService } from '@/shared/storage/storage.service';
 
 @Component({
   selector: 'app-shell',
-  templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
+  templateUrl: './shell.component.html',
 })
 export class ShellComponent {
   readonly menuItems = [
     {
       icon: "restaurant_menu",
-      title: "recipes",
       link: "/recipes",
+      title: "recipes",
     },
     {
       icon: "settings",
-      title: 'settings',
       link: '/settings',
+      title: 'settings',
     },
   ];
 

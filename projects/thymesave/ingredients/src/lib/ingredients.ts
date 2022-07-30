@@ -32,6 +32,7 @@ enum MiscCategory {
   Afters = "afters",
   Pasta = "pasta",
   Fluids = "fluids",
+  Dip = "dip"
 }
 
 enum MeatCategory {
@@ -60,4011 +61,4075 @@ export const IngredientCategory = {
   ...MilkCategory,
   ...FatCategory,
   ...AlcoholCategory,
-}
+};
 
 export const ingredients: { [key: string]: Ingredient } = {
   "abalone": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "abiyuch": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "acerola": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "acorn": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "acorn_squash": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "adobo": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "adzuki_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "agar": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "agave": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "akutaq": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "alaska_blackfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "alaska_blueberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "alaska_pollock": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "alaska_wild_rhubarb": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "albacore_tuna": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "albizia_gummifera": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "alcoholic_beverages": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "alfalfa": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "allium": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "allspice": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "almond": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "almond_milk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "alpine_sweetvetch": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "amaranth": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "american_butterfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "american_cranberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "american_lobster": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "american_pokeweed": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "american_shad": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "anatidae": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "anchovy": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "andean_blackberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
-  }, "angelica": {
+  },
+  "angelica": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "anguilliformes": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "anise": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "annual_wild_rice": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "apple": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
-  },
-  "apple_cider": {
+  }, "apple_cider": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "apricot": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "arabica_coffee": {
+    category: IngredientCategory.Coffee,
     scalable: true,
-    category: IngredientCategory.Coffee
   },
   "arctic_blackberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "arrowhead": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "arrowroot": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "ascidians": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "asian_pear": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "asparagus": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "asparagus_fern": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "asparagus_racemosus": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
-  },
-  "atlantic_salmon": {
-    scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "atlantic_cod": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "atlantic_croaker": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "atlantic_halibut": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "atlantic_herring": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "atlantic_mackerel": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "atlantic_menhaden": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "atlantic_pollock": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
+  },
+  "atlantic_salmon": {
+    category: IngredientCategory.Aquatic,
+    scalable: true,
   },
   "atlantic_wolffish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "aubergine": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "avocado": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "avocado_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "babassu_palm": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "bacon": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "bacon_cubes": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "bagel": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "baked_beans": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "baking_soda": {
+    category: IngredientCategory.Baking,
     scalable: false,
-    category: IngredientCategory.Baking
   },
   "balsamic": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "bamboo_shoots": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "banana": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "barley": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "basil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
-  },
-  "bayberry": {
-    scalable: true,
-    category: IngredientCategory.Fruits
   },
   "bay_laurel": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
+  },
+  "bayberry": {
+    category: IngredientCategory.Fruits,
+    scalable: true,
   },
   "bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "bearded_seal": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "beech_nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "beef_roulade": {
+    category: IngredientCategory.Beef,
     scalable: true,
-    category: IngredientCategory.Beef
   },
   "beefalo": {
+    category: IngredientCategory.Beef,
     scalable: true,
-    category: IngredientCategory.Beef
   },
   "beer": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "beluga_whale": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "berry_wine": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "beverages": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "bilberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "biscuit": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "bison": {
+    category: IngredientCategory.Beef,
     scalable: true,
-    category: IngredientCategory.Beef
   },
   "bitter_gourd": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "bivalvia": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "black cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "black_chokeberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_crowberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_elderberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_eyed_pea": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "black_huckleberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_mulberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_plum": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_radish": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "black_raisin": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_raspberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "black_salsify": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "black_tea": {
+    category: IngredientCategory.Tea,
     scalable: true,
-    category: IngredientCategory.Tea
   },
   "black_walnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "blackberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "blackcurrant": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "blue_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "blue_crab": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "blue_mussel": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "blue_whiting": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "bluefish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "bog_bilberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "borage": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "bowhead_whale": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "boysenberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "brassicas": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "brazil_nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "breadfruit": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "breadnut_tree_seed": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "breakfast_cereal": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "broad_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "broad_whitefish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "broccoli": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "brussel_sprouts": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "buffalo": {
+    category: IngredientCategory.Beef,
     scalable: true,
-    category: IngredientCategory.Beef
   },
   "buffalo_currant": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "bulgur": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "burbot": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "burdock": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "butter": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "butter_substitute": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "butterfat": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "buttermilk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "butternut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "butternut_squash": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "cake": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "calabash": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "canada_blueberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "candy_bar": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "cannellini_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "canola": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "canola_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cantaloupe_melon": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "cape_gooseberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "capers": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "caraway": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cardamom": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cardoon": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "carob": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "carp_bream": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "carrot": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "cascade_huckleberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "casein": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "cashew_nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "cassava": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "catfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "catjang_pea": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "cattle": {
+    category: IngredientCategory.Beef,
     scalable: true,
-    category: IngredientCategory.Beef
   },
   "cauliflower": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "celeriac": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
-  },
-  "celery leaves": {
-    scalable: true,
-    category: IngredientCategory.Herb
   },
   "celery": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
+  },
+  "celery leaves": {
+    category: IngredientCategory.Herb,
+    scalable: true,
   },
   "celery_stalks": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "cereal_products": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "cetacea": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "ceylon_cinnamon": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "channel_catfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "chanterelle": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "charr": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "chayote": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "cheddar_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "cheese": {
+    category: IngredientCategory.Cheese,
     scalable: true,
-    category: IngredientCategory.Cheese
   },
   "cherimoya": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "cherry_tomato": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "chervil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "chestnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "chewing_gum": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "chia": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "chicken": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "chicken_breast": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "chicken_breast_filet": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "chicken_broth": {
+    category: IngredientCategory.Soup,
     scalable: true,
-    category: IngredientCategory.Soup
   },
   "chickpea": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
-  },
-  "chicory leaves": {
-    scalable: true,
-    category: IngredientCategory.Vegetable
-  },
-  "chicory roots": {
-    scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "chicory": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
+  },
+  "chicory leaves": {
+    category: IngredientCategory.Vegetable,
+    scalable: true,
+  },
+  "chicory roots": {
+    category: IngredientCategory.Vegetable,
+    scalable: true,
+  },
+  "chili_flakes": {
+    category: IngredientCategory.Spice,
+    scalable: true,
   },
   "chilli": {
+    category: IngredientCategory.Spice,
     scalable: true,
-    category: IngredientCategory.Spice
   },
   "chilli_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "chineese_plum": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "chinese_bayberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "chinese_broccoli": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "chinese_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "chinese_chestnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "chinese_chives": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "chinese_cinnamon": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "chinese_mustard": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "chinese_water_chestnut": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "chinook salmon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "chives": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "chocolate": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "chocolate_mousse": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "chocolate_spread": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "chum salmon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "cichlidae": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "cinnamon": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cisco": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "citrus": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "clam": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "clarified_butter": {
+    category: IngredientCategory.AnimalFat,
     scalable: true,
-    category: IngredientCategory.AnimalFat
   },
   "clawed_lobster": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "clementine": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "climbing_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "cloud_ear_fungus": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "cloudberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "cloves": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "clupeinae": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "coalfish_pollock": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "cocktail": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "cocoa_bean": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "cocoa_butter": {
+    category: IngredientCategory.VegetableFat,
     scalable: true,
-    category: IngredientCategory.VegetableFat
   },
   "cocoa_liquor": {
+    category: IngredientCategory.Liquor,
     scalable: true,
-    category: IngredientCategory.Liquor
   },
   "cocoa_powder": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cocoa_products": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "coconut": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "coconut_milk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "coconut_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "coffee": {
+    category: IngredientCategory.Coffee,
     scalable: true,
-    category: IngredientCategory.Coffee
   },
   "coffee_mocha": {
+    category: IngredientCategory.Coffee,
     scalable: true,
-    category: IngredientCategory.Coffee
   },
   "coffee_products": {
+    category: IngredientCategory.Coffee,
     scalable: true,
-    category: IngredientCategory.Coffee
   },
   "coffee_substitute": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "coho salmon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "cold_cut": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "colorado_pinyon": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "columbidae": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "common salsify": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "common_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "common_beet": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "common_buckwheat": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "common_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "common_carp": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "common_chokecherry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "common_dab": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "common_grape": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "common_hazelnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "common_ling": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "common_mushroom": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "common_octopus": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "common_oregano": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "common_pea": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "common_persimmon": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "common_sage": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "common_thyme": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "common_verbena": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "common_walnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "common_wheat": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "conch": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "condensed_milk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "cooking_oil": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "coriander": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "corn": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "corn_chip": {
+    category: IngredientCategory.Snack,
     scalable: true,
-    category: IngredientCategory.Snack
   },
   "corn_grits": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "corn_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "corn_salad": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "cornbread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "cornflakes": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "cornmint": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cottage_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "cottonseed": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cottonseed_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cowpea": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "crab": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "cracker": {
+    category: IngredientCategory.Snack,
     scalable: true,
-    category: IngredientCategory.Snack
   },
   "crayfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "cream": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "cream_substitute": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "crisp_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "crosne": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
+  },
+  "croutons": {
+    category: IngredientCategory.Baking,
+    scalable: true,
   },
   "crustaceans": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "cubanelle_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "cucumber": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "cucurbita": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "cumin": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "curd": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "curry_paste": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "curry_powder": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "cusk": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "custard_apple": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "cuttlefish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "daikon_radish": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "dandelion": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "date": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "deer": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "deerberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "dessert_wine": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "devilfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "dill": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "dock": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "dolphin_fish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "domestic_goat": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "domestic_pig": {
+    category: IngredientCategory.Pork,
     scalable: true,
-    category: IngredientCategory.Pork
   },
   "dough": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "dragee": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "dried_milk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "dripping": {
+    category: IngredientCategory.AnimalFat,
     scalable: true,
-    category: IngredientCategory.AnimalFat
   },
   "dulce_de_leche": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "dumpling": {
+    category: IngredientCategory.Dough,
     scalable: true,
-    category: IngredientCategory.Dough
   },
   "dungeness_crab": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "durian": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "eastern_oyster": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "eddoe": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "edible_shell": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "egg_substitute": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "egg_yolk": {
+    category: IngredientCategory.Eggs,
     scalable: true,
-    category: IngredientCategory.Eggs
   },
   "eggplant": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "eggs": {
+    category: IngredientCategory.Eggs,
     scalable: true,
-    category: IngredientCategory.Eggs
   },
   "elderberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "elk": {
+    category: IngredientCategory.Beef,
     scalable: true,
-    category: IngredientCategory.Beef
   },
   "elliotts_blueberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "emu": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "endive": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "enokitake": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "epazote": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "european_anchovy": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "european_chestnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "european_cranberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "european_plum": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "european_rabbit": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "evaporated_milk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "evening_primrose": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "evergreen_blackberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "evergreen_huckleberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
+  },
+  "falafel": {
+    category: IngredientCategory.Vegetable,
+    scalable: true,
   },
   "fats_oils": {
+    category: IngredientCategory.Fat,
     scalable: true,
-    category: IngredientCategory.Fat
   },
   "feijoa": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "fennel": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "fenugreek": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "fermented_milk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "fig": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "fireweed": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "fish_oil": {
+    category: IngredientCategory.AnimalFat,
     scalable: true,
-    category: IngredientCategory.AnimalFat
   },
   "fishes": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "flatfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "flaxseed": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "florida_pompano": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "flour": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "focaccia": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
-  },
-  "fortified_wine": {
-    scalable: true,
-    category: IngredientCategory.Beverage
   },
   "food_starch": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
+  },
+  "fortified_wine": {
+    category: IngredientCategory.Beverage,
+    scalable: true,
   },
   "fox_grape": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "french_plantain": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "french_toast": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "fresh_cream": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "freshwater_drum": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "freshwater_eel": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "frozen_yogurt": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "fruit-flavor_drink": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "fruit_gum": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "fruit_juice": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "fruit_preserve": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "fruit_salad": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "fruits": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "frybread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "fudge": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "gadiformes": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "gadus": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "garden_cress": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "garden_onion": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "garden_rhubarb": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "garden_tomato": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "garfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "garland_chrysanthemum": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "garlic": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "garlic_glove": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "garlic_powder": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "gelatin": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "gelatin_dessert": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "gentiana_lutea": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "german_camomile": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "giant_butterbur": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "gin": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "ginger": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "ginkgo_nuts": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "ginseng": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "globe_artichoke": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "goji": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
+  },
+  "gold_raisins": {
+    category: IngredientCategory.Fruits,
+    scalable: true,
   },
   "gooseberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "gram_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "grape": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "grape_wine": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "grapefruit": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "grapeseed_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "grass_pea": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "greater_sturgeon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "greek_feta_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
+  },
+  "greek_yogurt": {
+    category: IngredientCategory.Milk,
+    scalable: true,
   },
   "green_apple": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "green_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "green_bell_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: false,
-    category: IngredientCategory.Vegetable
   },
   "green_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "green_grape": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "green_lentil": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "green_onion": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "green_plum": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "green_tea": {
+    category: IngredientCategory.Tea,
     scalable: true,
-    category: IngredientCategory.Tea
   },
   "green_turtle": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "green_vegetables": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "green_zucchini": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "greenland_halibut": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "greenthread_tea": {
+    category: IngredientCategory.Tea,
     scalable: true,
-    category: IngredientCategory.Tea
   },
   "greylag_goose": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "ground_meat": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "groundcherry": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "grouper": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "guarana": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "guava": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "guinea_hen": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "haddock": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "half-highbush blueberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "ham": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "hard_wheat": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
+  },
+  "harissa": {
+    category: IngredientCategory.Spice,
+    scalable: true,
   },
   "hawthorn": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "hazelnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "heart_of_palm": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "hedge_mustard": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "herb_butter": {
+    category: IngredientCategory.AnimalFat,
     scalable: false,
-    category: IngredientCategory.AnimalFat
   },
   "herbal_tea": {
+    category: IngredientCategory.Tea,
     scalable: true,
-    category: IngredientCategory.Tea
+  },
+  "herbs": {
+    category: IngredientCategory.Herb,
+    scalable: false,
   },
   "herbs_spices": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "hibiscus_tea": {
+    category: IngredientCategory.Tea,
     scalable: true,
-    category: IngredientCategory.Tea
   },
   "hickory nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "highbush_blueberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "hippoglossus": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "honey": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "horchata": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "horned_melon": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "horse": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "horseradish": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "horseradish_tree": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "hot_chocolate": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
+  },
+  "hot_sauce": {
+    category: IngredientCategory.Spice,
+    scalable: false,
   },
   "hot_water": {
+    category: IngredientCategory.Fluids,
     scalable: true,
-    category: IngredientCategory.Fluids
+  },
+  "hummus": {
+    category: IngredientCategory.Dip,
+    scalable: true,
   },
   "hyacinth_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "hyssop": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "ice_cream": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "ice_cream_cone": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "iceberg_lettuce": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "icing": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "icing_sugar": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "irish_moss": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "italian_herbs": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "italian_oregano": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "italian_sweet_red_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: false,
-    category: IngredientCategory.Vegetable
   },
   "jackfruit": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
+  },
+  "jalapeno": {
+    category: IngredientCategory.Vegetable,
+    scalable: true,
   },
   "jalapeno_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "japanese_chestnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "japanese_persimmon": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "japanese_pumpkin": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "japanese_sea_bass": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "japanese_walnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "java_plum": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "jellyfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "jerusalem_artichoke": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "jews_ear": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "jicama": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "jostaberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "jujube": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "juniperus_communis": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "junket": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "jute": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "kai_lan": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "kale": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "kefir": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "kelp": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "ketchup": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "king_mackerel": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "king_prawns": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "kiwi": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "kohlrabi": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "komatsuna": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "kombu": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "kumquat": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "lake_trout": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "lambsquarters": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "lantern_fruit": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "lard": {
+    category: IngredientCategory.AnimalFat,
     scalable: true,
-    category: IngredientCategory.AnimalFat
   },
   "lasagna_plate": {
+    category: IngredientCategory.Pasta,
     scalable: true,
-    category: IngredientCategory.Pasta
   },
   "leather_chiton": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "leavening_agent": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "leek": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "lemon": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "lemon_balm": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "lemon_grass": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "lemon_juice": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "lemon_sole": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "lemon_thyme": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "lemon_verbena": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "lentils": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "lettuce": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "lichee": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "lima_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "lime": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "linden": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "lingcod": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "lingonberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "linseed_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "liquor": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "liquorice": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "loganberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "longan": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "loquat": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "lotus": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "lovage": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "lowbush_blueberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "lowfat_quark": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "lumpsucker": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "lupine": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "macadamia_nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "macroalgae": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "madeira_wine": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "maitake": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "majoram": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "malabar plum": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "malabar_spinach": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "mallard_duck": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "malus": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mamey_sapote": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mammee_apple": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mandarin_orange": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mango": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "maple_syrup": {
+    category: IngredientCategory.Fluids,
     scalable: true,
-    category: IngredientCategory.Fluids
   },
   "margarine": {
+    category: IngredientCategory.VegetableFat,
     scalable: true,
-    category: IngredientCategory.VegetableFat
   },
   "margarine_like_spread": {
+    category: IngredientCategory.VegetableFat,
     scalable: true,
-    category: IngredientCategory.VegetableFat
   },
   "marine_mussel": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "marshmallow": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "marzipan": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "mascarpone": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "mate": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "meat_bouillon": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "meat_soup": {
+    category: IngredientCategory.Soup,
     scalable: true,
-    category: IngredientCategory.Soup
   },
   "meatball": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "meatloaf": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "medlar": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mentha": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "meringue": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "mexican_groundcherry": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "mexican_oregano": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "mikan": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "milk": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "milk_human": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "milk_one_percent_fat": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "milk_products": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "milk_substitute": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "milk_three_percent_fat": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "milk_two_percent_fat": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "milk_zero_fat": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "milkfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "milkshake": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "millet": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "miso": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "mixed_nuts": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "molasses": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "mollusks": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "monk_fruit": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "monkfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "monterey_jack_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "morchella": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "more": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "moth_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "mountain_hare": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "mountain_yam": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "mozzarella_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "mugwort": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "mulberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mule_deer": {
+    category: IngredientCategory.Beef,
     scalable: true,
-    category: IngredientCategory.Beef
   },
   "multigrain_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "mundu": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mung_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "muscadine_grape": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "mushrooms": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "muskmelon": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "mustard": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "mustard_spinach": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "nachos": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "nance": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "nanking_cherry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "napa_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "naranjilla": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "narrowleaf_cattail": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "natal_plum": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "natto": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "nectarine": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "new_zealand_spinach": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "nopal": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "north_pacific_giant_octopus": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "northern_bluefin_tuna": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "northern_pike": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "norway_haddock": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "norway_lobster": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "norway_pout": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "nougat": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "nutmeg": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "nutritional_drink": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "nuts": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "nuttall_cockle": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "oat": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "oat_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "oatmeal": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "ocean_pout": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "ohelo_berry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "oil_palm": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "oil_seed_camellia": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "okra": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "olive": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "olive_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "onion_family_vegetables": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "opium_poppy": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "orange roughy": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "orange_bell_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: false,
-    category: IngredientCategory.Vegetable
   },
   "orange_juice": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "orange_mint": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "oregon_yampah": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "oriental_wheat": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "ostrich": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "ostrich_fern": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "other_alcoholic_beverage": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "other_animal_fat": {
+    category: IngredientCategory.AnimalFat,
     scalable: true,
-    category: IngredientCategory.AnimalFat
   },
   "other_beverage": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "other_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "other_bread_product": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "other_candy": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "other_cereal_product": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "other_cocoa_product": {
+    category: IngredientCategory.VegetableFat,
     scalable: true,
-    category: IngredientCategory.VegetableFat
   },
   "other_fish_product": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "other_frozen_dessert": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "other_fruit_product": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "other_onion": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "other_soy_product": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "other_vegetable_product": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "other_wine": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "oval_leaf_huckleberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "oxheart_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "oyster_mushroom": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "pacific_cod": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_halibut": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_herring": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_jack_mackerel": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_ocean_perch": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_oyster": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_rockfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_salmon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pacific_sardine": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "painted_comber": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pak choy": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "palmin": {
+    category: IngredientCategory.VegetableFat,
     scalable: true,
-    category: IngredientCategory.VegetableFat
   },
   "pan_dulce": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "papaya": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "paprika": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "parmesan_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
-  },
-  "parsely": {
-    scalable: true,
-    category: IngredientCategory.Herb
   },
   "parsley": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "parsnip": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "partridge_berry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "passion_fruit": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pasta": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "pastry": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "pate": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "pea_shoots": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "peach": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "peanut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
-  },
-  "peanut_oil": {
-    scalable: true,
-    category: IngredientCategory.Herb
   },
   "peanut_butter": {
+    category: IngredientCategory.VegetableFat,
     scalable: true,
-    category: IngredientCategory.VegetableFat
+  },
+  "peanut_oil": {
+    category: IngredientCategory.Herb,
+    scalable: true,
   },
   "pear": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pecan_nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "pectin": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "pepper_spice": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "peppermint": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "perciformes": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "percoidei": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "persian_lime": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "persimmon": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pheasant": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "phyllo_dough": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "pickle": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "pie": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "pie_crust": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "pie_filling": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "pigeon_pea": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "pikeperch": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "piki_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "pili_nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "pine_nut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "pineapple": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pineappple_sage": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "pink salmon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pistachio": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "pita_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "pitanga": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pitaya": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "plain_cream_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "plains_prickly_pear": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "plantain": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pleuronectidae": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pollock": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "pomegranate": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
+  },
+  "pomegranate_seeds": {
+    category: IngredientCategory.Fruits,
+    scalable: true,
   },
   "pomes": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "popcorn": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "poppy": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "pork_goulash": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "pork_mince": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "pork_tenderloin": {
+    category: IngredientCategory.Pork,
     scalable: true,
-    category: IngredientCategory.Pork
   },
   "port_wine": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "pot_marjoram": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "potato": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "potato_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "potato_chip": {
+    category: IngredientCategory.Snack,
     scalable: true,
-    category: IngredientCategory.Snack
   },
   "prairie_turnip": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "prickly_pear": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "processed_cheese": {
+    category: IngredientCategory.Cheese,
     scalable: true,
-    category: IngredientCategory.Cheese
   },
   "prunus": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pudding": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "puff_pastry": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "pulses": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "pummelo": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "pumpkinseed_sunfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "purple_laver": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "purple_mangosteen": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "purslane": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "quail": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "quills": {
+    category: IngredientCategory.Pasta,
     scalable: true,
-    category: IngredientCategory.Pasta
   },
   "quince": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "quinoa": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "rabbit": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "rabbiteye_blueberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "radish": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "rainbow trout": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "rainbow_smelt": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "raisin": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "raisin_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "rambutan": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "rape": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "rapeseed_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "rapini": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "ravioli": {
+    category: IngredientCategory.Pasta,
     scalable: true,
-    category: IngredientCategory.Pasta
   },
   "red_algae": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "red_beetroot": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "red_bell_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: false,
-    category: IngredientCategory.Vegetable
   },
   "red_champagne": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "red_clover": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "red_grape": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "red_grape_juice": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "red_huckleberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "red_king_crab": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "red_onion": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "red_raspberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "red_rice": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "red_tea": {
+    category: IngredientCategory.Tea,
     scalable: true,
-    category: IngredientCategory.Tea
   },
   "red_wine": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "redcurrant": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "relish": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "remoulade": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "rice": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "rice_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "rice_pudding": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
+  },
+  "ricotta": {
+    category: IngredientCategory.Milk,
+    scalable: true,
   },
   "ridged": {
+    category: IngredientCategory.Pasta,
     scalable: true,
-    category: IngredientCategory.Pasta
   },
   "ringed_seal": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "robusta_coffee": {
+    category: IngredientCategory.Coffee,
     scalable: true,
-    category: IngredientCategory.Coffee
   },
   "rock_ptarmigan": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "rocket": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "rocket_salad": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "roe": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "romaine_lettuce": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "roman_camomile": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "root_vegetables": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "rose hip": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "roselle": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "rosemary": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "rowal": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "rowanberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "rubus": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "rum": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "rye": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "rye_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "sablefish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sacred_lotus": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "safflower": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "saffron": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sago_palm": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sake": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "salad": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "salad_dressing": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "salami": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "salmonberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "salmonidae": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "salt": {
+    category: IngredientCategory.Baking,
     scalable: false,
-    category: IngredientCategory.Baking
   },
   "salted_butter": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "sapodilla": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "saskatoon_berry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "sauce": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "sauce_binder": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "sausage": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "savoy_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "scallop": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "scarlet_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "scombridae": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "scup": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sea_buckthornberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "sea_cucumber": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sea_trout": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "semolina": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "sesame": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sesame_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
+  },
+  "sesame_seeds": {
+    category: IngredientCategory.Vegetable,
+    scalable: true,
   },
   "sesbania_flower": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "shallot": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "shark": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "shea_tree": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sheefish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sheep": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "sheepshead": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sherry": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "shiitake": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "shortening": {
+    category: IngredientCategory.Fat,
     scalable: true,
-    category: IngredientCategory.Fat
   },
   "shrimp": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sieved_tomatoes": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "silver_linden": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "skipjack_tuna": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "skunk_currant": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "small_leaf_linden": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "smelt": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "snail": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "snapper": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "snow_crab": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sockeye salmon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "soft_drink": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "soft_necked_garlic": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "soft_wheat_semolina": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "sorghum": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "sorrel": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "soup": {
+    category: IngredientCategory.Soup,
     scalable: true,
-    category: IngredientCategory.Soup
   },
   "sour": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "sour_cherry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "sour_cream": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "sour_orange": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "sourdock": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sourdough": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "soursop": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "soy_bean": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "soy_cream": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "soy_milk": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "soy_sauce": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "soy_yogurt": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "soybean_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "spaghetti": {
+    category: IngredientCategory.Pasta,
     scalable: true,
-    category: IngredientCategory.Pasta
   },
   "spanish_mackerel": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sparkleberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
-  },
-  "split_peas": {
-    scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "spearmint": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "spelt": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "spinach": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "spiny_dogfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "spiny_lobster": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "spirit": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "spirulina": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
+  },
+  "split_peas": {
+    category: IngredientCategory.Vegetable,
+    scalable: true,
   },
   "spot_croaker": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "spotted_seal": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "spread": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "spring_onions": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "squab": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "squashberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "squid": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "star_anise": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "star_fruit": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "steller_sea_lion": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "strawberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "strawberry_guava": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
+  },
+  "strip_steak": {
+    category: IngredientCategory.Meat,
+    scalable: true,
   },
   "striped_bass": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "striped_mullet": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "stuffing": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "sturgeon": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "sugar": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "sugar_apple": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "sugar_substitute": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "summer_grape": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "summer_savory": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sunburst_squash": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "sunflower": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sunflower_oil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "swamp_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "swede": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "sweet_basil": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sweet_bay": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sweet_cherry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "sweet_custard": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "sweet_marjoram": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "sweet_orange": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "sweet_potato": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "sweet_rowanberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "swiss_chard": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "swiss_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "swordfish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "syrup": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "taco": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "taco_shell": {
-    scalable: true,
     category: IngredientCategory.Baking,
+    scalable: true,
+  },
+  "tahini": {
+    category: IngredientCategory.Spice,
+    scalable: true,
   },
   "tallow": {
+    category: IngredientCategory.VegetableFat,
     scalable: true,
-    category: IngredientCategory.VegetableFat
   },
   "tamarind": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "tapioca_pearl": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "taro": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "tarragon": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "tartary_buckwheat": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "tea": {
+    category: IngredientCategory.Tea,
     scalable: true,
-    category: IngredientCategory.Tea
   },
   "tea_leaf_willow": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "teff": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "thistle": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "thornless_blackberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "thunnus": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "tilefish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "tinda": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "toffee": {
+    category: IngredientCategory.Confectioneries,
     scalable: true,
-    category: IngredientCategory.Confectioneries
   },
   "tofu": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "tomato": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "tomato_paste": {
+    category: IngredientCategory.Vegetable,
     scalable: false,
-    category: IngredientCategory.Vegetable
   },
   "topping": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "tortilla": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "tortilla_chip": {
+    category: IngredientCategory.Snack,
     scalable: true,
-    category: IngredientCategory.Snack
   },
   "tostada_shell": {
-    scalable: true,
     category: IngredientCategory.Baking,
+    scalable: true,
   },
   "towel_gourd": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "trail_mix": {
+    category: IngredientCategory.Snack,
     scalable: true,
-    category: IngredientCategory.Snack
   },
   "triticale": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "tronchuda_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "tropical_highland_blackberry": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "true_frog": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "true_oyster": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "true_seal": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "true_sole": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "tumeric": {
+    category: IngredientCategory.Herb,
     scalable: false,
-    category: IngredientCategory.Herb
   },
   "tuna": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "tunicate": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "turbot": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "turkey": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "turkey_breast": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "turmeric": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "turnip": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "ucuhuba": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "vaccinium": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "vanilla": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "vanilla_sugar": {
+    category: IngredientCategory.Baking,
     scalable: false,
-    category: IngredientCategory.Baking
+  },
+  "vegetable_broth": {
+    category: IngredientCategory.Soup,
+    scalable: true,
   },
   "vegetable_juice": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "velvet_duck": {
+    category: IngredientCategory.Chicken,
     scalable: true,
-    category: IngredientCategory.Chicken
   },
   "vermouth": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "vinegar": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "vodka": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "waffle": {
+    category: IngredientCategory.Afters,
     scalable: true,
-    category: IngredientCategory.Afters
   },
   "wakame": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "walleye": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "walnut": {
+    category: IngredientCategory.Nuts,
     scalable: true,
-    category: IngredientCategory.Nuts
   },
   "walrus": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "wampee": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "wasabi": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "water": {
+    category: IngredientCategory.Fluids,
     scalable: true,
-    category: IngredientCategory.Fluids
   },
   "water_spinach": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "watercress": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "watermelon": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "wax_apple": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "wax_gourd": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "welsh_onion": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "wheat": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "wheat_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "whelk": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "whey": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "whisky": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "white_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "white_cabbage": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "white_champagne": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "white_grape_juice": {
+    category: IngredientCategory.Beverage,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "white_lupine": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "white_mulberry": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "white_mustard": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "white_onion": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "white_sucker": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "white_wine": {
+    category: IngredientCategory.Fluids,
     scalable: true,
-    category: IngredientCategory.Beverage
   },
   "whitefish": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "whiting": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "whole_wheat_bread": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "wild_boar": {
+    category: IngredientCategory.Meat,
     scalable: true,
-    category: IngredientCategory.Meat
   },
   "wild_carrot": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "wild_celery": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "wild_leek": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "wild_rice": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
   "winged_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "winter_savory": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "winter_squash": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "wonton_wrapper": {
+    category: IngredientCategory.Baking,
     scalable: true,
-    category: IngredientCategory.Baking
   },
   "yali_pear": {
+    category: IngredientCategory.Fruits,
     scalable: true,
-    category: IngredientCategory.Fruits
   },
   "yam": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "yardlong bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "yau_choy": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "yautia": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
-    category: IngredientCategory.Vegetable
   },
   "yellow_bell_pepper": {
+    category: IngredientCategory.Vegetable,
     scalable: false,
-    category: IngredientCategory.Vegetable
   },
   "yellow_pond_lily": {
+    category: IngredientCategory.Herb,
     scalable: true,
-    category: IngredientCategory.Herb
   },
   "yellow_wax_bean": {
+    category: IngredientCategory.Pulse,
     scalable: true,
-    category: IngredientCategory.Pulse
   },
   "yellow_zucchini": {
+    category: IngredientCategory.Gourds,
     scalable: true,
-    category: IngredientCategory.Gourds
   },
   "yellowfin_tuna": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "yellowtail_amberjack": {
+    category: IngredientCategory.Aquatic,
     scalable: true,
-    category: IngredientCategory.Aquatic
   },
   "ymer": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
   },
   "yogurt": {
+    category: IngredientCategory.Milk,
     scalable: true,
-    category: IngredientCategory.Milk
+  },
+  "zucchini": {
+    category: IngredientCategory.Gourds,
+    scalable: true,
   },
   "zwieback": {
+    category: IngredientCategory.Cereals,
     scalable: true,
-    category: IngredientCategory.Cereals
   },
 };
 

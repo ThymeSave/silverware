@@ -19,7 +19,7 @@ export interface RecipeIngredient extends Ingredient, BaseRecipeIngredient {
   /**
    * Key to localize the ingredient text
    */
-  translationKey : string
+  translationKey: string
 }
 
 /**
@@ -58,4 +58,9 @@ export interface ParsedRecipeIngredient extends BaseRecipeIngredient {
    * Parsed ingredient text representation
    */
   ingredient: string
+
+  /**
+   * Potential translations
+   */
+  translationMatches ?: { key: string, variant: string, similarity: number }[]
 }

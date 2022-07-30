@@ -1,0 +1,21 @@
+<mat-form-field>
+  <mat-label>{{ 'ingredient' | i18n }}</mat-label>
+  <input type="search"
+         matInput
+         [formControl]="searchControl"
+         [matAutocomplete]="auto">
+  <div matSuffix>
+    <ng-content></ng-content>
+  </div>
+  <mat-autocomplete #auto="matAutocomplete"
+                    (optionSelected)="optionSelected($event)"
+                    [displayWith]="createIngredientRenderer()">
+    <mat-optgroup *ngFor="let group of filteredOptions | async"
+                  [label]="group.name | i18n:'ingredientCategory'">
+      <mat-option *ngFor="let ingredient of group.ingredients"
+                  [value]="ingredient.name">
+        {{ingredient.localized}}
+      </mat-option>
+    </mat-optgroup>
+  </mat-autocomplete>
+</mat-form-field>

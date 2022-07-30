@@ -1,62 +1,96 @@
 import { UnitTranslation } from "../../lib/model";
 
 const units: UnitTranslation = {
-  "cup": {
-    "long": [
+  clove: {
+    long: [
+      "clove",
+      "cloves",
+    ],
+    short: "clove",
+  },
+  cup: {
+    long: [
       "Tasse",
       "Tassen",
     ],
-    "short": "Ta",
+    short: "Ta",
   },
-  "deciliter": {
-    "long": [
+  deciliter: {
+    long: [
       "Deziliter",
     ],
-    "short": "dl",
+    short: "dl",
   },
-  "gram": {
-    "long": [
+  gram: {
+    long: [
       "Gramm",
     ],
-    "short": "g",
+    short: "g",
   },
-  "kilogram": {
-    "long": [
+  jar: {
+    long: [
+      "Glas",
+      "Gläser",
+    ],
+    short: "Gl.",
+  },
+  kilogram: {
+    long: [
       "Kilogramm",
     ],
-    "short": "kg",
+    short: "kg",
   },
-  "liter": {
-    "long": [
+  liter: {
+    long: [
       "Liter",
     ],
-    "short": "l",
+    short: "l",
   },
-  "milligram": {
-    "long": [
+  milligram: {
+    long: [
       "Milligramm",
     ],
-    "short": "mg",
+    short: "mg",
   },
-  "milliliter": {
-    "long": [
+  milliliter: {
+    long: [
       "Milliliter",
     ],
-    "short": "ml",
+    short: "ml",
   },
-  "pack": {
-    "long": [
+  ounce: {
+    long: [
+      "ounce",
+      "ounces",
+    ],
+    short: "oz",
+  },
+  pack: {
+    long: [
       "Päckchen",
       "Packungen",
     ],
-    "short": "Pck",
+    short: "Pck",
   },
-  "pound": {
-    "long": [
+  pinch: {
+    long: [
+      "Prise",
+      "Prisen",
+    ],
+    short: "Prise",
+  },
+  pound: {
+    long: [
       "Pfund",
       "Pfunde",
     ],
-    "short": "Pfund",
+    short: "Pfund",
+  },
+  tsp: {
+    long: [
+      "Teelöffel",
+    ],
+    short: "TL",
   },
 };
 
