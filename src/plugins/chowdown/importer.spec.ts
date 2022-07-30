@@ -13,8 +13,10 @@ describe("ChowdownSingleRecipeImporter", () => {
 
     expect(recipe.title).toBe("Banana Bread");
     expect(recipe.instructions.length).toBe(4);
+    expect(recipe.instructions[0]).toBe("Beat the eggs, then cream with the butter and sugar");
     expect(recipe.description).toBe("From Angie’s mom");
     expect(recipe.ingredients.length).toBe(9);
+    expect(recipe.ingredients[0]).toBe("4 bananas");
     expect(recipe.image).toBeUndefined();
   });
 });
@@ -31,8 +33,10 @@ describe('ChowdownAllRecipeImporter', () => {
 
     expect(recipe.title).toBe("Sweet red lentil and vegetable salad");
     expect(recipe.instructions.length).toBe(8);
+    expect(recipe.instructions[0]).toBe("Cook the lentils firm to the bite according to package instructions, don’t forget to add vegetable broth to the water.");
     expect(recipe.description).toBe("Source: My imaginationThis tastes surprisingly good, especially when it’s cold. Good as a barbecue salad or a pre-made dish.");
     expect(recipe.ingredients.length).toBe(10);
+    expect(recipe.ingredients[0]).toBe("red lentils");
     expect(recipe.image).toBeDefined();
   });
 });

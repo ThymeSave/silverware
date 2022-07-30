@@ -37,16 +37,16 @@ export class PluginRegistry {
   /**
    * Register new plugin.
    * Fails if the plugin you are trying to register is already present
-   * @param plugin Plugin to register
+   * @param pluginToRegister Plugin to register
    */
-  public static register(plugin: Plugin) {
+  public static register(pluginToRegister: Plugin) {
     for (let plugin of this.plugins) {
-      if (plugin.name == plugin.name) {
+      if (pluginToRegister.identifier == plugin.identifier) {
         throw new PluginAlreadyRegisteredError(plugin.name);
       }
     }
 
-    this.plugins.push(plugin);
+    this.plugins.push(pluginToRegister);
   }
 
   /**

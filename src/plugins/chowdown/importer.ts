@@ -1,4 +1,4 @@
-import { ChowdownPlugin, chowdownResourceBundle } from "@plugins/chowdown/index";
+import { ChowdownPlugin, resourceBundle } from "@plugins/chowdown/index";
 import { RawRecipe, RecipeURLImporter, ComponentContext, URLImporterPayload } from "@thymesave/core";
 import { forkJoin, from, map, Observable, switchMap } from "rxjs";
 
@@ -14,7 +14,7 @@ abstract class BaseChowdownImporter extends RecipeURLImporter {
     }
 
     const ingredients = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeIngredient']"));
-    const instructions = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeInstructions']>li"));
+    const instructions = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeInstruction']>li"));
 
     if (ingredients.length == 0 && instructions.length == 0) {
       return [];
@@ -32,7 +32,7 @@ abstract class BaseChowdownImporter extends RecipeURLImporter {
   }
 
   public override getName(languageCode: string) {
-    return chowdownResourceBundle.getTranslation(languageCode, `${this.identifier}.name`);
+    return resourceBundle.getTranslation(languageCode, `${this.identifier}.name`);
   }
 }
 

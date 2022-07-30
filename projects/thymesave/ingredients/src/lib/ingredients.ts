@@ -2439,6 +2439,10 @@ export const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Fruits,
     scalable: true,
   },
+  "natron": {
+    category: IngredientCategory.Baking,
+    scalable: true,
+  },
   "natto": {
     category: IngredientCategory.Vegetable,
     scalable: true,

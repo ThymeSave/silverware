@@ -38,6 +38,7 @@
     "pouchdb-find": "^7.3.0",
     "pouchdb-upsert": "^2.2.0",
     "rxjs": "~7.5.5",
+    "schema-dts": "^1.1.0",
     "string-similarity": "^4.0.4",
     "tslib": "^2.4.0",
     "uuid": "^8.3.2",

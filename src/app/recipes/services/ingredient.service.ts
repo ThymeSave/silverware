@@ -3,6 +3,7 @@ import { Ingredient } from "@thymesave/core";
 import { ingredients } from "@thymesave/ingredients";
 import { loadIngredientByKey } from "@thymesave/translations";
 import { flatMap, chain } from "lodash";
+import { startWith } from "rxjs";
 
 import { LanguageService } from "@/shared/i18n/language.service";
 
@@ -13,20 +14,26 @@ export type IngredientsGroupedByCategory = { name: string, ingredients: Flattene
   providedIn: 'root',
 })
 export class IngredientService {
-  private readonly _grouped: IngredientsGroupedByCategory;
+  private _grouped !: IngredientsGroupedByCategory;
 
   constructor(private languageService: LanguageService) {
-    this._grouped = chain(flatMap(this.allKeys, (entry) => ({
-      localized: this.localize(entry, 1),
-      name: entry,
-      ...this.all[entry],
-    })))
-      .groupBy("category")
-      .map((items, key) => Object.freeze({
-        ingredients: items,
-        name: key,
-      }))
-      .value();
+    languageService.language$
+      .pipe(startWith(languageService.currentLanguage))
+      .subscribe((lang) => {
+        console.log(lang);
+        this._grouped = chain(flatMap(this.allKeys, (entry) => ({
+          localized: this.localize(entry, 1),
+          name: entry,
+          ...this.all[entry],
+        })))
+          .groupBy("category")
+          .map((items, key) => Object.freeze({
+            ingredients: items,
+            name: key,
+          }))
+          .value();
+      });
+
   }
 
   public get all(): { [key: string]: Ingredient } {
