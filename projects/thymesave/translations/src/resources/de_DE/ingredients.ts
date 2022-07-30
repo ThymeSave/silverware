@@ -634,6 +634,9 @@ const ingredients: PluralizableTranslation = {
   "chicory roots": [
     "Wurzelwerk",
   ],
+  "chili_flakes": [
+    "Chili-Flocken",
+  ],
   "chilli": [
     "Chilli",
     "Chillis",
@@ -940,6 +943,9 @@ const ingredients: PluralizableTranslation = {
   "crosne": [
     "Crosse",
   ],
+  "croutons": [
+    "Croutons",
+  ],
   "crustaceans": [
     "Krustentier",
     "Krustentiere",
@@ -1121,6 +1127,9 @@ const ingredients: PluralizableTranslation = {
     "immergrüne Heidelbeere",
     "immergrüne Heidelbeeren",
   ],
+  "falafel": [
+    "Falafel",
+  ],
   "fats_oils": [
     "Fett oder Öl",
   ],
@@ -1290,6 +1299,9 @@ const ingredients: PluralizableTranslation = {
     "Goji",
     "Gojis",
   ],
+  "gold_raisins": [
+    "goldene Rosinen",
+  ],
   "gooseberry": [
     "Stachelbeere",
     "Stachelbeeren",
@@ -1321,6 +1333,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "greek_feta_cheese": [
     "Feta",
+  ],
+  "greek_yogurt": [
+    "griechischer Joghurt",
   ],
   "green_apple": [
     "grüner Apfel",
@@ -1407,6 +1422,9 @@ const ingredients: PluralizableTranslation = {
   "hard_wheat": [
     "Hartweizen",
   ],
+  "harissa": [
+    "Harissa",
+  ],
   "hawthorn": [
     "Weißdorn",
   ],
@@ -1426,6 +1444,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "herbal_tea": [
     "Kräutertee",
+  ],
+  "herbs": [
+    "Kräuter",
   ],
   "herbs_spices": [
     "Kräuter und Gewürze",
@@ -1466,8 +1487,14 @@ const ingredients: PluralizableTranslation = {
   "hot_chocolate": [
     "heiße Schokolade",
   ],
+  "hot_sauce": [
+    "scharfe Soße",
+  ],
   "hot_water": [
     "heißes Wasser",
+  ],
+  "hummus": [
+    "Hummus",
   ],
   "hyacinth_bean": [
     "Gartenbohne",
@@ -1508,6 +1535,10 @@ const ingredients: PluralizableTranslation = {
   "jackfruit": [
     "Jackfrucht",
     "Jackfrüchte",
+  ],
+  "jalapeno": [
+    "Jalapeno",
+    "Jalapenos",
   ],
   "jalapeno_pepper": [
     "Jalapeno-Pfeffer",
@@ -2345,6 +2376,9 @@ const ingredients: PluralizableTranslation = {
   "pomegranate": [
     "Granatapfel",
   ],
+  "pomegranate_seeds": [
+    "Granatapfel-Samen",
+  ],
   "pomes": [
     "Kerne",
   ],
@@ -2545,6 +2579,9 @@ const ingredients: PluralizableTranslation = {
   "rice_pudding": [
     "Reispudding",
   ],
+  "ricotta": [
+    "Ricotta",
+  ],
   "ridged": [
     "Ridged",
   ],
@@ -2702,6 +2739,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "sesame_oil": [
     "Sesamöl",
+  ],
+  "sesame_seeds": [
+    "Sesam Samen",
   ],
   "sesbania_flower": [
     "Sesbania-Blüten",
@@ -2907,6 +2947,9 @@ const ingredients: PluralizableTranslation = {
     "Erdbeer-Guave",
     "Erdbeer-Guaven",
   ],
+  "strip_steak": [
+    "Strip Steak",
+  ],
   "striped_bass": [
     "gestreifter Seebarsch",
   ],
@@ -3001,6 +3044,9 @@ const ingredients: PluralizableTranslation = {
   "taco_shell": [
     "Taco-Schale",
     "Taco-Schalen",
+  ],
+  "tahini": [
+    "Thaini",
   ],
   "tallow": [
     "Talg",
@@ -3140,6 +3186,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "vanilla_sugar": [
     "Vanillezucker",
+  ],
+  "vegetable_broth": [
+    "Gemüsebrühe",
   ],
   "vegetable_juice": [
     "Gemüsesaft",
@@ -3330,6 +3379,10 @@ const ingredients: PluralizableTranslation = {
   ],
   "yogurt": [
     "Joghurt",
+  ],
+  "zucchini": [
+    "Zucchini",
+    "Zucchinis",
   ],
   "zwieback": [
     "Zwieback",

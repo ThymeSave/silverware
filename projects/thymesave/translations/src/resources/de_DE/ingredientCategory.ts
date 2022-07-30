@@ -12,6 +12,7 @@ const ingredientCategory: SingleValueTranslation = {
   chicken: "Geflügel",
   coffee: "Kaffee",
   confectioneries: "Süßwaren",
+  dip: "Dip",
   dough: "Teig",
   eggs: "Eier",
   fat: "Fett",

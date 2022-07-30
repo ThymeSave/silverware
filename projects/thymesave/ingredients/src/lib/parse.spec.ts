@@ -115,6 +115,14 @@ describe("parseIngredientInformation", () => {
     expect(parsed.isRange).toBeFalse();
   });
 
+  it("should work with amount as unicode fraction plus unit and multi word ingredient", () => {
+    const parsed = parseIngredientInformation("1⁄4 cup flax seed meal");
+    expect(parsed.ingredient).toBe("flax seed meal");
+    expect(parsed.unit).toBe("cup");
+    expect(parsed.minAmount).toBe(.25);
+    expect(parsed.isRange).toBeFalse();
+  });
+
   it("should work with amount as whole numer and fraction plus unit and multi word ingredient", () => {
     const parsed = parseIngredientInformation("1 1/2 cups baking soda");
     expect(parsed.ingredient).toBe("baking soda");
@@ -131,7 +139,7 @@ describe("parseIngredientInformation", () => {
     expect(parsed.isRange).toBeFalse();
   });
 
-  it("should parse without amount and multi word ingredient", () => {
+  it("should parse with amount and multi word ingredient", () => {
     const parsed = parseIngredientInformation("1 tsp baking powder");
     expect(parsed.ingredient).toBe("baking powder");
     expect(parsed.unit).toBe("tsp");

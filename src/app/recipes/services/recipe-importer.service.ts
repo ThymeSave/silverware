@@ -4,7 +4,7 @@ import {
   RawRecipe,
   ImporterPayload,
   ParsedRecipe,
-  Instruction, Recipe,
+  Instruction, Recipe, ParsedRecipeIngredient,
 } from "@thymesave/core";
 import {
   parseIngredientInformation,
@@ -13,6 +13,7 @@ import {
   loadIngredientByKey,
 } from "@thymesave/ingredients";
 import { matchIngredientByText, matchUnitByText } from "@thymesave/translations";
+import { first } from "lodash";
 import { map, Observable } from "rxjs";
 
 import { LanguageService } from "@/shared/i18n/language.service";
@@ -28,12 +29,36 @@ export class RecipeImporterService {
   }
 
   private parseIngredients(raw: string[]) {
-    return raw.map(text => {
+    return raw
+      .map(text => text.trim())
+      .map(text => {
+      const exactMatch = first(Object.keys(this.languageService.currentLanguage.ingredients)
+        .map(key => ({
+          key,
+          variants: this.languageService.currentLanguage.ingredients[key],
+        }))
+        .filter(i => i.variants.indexOf(text) !== -1))
+        ?.key;
+
       try {
-        const ingredient = parseIngredientInformation(text);
+        let ingredient: ParsedRecipeIngredient;
+        if (exactMatch) {
+          ingredient = {
+            ingredient: exactMatch,
+            isNumeric: false,
+            isRange: false,
+            maxAmount: "",
+            minAmount: "",
+            unit: "",
+          };
+        } else {
+          ingredient = parseIngredientInformation(text);
+        }
+
         if (ingredient.unit) {
           ingredient.unit = this.parseUnit(ingredient.unit);
         }
+
         ingredient.translationMatches = matchIngredientByText(this.languageService.currentLanguage, ingredient.ingredient, {});
         ingredient.minAmount = ingredient.minAmount == 0 ? "" : ingredient.minAmount;
         ingredient.maxAmount = ingredient.maxAmount == 0 ? "" : ingredient.maxAmount;
@@ -46,8 +71,9 @@ export class RecipeImporterService {
 
   private parseInstructions(raw: string[]): Instruction[] {
     return raw
+      .map(text => text.trim())
       .map(text => ({
-        text: text.trim(),
+        text: text,
       }));
   }
 
@@ -78,7 +104,7 @@ export class RecipeImporterService {
       description: raw.description,
       image: raw.image,
       ingredients: raw.ingredients
-        .map((i : any) => {
+        .map((i: any) => {
           const ingredient = loadIngredientByKey(i.translationKey);
           return {
             ...ingredient,
@@ -95,7 +121,7 @@ export class RecipeImporterService {
     };
   }
 
-  public runRecipeImporter(importer: Importer<RawRecipe>, payload: ImporterPayload) : Observable<ParsedRecipe[]> {
+  public runRecipeImporter(importer: Importer<RawRecipe>, payload: ImporterPayload): Observable<ParsedRecipe[]> {
     return importer.import(this.contextService.createContext(), payload)
       .pipe(map(rawRecipes => rawRecipes.map(rawRecipe => this.parseRecipe(rawRecipe))));
   }

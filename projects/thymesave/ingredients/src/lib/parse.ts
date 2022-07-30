@@ -1,5 +1,4 @@
 import { ParsedRecipeIngredient } from "@thymesave/core";
-
 // <amount> <unit> <thing>
 const REGEXP_AMOUNT_UNIT_WITHOUT_RANGE = /^(\d+|\w+\s)\s*(\w+)\s+(.+)$/;
 // <amount>-<amount> <unit> <thing>
@@ -15,7 +14,7 @@ const REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITHOUT_UNIT = /^(\d+)\s*(\d+)\/(\d+)\b\s
 // <whole amount> <additional amount as fraction> <unit> <thing>
 const REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITH_UNIT = /^(\d+)\s*(\d+)\/(\d+)\b\s*(\w+)\b\s*(.+)$/;
 // <textual amount> <ingredient>
-const REGEXP_TEXTUAL_AMOUNT = /^(\w+)\b\s*(\w*)$/;
+const REGEXP_TEXTUAL_AMOUNT = /^(\w+)\b\s*(\w*)\b$/;
 
 const isText = (val: string) => isNaN(val as any);
 const convertToAmount = (val: string) => isText(val) ? val.trim() : parseFloat(val);
@@ -38,7 +37,9 @@ export class IngredientParseError extends Error {
  * @param raw Raw text
  */
 export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient => {
-  raw = raw.trim();
+   raw = raw.trim()
+     // handle unicode fractions
+     .replace("\u2044","/");
 
   let matches = raw.match(REGEXP_AMOUNT_WITHOUT_UNIT);
   if (matches != null && matches.length == 3) {
