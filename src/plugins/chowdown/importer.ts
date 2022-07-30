@@ -14,7 +14,7 @@ abstract class BaseChowdownImporter extends RecipeURLImporter {
     }
 
     const ingredients = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeIngredient']"));
-    const instructions = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeInstruction']>li"));
+    const instructions = this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeInstructions']>li"));
 
     if (ingredients.length == 0 && instructions.length == 0) {
       return [];
