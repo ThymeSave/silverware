@@ -2064,6 +2064,9 @@ const ingredients: PluralizableTranslation = {
   "natal_plum": [
     "natal plum",
   ],
+  "natron": [
+    "natron",
+  ],
   "natto": [
     "natto",
     "nattos",

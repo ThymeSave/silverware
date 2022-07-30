@@ -36,7 +36,7 @@ const ui: SingleValueTranslation = {
   "recipes.import.instructions.tab_parsed": "Erkannte Anweisungen",
   "recipes.import.instructions.tab_raw": "Ursprüngliche Anweisungen",
   "recipes.import.pending": "Import läuft",
-  "recipes.import.url": "Via URL aus dem Internet",
+  "recipes.import.url": "Von einer öffentlichen Website",
   "recipes.new": "Neues Rezept",
   "recipes.title": "Titel",
   "recipes.verify": "Prüfen und übernehmen",

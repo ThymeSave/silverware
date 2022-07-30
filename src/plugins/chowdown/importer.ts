@@ -1,4 +1,4 @@
-import { ChowdownPlugin, chowdownResourceBundle } from "@plugins/chowdown/index";
+import { ChowdownPlugin, resourceBundle } from "@plugins/chowdown/index";
 import { RawRecipe, RecipeURLImporter, ComponentContext, URLImporterPayload } from "@thymesave/core";
 import { forkJoin, from, map, Observable, switchMap } from "rxjs";
 
@@ -32,7 +32,7 @@ abstract class BaseChowdownImporter extends RecipeURLImporter {
   }
 
   public override getName(languageCode: string) {
-    return chowdownResourceBundle.getTranslation(languageCode, `${this.identifier}.name`);
+    return resourceBundle.getTranslation(languageCode, `${this.identifier}.name`);
   }
 }
 

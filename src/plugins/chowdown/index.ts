@@ -2,7 +2,7 @@ import { Plugin, PluginDescriptor, ResourceBundle } from "@thymesave/plugin";
 
 import { ChowdownAllRecipeImporter, ChowdownSingleRecipeImporter } from "./importer";
 
-export const chowdownResourceBundle = ResourceBundle.builder()
+export const resourceBundle = ResourceBundle.builder()
   .withTranslations({
     "de_DE": [
       {
@@ -34,7 +34,7 @@ export const chowdownResourceBundle = ResourceBundle.builder()
   version: "builtin",
 })
 export class ChowdownPlugin extends Plugin {
-  override get importer() {
+  public override get importer() {
     return [
       new ChowdownSingleRecipeImporter(),
       new ChowdownAllRecipeImporter(),

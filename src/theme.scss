@@ -76,6 +76,7 @@ body {
   --text-warn-color: #{$light-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
+  --background-color: map-get($mat-dark-theme-background, background);
 }
 
 $mat-warn: (
@@ -116,7 +117,7 @@ $altTheme: (
 }
 
 body {
-  background: map-get($mat-dark-theme-background, background);
+  background: var(--background-color);
   color: $light-text
 }
 

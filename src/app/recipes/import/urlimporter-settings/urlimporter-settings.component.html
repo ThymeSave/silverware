@@ -8,11 +8,20 @@
            matInput
            formControlName="url">
   </mat-form-field>
-  <button type="submit"
-          [disabled]="!form.valid"
-          mat-raised-button
-          color="primary">
-    <mat-icon>input</mat-icon>
-    {{ 'ok' | i18n }}
-  </button>
+  <div fxFlex fxLayoutAlign="space-between">
+    <button type="button"
+            (click)="cancel()"
+            mat-raised-button
+            color="accent">
+      <mat-icon>cancel</mat-icon>
+      {{ 'cancel' | i18n }}
+    </button>
+    <button type="submit"
+            [disabled]="!form.valid"
+            mat-raised-button
+            color="primary">
+      <mat-icon>input</mat-icon>
+      {{ 'ok' | i18n }}
+    </button>
+  </div>
 </form>

@@ -53,6 +53,7 @@
             completed="false"
             editable="false">
     <app-url-importer-settings (saved)="urlImporterSaved($event)"
+                               (canceled)="cancel()"
                                *ngIf="isURLImporter"></app-url-importer-settings>
   </mat-step>
   <mat-step [label]="'recipes.import.pending' | i18n"

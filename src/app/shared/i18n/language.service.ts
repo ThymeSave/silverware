@@ -20,6 +20,7 @@ export class LanguageService {
       .pipe(map(s => {
         this.currentLanguageIdentifier = s?.language!!;
         this.currentLanguage = this.getLanguageByIdentifier(this.currentLanguageIdentifier);
+        this.languageSubject.next(this.currentLanguage);
         return this.currentLanguage;
       }))
       .subscribe();

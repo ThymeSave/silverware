@@ -61,9 +61,13 @@ export abstract class Importer<T> {
    * @protected
    */
   protected extractTextFromNodes(nodes: NodeList): string[] {
-    return Array.from(nodes)
+    return this.domNodesToList(nodes)
       .filter(el => !!el)
       .map(el => el.textContent as string);
+  }
+
+  protected domNodesToList<T extends HTMLElement>(nodes : NodeList) : T[] {
+    return Array.from(nodes) as T[];
   }
 
   /**
@@ -82,11 +86,14 @@ export abstract class Importer<T> {
    * Also handles default resizing and compression
    * @param url URL to load image from
    */
-  protected async imageURLToBase64(url: string): Promise<string> {
-    const blob = await fetch(url)
-      .then(r => r.blob());
-
-    return imageToBase64(blob);
+  protected async imageURLToBase64(url: string): Promise<string | undefined> {
+    try {
+      const response = await fetch(url, {});
+      const blob = await response.blob();
+      return await imageToBase64(blob);
+    } catch (e) {
+      return;
+    }
   }
 }
 

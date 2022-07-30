@@ -13,6 +13,7 @@ export class URLImporterSettingsComponent {
   });
 
   @Output() public saved = new EventEmitter<URLImporterPayload>();
+  @Output() public canceled = new EventEmitter();
 
   constructor() {
   }
@@ -30,6 +31,10 @@ export class URLImporterSettingsComponent {
 
   public save() {
     this.saved.emit(this.form.getRawValue() as URLImporterPayload);
+  }
+
+  public cancel() {
+    this.canceled.emit();
   }
 
 }

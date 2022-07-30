@@ -1998,6 +1998,9 @@ const ingredients: PluralizableTranslation = {
   "natal_plum": [
     "Geburtenpflaume",
   ],
+  "natron": [
+    "Natron",
+  ],
   "natto": [
     "Natto",
   ],
