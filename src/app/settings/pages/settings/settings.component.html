@@ -1,5 +1,9 @@
-<div>
-  <form [formGroup]="settingsForm" (ngSubmit)="save()" fxLayout="column">
+<div fxFlex
+     fxLayoutAlign="center center">
+  <form [formGroup]="settingsForm"
+        fxFlex="80%"
+        (ngSubmit)="save()"
+        fxLayout="column">
     <mat-form-field appearance="fill">
       <mat-label>{{ "language" | i18n }}</mat-label>
       <mat-select formControlName="language">

@@ -1,21 +1,25 @@
-<p>TODO: Add recipe list</p>
-<ng-container *ngIf="recipes">
-  <h2>Currently available recipes</h2>
-  <ul *ngFor="let recipe of recipes">
-    <li>
-      <img [src]="recipe.image">
-      <div>
-        {{ recipe  | json }}
-      </div>
-    </li>
-  </ul>
-</ng-container>
+<div>
+  <p>TODO: Add recipe list</p>
+  <app-search-bar (search)="search($event)"></app-search-bar>
+  <button mat-button (click)="paginate()">Next</button>
+  <ng-container *ngIf="recipes">
+    <ul *ngFor="let recipe of recipes">
+      <li>
+        <img [src]="recipe.image">
+        <div>
+          {{ recipe.title }}
+        </div>
+      </li>
+    </ul>
+  </ng-container>
 
-<button class="new"
-        mat-fab
-        matTooltipPosition="left"
-        [matTooltip]="'recipes.new' | i18n"
-        routerLink="/recipes/new"
-        color="primary">
-  <mat-icon>add</mat-icon>
-</button>
+  <button class="new"
+          mat-fab
+          matTooltipPosition="left"
+          [matTooltip]="'recipes.new' | i18n"
+          routerLink="/recipes/new"
+          color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>

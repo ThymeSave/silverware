@@ -1,0 +1,20 @@
+<form fxFlex
+      (ngSubmit)="triggerSearch()"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      [formGroup]="form">
+  <div fxLayout="row"
+       fxLayoutGap="30px"
+       fxFlexFill
+       fxLayoutAlign="center center">
+    <mat-form-field fxFlex="70%">
+      <mat-label>{{ 'recipes.overview.search' | i18n }}</mat-label>
+      <input matInput
+             formControlName="fullTextSearch">
+    </mat-form-field>
+    <button mat-raised-button>
+      <mat-icon>search</mat-icon>
+      {{ 'search' | i18n }}
+    </button>
+  </div>
+</form>

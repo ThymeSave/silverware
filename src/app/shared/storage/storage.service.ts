@@ -29,6 +29,19 @@ interface DbInitializeResponse {
 
 export type UpsertDiffFunc<T> = (doc: T) => Partial<T> | boolean
 
+export type PouchDBFindSort = Array<string | { [propName: string]: 'asc' | 'desc' }> | undefined;
+
+export interface Pagination<T> {
+  pageSize: number
+  paginateField: string
+  startToken?: any
+}
+
+export interface PaginationWithResult<T> extends Pagination<T> {
+  results: T[]
+  nextStartToken?: any
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -120,17 +133,59 @@ export class StorageService {
     return results.docs as any as T[];
   }
 
-  public getAll<T extends BaseDocument>(entityType: string): Observable<T[]> {
-    this.logger.warn(`Get all documents of entityType ${entityType}. Please do not use this for production as it may slow down the app!`);
+  /**
+   * Get all documents for entity type.
+   *
+   * ONLY USE THIS FOR TESTING AND NEVER IN PRODUCTION, loading all documents at once is NOT recommended!
+   * @param entityType Entity type to search for
+   * @param selector Selector used to filter the documents, limit to entityType is added automatically
+   * @param sort Sort to apply on the query
+   * @param limit Limit the amount of documents to return
+   */
+  public getForEntityType<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort = ["_id"], limit ?: number): Observable<T[]> {
+    if (!limit) {
+      this.logger.warn(`Get all documents of entityType ${entityType}. Please do not use this for production as it may slow down the app!`);
+    }
     return this.db$
       .pipe(
-        mergeMap(db => from(this.find(db!!, {
+        mergeMap(db => from(this.find<T>(db!!, {
+            limit,
             selector: {
-              $entityType: entityType,
+              ...selector,
+              $entityType: {
+                $eq: entityType,
+              },
             },
+            sort,
           },
         )) as any),
       ) as Observable<T[]>;
+  }
+
+  // TODO Add ability to go back with something like previousToken
+  public paginate<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort, pagination: Pagination<T>): Observable<PaginationWithResult<T>> {
+    const {startToken, paginateField, pageSize} = pagination;
+    if (startToken) {
+      selector = {
+        ...selector,
+        [paginateField]: {
+          $gt: startToken,
+        },
+      };
+    }
+
+    return this.getForEntityType(entityType, selector, sort, pageSize)
+      .pipe(switchMap(results => of({
+        nextStartToken: results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
+        pageSize,
+        paginateField,
+        results,
+        startToken,
+      }))) as Observable<PaginationWithResult<T>>;
+  }
+
+  public getAll<T extends BaseDocument>(entityType: string, sort ?: PouchDBFindSort): Observable<T[]> {
+    return this.getForEntityType(entityType, {}, sort);
   }
 
   private fetchDBName(token: string): Observable<string> {
