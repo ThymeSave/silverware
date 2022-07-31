@@ -37,7 +37,7 @@ export interface Pagination<T> {
   pageSize: number
   paginateField: string
   startToken?: any
-  reverse? : boolean
+  reverse?: boolean
 }
 
 export interface PaginationWithResult<T> extends Pagination<T> {
@@ -45,6 +45,16 @@ export interface PaginationWithResult<T> extends Pagination<T> {
   nextStartToken?: any
   prevStartToken?: any
 }
+
+const indices: PouchDB.Find.CreateIndexOptions[] = [
+  {
+    index: {
+      ddoc: "idx_entityType",
+      fields: ["$entityType"],
+      name: "idx_entityType",
+    },
+  },
+];
 
 @Injectable({
   providedIn: 'root',
@@ -72,18 +82,18 @@ export class StorageService {
       map(returnValue => {
         const dbValue = returnValue ? this.pouchLocal : null;
         this.dbSubject.next(dbValue);
+        return dbValue;
       }),
+      switchMap(db => from(this.createIndices(db!!))),
     ).subscribe();
+  }
 
-    this.db$.pipe(
-      filter(db => db != null),
-      map(db => {
-        db!!.createIndex({
-          index: {
-            fields: ["$entityType"],
-          },
-        });
-      }));
+  private async createIndices(db: PouchDB.Database) {
+    try {
+      this.logger.debug("Indices created", await Promise.all(indices.map(i => db.createIndex(i))));
+    } catch (e) {
+      this.logger.warn("Index creation failed", e);
+    }
   }
 
   /**
@@ -155,10 +165,8 @@ export class StorageService {
         mergeMap(db => from(this.find<T>(db!!, {
             limit,
             selector: {
+              $entityType: entityType,
               ...selector,
-              $entityType: {
-                $eq: entityType,
-              },
             },
             sort,
           },
@@ -179,7 +187,7 @@ export class StorageService {
     }
 
     sort!!.push({
-      "_id": reverse == true ? "desc" : "asc",
+      [paginateField]: reverse == true ? "desc" : "asc",
     });
 
     return this.getForEntityType(entityType, selector, sort, pageSizeToFetch)
@@ -236,5 +244,6 @@ export class StorageService {
           retry: true,
         }).on('error', console.warn);
       }));
+
   }
 }

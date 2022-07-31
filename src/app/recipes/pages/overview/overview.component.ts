@@ -6,8 +6,6 @@ import { Search } from "@/recipes/overview/search-bar/search-bar.component";
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
 import { Pagination, PaginationWithResult } from "@/shared/storage/storage.service";
 
-const originalWindow = window;
-
 @Component({
   selector: 'app-overview',
   styleUrls: ['./overview.component.scss'],

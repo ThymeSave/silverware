@@ -1039,10 +1039,6 @@ export const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Aquatic,
     scalable: true,
   },
-  "common_mushroom": {
-    category: IngredientCategory.Vegetable,
-    scalable: true,
-  },
   "common_octopus": {
     category: IngredientCategory.Aquatic,
     scalable: true,
@@ -1311,6 +1307,10 @@ export const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Baking,
     scalable: true,
   },
+  "egg": {
+    category: IngredientCategory.Eggs,
+    scalable: true,
+  },
   "egg_substitute": {
     category: IngredientCategory.Baking,
     scalable: true,
@@ -1321,10 +1321,6 @@ export const ingredients: { [key: string]: Ingredient } = {
   },
   "eggplant": {
     category: IngredientCategory.Vegetable,
-    scalable: true,
-  },
-  "eggs": {
-    category: IngredientCategory.Eggs,
     scalable: true,
   },
   "elderberry": {
@@ -1637,6 +1633,10 @@ export const ingredients: { [key: string]: Ingredient } = {
   },
   "grass_pea": {
     category: IngredientCategory.Pulse,
+    scalable: true,
+  },
+  "gratin_cheese": {
+    category: IngredientCategory.Milk,
     scalable: true,
   },
   "greater_sturgeon": {
@@ -2523,6 +2523,10 @@ export const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Fruits,
     scalable: true,
   },
+  "oil": {
+    category: IngredientCategory.Fat,
+    scalable: true,
+  },
   "oil_palm": {
     category: IngredientCategory.Herb,
     scalable: true,
@@ -2541,6 +2545,10 @@ export const ingredients: { [key: string]: Ingredient } = {
   },
   "olive_oil": {
     category: IngredientCategory.Herb,
+    scalable: true,
+  },
+  "onion": {
+    category: IngredientCategory.Vegetable,
     scalable: true,
   },
   "onion_family_vegetables": {
