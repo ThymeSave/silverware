@@ -16,6 +16,8 @@ const ui: SingleValueTranslation = {
   "offline.hint": "App is running offline",
   "ok": "Ok",
   "open": "Open",
+  "pagination.next_page": "Next page",
+  "pagination.previous_page": "Previous page",
   "recipes": "Recipes",
   "recipes.choose_importer": "Select importer",
   "recipes.description": "Description",

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {MatIconModule} from "@angular/material/icon";
 
 import { DragHandleComponent } from './components/drag-handle/drag-handle.component';
+import { ExcerptPipe } from './components/excerpt.pipe';
 import { I18nPipe } from "./i18n/i18n.pipe";
 import { LanguageService } from "./i18n/language.service";
 
@@ -10,11 +11,13 @@ import { LanguageService } from "./i18n/language.service";
   declarations: [
     I18nPipe,
     DragHandleComponent,
+    ExcerptPipe,
   ],
     exports: [
-    I18nPipe,
-    DragHandleComponent,
-  ],
+        I18nPipe,
+        DragHandleComponent,
+        ExcerptPipe,
+    ],
   imports: [
         CommonModule,
         MatIconModule,

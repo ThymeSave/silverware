@@ -26,6 +26,7 @@ import { ParsedRecipeEditorIngredientComponent } from './import/parsed-recipe-ed
 import { ParsedRecipeEditorInstructionComponent } from './import/parsed-recipe-editor-instruction/parsed-recipe-editor-instruction.component';
 import { ParsedRecipeEditorComponent } from './import/parsed-recipe-editor/parsed-recipe-editor.component';
 import { URLImporterSettingsComponent } from './import/urlimporter-settings/urlimporter-settings.component';
+import { RecipeCardComponent } from './overview/recipe-card/recipe-card.component';
 import { SearchBarComponent } from './overview/search-bar/search-bar.component';
 import { NewRecipeComponent } from './pages/new/new-recipe.component';
 import { OverviewComponent } from './pages/overview/overview.component';
@@ -53,6 +54,7 @@ const routes: Routes = [
     UnitSelectorComponent,
     IngredientSelectorComponent,
     SearchBarComponent,
+    RecipeCardComponent,
   ],
     imports: [
         CommonModule,

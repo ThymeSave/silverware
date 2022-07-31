@@ -168,6 +168,7 @@ export class StorageService {
 
   public paginate<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort, pagination: Pagination<T>): Observable<PaginationWithResult<T>> {
     const {startToken, paginateField, pageSize, reverse} = pagination;
+    let pageSizeToFetch = pageSize + 1;
     if (startToken) {
       selector = {
         ...selector,
@@ -177,14 +178,19 @@ export class StorageService {
       };
     }
 
-    return this.getForEntityType(entityType, selector, sort, pageSize)
+    sort!!.push({
+      "_id": reverse == true ? "desc" : "asc",
+    });
+
+    return this.getForEntityType(entityType, selector, sort, pageSizeToFetch)
       .pipe(switchMap(results => {
-        results = sortBy(results, r => r._id);
+        const resultCount = results.length;
+        results = sortBy(results.slice(0, pageSize), r => r._id);
         return of({
-          nextStartToken: results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
+          nextStartToken: (reverse || resultCount > pageSize) && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
           pageSize,
           paginateField,
-          prevStartToken: results.length > 0 ? (results[0] as any)[paginateField] : undefined,
+          prevStartToken: startToken && ((reverse && resultCount > pageSize) || !reverse) && results.length > 0 ? (results[0] as any)[paginateField] : undefined,
           results,
           startToken,
         });

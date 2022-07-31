@@ -7,7 +7,7 @@ export interface Search {
 }
 
 @Component({
-  selector: 'app-search-bar',
+  selector: 'app-recipe-search-bar',
   styleUrls: ['./search-bar.component.scss'],
   templateUrl: './search-bar.component.html',
 })

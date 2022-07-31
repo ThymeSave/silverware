@@ -3,3 +3,26 @@
   bottom: 2em;
   right: 1em;
 }
+
+.pagination {
+  margin-bottom: 30px;
+}
+
+app-recipe-search-bar {
+  padding: 10px;
+}
+
+@media(min-width: 1800px) {
+  .overview {
+    width: 70%;
+    margin: auto;
+  }
+}
+
+.recipe-tile {
+  padding: 10px;
+}
+
+app-recipe-card {
+  height: 100%;
+}

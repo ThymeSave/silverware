@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Recipe } from "@thymesave/core";
 
 import { Search } from "@/recipes/overview/search-bar/search-bar.component";
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
 import { Pagination, PaginationWithResult } from "@/shared/storage/storage.service";
+
+const originalWindow = window;
 
 @Component({
   selector: 'app-overview',
@@ -14,62 +17,83 @@ export class OverviewComponent implements OnInit {
   public recipes ?: RecipeEntity[];
 
   private pagination !: Pagination<Recipe>;
-  private nextToken !: string;
-  private prevToken !: string;
+  public nextToken ?: string;
+  public prevToken ?: string;
 
-  public all !: RecipeEntity[];
+  private search: Search | null = null;
 
-  constructor(public recipeService: RecipeService) {
+  constructor(public recipeService: RecipeService,
+              private readonly viewport: ViewportScroller) {
   }
 
-  public search(search: Search) {
+  public searchSubmitted(search: Search) {
+    this.search = search;
+    this.hydrateRecipes();
+  }
 
+  public get selector(): PouchDB.Find.Selector {
+    if (this.search != null) {
+      return {
+        title: {
+          $regex: new RegExp(`.*${this.search.fullText}.*`, "i"),
+        },
+      };
+    }
+
+    return {};
   }
 
   public next() {
-    this.recipeService.getPaginated({}, {
-      ...this.pagination,
-      startToken: this.nextToken,
-    }, [
-      {"_id": "asc"},
-    ]).subscribe(pagination => this.onPaginated(pagination));
+    this.recipeService
+      .getPaginated(this.selector, {
+        ...this.pagination,
+        startToken: this.nextToken,
+      })
+      .subscribe(pagination => {
+        this.onPaginated(pagination);
+        this.scrollToTop();
+      });
   }
 
   public prev() {
-    this.recipeService.getPaginated({}, {
-      ...this.pagination,
-      reverse: true,
-      startToken: this.prevToken,
-    }, [
-      {"_id": "desc"},
-    ]).subscribe(pagination => this.onPaginated(pagination));
+    this.recipeService
+      .getPaginated(this.selector, {
+        ...this.pagination,
+        reverse: true,
+        startToken: this.prevToken,
+      })
+      .subscribe(pagination => {
+        this.onPaginated(pagination);
+        this.scrollToTop();
+      });
   }
 
   private onPaginated(pagination: PaginationWithResult<Recipe>) {
-    // @ts-ignore
-    console.log("Pagination", pagination.results.map(r => {
-      const found = this.all.find(rAll => rAll._id == (r as any)._id);
-      // @ts-ignore
-      return this.all.indexOf(found);
-    }));
     this.pagination = pagination;
     this.recipes = pagination.results;
-    this.nextToken = pagination.nextStartToken;
     this.prevToken = pagination.prevStartToken;
+    this.nextToken = pagination.nextStartToken;
+
   }
 
-  ngOnInit(): void {
-    this.recipeService.getAll()
-      .subscribe(r =>{
-        this.all = r;
-      });
-
-    this.recipeService.getPaginated({}, {
-      pageSize: 2,
-      paginateField: "_id",
-      reverse: false,
-    }, [{"_id": "asc"}])
-      .subscribe(pagination => this.onPaginated(pagination));
+  private hydrateRecipes() {
+    this.recipeService
+      .getPaginated(this.selector, {
+        pageSize: 24,
+        paginateField: "_id",
+        reverse: false,
+      })
+      .subscribe(this.onPaginated.bind(this));
   }
 
+  public ngOnInit(): void {
+    this.hydrateRecipes();
+  }
+
+  public scrollToTop() {
+    window.scrollTo({
+      behavior: "smooth",
+      top: 0,
+    });
+  }
 }

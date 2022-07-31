@@ -1,0 +1,19 @@
+<mat-card>
+  <div class="recipe-header"
+       fxLayout="column"
+       fxLayoutAlign="start">
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title class="recipe-title">{{ recipe.title}}</mat-card-title>
+    </mat-card-header>
+    <div class="recipe-image-wrapper"
+         fxLayoutAlign="center center"
+         fxLayout="column">
+      <img [src]="recipe.image"
+           [alt]="recipe.title"
+           mat-card-image>
+    </div>
+  </div>
+  <mat-card-content>
+    {{ recipe.description | excerpt }}
+  </mat-card-content>
+</mat-card>
