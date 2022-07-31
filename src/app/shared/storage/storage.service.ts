@@ -54,6 +54,13 @@ const indices: PouchDB.Find.CreateIndexOptions[] = [
       name: "idx_entityType",
     },
   },
+  {
+    index: {
+      ddoc: "idx_title",
+      fields: ["title"],
+      name: "idx_title",
+    },
+  },
 ];
 
 @Injectable({
@@ -193,7 +200,7 @@ export class StorageService {
     return this.getForEntityType(entityType, selector, sort, pageSizeToFetch)
       .pipe(switchMap(results => {
         const resultCount = results.length;
-        results = sortBy(results.slice(0, pageSize), r => r._id);
+        results = sortBy(results.slice(0, pageSize), r => (r as any)[paginateField]);
         return of({
           nextStartToken: (reverse || resultCount > pageSize) && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
           pageSize,

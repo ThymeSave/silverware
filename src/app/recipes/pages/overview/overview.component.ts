@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { createLogger } from "@helper/log";
 import { Recipe } from "@thymesave/core";
 
 import { Search } from "@/recipes/overview/search-bar/search-bar.component";
@@ -17,6 +18,8 @@ export class OverviewComponent implements OnInit {
   private pagination !: Pagination<Recipe>;
   public nextToken ?: string;
   public prevToken ?: string;
+
+  private readonly logger = createLogger("OverviewComponent");
 
   private search: Search | null = null;
 
@@ -38,7 +41,11 @@ export class OverviewComponent implements OnInit {
       };
     }
 
-    return {};
+    return {
+      title: {
+        $gt: "",
+      },
+    };
   }
 
   public next() {
@@ -67,18 +74,21 @@ export class OverviewComponent implements OnInit {
   }
 
   private onPaginated(pagination: PaginationWithResult<Recipe>) {
+    this.logger.debug("Paginated", pagination);
+    if(pagination.results.length == 0) {
+      return;
+    }
     this.pagination = pagination;
     this.recipes = pagination.results;
     this.prevToken = pagination.prevStartToken;
     this.nextToken = pagination.nextStartToken;
-
   }
 
   private hydrateRecipes() {
     this.recipeService
       .getPaginated(this.selector, {
         pageSize: 24,
-        paginateField: "_id",
+        paginateField: "title",
         reverse: false,
       })
       .subscribe(this.onPaginated.bind(this));

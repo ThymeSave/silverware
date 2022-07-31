@@ -8,7 +8,9 @@
     <div class="recipe-image-wrapper"
          fxLayoutAlign="center center"
          fxLayout="column">
+      <!-- TODO Add placeholder image from import in dedicated component -->
       <img [src]="recipe.image"
+           *ngIf="recipe.image"
            [alt]="recipe.title"
            mat-card-image>
     </div>
