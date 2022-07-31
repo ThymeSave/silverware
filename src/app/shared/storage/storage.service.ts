@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { createLogger } from "@helper/log";
 import { CACHE_DB_NAME, saveValue } from "@helper/simpleStorage";
+import { sortBy } from "lodash";
 import PouchDB from 'pouchdb';
 import findPlugin from "pouchdb-find";
 import upsertPlugin from 'pouchdb-upsert';
@@ -16,7 +17,8 @@ import {
   of,
   switchMap,
   tap,
-  throwError, first, mergeMap,
+  throwError,
+  mergeMap,
 } from 'rxjs';
 
 import { BaseDocument } from '@/models/BaseDocument';
@@ -35,11 +37,13 @@ export interface Pagination<T> {
   pageSize: number
   paginateField: string
   startToken?: any
+  reverse? : boolean
 }
 
 export interface PaginationWithResult<T> extends Pagination<T> {
   results: T[]
   nextStartToken?: any
+  prevStartToken?: any
 }
 
 @Injectable({
@@ -162,26 +166,29 @@ export class StorageService {
       ) as Observable<T[]>;
   }
 
-  // TODO Add ability to go back with something like previousToken
   public paginate<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort, pagination: Pagination<T>): Observable<PaginationWithResult<T>> {
-    const {startToken, paginateField, pageSize} = pagination;
+    const {startToken, paginateField, pageSize, reverse} = pagination;
     if (startToken) {
       selector = {
         ...selector,
         [paginateField]: {
-          $gt: startToken,
+          [reverse == true ? "$lt" : "$gt"]: startToken,
         },
       };
     }
 
     return this.getForEntityType(entityType, selector, sort, pageSize)
-      .pipe(switchMap(results => of({
-        nextStartToken: results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
-        pageSize,
-        paginateField,
-        results,
-        startToken,
-      }))) as Observable<PaginationWithResult<T>>;
+      .pipe(switchMap(results => {
+        results = sortBy(results, r => r._id);
+        return of({
+          nextStartToken: results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
+          pageSize,
+          paginateField,
+          prevStartToken: results.length > 0 ? (results[0] as any)[paginateField] : undefined,
+          results,
+          startToken,
+        });
+      })) as Observable<PaginationWithResult<T>>;
   }
 
   public getAll<T extends BaseDocument>(entityType: string, sort ?: PouchDBFindSort): Observable<T[]> {

@@ -1,7 +1,8 @@
 <div>
   <p>TODO: Add recipe list</p>
   <app-search-bar (search)="search($event)"></app-search-bar>
-  <button mat-button (click)="paginate()">Next</button>
+  <button mat-button (click)="prev()">Prev</button>
+  <button mat-button (click)="next()">Next</button>
   <ng-container *ngIf="recipes">
     <ul *ngFor="let recipe of recipes">
       <li>
