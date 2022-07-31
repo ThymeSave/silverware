@@ -37,6 +37,7 @@ export interface Pagination<T> {
   pageSize: number
   paginateField: string
   startToken?: any
+  firstToken? : any
   reverse?: boolean
 }
 
@@ -182,7 +183,7 @@ export class StorageService {
   }
 
   public paginate<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort, pagination: Pagination<T>): Observable<PaginationWithResult<T>> {
-    const {startToken, paginateField, pageSize, reverse} = pagination;
+    const {startToken, paginateField, pageSize, reverse, firstToken} = pagination;
     let pageSizeToFetch = pageSize + 1;
     if (startToken) {
       selector = {
@@ -202,10 +203,15 @@ export class StorageService {
         const resultCount = results.length;
         results = sortBy(results.slice(0, pageSize), r => (r as any)[paginateField]);
         return of({
-          nextStartToken: (reverse || resultCount > pageSize) && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
+          firstToken: firstToken ?? (results.length > 0 ? (results[0] as any)[paginateField] : undefined),
+          nextStartToken: (reverse || resultCount > pageSize)
+            && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
           pageSize,
           paginateField,
-          prevStartToken: startToken && ((reverse && resultCount > pageSize) || !reverse) && results.length > 0 ? (results[0] as any)[paginateField] : undefined,
+          prevStartToken: startToken
+            && ((reverse && resultCount > pageSize) || !reverse)
+            && results.length > 0
+            && firstToken != (results[0] as any)[paginateField] ? (results[0] as any)[paginateField] : undefined,
           results,
           startToken,
         });
