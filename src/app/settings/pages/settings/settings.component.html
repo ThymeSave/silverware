@@ -1,9 +1,11 @@
-<div fxFlex
+<div class="settings"
      fxLayoutAlign="center center">
   <form [formGroup]="settingsForm"
         fxFlex="80%"
         (ngSubmit)="save()"
         fxLayout="column">
+    <h1>{{ 'settings.general' | i18n }}</h1>
+    <h2>{{ 'settings.user_interface' | i18n }}</h2>
     <mat-form-field appearance="fill">
       <mat-label>{{ "language" | i18n }}</mat-label>
       <mat-select formControlName="language">
@@ -14,10 +16,25 @@
       </mat-select>
     </mat-form-field>
     <button type="submit"
-            color="success"
+            color="primary"
             mat-raised-button>
       <mat-icon>save</mat-icon>
       {{ 'save' | i18n }}
     </button>
+
+    <h1>{{ 'settings.danger_zone' | i18n }}</h1>
+    <mat-card class="danger-zone">
+      <div fxLayout="row"
+           fxLayoutGap="10px"
+           fxLayoutAlign="center center">
+        <div fxFlex>{{ 'settings.danger_zone.purge_database.description'  | i18n}}</div>
+        <button mat-stroked-button
+                (click)="dropDatabase()"
+                color="warn">
+          {{ 'settings.danger_zone.purge_database.button'  | i18n }}
+        </button>
+      </div>
+    </mat-card>
+
   </form>
 </div>

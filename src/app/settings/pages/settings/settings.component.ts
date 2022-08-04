@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { from, map, mergeMap, switchMap } from "rxjs";
 
 import { SettingsService } from "@/settings/settings.service";
 import { LanguageService } from "@/shared/i18n/language.service";
+import { StorageService } from "@/shared/storage/storage.service";
 
 @Component({
   selector: 'app-settings',
@@ -15,7 +17,8 @@ export class SettingsComponent implements OnInit {
   });
 
   constructor(private languageService: LanguageService,
-              public settingsService: SettingsService) {
+              public settingsService: SettingsService,
+              private storageService: StorageService) {
   }
 
   public get availableLanguages() {
@@ -62,5 +65,14 @@ export class SettingsComponent implements OnInit {
       this.settingsService.setLanguage(this.settingsForm.getRawValue().language!!)
         .subscribe((_ => location.reload()));
     }
+  }
+
+  public dropDatabase() {
+    this.storageService.db$
+      .pipe(
+        switchMap(db => from(db!!.allDocs().then(results => results.rows.map(row => Promise.resolve(db!!.remove(row.id, row.value.rev)))))),
+        switchMap(promises => from(Promise.all(promises))),
+      )
+      .subscribe(_ => location.reload());
   }
 }

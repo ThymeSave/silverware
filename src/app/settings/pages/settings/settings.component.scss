@@ -1,5 +1,23 @@
+.settings {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 
-.mat-success {
-  background-color: green;
-  color: #fff;
+  @media(min-width: 1200px) {
+    width: 60%;
+  }
+}
+
+.danger-zone {
+  border: 1px solid red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button[type=submit] {
+  margin-bottom: 30px;
+}
+
+mat-card {
+  margin-top: 0 !important;
 }

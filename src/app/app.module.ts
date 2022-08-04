@@ -3,6 +3,7 @@ import { Inject, NgModule } from '@angular/core';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
@@ -38,31 +39,32 @@ import { FunnelConfig } from "@/../helper/loadFunnelConfig";
     SettingsComponent,
   ],
   imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        AuthModule.forRoot(),
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        FlexLayoutModule,
-        MatMenuModule,
-        HttpClientModule,
-        MatSidenavModule,
-        MatListModule,
-        SharedModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production,
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 20 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:20000',
-        }),
-        MatSelectModule,
-        PwaModule,
-        MatTooltipModule,
-    ],
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AuthModule.forRoot(),
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    HttpClientModule,
+    MatSidenavModule,
+    MatListModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 20 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:20000',
+    }),
+    MatSelectModule,
+    PwaModule,
+    MatTooltipModule,
+    MatCardModule,
+  ],
   providers: [
     {
       provide: 'funnelConfig',
