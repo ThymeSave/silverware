@@ -1,8 +1,10 @@
+import { Recipe } from "@thymesave/core";
 import PouchDB from "pouchdb";
 import { map, Observable } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
 
 import { BaseDocument } from "@/models/BaseDocument";
+import { RecipeEntity } from "@/recipes/services/recipe.service";
 import {
   Pagination,
   PaginationWithResult,
@@ -42,8 +44,8 @@ export abstract class EntityService<T extends BaseDocument> {
       .subscribe();
   }
 
-  public getLatest(id: string) {
-    return this.storageService.getLatest(this.entityType, id);
+  public getLatest(id: string) : Observable<T> {
+    return this.storageService.getLatest<T>(this.entityType, id);
   }
 
   public generateUUID(): string {

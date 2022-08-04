@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { createLogger } from "@helper/log";
 import { Recipe } from "@thymesave/core";
 
@@ -24,6 +25,7 @@ export class OverviewComponent implements OnInit {
   private search: Search | null = null;
 
   constructor(public recipeService: RecipeService,
+              private router: Router,
               private readonly viewport: ViewportScroller) {
   }
 
@@ -75,7 +77,7 @@ export class OverviewComponent implements OnInit {
 
   private onPaginated(pagination: PaginationWithResult<Recipe>) {
     this.logger.debug("Paginated", pagination);
-    if(pagination.results.length == 0) {
+    if (pagination.results.length == 0) {
       return;
     }
     this.pagination = pagination;
@@ -103,5 +105,11 @@ export class OverviewComponent implements OnInit {
       behavior: "smooth",
       top: 0,
     });
+  }
+
+  public openRecipe(recipe: RecipeEntity) {
+    this.router.navigate([
+      `/recipes/${recipe._id!!.replace("recipes:", "")}`,
+    ]);
   }
 }

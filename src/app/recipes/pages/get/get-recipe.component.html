@@ -1,0 +1,94 @@
+<ng-container *ngIf="!recipe && !notFound">
+  <div fxLayout="row"
+       fxFlexFill
+       fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>
+<ng-container *ngIf="!notFound; else notFoundDiv">
+  <ng-container *ngIf="recipe">
+    <div class="recipe-header-bg"
+         fxLayoutAlign="center center"
+         fxLayout="column"
+         [style]="backgroundStyle">
+      <div class="fallback-title-header"
+           *ngIf="!recipe?.image">
+        <span fxFlexFill>{{ recipe?.title }}</span>
+      </div>
+    </div>
+    <div class="recipe"
+         fxLayoutGap="30px"
+         fxLayout="column">
+      <div class="recipe-header"
+           fxLayout="column">
+        <div fxFlex class="recipe-header-text">
+          <h1 class="title">{{recipe.title}}</h1>
+          <p class="description">{{recipe.description}}</p>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div>
+          <h2>{{ 'ingredients' | i18n}}</h2>
+          <div fxLayout="row wrap"
+               fxLayout.lt-sm="column">
+            <div class="grid-tile"
+                 fxFlex="50%"
+                 *ngFor="let ingredient of recipe.ingredients">
+              <mat-checkbox color="primary">
+                <span class="min">{{ingredient.minAmount}}</span>
+                <ng-container *ngIf="ingredient.maxAmount && (ingredient.maxAmount !== ingredient.minAmount)">
+                  <span class="seperator" *ngIf="ingredient.maxAmount">&nbsp;-&nbsp;</span>
+                  <span class="max">{{ingredient.maxAmount}}</span>
+                </ng-container>
+                <span class="unit" *ngIf="ingredient.unit">&nbsp;{{ingredient.unit | i18n:"units"}}</span>
+                {{ingredient.translationKey | i18n:'ingredients':(ingredient.minAmount)}}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <h2>{{ 'instructions' | i18n }}</h2>
+        <div class="instruction"
+             *ngFor="let instruction of recipe.instructions">
+          <mat-checkbox color="primary"
+          >
+            {{instruction.text}}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #notFoundDiv>
+  <div fxLayout="row"
+       class="not-found"
+       fxLayoutAlign="center center">
+    <div fxFlex="50%"
+         fxFlex.lt-lg="80%"
+         fxFlex.lt-md="100%"
+         fxLayout="row"
+         fxLayout.lt-md="column"
+         fxLayoutAlign="center center"
+         fxLayoutGap="80px"
+         class="not-found">
+      <div>
+        <img height="256"
+             alt="Sad potato"
+             src="assets/img/sad_potatoe.svg">
+      </div>
+      <div>
+        <h1>{{ 'recipes.not_found.heading' | i18n }}</h1>
+        <p>{{'recipes.not_found.text' | i18n}}</p>
+        <button mat-raised-button
+                routerLink="/recipes"
+                color="primary">
+          <mat-icon>arrow_back</mat-icon>
+          {{'recipes.not_found.back' | i18n}}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

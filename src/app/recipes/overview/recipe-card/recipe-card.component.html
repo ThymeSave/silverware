@@ -5,14 +5,10 @@
     <mat-card-header fxLayoutAlign="center center">
       <mat-card-title class="recipe-title">{{ recipe.title}}</mat-card-title>
     </mat-card-header>
-    <div class="recipe-image-wrapper"
-         fxLayoutAlign="center center"
-         fxLayout="column">
-      <!-- TODO Add placeholder image from import in dedicated component -->
-      <img [src]="recipe.image"
-           *ngIf="recipe.image"
-           [alt]="recipe.title"
-           mat-card-image>
+    <div class="recipe-image-wrapper">
+      <app-recipe-image [imageSrc]="recipe.image" [imageAlt]="recipe.title">
+
+      </app-recipe-image>
     </div>
   </div>
   <mat-card-content>

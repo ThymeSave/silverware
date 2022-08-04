@@ -1,13 +1,6 @@
 .recipe-image-wrapper {
-  height: 400px;
+  min-height: 200px;
   padding-top: 20px;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-  }
 }
 
 mat-card {
@@ -17,7 +10,7 @@ mat-card {
 mat-card-header {
   padding-top: 10px;
   padding-bottom: 10px;
-  min-height: 80px;
+  min-height: 30px;
 }
 
 .recipe-title {
@@ -26,4 +19,11 @@ mat-card-header {
 
 mat-card-content {
   padding-top: 10px;
+}
+
+app-recipe-image {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
