@@ -64,11 +64,15 @@
                  fxFlex="50%"
                  *ngFor="let ingredient of recipe.ingredients">
               <mat-checkbox color="primary">
-                <span class="min">{{ ingredient.isNumeric ? (ingredient.minAmount | number:'1.0-1':languageService.angularLocale) : ingredient.minAmount }}</span>
+                <span class="min">
+                  {{ ingredient.isNumeric ? (ingredient.minAmount | number:'1.0-1':languageService.angularLocale) : ingredient.minAmount }}
+                </span>
                 <ng-container *ngIf="ingredient.isRange">
                   <span *ngIf="ingredient.maxAmount"
                         class="seperator">&nbsp;-&nbsp;</span>
-                  <span class="max">{{ingredient.isNumeric ? (ingredient.maxAmount | number:'1.0-1':languageService.angularLocale) : ingredient.maxAmount}}</span>
+                  <span class="max">
+                    {{ingredient.isNumeric ? (ingredient.maxAmount | number:'1.0-1':languageService.angularLocale) : ingredient.maxAmount}}
+                  </span>
                 </ng-container>
                 <span *ngIf="ingredient.unit"
                       class="unit">&nbsp;{{ingredient.unit | i18n:"units"}}</span>
