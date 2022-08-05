@@ -160,8 +160,8 @@ describe("parseIngredientInformation", () => {
     const parsed = parseIngredientInformation("pinch salt");
     expect(parsed.ingredient).toBe("salt");
     expect(parsed.unit).toBe("pinch");
-    expect(parsed.minAmount).toBe(0);
-    expect(parsed.maxAmount).toBe(0);
+    expect(parsed.minAmount).toBe("");
+    expect(parsed.maxAmount).toBe("");
     expect(parsed.isRange).toBeFalse();
   });
 });

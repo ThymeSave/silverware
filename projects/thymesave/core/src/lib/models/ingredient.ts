@@ -31,11 +31,13 @@ interface BaseRecipeIngredient {
    */
   unit: string | null
   /**
-   * Minimum amount of ingredient to use
+   * Minimum amount of ingredient to use.
+   * In case no amount is provided, this field is an empty string.
    */
   minAmount: string | number
   /**
-   * Maximum amount of ingredient to use, if it is not a range contains the same amount as the minimum
+   * Maximum amount of ingredient to use, if it is not a range contains the same amount as the minimum.
+   * In case no amount is provided, this field is an empty string.
    */
   maxAmount: string | number
   /**
