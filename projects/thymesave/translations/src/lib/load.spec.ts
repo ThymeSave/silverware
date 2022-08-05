@@ -54,8 +54,8 @@ describe("loadUnitByKey", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "gram");
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
-      short: "g",
       long: "gram",
+      short: "g",
     });
   });
 
@@ -63,8 +63,8 @@ describe("loadUnitByKey", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "foo.bar", 1);
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
-      short: "foo.bar",
       long: "foo.bar",
+      short: "foo.bar",
     });
   });
 
@@ -72,8 +72,8 @@ describe("loadUnitByKey", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "cup", 2);
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
-      short: "c",
       long: "cups",
+      short: "cups",
     });
   });
 });
