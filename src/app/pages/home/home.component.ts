@@ -1,4 +1,6 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { AuthService } from "@auth0/auth0-angular";
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,9 @@ import { Component} from '@angular/core';
 })
 export class HomeComponent {
 
-  constructor() {
+  constructor(public authService: AuthService,
+              private dialog : MatDialog) {
   }
 
 }
+

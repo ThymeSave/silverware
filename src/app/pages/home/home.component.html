@@ -1,1 +1,8 @@
-<h1>Work In Progress</h1>
+<ng-container *ngIf="(authService.isAuthenticated$ | async) as signedIn; else notSignedIn">
+  <div class="welcome-back" fxLayout="column">
+    <h1>{{ 'home.welcome_back' | i18n }} {{ (authService.user$ | async)?.name }}!</h1>
+  </div>
+</ng-container>
+<ng-template #notSignedIn>
+  <h1>{{ 'home.' }}</h1>
+</ng-template>

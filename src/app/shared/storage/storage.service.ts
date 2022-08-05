@@ -37,7 +37,7 @@ export interface Pagination<T> {
   pageSize: number
   paginateField: string
   startToken?: any
-  firstToken? : any
+  firstToken?: any
   reverse?: boolean
 }
 
@@ -46,6 +46,8 @@ export interface PaginationWithResult<T> extends Pagination<T> {
   nextStartToken?: any
   prevStartToken?: any
 }
+
+export type SyncStatus = "Success" | "Failure";
 
 const indices: PouchDB.Find.CreateIndexOptions[] = [
   {
@@ -205,13 +207,13 @@ export class StorageService {
         return of({
           firstToken: firstToken ?? (results.length > 0 ? (results[0] as any)[paginateField] : undefined),
           nextStartToken: (reverse || resultCount > pageSize)
-            && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
+          && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
           pageSize,
           paginateField,
           prevStartToken: startToken
-            && ((reverse && resultCount > pageSize) || !reverse)
-            && results.length > 0
-            && firstToken != (results[0] as any)[paginateField] ? (results[0] as any)[paginateField] : undefined,
+          && ((reverse && resultCount > pageSize) || !reverse)
+          && results.length > 0
+          && firstToken != (results[0] as any)[paginateField] ? (results[0] as any)[paginateField] : undefined,
           results,
           startToken,
         });
@@ -240,6 +242,34 @@ export class StorageService {
     );
   }
 
+  private onSyncError(e: Error) {
+    this.logger.warn("Error while syncing", e);
+  }
+
+  private setUpContinuousSync() {
+    this.pouchLocal!!
+      .sync(this.pouchRemote!!, {
+        live: true,
+        retry: true,
+      })
+      .on('error', e => this.onSyncError(e as Error));
+  }
+
+  public initSync() : Observable<SyncStatus> {
+    return new Observable<SyncStatus>(subscriber => {
+      this.pouchLocal!!.sync(this.pouchRemote!!)
+        .on("complete", () => {
+          this.setUpContinuousSync();
+          subscriber.next("Success");
+          subscriber.complete();
+        })
+        .on("error", e => {
+          subscriber.error(e as Error);
+          subscriber.complete();
+        });
+    });
+  }
+
   private initPouchDB(token: string): Observable<string> {
     return this.fetchDBName(token)
       .pipe(tap(dbName => {
@@ -252,11 +282,7 @@ export class StorageService {
           },
         });
         this.pouchLocal = new PouchDB('ThymeSave');
-        this.pouchLocal.sync(this.pouchRemote, {
-          live: true,
-          retry: true,
-        }).on('error', console.warn);
+        this.initSync();
       }));
-
   }
 }
