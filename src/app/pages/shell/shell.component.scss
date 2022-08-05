@@ -16,12 +16,16 @@ mat-sidenav-content {
   margin: 10px;
 }
 
-.shell {
-  height: calc(100% - 64px);
+mat-sidenav-content {
+  min-height: calc(100vh - 84px);
 
-  @media(max-width: 599px) {
-    height: calc(100% - 56px)
+  @media(max-width: 500px) {
+    min-height: calc(100vh - 76px);
   }
+}
+
+.shell {
+  min-height: 100vh;
 }
 
 .nav-active {
@@ -32,4 +36,21 @@ mat-sidenav-content {
   &.online {
     color: red !important;
   }
+}
+
+mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+mat-sidenav {
+  position: fixed;
+  padding-top: 80px;
+  height: 100%;
+}
+
+mat-sidenav-content {
+  margin: 0;
 }

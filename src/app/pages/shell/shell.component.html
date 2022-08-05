@@ -35,10 +35,12 @@
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav
+                 [autoFocus]="false"
                  mode="over">
       <mat-nav-list>
         <a *ngFor="let item of menuItems"
            [routerLink]=[item.link]
+           [routerLinkActiveOptions]="{exact: true}"
            (click)="sidenav.close()"
            routerLinkActive="nav-active"
            mat-list-item>

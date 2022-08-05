@@ -838,10 +838,6 @@ const ingredients: PluralizableTranslation = {
   "common_ling": [
     "Leng",
   ],
-  "common_mushroom": [
-    "Pilz",
-    "Pilze",
-  ],
   "common_octopus": [
     "Oktopus",
   ],
@@ -1054,6 +1050,10 @@ const ingredients: PluralizableTranslation = {
   ],
   "edible_shell": [
     "essbare Därme",
+  ],
+  "egg": [
+    "Ei",
+    "Eier",
   ],
   "egg_substitute": [
     "Eiersatz",
@@ -1327,6 +1327,9 @@ const ingredients: PluralizableTranslation = {
   "grass_pea": [
     "Wicke",
     "Wicken",
+  ],
+  "gratin_cheese": [
+    "Gratinkäse",
   ],
   "greater_sturgeon": [
     "großer Stör",
@@ -2063,6 +2066,9 @@ const ingredients: PluralizableTranslation = {
   ],
   "ohelo_berry": [
     "Ohelobeere",
+  ],
+  "oil": [
+    "Öl",
   ],
   "oil_palm": [
     "Ölpalme",
@@ -2880,7 +2886,7 @@ const ingredients: PluralizableTranslation = {
     "spanische Makrele",
   ],
   "sparkleberry": [
-    "Sparkleberry",
+    "Glitzernde Beeren",
   ],
   "spearmint": [
     "Minze",

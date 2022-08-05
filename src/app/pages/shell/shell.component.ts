@@ -14,13 +14,18 @@ export class ShellComponent {
   readonly menuItems = [
     {
       icon: "restaurant_menu",
-      link: "/recipes",
-      title: "recipes",
+      link: "/recipes/",
+      title: "nav.all_recipes",
+    },
+    {
+      icon: "add",
+      link: "/recipes/new/",
+      title: "nav.new_recipe",
     },
     {
       icon: "settings",
       link: '/settings',
-      title: 'settings',
+      title: 'nav.settings',
     },
   ];
 

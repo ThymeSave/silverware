@@ -862,10 +862,6 @@ const ingredients: PluralizableTranslation = {
     "common ling",
     "common lings",
   ],
-  "common_mushroom": [
-    "common mushroom",
-    "common mushrooms",
-  ],
   "common_octopus": [
     "common octopus",
   ],
@@ -1092,6 +1088,10 @@ const ingredients: PluralizableTranslation = {
     "edible shell",
     "edible shells",
   ],
+  "egg": [
+    "egg",
+    "eggs",
+  ],
   "egg_substitute": [
     "egg substitute",
   ],
@@ -1102,10 +1102,6 @@ const ingredients: PluralizableTranslation = {
   "eggplant": [
     "eggplant",
     "eggplants",
-  ],
-  "eggs": [
-    "egg",
-    "eggs",
   ],
   "elderberry": [
     "elderberry",
@@ -1372,6 +1368,9 @@ const ingredients: PluralizableTranslation = {
   "grass_pea": [
     "grass pea",
     "grass peas",
+  ],
+  "gratin_cheese": [
+    "gratin cheese",
   ],
   "greater_sturgeon": [
     "greater sturgeon",
@@ -2137,6 +2136,9 @@ const ingredients: PluralizableTranslation = {
   "ohelo_berry": [
     "ohelo berry",
     "ohelo berries",
+  ],
+  "oil": [
+    "oil",
   ],
   "oil_palm": [
     "oil palm",

@@ -84,7 +84,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
     });
 
     ingredients.map(i => i.controls['translationKey'].markAllAsTouched());
-    this.form.updateValueAndValidity();
+    this.form.markAllAsTouched();
     this.ref.detectChanges();
   }
 

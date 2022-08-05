@@ -1,8 +1,17 @@
+import { Recipe } from "@thymesave/core";
+import PouchDB from "pouchdb";
 import { map, Observable } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
 
 import { BaseDocument } from "@/models/BaseDocument";
-import { StorageService, UpsertDiffFunc } from "@/shared/storage/storage.service";
+import { RecipeEntity } from "@/recipes/services/recipe.service";
+import {
+  Pagination,
+  PaginationWithResult,
+  PouchDBFindSort,
+  StorageService,
+  UpsertDiffFunc,
+} from "@/shared/storage/storage.service";
 
 export abstract class EntityService<T extends BaseDocument> {
   protected constructor(public storageService: StorageService) {
@@ -21,8 +30,12 @@ export abstract class EntityService<T extends BaseDocument> {
     });
   }
 
-  public getAll() : Observable<T[]> {
+  public getAll(): Observable<T[]> {
     return this.storageService.getAll(this.entityType);
+  }
+
+  public getPaginated(selector: PouchDB.Find.Selector, pagination: Pagination<T>, sort: PouchDBFindSort = []): Observable<PaginationWithResult<T>> {
+    return this.storageService.paginate(this.entityType, selector, sort, pagination);
   }
 
   protected onDatabaseAvailable(callback: Function) {
@@ -31,8 +44,8 @@ export abstract class EntityService<T extends BaseDocument> {
       .subscribe();
   }
 
-  public getLatest(id: string) {
-    return this.storageService.getLatest(this.entityType, id);
+  public getLatest(id: string) : Observable<T> {
+    return this.storageService.getLatest<T>(this.entityType, id);
   }
 
   public generateUUID(): string {

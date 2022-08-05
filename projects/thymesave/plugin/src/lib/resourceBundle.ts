@@ -11,7 +11,7 @@ export interface LanguageResourceBundleTranslation {
  * Resource bundle to make storing key value pairs in your plugins easier
  */
 export class ResourceBundle {
-  private _contents = new Map<string, string>;
+  private _contents = new Map<string, string>();
 
   /**
    * Fallback language code to use if no translation was found, it is expected this is always present.

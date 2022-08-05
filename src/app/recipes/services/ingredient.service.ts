@@ -20,7 +20,6 @@ export class IngredientService {
     languageService.language$
       .pipe(startWith(languageService.currentLanguage))
       .subscribe((lang) => {
-        console.log(lang);
         this._grouped = chain(flatMap(this.allKeys, (entry) => ({
           localized: this.localize(entry, 1),
           name: entry,

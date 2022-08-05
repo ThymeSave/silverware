@@ -1,0 +1,23 @@
+.img-placeholder{
+  width: 300px;
+  max-height: 260px;
+  display: block;
+  background: gray;
+  position: relative;
+
+  svg {
+    fill: #383535;
+    max-height: 70%;
+    max-width: 90%;
+  }
+}
+
+img {
+  margin: auto;
+  display: inline-block;
+  width: 100%;
+}
+
+img, .img-placeholder {
+  border-radius: 4px;
+}

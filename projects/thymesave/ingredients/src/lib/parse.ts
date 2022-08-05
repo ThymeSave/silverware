@@ -19,6 +19,27 @@ const REGEXP_TEXTUAL_AMOUNT = /^(\w+)\b\s*(\w*)\b$/;
 const isText = (val: string) => isNaN(val as any);
 const convertToAmount = (val: string) => isText(val) ? val.trim() : parseFloat(val);
 
+const VULGAR_MAP: Record<string, string> = {
+  '¼': "1/4",
+  '½': "1/2",
+  '¾': "3/4",
+  '⅐': "1/7",
+  '⅑': "1/9",
+  '⅒': "1/10",
+  '⅓': "1/3",
+  '⅔': "2/3",
+  '⅕': "1/5",
+  '⅖': "2/5",
+  '⅗': "3/5",
+  '⅘': "4/5",
+  '⅙': "1/6",
+  '⅚': "5/6",
+  '⅛': "1/8",
+  '⅜': "3/8",
+  '⅝': "5/6",
+  '⅞': "7/8",
+};
+
 /**
  * Error in case an ingredient text can not be parsed
  */
@@ -37,9 +58,14 @@ export class IngredientParseError extends Error {
  * @param raw Raw text
  */
 export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient => {
-   raw = raw.trim()
-     // handle unicode fractions
-     .replace("\u2044","/");
+  // Handle vulgar unicodes
+  for (let vulgarUnicode in VULGAR_MAP) {
+    raw = raw.replace(vulgarUnicode, (VULGAR_MAP as any)[vulgarUnicode]);
+  }
+
+  raw = raw.trim()
+    // handle unicode fractions that are not a single vulgar unicode char
+    .replace("\u2044", "/");
 
   let matches = raw.match(REGEXP_AMOUNT_WITHOUT_UNIT);
   if (matches != null && matches.length == 3) {
@@ -121,7 +147,7 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
   }
 
   matches = raw.match(REGEXP_AMOUNT_WHOLE_AND_FRACTION_WITHOUT_UNIT);
-  if(matches != null) {
+  if (matches != null) {
     const wholeAmount = parseFloat(matches[0]);
     const fractionAmount = parseFloat(matches[2]) / parseFloat(matches[3]);
     const amount = wholeAmount + fractionAmount;
@@ -136,7 +162,7 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
   }
 
   matches = raw.match(REGEXP_TEXTUAL_AMOUNT);
-  if(matches != null) {
+  if (matches != null) {
     return {
       ingredient: matches[2],
       isNumeric: true,
@@ -154,7 +180,7 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
  * Use this helper to let the user handle the parse error, filling the entire text in the ingredient
  * @param err Catched error
  */
-export const propagateParseError = (err : IngredientParseError) : ParsedRecipeIngredient => {
+export const propagateParseError = (err: IngredientParseError): ParsedRecipeIngredient => {
   return {
     ingredient: err.raw,
     isNumeric: false,

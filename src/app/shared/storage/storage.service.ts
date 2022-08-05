@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { createLogger } from "@helper/log";
 import { CACHE_DB_NAME, saveValue } from "@helper/simpleStorage";
+import { sortBy } from "lodash";
 import PouchDB from 'pouchdb';
 import findPlugin from "pouchdb-find";
 import upsertPlugin from 'pouchdb-upsert';
@@ -16,7 +17,8 @@ import {
   of,
   switchMap,
   tap,
-  throwError, first, mergeMap,
+  throwError,
+  mergeMap,
 } from 'rxjs';
 
 import { BaseDocument } from '@/models/BaseDocument';
@@ -28,6 +30,39 @@ interface DbInitializeResponse {
 }
 
 export type UpsertDiffFunc<T> = (doc: T) => Partial<T> | boolean
+
+export type PouchDBFindSort = Array<string | { [propName: string]: 'asc' | 'desc' }> | undefined;
+
+export interface Pagination<T> {
+  pageSize: number
+  paginateField: string
+  startToken?: any
+  firstToken? : any
+  reverse?: boolean
+}
+
+export interface PaginationWithResult<T> extends Pagination<T> {
+  results: T[]
+  nextStartToken?: any
+  prevStartToken?: any
+}
+
+const indices: PouchDB.Find.CreateIndexOptions[] = [
+  {
+    index: {
+      ddoc: "idx_entityType",
+      fields: ["$entityType"],
+      name: "idx_entityType",
+    },
+  },
+  {
+    index: {
+      ddoc: "idx_title",
+      fields: ["title"],
+      name: "idx_title",
+    },
+  },
+];
 
 @Injectable({
   providedIn: 'root',
@@ -55,18 +90,18 @@ export class StorageService {
       map(returnValue => {
         const dbValue = returnValue ? this.pouchLocal : null;
         this.dbSubject.next(dbValue);
+        return dbValue;
       }),
+      switchMap(db => from(this.createIndices(db!!))),
     ).subscribe();
+  }
 
-    this.db$.pipe(
-      filter(db => db != null),
-      map(db => {
-        db!!.createIndex({
-          index: {
-            fields: ["$entityType"],
-          },
-        });
-      }));
+  private async createIndices(db: PouchDB.Database) {
+    try {
+      this.logger.debug("Indices created", await Promise.all(indices.map(i => db.createIndex(i))));
+    } catch (e) {
+      this.logger.warn("Index creation failed", e);
+    }
   }
 
   /**
@@ -120,17 +155,71 @@ export class StorageService {
     return results.docs as any as T[];
   }
 
-  public getAll<T extends BaseDocument>(entityType: string): Observable<T[]> {
-    this.logger.warn(`Get all documents of entityType ${entityType}. Please do not use this for production as it may slow down the app!`);
+  /**
+   * Get all documents for entity type.
+   *
+   * ONLY USE THIS FOR TESTING AND NEVER IN PRODUCTION, loading all documents at once is NOT recommended!
+   * @param entityType Entity type to search for
+   * @param selector Selector used to filter the documents, limit to entityType is added automatically
+   * @param sort Sort to apply on the query
+   * @param limit Limit the amount of documents to return
+   */
+  public getForEntityType<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort = ["_id"], limit ?: number): Observable<T[]> {
+    if (!limit) {
+      this.logger.warn(`Get all documents of entityType ${entityType}. Please do not use this for production as it may slow down the app!`);
+    }
     return this.db$
       .pipe(
-        mergeMap(db => from(this.find(db!!, {
+        mergeMap(db => from(this.find<T>(db!!, {
+            limit,
             selector: {
               $entityType: entityType,
+              ...selector,
             },
+            sort,
           },
         )) as any),
       ) as Observable<T[]>;
+  }
+
+  public paginate<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort, pagination: Pagination<T>): Observable<PaginationWithResult<T>> {
+    const {startToken, paginateField, pageSize, reverse, firstToken} = pagination;
+    let pageSizeToFetch = pageSize + 1;
+    if (startToken) {
+      selector = {
+        ...selector,
+        [paginateField]: {
+          [reverse == true ? "$lt" : "$gt"]: startToken,
+        },
+      };
+    }
+
+    sort!!.push({
+      [paginateField]: reverse == true ? "desc" : "asc",
+    });
+
+    return this.getForEntityType(entityType, selector, sort, pageSizeToFetch)
+      .pipe(switchMap(results => {
+        const resultCount = results.length;
+        results = sortBy(results.slice(0, pageSize), r => (r as any)[paginateField]);
+        return of({
+          firstToken: firstToken ?? (results.length > 0 ? (results[0] as any)[paginateField] : undefined),
+          nextStartToken: (reverse || resultCount > pageSize)
+            && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
+          pageSize,
+          paginateField,
+          prevStartToken: startToken
+            && ((reverse && resultCount > pageSize) || !reverse)
+            && results.length > 0
+            && firstToken != (results[0] as any)[paginateField] ? (results[0] as any)[paginateField] : undefined,
+          results,
+          startToken,
+        });
+      })) as Observable<PaginationWithResult<T>>;
+  }
+
+  public getAll<T extends BaseDocument>(entityType: string, sort ?: PouchDBFindSort): Observable<T[]> {
+    return this.getForEntityType(entityType, {}, sort);
   }
 
   private fetchDBName(token: string): Observable<string> {
@@ -168,5 +257,6 @@ export class StorageService {
           retry: true,
         }).on('error', console.warn);
       }));
+
   }
 }

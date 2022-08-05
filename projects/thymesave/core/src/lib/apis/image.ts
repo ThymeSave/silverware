@@ -1,4 +1,4 @@
-export const imageToBase64 = (blob : Blob, qualityPercentage : number = 30, imageWidth : number = 500) : Promise<string> => {
+export const imageToBase64 = (blob : Blob, qualityPercentage : number = 30, imageWidth : number = 1920) : Promise<string> => {
   const sourceReader = new FileReader();
   sourceReader.readAsDataURL(blob);
 

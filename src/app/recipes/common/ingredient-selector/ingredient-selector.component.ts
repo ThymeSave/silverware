@@ -77,7 +77,7 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
   }
 
   private filterIngredientBySearchTerm(ingredient: FlattenedIngredient, search: string) {
-    const similarity = getSimilarity(search, ingredient.name);
+    const similarity = getSimilarity(search, ingredient.localized);
     return this._preFilter(ingredient) &&
       (search == "" || similarity >= 0.5);
   }

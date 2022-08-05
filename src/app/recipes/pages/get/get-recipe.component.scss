@@ -1,0 +1,89 @@
+.not-found {
+  margin-top: 30px;
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.loading {
+  margin-top: 30px;
+}
+
+.recipe {
+  max-width: 70ch;
+  padding: 20px;
+  margin: auto;
+
+  @media(min-width: 1920px) {
+    max-width: 90ch;
+  }
+}
+
+app-recipe-image {
+  display: inline-block;
+  margin: auto auto 20px;
+}
+
+h1 {
+  font-size: 2.75rem;
+  line-height: 3rem;
+  font-weight: 700;
+  padding-top: 0.2em;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+.recipe-header-text {
+  margin-top: 500px;
+}
+
+.recipe-header-text,
+.recipe-body {
+  background-color: #4b4a4a;
+  padding: 20px 20px 16px;
+}
+
+.recipe-header-text {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.recipe-header-bg {
+  width: 100%;
+  height: 600px;
+  position: absolute;
+  top: -10px;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.fallback-title-header{
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  line-height: 5rem;
+  text-align: center;
+  font-weight: bolder;
+}
+
+app-recipe-image {
+  opacity: 0;
+}
+
+.grid-tile {
+  width: 100%;
+  text-align: left;
+}
+
+.instruction {
+  display: block;
+  width: 100%;
+  padding-left: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
