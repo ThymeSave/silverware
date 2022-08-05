@@ -172,6 +172,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   public async save() {
     const finalized = this.importerService.finalize(this.form.getRawValue());
+    debugger;
     this.saved.next(finalized);
   }
 

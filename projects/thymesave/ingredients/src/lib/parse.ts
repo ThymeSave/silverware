@@ -171,8 +171,8 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
       ingredient: matches[2],
       isNumeric: true,
       isRange: false,
-      maxAmount: 0,
-      minAmount: 0,
+      maxAmount: "",
+      minAmount: "",
       unit: matches[1],
     };
   }

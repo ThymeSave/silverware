@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { RecipeDefaults } from "@thymesave/core";
 import { catchError, map, Observable, of, switchMap, tap } from "rxjs";
 
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
@@ -18,17 +17,13 @@ export class GetRecipeComponent {
   public notFound: boolean = false;
 
   constructor(private route: ActivatedRoute,
-              private router : Router,
+              private router: Router,
               private recipeService: RecipeService,
-              public languageService : LanguageService,
-              private notificationService : NotificationService) {
+              public languageService: LanguageService,
+              private notificationService: NotificationService) {
     this.id$ = this.route.params
       .pipe(map(params => (params as any).id as string));
     this.id$.subscribe(this.tryLoadingRecipe.bind(this));
-  }
-
-  public get DEFAULT_SERVINGS() {
-    return RecipeDefaults.SERVINGS;
   }
 
   public get backgroundStyle() {
@@ -50,20 +45,7 @@ export class GetRecipeComponent {
 
     const textField = e.currentTarget as HTMLInputElement;
     const newServings = parseInt(textField.value);
-    const currentServings = this.recipe.servings ?? RecipeDefaults.SERVINGS;
-
-    this.recipe.ingredients.forEach(i => {
-      if (!i.scalable) {
-        return;
-      }
-      if (i.isNumeric) {
-        i.minAmount = ((i.minAmount as number / currentServings) * newServings);
-        if (i.isRange) {
-          i.maxAmount = ((i.maxAmount as number / currentServings) * newServings);
-        }
-      }
-    });
-    this.recipe.servings = newServings;
+    this.recipeService.recalculateServings(this.recipe, newServings);
   }
 
   public tryLoadingRecipe(id: string) {
@@ -83,7 +65,7 @@ export class GetRecipeComponent {
         catchError(() => of(false)),
       )
       .subscribe(deleted => {
-        if(deleted) {
+        if (deleted) {
           this.notificationService.sendNotification({
             message: "notifications.success.recipe_deleted",
             type: "Success",

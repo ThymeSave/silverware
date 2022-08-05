@@ -123,6 +123,14 @@ export class RecipeImporterService {
     };
   }
 
+  private parseAmount(amount: string | number) {
+    if (amount == 0 || amount == "0" || amount?.toString()?.trim() == "") {
+      return "";
+    }
+
+    return amount;
+  }
+
   /**
    * Finalize raw recipe information
    * @param raw
@@ -132,14 +140,18 @@ export class RecipeImporterService {
       description: raw.description,
       image: raw.image,
       ingredients: raw.ingredients
-        .map((i: any) => {
-          const ingredient = loadIngredientByKey(i.translationKey);
+        .map((i : any) => {
+          const ingredientInfo = loadIngredientByKey(i.translationKey);
+          const minAmount = this.parseAmount(i.minAmount);
+          const maxAmount = this.parseAmount(i.maxAmount);
+          const isRange = maxAmount != "" && minAmount != maxAmount;
+
           return {
-            ...ingredient,
-            isNumeric: !isNaN((i.minAmount ?? "") as number) && !isNaN((i.maxAmount ?? 0) as number),
-            isRange: i.minAmount != i.maxAmount,
-            maxAmount: i.maxAmount ?? i.minAmount,
-            minAmount: i.minAmount,
+            ...ingredientInfo,
+            isNumeric: minAmount != "" && !isNaN(minAmount as number) && ((maxAmount == "" && !isRange) || !isNaN(maxAmount as number)),
+            isRange,
+            maxAmount,
+            minAmount,
             translationKey: i.translationKey,
             unit: i.unit,
           };
