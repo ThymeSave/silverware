@@ -4,6 +4,18 @@ import { Instruction } from "./instruction";
 export type RecipeBase64Image = string
 
 /**
+ * Default values for recipes for fields that can not be omitted
+ * or should not, providing consistent defaults across plugins
+ * and the application itself
+ */
+export class RecipeDefaults {
+  /**
+   * Amount of servings a recipe is for
+   */
+  static readonly SERVINGS = 4;
+}
+
+/**
  * Properties every recipe shares
  */
 export interface BaseRecipe {
@@ -15,6 +27,10 @@ export interface BaseRecipe {
    * Optional description
    */
   description?: string
+  /**
+   * Amount of servings for this recipe
+   */
+  servings: number
   /**
    * Image encoded as base64, may be omitted if no image is present
    */

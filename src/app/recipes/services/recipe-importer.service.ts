@@ -118,6 +118,7 @@ export class RecipeImporterService {
       instructions: this.parseInstructions(raw.instructions),
       rawIngredients: raw.ingredients,
       rawInstructions: raw.instructions,
+      servings: raw.servings,
       title: raw.title.trim(),
     };
   }
@@ -144,6 +145,7 @@ export class RecipeImporterService {
           };
         }),
       instructions: raw.instructions,
+      servings: raw.servings,
       title: raw.title,
     };
   }
