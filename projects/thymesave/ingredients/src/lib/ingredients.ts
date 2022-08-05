@@ -1599,6 +1599,10 @@ export const ingredients: { [key: string]: Ingredient } = {
     category: IngredientCategory.Vegetable,
     scalable: true,
   },
+  "gnocchi": {
+    category: IngredientCategory.Pasta,
+    scalable: true,
+  },
   "goji": {
     category: IngredientCategory.Fruits,
     scalable: true,

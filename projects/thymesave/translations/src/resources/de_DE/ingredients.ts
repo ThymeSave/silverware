@@ -642,8 +642,8 @@ const ingredients: PluralizableTranslation = {
     "Chillis",
   ],
   "chilli_pepper": [
-    "Chillischote",
-    "Chillischoten",
+    "Chilischote",
+    "Chilischote",
   ],
   "chineese_plum": [
     "chinesiche Pflaume",
@@ -1294,6 +1294,9 @@ const ingredients: PluralizableTranslation = {
   "globe_artichoke": [
     "Artischocke",
     "Artischocken",
+  ],
+  "gnocchi": [
+    "Gnocchi",
   ],
   "goji": [
     "Goji",

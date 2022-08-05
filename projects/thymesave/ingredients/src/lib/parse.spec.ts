@@ -20,6 +20,15 @@ describe("parseIngredientInformation", () => {
     expect(parsed.isRange).toBeFalse();
   });
 
+  it("should parse information with unit and numeric amount and double space including parantheses", () => {
+    const parsed = parseIngredientInformation("1  Knoblauchzehe(n)");
+    expect(parsed.ingredient).toBe("Knoblauchzehen");
+    expect(parsed.unit).toBeNull();
+    expect(parsed.minAmount).toBe(1);
+    expect(parsed.maxAmount).toBe(1);
+    expect(parsed.isRange).toBeFalse();
+  });
+
   it("should parse information with spaced unit and numeric amount", () => {
     const parsed = parseIngredientInformation("10 g ginger");
     expect(parsed.ingredient).toBe("ginger");

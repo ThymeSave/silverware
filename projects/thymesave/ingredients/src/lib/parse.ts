@@ -64,6 +64,10 @@ export const parseIngredientInformation = (raw: string): ParsedRecipeIngredient 
   }
 
   raw = raw.trim()
+    // remove double whitespace
+    .replace(/ +/g, ' ')
+    // remove parentheses
+    .replace(/[\])}[{(]/g, '')
     // handle unicode fractions that are not a single vulgar unicode char
     .replace("\u2044", "/");
 

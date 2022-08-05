@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { createLogger } from "@helper/log";
 import {
   Importer,
   RawRecipe,
@@ -13,7 +14,7 @@ import {
   loadIngredientByKey,
 } from "@thymesave/ingredients";
 import { matchIngredientByText, matchUnitByText } from "@thymesave/translations";
-import { first } from "lodash";
+import { first, intersectionWith } from "lodash";
 import { map, Observable } from "rxjs";
 
 import { LanguageService } from "@/shared/i18n/language.service";
@@ -24,49 +25,75 @@ import { ContextService } from "@/shared/plugins/context.service";
 })
 export class RecipeImporterService {
 
+  private logger = createLogger("RecipeImporterService");
+
   constructor(private contextService: ContextService,
               private languageService: LanguageService) {
+  }
+
+  private findExactIngredientInText(text: string) {
+    return first(Object.keys(this.languageService.currentLanguage.ingredients)
+      .map(key => ({
+        key,
+        variants: this.languageService.currentLanguage.ingredients[key],
+      }))
+      .filter(i => i.variants
+        .map(variant => text.includes(variant))
+        .filter(includes => includes)
+        .length > 0),
+    )?.key;
+  }
+
+  private patchExactMatch(ingredient: ParsedRecipeIngredient, exactMatch: string) {
+    this.logger.debug("Override", ingredient, exactMatch);
+    ingredient.ingredient = exactMatch;
+    ingredient.translationMatches = [
+      {
+        key: exactMatch,
+        similarity: .99,
+        variant: exactMatch,
+      },
+    ];
   }
 
   private parseIngredients(raw: string[]) {
     return raw
       .map(text => text.trim())
       .map(text => {
-      const exactMatch = first(Object.keys(this.languageService.currentLanguage.ingredients)
-        .map(key => ({
-          key,
-          variants: this.languageService.currentLanguage.ingredients[key],
-        }))
-        .filter(i => i.variants.indexOf(text) !== -1))
-        ?.key;
+        try {
+          let ingredient = parseIngredientInformation(text);
+          ingredient.translationMatches = matchIngredientByText(this.languageService.currentLanguage, ingredient.ingredient, {});
 
-      try {
-        let ingredient: ParsedRecipeIngredient;
-        if (exactMatch) {
-          ingredient = {
-            ingredient: exactMatch,
-            isNumeric: false,
-            isRange: false,
-            maxAmount: "",
-            minAmount: "",
-            unit: "",
-          };
-        } else {
-          ingredient = parseIngredientInformation(text);
+          // In case we have no matches try to find one manually, also if we are uncertain if the match is correct
+          // maybe we can find a more accurate one
+          if (ingredient.translationMatches.length == 0 || ingredient.translationMatches.filter(tm => tm.similarity > 0.8).length == 0) {
+            const exactMatch = this.findExactIngredientInText(text);
+
+            // Found exact match -> map it
+            if (exactMatch) {
+              this.patchExactMatch(ingredient, exactMatch);
+            }
+          }
+
+          if (ingredient.unit) {
+            ingredient.unit = this.parseUnit(ingredient.unit);
+          }
+
+          ingredient.minAmount = ingredient.minAmount == 0 ? "" : ingredient.minAmount;
+          ingredient.maxAmount = ingredient.maxAmount == 0 ? "" : ingredient.maxAmount;
+          return ingredient;
+        } catch (e: any | IngredientParseError) {
+          this.logger.warn("Failed parsing", e);
+          const fallbackIngredient = propagateParseError(e);
+          // Try to find in failed parsing, maybe just malformed but ingredient still can be found
+          const exactMatch = this.findExactIngredientInText(text);
+          // Found exact match -> map it
+          if (exactMatch) {
+            this.patchExactMatch(fallbackIngredient, exactMatch);
+          }
+          return fallbackIngredient;
         }
-
-        if (ingredient.unit) {
-          ingredient.unit = this.parseUnit(ingredient.unit);
-        }
-
-        ingredient.translationMatches = matchIngredientByText(this.languageService.currentLanguage, ingredient.ingredient, {});
-        ingredient.minAmount = ingredient.minAmount == 0 ? "" : ingredient.minAmount;
-        ingredient.maxAmount = ingredient.maxAmount == 0 ? "" : ingredient.maxAmount;
-        return ingredient;
-      } catch (e: any | IngredientParseError) {
-        return propagateParseError(e);
-      }
-    });
+      });
   }
 
   private parseInstructions(raw: string[]): Instruction[] {

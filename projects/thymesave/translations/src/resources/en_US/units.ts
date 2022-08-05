@@ -77,7 +77,7 @@ const units: UnitTranslation = {
       "pinch",
       "pinches",
     ],
-    short: "pinch",
+    short: "pinch(es)",
   },
   pound: {
     long: [
@@ -90,6 +90,13 @@ const units: UnitTranslation = {
       "tablespoon",
     ],
     short: "tsp",
+  },
+  twig: {
+    long: [
+      "twig",
+      "twigs",
+    ],
+    short: "twig(s)",
   },
 };
 

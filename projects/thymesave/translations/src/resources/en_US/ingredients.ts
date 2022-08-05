@@ -1336,6 +1336,9 @@ const ingredients: PluralizableTranslation = {
     "globe artichoke",
     "globe artichokes",
   ],
+  "gnocchi": [
+    "Gnocchi",
+  ],
   "goji": [
     "goji",
     "gojis",

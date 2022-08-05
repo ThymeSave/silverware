@@ -92,6 +92,13 @@ const units: UnitTranslation = {
     ],
     short: "TL",
   },
+  twig: {
+    long: [
+      "Zweig",
+      "Zweige",
+    ],
+    short: "Zweig(e)",
+  },
 };
 
 export default units;
