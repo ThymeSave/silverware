@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { Router } from "@angular/router";
 import { AuthService } from "@auth0/auth0-angular";
 import { filter, first, map, switchMap, tap } from "rxjs";
 
@@ -36,6 +37,7 @@ export class ShellComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    private router : Router,
     private dialog: MatDialog,
     public storageService: StorageService,
     public appUpdateService: AppUpdateService,
@@ -61,7 +63,12 @@ export class ShellComponent implements OnInit {
         switchMap(_ => this.storageService.db$),
         switchMap(_ => this.storageService.initSync()),
       )
-      .subscribe(_ => this.closeSyncDialog());
+      .subscribe(_ => {
+        this.closeSyncDialog();
+        this.router.navigate([
+          "/recipes",
+        ]);
+      });
   }
 
   public ngOnInit() {
