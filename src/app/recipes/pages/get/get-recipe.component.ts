@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { Recipe } from "@thymesave/core";
-import { catchError, map, Observable, of, switchMap, throwError } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
+import { RecipeDefaults } from "@thymesave/core";
+import { catchError, map, Observable, of, switchMap, tap } from "rxjs";
 
-import { RecipeService } from "@/recipes/services/recipe.service";
+import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
+import { LanguageService } from "@/shared/i18n/language.service";
+import { NotificationService } from "@/shared/notifications/notification.service";
 
 @Component({
   selector: 'app-get-recipe',
@@ -12,14 +14,21 @@ import { RecipeService } from "@/recipes/services/recipe.service";
 })
 export class GetRecipeComponent {
   public id$ !: Observable<string>;
-  public recipe ?: Recipe;
+  public recipe ?: RecipeEntity;
   public notFound: boolean = false;
 
   constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService) {
+              private router : Router,
+              private recipeService: RecipeService,
+              public languageService : LanguageService,
+              private notificationService : NotificationService) {
     this.id$ = this.route.params
       .pipe(map(params => (params as any).id as string));
     this.id$.subscribe(this.tryLoadingRecipe.bind(this));
+  }
+
+  public get DEFAULT_SERVINGS() {
+    return RecipeDefaults.SERVINGS;
   }
 
   public get backgroundStyle() {
@@ -34,12 +43,60 @@ export class GetRecipeComponent {
     };
   }
 
+  public recalculateServings(e: Event) {
+    if (!this.recipe) {
+      return;
+    }
+
+    const textField = e.currentTarget as HTMLInputElement;
+    const newServings = parseInt(textField.value);
+    const currentServings = this.recipe.servings ?? RecipeDefaults.SERVINGS;
+
+    this.recipe.ingredients.forEach(i => {
+      if (!i.scalable) {
+        return;
+      }
+      if (i.isNumeric) {
+        i.minAmount = ((i.minAmount as number / currentServings) * newServings);
+        if (i.isRange) {
+          i.maxAmount = ((i.maxAmount as number / currentServings) * newServings);
+        }
+      }
+    });
+    this.recipe.servings = newServings;
+  }
+
   public tryLoadingRecipe(id: string) {
     this.recipeService.getLatest(id)
       .pipe(catchError(e => of(null)))
       .subscribe(r => {
         this.recipe = r ?? undefined;
         this.notFound = this.recipe == undefined;
+      });
+  }
+
+  public deleteRecipe() {
+    this.recipeService.delete(this.recipe!!)
+      .pipe(
+        tap(() => console.log("boo")),
+        switchMap(() => of(true)),
+        catchError(() => of(false)),
+      )
+      .subscribe(deleted => {
+        if(deleted) {
+          this.notificationService.sendNotification({
+            message: "notifications.success.recipe_deleted",
+            type: "Success",
+          });
+          this.router.navigate([
+            "/recipes",
+          ]);
+        } else {
+          this.notificationService.sendNotification({
+            message: "notifications.error.delete_recipe_failed",
+            type: "Error",
+          });
+        }
       });
   }
 }

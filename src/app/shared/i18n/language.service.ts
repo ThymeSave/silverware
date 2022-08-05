@@ -36,6 +36,17 @@ export class LanguageService {
     };
   }
 
+  public get angularLocale() {
+    switch (this.currentLanguageIdentifier) {
+      case "de_DE":
+        return "de";
+
+      default:
+      case "en_US":
+        return "en-US";
+    }
+  }
+
   /**
    * Get language as configured by user, in case the notation is with a region the language part is returned
    * @private

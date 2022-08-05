@@ -1,0 +1,13 @@
+<ng-template #panelTemplate>
+  <div fxLayout="row"
+       fxLayoutAlign="center center"
+       fxLayoutGap="10px">
+    <mat-icon>{{ icon }}</mat-icon>
+    <div fxFlex>
+      {{ notification.message | i18n }}
+    </div>
+    <div>
+      <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
+    </div>
+  </div>
+</ng-template>

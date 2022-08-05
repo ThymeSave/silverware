@@ -34,6 +34,10 @@ export abstract class EntityService<T extends BaseDocument> {
     return this.storageService.getAll(this.entityType);
   }
 
+  public delete(document: T) {
+    return this.storageService.delete(document);
+  }
+
   public getPaginated(selector: PouchDB.Find.Selector, pagination: Pagination<T>, sort: PouchDBFindSort = []): Observable<PaginationWithResult<T>> {
     return this.storageService.paginate(this.entityType, selector, sort, pagination);
   }
@@ -44,7 +48,7 @@ export abstract class EntityService<T extends BaseDocument> {
       .subscribe();
   }
 
-  public getLatest(id: string) : Observable<T> {
+  public getLatest(id: string): Observable<T> {
     return this.storageService.getLatest<T>(this.entityType, id);
   }
 

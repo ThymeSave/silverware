@@ -16,7 +16,8 @@
         {{ (hasMultipleRecipes ? 'cancel_next' : 'cancel') | i18n }}
       </button>
     </div>
-    <div fxFlex fxLayoutAlign="center center">
+    <div fxFlex
+         fxLayoutAlign="center center">
       <span class="recipe-index-info" *ngIf="totalRecipes > 1">
         {{ recipeIndex }} / {{ totalRecipes }}
       </span>
@@ -57,10 +58,18 @@
                     formControlName="description"
                     matInput></textarea>
         </mat-form-field>
+        <mat-form-field class="importer-input"
+                        appearance="fill">
+          <mat-label>{{ 'recipes.servings' | i18n }}</mat-label>
+          <input matInput
+                 formControlName="servings"
+                 type="number">
+        </mat-form-field>
       </div>
     </div>
-    <div fxFlex></div>
     <div fxLayoutAlign="center center"
+         fxFlex="50%"
+         fxFlex.lt-md="100%"
          class="photo">
       <button mat-icon-button
               (click)="uploadPhoto()"
@@ -70,7 +79,6 @@
       <app-recipe-image [imageAlt]="recipe?.title" [imageSrc]="recipe?.image"></app-recipe-image>
     </div>
   </div>
-
   <div fxFlex
        fxLayout="row"
        fxLayoutGap="30px"
@@ -147,7 +155,6 @@
           </ul>
         </mat-tab>
       </mat-tab-group>
-
     </mat-card>
   </div>
 </form>

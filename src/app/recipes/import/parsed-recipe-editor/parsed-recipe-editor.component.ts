@@ -80,6 +80,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
       image: this.fb.control(recipe.image),
       ingredients: this.fb.array(ingredients, [Validators.required]),
       instructions: this.fb.array(instructions, [Validators.required]),
+      servings: this.fb.control(recipe.servings,[Validators.required,Validators.min(1),Validators.max(99)]),
       title: this.fb.control(recipe.title, [Validators.required]),
     });
 

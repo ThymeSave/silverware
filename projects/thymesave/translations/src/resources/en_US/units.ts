@@ -13,7 +13,7 @@ const units: UnitTranslation = {
       "cup",
       "cups",
     ],
-    short: "c",
+    short: "cups",
   },
   deciliter: {
     long: [

@@ -1,4 +1,6 @@
+import { registerLocaleData } from "@angular/common";
 import { HttpClientModule } from '@angular/common/http';
+import localeDe from "@angular/common/locales/de";
 import { Inject, NgModule } from '@angular/core';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -11,6 +13,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,6 +33,8 @@ import { SharedModule } from "@/shared/shared.module";
 import { environment } from '@/../environments/environment';
 import { FunnelConfig } from "@/../helper/loadFunnelConfig";
 
+registerLocaleData(localeDe);
+
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -42,6 +47,7 @@ import { FunnelConfig } from "@/../helper/loadFunnelConfig";
   ],
   imports: [
     BrowserModule,
+    MatSnackBarModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule.forRoot(),
