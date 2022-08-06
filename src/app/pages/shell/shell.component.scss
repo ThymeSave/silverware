@@ -1,10 +1,62 @@
 .user-picture {
-  width: 3em;
-  height: 3em;
+  max-height: 100%;
   border-radius: 50%;
 }
 
 .app-logo {
   width: 2em;
   height: 2em;
+}
+
+mat-sidenav {
+  width: 300px;
+}
+
+mat-sidenav-content {
+  margin: 10px;
+}
+
+mat-sidenav-content {
+  min-height: calc(100vh - 84px);
+
+  @media(max-width: 500px) {
+    min-height: calc(100vh - 76px);
+  }
+}
+
+.shell {
+  min-height: 100vh;
+}
+
+.nav-active {
+  background: var(--primary-color) !important;
+}
+
+.app-logo {
+  &.online {
+    color: red !important;
+  }
+}
+
+mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+mat-sidenav {
+  position: fixed;
+  padding-top: 80px;
+  height: 100%;
+}
+
+mat-sidenav-content {
+  margin: 0;
+}
+
+.sync-dialog {
+  .sync-dialog-text {
+    text-align: center;
+  }
 }

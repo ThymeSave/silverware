@@ -1,0 +1,128 @@
+<ng-container *ngIf="!recipe && !notFound">
+  <div fxLayout="row"
+       fxFlexFill
+       fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>
+<ng-container *ngIf="!notFound; else notFoundDiv">
+  <ng-container *ngIf="recipe">
+    <div class="recipe-header-bg"
+         fxLayoutAlign="center center"
+         fxLayout="column"
+         [style]="backgroundStyle">
+      <div class="fallback-title-header"
+           *ngIf="!recipe?.image">
+        <span fxFlexFill>{{ recipe?.title }}</span>
+      </div>
+    </div>
+    <div class="recipe"
+         fxLayoutGap="30px"
+         fxLayout="column">
+      <div class="recipe-header"
+           fxLayout="column">
+        <div fxLayout="row"
+             class="recipe-actions"
+             fxLayoutGap="10px"
+             fxLayoutAlign="end">
+          <button mat-fab><mat-icon>share</mat-icon></button>
+          <button color="warn"
+                  class="button-delete"
+                  (click)="deleteRecipe()"
+                  [matTooltip]="'delete' | i18n"
+                  mat-fab>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div fxFlex
+             class="recipe-header-text">
+          <h1 class="title">{{recipe.title}}</h1>
+          <p class="description">{{recipe.description}}</p>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="ingredients-heading">
+          <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <h2>{{ 'ingredients' | i18n}}</h2>
+            <div class="ingredients-servings-calculator">
+              <span>&nbsp;(</span>
+              <mat-form-field>
+                <input matInput [value]="recipe.servings"
+                       (change)="recalculateServings($event)"
+                       min="1"
+                       max="99"
+                       step="0.5"
+                       type="number">
+              </mat-form-field>
+              <span>{{ 'recipes.servings' | i18n }}</span>
+              <span>)</span>
+            </div>
+          </div>
+          <div fxLayout="row wrap"
+               fxLayout.lt-sm="column">
+            <div class="grid-tile"
+                 fxFlex="50%"
+                 *ngFor="let ingredient of recipe.ingredients">
+              <mat-checkbox color="primary">
+                <span class="min">
+                  {{ ingredient.isNumeric ? (ingredient.minAmount | number:'1.0-1':languageService.angularLocale) : ingredient.minAmount }}
+                </span>
+                <ng-container *ngIf="ingredient.isRange">
+                  <span *ngIf="ingredient.maxAmount"
+                        class="seperator">&nbsp;-&nbsp;</span>
+                  <span class="max">
+                    {{ingredient.isNumeric ? (ingredient.maxAmount | number:'1.0-1':languageService.angularLocale) : ingredient.maxAmount}}
+                  </span>
+                </ng-container>
+                <span *ngIf="ingredient.unit"
+                      class="unit">&nbsp;{{ingredient.unit | i18n:"units"}}</span>
+                {{ingredient.translationKey | i18n:'ingredients':(ingredient.minAmount)}}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <h2>{{ 'instructions' | i18n }}</h2>
+        <div class="instruction"
+             *ngFor="let instruction of recipe.instructions">
+          <mat-checkbox color="primary">
+            {{instruction.text}}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #notFoundDiv>
+  <div fxLayout="row"
+       class="not-found"
+       fxLayoutAlign="center center">
+    <div fxFlex="50%"
+         fxFlex.lt-lg="80%"
+         fxFlex.lt-md="100%"
+         fxLayout="row"
+         fxLayout.lt-md="column"
+         fxLayoutAlign="center center"
+         fxLayoutGap="80px"
+         class="not-found">
+      <div>
+        <img height="256"
+             alt="Sad potato"
+             src="assets/img/sad_potatoe.svg">
+      </div>
+      <div>
+        <h1>{{ 'recipes.not_found.heading' | i18n }}</h1>
+        <p>{{'recipes.not_found.text' | i18n}}</p>
+        <button mat-raised-button
+                routerLink="/recipes"
+                color="primary">
+          <mat-icon>arrow_back</mat-icon>
+          {{'recipes.not_found.back' | i18n}}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

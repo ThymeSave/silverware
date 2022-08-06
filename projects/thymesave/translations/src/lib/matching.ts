@@ -1,5 +1,7 @@
-import { Language, PluralizableTranslation } from "./model";
 import stringSimilarity from "string-similarity";
+
+import { Language, PluralizableTranslation } from "./model";
+
 const SIMILARITY_EXACT = 1;
 
 const sortMatches = (a: Match, b: Match) => b.similarity - a.similarity;
@@ -39,6 +41,8 @@ export interface MatchOptions {
 
 export type MatchSourceVariants = { [key: string]: string[] }
 
+export const getSimilarity = (text1 : string, text2 : string) => Number(stringSimilarity.compareTwoStrings(text1.replace(/\s/g, ''), text2.replace(/\s/g, '')).toFixed(4));
+
 /**
  * Find matches for all given variants and text.
  * This method contains base functionality for matching, sorting and filtering.
@@ -49,7 +53,7 @@ export type MatchSourceVariants = { [key: string]: string[] }
  * @param options Options to use for matching
  */
 export const findMatches = (variants: MatchSourceVariants | PluralizableTranslation, text: string, options: MatchOptions): Match[] => {
-  const minSimilarity = (options.minSimilarity ?? .5);
+  const minSimilarity = (options.minSimilarity ?? .3);
   const maxMatches = (options.maxMatches ?? 10);
 
   const keys = Object.keys(variants);
@@ -62,21 +66,21 @@ export const findMatches = (variants: MatchSourceVariants | PluralizableTranslat
 
     for (let j = 0; j < variantsContents.length; j++) {
       const variant = variantsContents[j];
-      const similarity = Number(stringSimilarity.compareTwoStrings(variant, text).toFixed(4));
+      const similarity = getSimilarity(text, variant);
 
       if (similarity == SIMILARITY_EXACT) {
         return [
           {
             key,
+            similarity,
             variant,
-            similarity
-          }
-        ]
+          },
+        ];
       } else if (similarity >= minSimilarity) {
         matches.push({
           key,
+          similarity,
           variant,
-          similarity
         });
       }
     }
@@ -114,9 +118,9 @@ export const matchUnitByText = (language: Language, text: string, options: Match
 
     variants[key] = [
       unit.short,
-      ...unit.long
+      ...unit.long,
     ];
   }
 
   return findMatches(variants, text, options);
-}
+};

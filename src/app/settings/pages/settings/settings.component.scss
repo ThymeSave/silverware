@@ -1,0 +1,40 @@
+.settings {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media(min-width: 1200px) {
+    width: 60%;
+  }
+
+  --danger-color: #FF9D9D;
+}
+
+.danger-zone {
+  border: 1px solid var(--danger-color);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button[type=submit] {
+  margin-bottom: 30px;
+}
+
+mat-card {
+  margin-top: 0 !important;
+}
+
+.mat-danger {
+  color: var(--danger-color);
+  transition: all .2s;
+
+  &:hover {
+    background: #c93c37;
+    color: black;
+  }
+
+}
+
+mat-card {
+  background: none;
+}

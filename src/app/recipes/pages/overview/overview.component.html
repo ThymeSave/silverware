@@ -1,0 +1,59 @@
+<div class="overview">
+  <div fxLayout="column">
+    <app-recipe-search-bar
+      (search)="searchSubmitted($event)">
+    </app-recipe-search-bar>
+    <div fxLayout="column"
+         fxLayoutAlign="center center">
+      <div fxLayout="row wrap"
+           fxLayoutAlign="center stretch"
+           fxLayout.lt-md="column"
+           *ngIf="recipes">
+        <div class="recipe-tile"
+             fxLayoutAlign="center stretch"
+             fxFlex="25%"
+             fxFlex.lg="25%"
+             fxFlex.lt-xl="25%"
+             fxFlex.lt-lg="33.33333%"
+             fxFlex.lt-md="100%"
+             *ngFor="let recipe of recipes">
+          <app-recipe-card [recipe]="recipe"
+                           role="link"
+                           class="recipe-card"
+                           (click)="openRecipe(recipe)"
+                           matRipple>
+          </app-recipe-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination"
+         fxFlexFill
+         fxLayoutAlign="center">
+      <div fxFlexFill
+           fxLayoutAlign="space-between center">
+        <button mat-button
+                [disabled]="!prevToken"
+                (click)="prev()">
+          <mat-icon>arrow_back</mat-icon>
+          {{ "pagination.previous_page"| i18n }}
+        </button>
+        <button mat-button
+                [disabled]="!nextToken"
+                (click)="next()">
+          {{ "pagination.next_page"| i18n }}
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <button class="new"
+            mat-fab
+            matTooltipPosition="left"
+            [matTooltip]="'recipes.new' | i18n"
+            routerLink="/recipes/new"
+            color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

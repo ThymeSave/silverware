@@ -1,0 +1,95 @@
+.add-button-container {
+  margin-bottom: 30px;
+  width: 100%;
+
+  button {
+    margin: auto;
+    display: block;
+    background: var(--accent-color)
+  }
+}
+
+form {
+  margin: auto;
+  margin-top: 20px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 333px;
+  border-radius: 4px;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  background: inherit;
+  color: inherit;
+}
+
+app-parsed-recipe-editor-ingredient,
+app-parsed-recipe-editor-instruction {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+mat-card {
+  background: #424242;
+}
+
+.recipe-details {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.photo {
+  position: relative;
+  margin: auto;
+}
+
+.photo-change-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background: rgba(0, 0, 0, 0.4)
+}
+
+.import-actions {
+  button {
+    width: 100%;
+  }
+
+  &>* {
+    padding-bottom: 20px;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.title {
+  input {
+    font-size: 2.75rem;
+    font-weight: 700;
+    padding-top: 0.2em;
+  }
+}
+
+.description {
+  font-size: 1.1rem;
+}
+
+.recipe-index-info {
+  text-align: center;
+  font-size: 1.1rem;
+}
+

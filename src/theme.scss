@@ -3,23 +3,27 @@
 
 // Fonts
 @import 'https://fonts.googleapis.com/css?family=Material+Icons+Outlined';
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond:300,400,500');
 
 $fontConfig: (
-  display-4: mat.define-typography-level(112px, 112px, 400, 'EB Garamond', -0.0134em),
-  display-3: mat.define-typography-level(56px, 56px, 400, 'EB Garamond', -0.0089em),
-  display-2: mat.define-typography-level(45px, 48px, 400, 'EB Garamond', 0.0000em),
-  display-1: mat.define-typography-level(34px, 40px, 400, 'EB Garamond', 0.0074em),
-  headline: mat.define-typography-level(24px, 32px, 400, 'EB Garamond', 0.0000em),
-  title: mat.define-typography-level(20px, 32px, 500, 'EB Garamond', 0.0075em),
-  subheading-2: mat.define-typography-level(16px, 28px, 400, 'EB Garamond', 0.0094em),
-  subheading-1: mat.define-typography-level(15px, 24px, 500, 'EB Garamond', 0.0067em),
-  body-2: mat.define-typography-level(14px, 24px, 500, 'EB Garamond', 0.0179em),
-  body-1: mat.define-typography-level(14px, 20px, 400, 'EB Garamond', 0.0179em),
-  button: mat.define-typography-level(14px, 14px, 500, 'EB Garamond', 0.0893em),
-  caption: mat.define-typography-level(12px, 20px, 400, 'EB Garamond', 0.0333em),
-  input: mat.define-typography-level(inherit, 1.125, 400, 'EB Garamond', 1.5px)
+  display-4: mat.define-typography-level(112px, 112px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', -0.0134em),
+  display-3: mat.define-typography-level(56px, 56px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', -0.0089em),
+  display-2: mat.define-typography-level(45px, 48px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0000em),
+  display-1: mat.define-typography-level(34px, 40px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0074em),
+  headline: mat.define-typography-level(24px, 32px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0000em),
+  title: mat.define-typography-level(20px, 32px, 500, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0075em),
+  subheading-2: mat.define-typography-level(16px, 28px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0094em),
+  subheading-1: mat.define-typography-level(15px, 24px, 500, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0067em),
+  body-2: mat.define-typography-level(16px, 24px, 500, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0179em),
+  body-1: mat.define-typography-level(16px, 26px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0179em),
+  button: mat.define-typography-level(16px, 18px, 500, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0893em),
+  caption: mat.define-typography-level(16px, 20px, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 0.0333em),
+  input: mat.define-typography-level(inherit, 1.7, 400, 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"', 1.5px)
 );
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+  overflow-wrap: break-word;
+}
 
 // Compute font config
 @include mat.core($fontConfig);
@@ -34,7 +38,7 @@ body {
 }
 
 $mat-primary: (
-  main: #0c7c5c,
+  main: #1d9e79,
   lighter: #b6d8ce,
   darker: #065f41,
   200: #0c7c5c, // For slide toggle,
@@ -73,10 +77,11 @@ $theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
 body {
   --warn-color: #ff0000;
   --warn-lighter-color: #ffb3b3;
-  --warn-darker-color: #ff0000;
+  --warn-darker-color: #ce2323;
   --text-warn-color: #{$light-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
+  --background-color: map-get($mat-dark-theme-background, background);
 }
 
 $mat-warn: (
@@ -116,6 +121,11 @@ $altTheme: (
   @include mat.all-component-themes($altTheme);
 }
 
+body {
+  background: var(--background-color);
+  color: $light-text
+}
+
 // Specific component overrides, pieces that are not in line with the general theming
 
 // Handle buttons appropriately, with respect to line-height
@@ -138,4 +148,17 @@ $altTheme: (
   .mat-badge-content {
     font-family: 'EB Garamond', serif;
   }
+}
+
+.mat-warning {
+  color: orange;
+}
+
+button.mat-warning {
+  background: orange;
+  color: white;
+}
+
+.mat-tooltip {
+  font-size: 14px !important;
 }

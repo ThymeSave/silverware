@@ -7,9 +7,13 @@ orbs:
 executors:
   node:
     docker:
-      - image: cimg/node:16.13.0-browsers
+      - image: cimg/node:18.4.0-browsers
 
 commands:
+  attach_artifacts:
+    steps:
+      - attach_workspace:
+          at: .
   remove_node_orb_lock:
     steps:
       - run:
@@ -20,9 +24,6 @@ commands:
   install_dependencies:
     steps:
       - node/install-packages
-      - remove_node_orb_lock
-      - node/install-packages:
-          app-dir: projects/thymesave/core
       - remove_node_orb_lock
       - node/install-packages:
           app-dir: projects/thymesave/ingredients
@@ -42,8 +43,8 @@ jobs:
     executor: node
     steps:
       - checkout
-      - install_dependencies
       - browser-tools/install-chrome
+      - attach_artifacts
       - run:
           name: Run ng lint
           command: npm run lint
@@ -64,7 +65,7 @@ jobs:
     executor: node
     steps:
       - checkout
-      - install_dependencies
+      - attach_artifacts
       - run:
           name: Run translation report script
           command: |
@@ -82,37 +83,33 @@ jobs:
       - install_dependencies
       - run:
           name: Build
-          environment:
-            NPM_ARGS: ''
           command: |
-            npm run build @thymesave/core ${NPM_ARGS}
-            npm run build @thymesave/translations ${NPM_ARGS}
-            npm run build @thymesave/ingredients ${NPM_ARGS}
-            npm run build @thymesave/plugin ${NPM_ARGS}
-            npm run build ${NPM_ARGS}
+            npm run build
       - store_artifacts:
           path: ./dist
           destination: dist
       - persist_to_workspace:
           paths:
             - ./dist
+            - ./projects/thymesave/*/node_modules
+            - ./node_modules
           root: .
 
 workflows:
-  continious:
+  continuous:
     jobs:
       - generate-translation-report:
           requires:
-            - test
+            - build
       - test:
+          requires:
+            - build
           filters:
             branches:
               only: /.*/
             tags:
               only: /.*/
       - build:
-          requires:
-            - test
           filters:
             branches:
               only: /.*/

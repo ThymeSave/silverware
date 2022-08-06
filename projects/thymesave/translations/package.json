@@ -3,11 +3,14 @@
   "description": "Translation functionality for ThymeSave",
   "version": "0.0.1",
   "dependencies": {
-    "string-similarity": "^4.0.4",
     "tslib": "^2.4.0"
+  },
+  "peerDependencies": {
+    "string-similarity": "^4.0.4"
   },
   "devDependencies": {
     "@types/string-similarity": "^4.0.0",
-    "@types/node": "^16.11.32"
+    "@types/node": "^16.11.47",
+    "string-similarity": "^4.0.4"
   }
 }

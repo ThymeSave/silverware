@@ -1,22 +1,66 @@
-<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="1em">
-  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".25em">
-    <img class="app-logo" src="assets/img/logo.svg" aria-label="ThymeSave Logo">
-    <span>ThymeSave</span>
-  </div>
-  <button mat-icon-button *ngIf="(authService.user$ | async) as user; else logIn" [matMenuTriggerFor]="menu">
-    <img [alt]="user?.preferred_username" class="user-picture" [src]="user?.picture">
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="authService.logout({  })">
-        <mat-icon>logout</mat-icon>
-        <span>Logout</span>
-      </button>
-    </mat-menu>
-  </button>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div class="shell">
+  <mat-toolbar fxLayout="row"
+               fxLayoutAlign="space-between center">
+    <button (click)="sidenav.toggle()"
+            [disabled]="(authService.isAuthenticated$ | async) === false"
+            mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap=".25em">
+      <svg class="app-logo" >
+        <image width="100%" xlink:href="assets/img/logo.svg"></image>
+      </svg>
+      <span>ThymeSave</span>
+      <mat-icon [matTooltip]="'offline.hint' | i18n"
+                *ngIf="!online"
+                color="warning">
+        offline_bolt
+      </mat-icon>
+    </div>
+    <button mat-icon-button
+            *ngIf="(authService.user$ | async) as user; else logIn"
+            [matMenuTriggerFor]="menu">
+      <img class="user-picture"
+           height="58"
+           [src]="user?.picture ?? 'assets/img/logo.svg'">
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="authService.logout({  })">
+          <mat-icon>logout</mat-icon>
+          <span>{{ 'logout' | i18n}}</span>
+        </button>
+      </mat-menu>
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav
+                 [autoFocus]="false"
+                 mode="over">
+      <mat-nav-list>
+        <a *ngFor="let item of menuItems"
+           [routerLink]=[item.link]
+           [routerLinkActiveOptions]="{exact: true}"
+           (click)="sidenav.close()"
+           routerLinkActive="nav-active"
+           mat-list-item>
+          <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+          {{ item.title | i18n }}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
-<ng-template #logIn>
-  <button color="primary" aria-label="Login" title="Login" mat-icon-button (click)="authService.loginWithRedirect()">
-    <mat-icon>login</mat-icon>
-  </button>
-</ng-template>
+  <ng-template #logIn>
+    <button color="primary"
+            [title]="('login' | i18n)"
+            mat-icon-button
+            (click)="login()">
+      <mat-icon>login</mat-icon>
+    </button>
+  </ng-template>
+  <app-notification-toast></app-notification-toast>
+</div>

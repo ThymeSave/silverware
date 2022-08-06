@@ -1,0 +1,33 @@
+.welcome-back,
+.new-user {
+  padding-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.welcome-back {
+  width: 90%;
+}
+
+.new-user {
+  max-width: 70ch;
+  margin: auto;
+  padding: 20px;
+}
+
+.new-user-section {
+  margin-top: 20px;
+}
+
+img {
+  max-width: 400px;
+  margin: auto;
+}
+
+.new-user-layout {
+  margin: auto;
+}
+
+* {
+  word-break: break-word;
+}

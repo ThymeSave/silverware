@@ -1,0 +1,95 @@
+<div *ngIf="!forceUsageOnMobile"
+     class="screen-hint"
+     fxHide
+     fxShow.xs
+     fxLayoutGap="30px"
+     fxLayoutAlign="center center"
+     fxLayout="column">
+  <div>
+    <mat-icon>screen_rotation</mat-icon>
+  </div>
+  <div>
+    <p>
+      {{ 'recipes.import.hint_screen_to_small' | i18n }}
+    </p>
+  </div>
+  <div>
+    <button mat-raised-button
+            (click)="forceUsageOnMobileDevice()"
+            color="warn">
+      {{ 'recipes.import.hint_screen_to_small_proceed' | i18n }}
+    </button>
+  </div>
+</div>
+<mat-stepper #stepper
+             [linear]="true"
+             [@.disabled]="true">
+  <mat-step [label]="'recipes.choose_importer' | i18n"
+            completed="false"
+            editable="false">
+    <mat-list>
+      <!-- Import by URL -->
+      <div mat-subheader>{{ 'recipes.import.url' | i18n }}</div>
+      <mat-list-item matRipple
+                     (click)="selectImporter(importer)"
+                     class="importer-option"
+                     *ngFor="let importer of urlImporter">
+        <mat-icon mat-list-icon>language</mat-icon>
+        {{importer.getName(languageService.currentLanguageIdentifier)}}
+      </mat-list-item>
+
+      <!-- Import manual etc -->
+      <div mat-subheader>{{ 'recipes.import.importer.misc' | i18n }}</div>
+      <mat-list-item matRipple
+                     (click)="selectImporter(importer)"
+                     class="importer-option"
+                     *ngFor="let importer of manualImporter">
+        <mat-icon mat-list-icon>language</mat-icon>
+        {{importer.getName(languageService.currentLanguageIdentifier)}}
+      </mat-list-item>
+    </mat-list>
+  </mat-step>
+  <mat-step [label]="'recipes.import.importer.parameter' | i18n"
+            completed="false"
+            editable="false">
+    <app-url-importer-settings (saved)="urlImporterSaved($event)"
+                               (canceled)="cancel()"
+                               *ngIf="isURLImporter"></app-url-importer-settings>
+  </mat-step>
+  <mat-step [label]="'recipes.import.pending' | i18n"
+            completed="false"
+            editable="false">
+    <div *ngIf="importLoading"
+         fxLayoutAlign="center center"
+         fxLayoutGap="12px"
+         fxLayout="column">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <button (click)="cancel()"
+              mat-raised-button
+              color="accent">
+        <mat-icon>cancel</mat-icon>
+        {{ 'cancel' | i18n }}
+      </button>
+    </div>
+    <div *ngIf="importFailed">
+      <h1 class="mat-h1">{{ 'recipes.import.failed' | i18n }}</h1>
+      <p class="caption">
+        {{ 'recipes.import.failed_explanation' | i18n }}
+      </p>
+      <mat-card class="error-details">
+        <pre><code>{{ ('recipes.import.errors.' + (importFailedErr.message || "unknown")) | i18n }}</code></pre>
+      </mat-card>
+    </div>
+  </mat-step>
+  <mat-step [label]="'recipes.verify' | i18n"
+            completed="false"
+            editable="false">
+    <app-parsed-recipe-editor *ngIf="!importFailed"
+                              [recipe]="parsedRecipe"
+                              [recipeIndex]="recipeIndex"
+                              [totalRecipes]="totalRecipes"
+                              (canceled)="cancelEdit()"
+                              (saved)="saveEdit($event)"
+                              [hasMultipleRecipes]="hasMultipleRecipes"></app-parsed-recipe-editor>
+  </mat-step>
+</mat-stepper>

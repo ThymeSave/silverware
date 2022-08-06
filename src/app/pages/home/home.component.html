@@ -1,1 +1,50 @@
-<h1>Work In Progress</h1>
+<ng-container *ngIf="(authService.isAuthenticated$ | async) as signedIn; else notSignedIn">
+  <div class="welcome-back" fxLayout="column">
+    <h1>{{ 'home.welcome_back' | i18n }} {{ (authService.user$ | async)?.name }}!</h1>
+  </div>
+</ng-container>
+<ng-template #notSignedIn>
+  <div fxLayout="row"
+       fxFlex="50%"
+       fxFlex.lt-lg="100%"
+       fxLayout.lt-lg="column"
+       class="new-user-layout">
+      <img alt="ThymeSave logo" src="assets/img/logo.svg">
+      <div fxFlex class="new-user">
+        <div class="new-user-section">
+          <h1>{{ 'home.new_user.title' | i18n }}</h1>
+          <p>{{ 'home.new_user.intro' | i18n }}</p>
+          <a mat-stroked-button
+             href="https://thymesave.app"
+             target="_blank"
+             color="primary">
+            <mat-icon>link_external</mat-icon>
+            {{ 'how.new_user.more_info' | i18n }}
+          </a>
+        </div>
+        <div class="new-user-section">
+          <h2>{{ 'home.new_user.features.heading' | i18n }}</h2>
+          <ul>
+            <li>{{ 'home.new_user.features.sync' | i18n }}</li>
+            <li>{{ 'home.new_user.features.limitation' | i18n }}</li>
+            <li>{{ 'home.new_user.features.offline' | i18n }}</li>
+            <li>{{ 'home.new_user.features.central_place' | i18n }}</li>
+            <li>{{ 'home.new_user.features.no_tracking' | i18n }}</li>
+            <li>{{ 'home.new_user.features.less_waste' | i18n }}</li>
+            <li>{{ 'home.new_user.features.focus_what_matters' | i18n }}</li>
+          </ul>
+        </div>
+        <div class="new-user-section">
+          <h2>{{ 'home.new_user.help_wanted' | i18n }}</h2>
+          <p>{{ 'home.new_user.help_wanted_text' | i18n }}</p>
+          <a mat-stroked-button
+             color="primary"
+             href="https://github.com/ThymeSave"
+             target="_blank">
+            <mat-icon>link_external</mat-icon>
+            {{ 'home.new_user.help_wanted_button' | i18n }}
+          </a>
+        </div>
+      </div>
+  </div>
+</ng-template>

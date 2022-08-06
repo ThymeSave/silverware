@@ -1,0 +1,160 @@
+<form [formGroup]="form" fxFlex
+      fxFlex.lt-md="100%"
+      fxFlex.gt-lg="70%"
+      fxFlex.gt-md="75%"
+      fxLayout="column">
+  <div fxFlex
+       class="import-actions"
+       fxLayout="row"
+       fxLayoutAlign="end">
+    <div fxFlex="33.333%">
+      <button color="accent"
+              type="button"
+              (click)="cancel()"
+              mat-raised-button>
+        <mat-icon>cancel</mat-icon>
+        {{ (hasMultipleRecipes ? 'cancel_next' : 'cancel') | i18n }}
+      </button>
+    </div>
+    <div fxFlex
+         fxLayoutAlign="center center">
+      <span class="recipe-index-info" *ngIf="totalRecipes > 1">
+        {{ recipeIndex }} / {{ totalRecipes }}
+      </span>
+    </div>
+    <div fxFlex="33.333%">
+      <button color="primary"
+              type="submit"
+              [disabled]="!form.valid"
+              (click)="save()"
+              mat-raised-button>
+        <mat-icon>save</mat-icon>
+        {{ (hasMultipleRecipes ? 'save_next' : 'save') | i18n }}
+      </button>
+    </div>
+  </div>
+  <div fxFlex
+       fxLayout.gt-md="row"
+       fxLayoutGap="30px"
+       fxLayout.lt-md="column-reverse"
+       fxLayoutAlign="start">
+    <div fxLayoutAlign="start stretch"
+         fxLayout="column"
+         fxFlex="100%"
+         class="full-width-field">
+      <div>
+        <mat-form-field class="importer-input title">
+          <mat-label>{{ 'recipes.title' | i18n }}</mat-label>
+          <input matInput
+                 fxFlexFill
+                 formControlName="title">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="importer-input description"
+                        appearance="fill">
+          <mat-label>{{'recipes.description' | i18n}}</mat-label>
+          <textarea [rows]="(recipe?.description?.split('\n')?.length ?? 0) + 3"
+                    formControlName="description"
+                    matInput></textarea>
+        </mat-form-field>
+        <mat-form-field class="importer-input"
+                        appearance="fill">
+          <mat-label>{{ 'recipes.servings' | i18n }}</mat-label>
+          <input matInput
+                 formControlName="servings"
+                 type="number">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayoutAlign="center center"
+         fxFlex="50%"
+         fxFlex.lt-md="100%"
+         class="photo">
+      <button mat-icon-button
+              (click)="uploadPhoto()"
+              class="photo-change-button">
+        <mat-icon>add_a_photo</mat-icon>
+      </button>
+      <app-recipe-image [imageAlt]="recipe?.title" [imageSrc]="recipe?.image"></app-recipe-image>
+    </div>
+  </div>
+  <div fxFlex
+       fxLayout="row"
+       fxLayoutGap="30px"
+       class="recipe-details"
+       fxLayout.lt-xl="column">
+    <mat-card formArrayName="ingredients"
+              cdkDropList
+              (cdkDropListDropped)="droppedIngredient($event)"
+              class="recipe-editor-column ingredients"
+              fxLayout="column"
+              fxLayoutAlign="start stretch"
+              fxLayoutGap.lt-md="10px"
+              fxLayoutGap="0px"
+              fxFlex.gt-lg="50%">
+      <mat-tab-group>
+        <mat-tab [label]="'recipes.import.ingredients.tab_parsed' | i18n">
+          <app-parsed-recipe-editor-ingredient
+            cdkDrag
+            cdkDragBoundary=".ingredients"
+            cdkDragLockAxis="y"
+            *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
+            [formGroup]="ingredientsFormGroup"
+            (deleted)="ingredients.removeAt(i)">
+            <app-drag-handle cdkDragHandle></app-drag-handle>
+          </app-parsed-recipe-editor-ingredient>
+          <div class="add-button-container">
+            <button mat-fab
+                    color="blue"
+                    (click)="addIngredient()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="'recipes.import.ingredients.tab_raw' | i18n">
+          <ul *ngIf="recipe && recipe.rawIngredients">
+            <li *ngFor="let ingredient of recipe.rawIngredients">
+              {{ ingredient }}
+            </li>
+          </ul>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+    <mat-card formArrayName="instructions"
+              class="recipe-editor-column instructions"
+              cdkDropList
+              (cdkDropListDropped)="droppedInstruction($event)"
+              fxFlex.gt-lg="50%"
+              fxLayout="column">
+      <mat-tab-group>
+        <mat-tab [label]="'recipes.import.instructions.tab_parsed' | i18n">
+          <app-parsed-recipe-editor-instruction
+            cdkDrag
+            cdkDragBoundary=".instructions"
+            cdkDragLockAxis="y"
+            *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
+            [formGroup]="instructionsFormGroup"
+            (deleted)="instructions.removeAt(i)">
+            <app-drag-handle cdkDragHandle></app-drag-handle>
+          </app-parsed-recipe-editor-instruction>
+          <div class="add-button-container">
+            <button mat-fab
+                    color="blue"
+                    fxLayoutAlign="center center"
+                    (click)="addInstruction()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </mat-tab>
+        <mat-tab [label]="'recipes.import.instructions.tab_raw' | i18n">
+          <ul *ngIf="recipe && recipe.rawInstructions">
+            <li *ngFor="let instruction of recipe.rawInstructions">
+              {{ instruction }}
+            </li>
+          </ul>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</form>

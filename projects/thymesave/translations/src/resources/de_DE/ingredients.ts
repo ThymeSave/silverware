@@ -3,25 +3,25 @@ import { PluralizableTranslation } from "../../lib/model";
 const ingredients: PluralizableTranslation = {
   "abalone": [
     "Abalone",
-    "Abalonen"
+    "Abalonen",
   ],
   "abiyuch": [
-    "Abiyuch"
+    "Abiyuch",
   ],
   "acerola": [
     "Acerola",
-    "Acerolas"
+    "Acerolas",
   ],
   "acorn": [
     "Eichel",
-    "Eicheln"
+    "Eicheln",
   ],
   "acorn_squash": [
     "Eichelkürbis",
-    "Eichelkürbisse"
+    "Eichelkürbisse",
   ],
   "adobo": [
-    "Adobo"
+    "Adobo",
   ],
   "adzuki_bean": [
     "Adzuki-Bohne",
@@ -29,3311 +29,3376 @@ const ingredients: PluralizableTranslation = {
   ],
   "agar": [
     "Agar",
-    "Agaren"
+    "Agaren",
   ],
   "agave": [
     "Agave",
-    "Agaven"
+    "Agaven",
   ],
   "akutaq": [
     "Akutaq",
-    "Akutaqen"
+    "Akutaqen",
   ],
   "alaska_blackfish": [
-    "Alaska-Schwarzfisch"
+    "Alaska-Schwarzfisch",
   ],
   "alaska_blueberry": [
     "Alaska-Blaubeere",
-    "Alaska-Blaubeeren"
+    "Alaska-Blaubeeren",
   ],
   "alaska_pollock": [
-    "Alaka-Seelachs"
+    "Alaka-Seelachs",
   ],
   "alaska_wild_rhubarb": [
-    "Alaska Wildrhabarber"
+    "Alaska Wildrhabarber",
   ],
   "albacore_tuna": [
-    "weißer Tuhnfisch"
+    "weißer Tuhnfisch",
   ],
   "albizia_gummifera": [
-    "albizia_gummifera"
+    "albizia_gummifera",
   ],
   "alcoholic_beverages": [
     "alkoholisches Getränk",
-    "alkoholische Getränke"
+    "alkoholische Getränke",
   ],
   "alfalfa": [
-    "Alfalfa-Sprossen"
+    "Alfalfa-Sprossen",
   ],
   "allium": [
-    "Lauch"
+    "Lauch",
   ],
   "allspice": [
-    "Nelkenpfeffer"
+    "Nelkenpfeffer",
   ],
   "almond": [
     "Mandel",
-    "Mandeln"
+    "Mandeln",
   ],
   "almond_milk": [
-    "Mandelmilch"
+    "Mandelmilch",
   ],
   "alpine_sweetvetch": [
-    "Alpen-Süßklee"
+    "Alpen-Süßklee",
   ],
   "amaranth": [
-    "Amaranth"
+    "Amaranth",
   ],
   "american_butterfish": [
-    "amerikanischer Butterfisch"
+    "amerikanischer Butterfisch",
   ],
   "american_cranberry": [
     "Cranberry",
-    "Cranberries"
+    "Cranberries",
   ],
   "american_lobster": [
     "amerikanischer Hummer",
-    "amerikanischer Hummer"
+    "amerikanischer Hummer",
   ],
   "american_pokeweed": [
-    "amerikanischer Steinklee"
+    "amerikanischer Steinklee",
   ],
   "american_shad": [
-    "amerikanischer Maifisch"
+    "amerikanischer Maifisch",
   ],
   "anatidae": [
     "Anatidae",
-    "Anatidaen"
+    "Anatidaen",
   ],
   "anchovy": [
     "Sardelle",
-    "Sardellen"
+    "Sardellen",
   ],
   "andean_blackberry": [
     "Anden-Brombeere",
-    "Anden-Brombeeren"
+    "Anden-Brombeeren",
   ],
   "angelica": [
-    "Engelwurz"
+    "Engelwurz",
   ],
   "anguilliformes": [
     "Aal",
-    "Aale"
+    "Aale",
   ],
   "anise": [
-    "Anis"
+    "Anis",
   ],
   "annual_wild_rice": [
-    "einjähriger Wildreis"
+    "einjähriger Wildreis",
   ],
   "apple": [
     "Apfel",
-    "Äpfel"
+    "Äpfel",
   ],
   "apple_cider": [
-    "Apfelwein"
+    "Apfelwein",
   ],
   "apricot": [
     "Aprikose",
-    "Aprikosen"
+    "Aprikosen",
   ],
   "arabica_coffee": [
-    "Arabika-Kaffee"
+    "Arabika-Kaffee",
   ],
   "arctic_blackberry": [
     "arktische Schwarzbeere",
-    "arktische Schwarzbeeren"
+    "arktische Schwarzbeeren",
   ],
   "arrowhead": [
-    "Pfeilkraut"
+    "Pfeilkraut",
   ],
   "arrowroot": [
-    "Pfeilwurz"
+    "Pfeilwurz",
   ],
   "ascidians": [
-    "Aszidien"
+    "Aszidien",
   ],
   "asian_pear": [
     "asiatische Birne",
-    "asiatische Birnen"
+    "asiatische Birnen",
   ],
   "asparagus": [
-    "Spargel"
+    "Spargel",
   ],
   "asparagus_fern": [
-    "Spagelkraut"
+    "Spagelkraut",
   ],
   "asparagus_racemosus": [
-    "Racemosus-Spargel"
-  ],
-  "atlantic_salmon": [
-    "Atlantiklachs"
+    "Racemosus-Spargel",
   ],
   "atlantic_cod": [
-    "Kabeljau"
+    "Kabeljau",
   ],
   "atlantic_croaker": [
-    "Krokodil"
+    "Krokodil",
   ],
   "atlantic_halibut": [
-    "Heilbutt"
+    "Heilbutt",
   ],
   "atlantic_herring": [
     "Hering",
-    "Heringe"
+    "Heringe",
   ],
   "atlantic_mackerel": [
     "Makrele",
-    "Makrelen"
+    "Makrelen",
   ],
   "atlantic_menhaden": [
-    "Menhaden"
+    "Menhaden",
   ],
   "atlantic_pollock": [
     "Seelachs",
-    "Seelachs"
+    "Seelachs",
+  ],
+  "atlantic_salmon": [
+    "Atlantiklachs",
   ],
   "atlantic_wolffish": [
-    "Wolfsbarsch"
+    "Wolfsbarsch",
   ],
   "aubergine": [
     "Aubergine",
-    "Auberginen"
+    "Auberginen",
   ],
   "avocado": [
     "Avokado",
-    "Avokados"
+    "Avokados",
   ],
   "avocado_oil": [
-    "Avokado-Öl"
+    "Avokado-Öl",
   ],
   "babassu_palm": [
-    "Babassupalme"
+    "Babassupalme",
   ],
   "bacon": [
-    "Speck"
+    "Speck",
   ],
   "bacon_cubes": [
-    "Speckwürfel"
+    "Speckwürfel",
   ],
   "bagel": [
-    "Bagel"
+    "Bagel",
   ],
   "baked_beans": [
-    "gebackene Bohnen"
+    "gebackene Bohnen",
   ],
   "baking_soda": [
-    "Backpulver"
+    "Backpulver",
   ],
   "balsamic": [
-    "Balsamico"
+    "Balsamico",
   ],
   "bamboo_shoots": [
-    "Bambussprossen"
+    "Bambussprossen",
   ],
   "banana": [
     "Banane",
-    "Bananen"
+    "Bananen",
   ],
   "barley": [
-    "Gerste"
+    "Gerste",
   ],
   "basil": [
-    "Basilikum"
-  ],
-  "bayberry": [
-    "Lorbeere",
-    "Lorbeeren"
+    "Basilikum",
   ],
   "bay_laurel": [
     "Lorbeerblatt",
-    "Lorbeerblätter"
+    "Lorbeerblätter",
+  ],
+  "bayberry": [
+    "Lorbeere",
+    "Lorbeeren",
   ],
   "bean": [
     "Bohne",
-    "Bohnen"
+    "Bohnen",
   ],
   "bearded_seal": [
     "Bartrobbe",
-    "Bartrobben"
+    "Bartrobben",
   ],
   "beech_nut": [
     "Buchecker",
-    "Bucheckern"
+    "Bucheckern",
   ],
   "beef_roulade": [
     "Rinderroulade",
-    "Rinderrouladen"
+    "Rinderrouladen",
   ],
   "beefalo": [
-    "Rindfleisch"
+    "Rindfleisch",
   ],
   "beer": [
-    "Bier"
+    "Bier",
   ],
   "beluga_whale": [
-    "Beluga-Wal"
+    "Beluga-Wal",
   ],
   "berry_wine": [
-    "Beerenwein"
+    "Beerenwein",
   ],
   "beverages": [
-    "Getränke"
+    "Getränke",
   ],
   "bilberry": [
     "Heidelbeere",
-    "Heidelbeeren"
+    "Heidelbeeren",
   ],
   "biscuit": [
     "Keks",
-    "Kekse"
+    "Kekse",
   ],
   "bison": [
-    "Bison"
+    "Bison",
   ],
   "bitter_gourd": [
     "Bitterkürbis",
-    "Bitterkürbisse"
+    "Bitterkürbisse",
   ],
   "bivalvia": [
     "Muschel",
-    "Muscheln"
+    "Muscheln",
   ],
   "black cabbage": [
-    "Schwarzkohl"
+    "Schwarzkohl",
   ],
   "black_chokeberry": [
     "schwarze Aronia",
-    "schwarze Aronias"
+    "schwarze Aronias",
   ],
   "black_crowberry": [
     "schwarze Krähenbeere",
-    "schwarze Krähenbeeren"
+    "schwarze Krähenbeeren",
   ],
   "black_elderberry": [
     "schwarze Krähenbeere",
-    "schwarze Krähenbeeren"
+    "schwarze Krähenbeeren",
   ],
   "black_eyed_pea": [
     "schwarzäugige Erbse",
-    "schwarzäugige Erbsen"
+    "schwarzäugige Erbsen",
   ],
   "black_huckleberry": [
     "schwarze Heidelbeere",
-    "schwarze Heidelbeeren"
+    "schwarze Heidelbeeren",
   ],
   "black_mulberry": [
     "schwarze Maulbeere",
-    "schwarze Maulbeeren"
+    "schwarze Maulbeeren",
   ],
   "black_plum": [
     "schwarze Pflaume",
-    "schwarze Pflaumen"
+    "schwarze Pflaumen",
   ],
   "black_radish": [
-    "schwarzer Rettich"
+    "schwarzer Rettich",
   ],
   "black_raisin": [
     "schwarze Sultanine",
-    "schwarze Sultaninen"
+    "schwarze Sultaninen",
   ],
   "black_raspberry": [
     "schwarze Himbeere",
-    "schwarze Himbeeren"
+    "schwarze Himbeeren",
   ],
   "black_salsify": [
     "Schwarzwurzel",
-    "Schwarzwurzeln"
+    "Schwarzwurzeln",
   ],
   "black_tea": [
-    "schwarzer Tee"
+    "schwarzer Tee",
   ],
   "black_walnut": [
     "Schwarznuss",
-    "Schwarznüsse"
+    "Schwarznüsse",
   ],
   "blackberry": [
     "Brombeere",
-    "Brombeeren"
+    "Brombeeren",
   ],
   "blackcurrant": [
     "schwarze Joahnisbeere",
-    "schwarze Joahnisbeeren"
+    "schwarze Joahnisbeeren",
   ],
   "blue_cheese": [
-    "Blauschimmelkäse"
+    "Blauschimmelkäse",
   ],
   "blue_crab": [
     "Molukkenkrabbe",
-    "Molukkenkrabben"
+    "Molukkenkrabben",
   ],
   "blue_mussel": [
     "Mieschmuschel",
-    "Mieschmuscheln"
+    "Mieschmuscheln",
   ],
   "blue_whiting": [
     "blauer Wittling",
-    "blaue Wittlinge"
+    "blaue Wittlinge",
   ],
   "bluefish": [
-    "Schnapper"
+    "Schnapper",
   ],
   "bog_bilberry": [
     "Rauschbeere",
-    "Rauschbeeren"
+    "Rauschbeeren",
   ],
   "borage": [
-    "Borderlais"
+    "Borderlais",
   ],
   "bowhead_whale": [
-    "Grönlandwal"
+    "Grönlandwal",
   ],
   "boysenberry": [
     "Boysenbeere",
-    "Boysenbeeren"
+    "Boysenbeeren",
   ],
   "brassicas": [
-    "Kohlgemüse"
+    "Kohlgemüse",
   ],
   "brazil_nut": [
     "Paranuss",
-    "Paranuss"
+    "Paranuss",
   ],
   "breadfruit": [
     "Brotfrucht",
-    "Brotfrüchte"
+    "Brotfrüchte",
   ],
   "breadnut_tree_seed": [
-    "Brotnussbaumsamen"
+    "Brotnussbaumsamen",
   ],
   "breakfast_cereal": [
-    "Frühstücksflocken"
+    "Frühstücksflocken",
   ],
   "broad_bean": [
     "Puffbohne",
-    "Puffbohnen"
+    "Puffbohnen",
   ],
   "broad_whitefish": [
-    "breite Felchen"
+    "breite Felchen",
   ],
   "broccoli": [
-    "Brokkoli"
+    "Brokkoli",
   ],
   "brussel_sprouts": [
-    "Rosenkohl"
+    "Rosenkohl",
   ],
   "buffalo": [
-    "Büffel"
+    "Büffel",
   ],
   "buffalo_currant": [
     "Büffeljohannisbeere",
-    "Büffeljohannisbeeren"
+    "Büffeljohannisbeeren",
   ],
   "bulgur": [
-    "Bulgur"
+    "Bulgur",
   ],
   "burbot": [
     "Quappe",
-    "Quappen"
+    "Quappen",
   ],
   "burdock": [
     "Klette",
-    "Kletten"
+    "Kletten",
   ],
   "butter": [
-    "Butter"
+    "Butter",
   ],
   "butter_substitute": [
-    "Butterersatz"
+    "Butterersatz",
   ],
   "butterfat": [
-    "Butterfett"
+    "Butterfett",
   ],
   "buttermilk": [
-    "Buttermilch"
+    "Buttermilch",
   ],
   "butternut": [
     "Butternuss",
-    "Butternüsse"
+    "Butternüsse",
   ],
   "butternut_squash": [
-    "Butternusskürbis"
+    "Butternusskürbis",
   ],
   "cabbage": [
-    "Grünkohl"
+    "Grünkohl",
   ],
   "cake": [
-    "Kuchen"
+    "Kuchen",
   ],
   "calabash": [
-    "Kalebasse"
+    "Kalebasse",
   ],
   "canada_blueberry": [
     "kanadische Blaubeere",
-    "Kanadische Blaubeeren"
+    "Kanadische Blaubeeren",
   ],
   "candy_bar": [
-    "Schokoriegel"
+    "Schokoriegel",
   ],
   "cannellini_bean": [
     "Cannellini-Bohne",
-    "Cannellini-Bohnen"
+    "Cannellini-Bohnen",
   ],
   "canola": [
-    "Raps"
+    "Raps",
   ],
   "canola_oil": [
-    "Rapsöl"
+    "Rapsöl",
   ],
   "cantaloupe_melon": [
     "Cantaloupe-Melone",
-    "Cantaloupe-Melonen"
+    "Cantaloupe-Melonen",
   ],
   "cape_gooseberry": [
-    "Kapstachelbeere"
+    "Kapstachelbeere",
   ],
   "capers": [
-    "Kapern"
+    "Kapern",
   ],
   "caraway": [
-    "Kümmel"
+    "Kümmel",
   ],
   "cardamom": [
-    "Kardamom"
+    "Kardamom",
   ],
   "cardoon": [
     "Kardone",
-    "Kardonen"
+    "Kardonen",
   ],
   "carob": [
-    "Johnanisbrot"
+    "Johnanisbrot",
   ],
   "carp_bream": [
     "Karpfenbrasse",
-    "Karpfenbrassen"
+    "Karpfenbrassen",
   ],
   "carrot": [
     "Karotte",
-    "Karotten"
+    "Karotten",
   ],
   "cascade_huckleberry": [
     "Kaskaden-Heidelbeere",
-    "Kaskaden-Heidelbeeren"
+    "Kaskaden-Heidelbeeren",
   ],
   "casein": [
-    "Kasein"
+    "Kasein",
   ],
   "cashew_nut": [
     "Cashewnuss",
-    "Cashewnüsse"
+    "Cashewnüsse",
   ],
   "cassava": [
-    "Maniok"
+    "Maniok",
   ],
   "catfish": [
-    "Wels"
+    "Wels",
   ],
   "catjang_pea": [
     "Katzenjang-Erbse",
-    "Katzenjang-Erbsen"
+    "Katzenjang-Erbsen",
   ],
   "cattle": [
     "Rind",
-    "Rind"
+    "Rind",
   ],
   "cauliflower": [
     "Blumenkohl",
-    "Blumenkohl"
+    "Blumenkohl",
   ],
   "celeriac": [
-    "Knollenselerie"
+    "Knollenselerie",
+  ],
+  "celery": [
+    "Staudensellerie",
   ],
   "celery leaves": [
     "Staudensellerieblatt",
-    "Staudensellerieblätter"
-  ],
-  "celery": [
-    "Staudensellerie"
+    "Staudensellerieblätter",
   ],
   "celery_stalks": [
-    "Stangensellerie"
+    "Stangensellerie",
   ],
   "cereal_products": [
-    "Cerealien"
+    "Cerealien",
   ],
   "cetacea": [
-    "Cetacea"
+    "Cetacea",
   ],
   "ceylon_cinnamon": [
-    "Ceylonzimt"
+    "Ceylonzimt",
   ],
   "channel_catfish": [
-    "Kanalwels"
+    "Kanalwels",
   ],
   "chanterelle": [
     "Pfifferling",
-    "Pfifferlinge"
+    "Pfifferlinge",
   ],
   "charr": [
-    "Saibling"
+    "Saibling",
   ],
   "chayote": [
     "Stachelgurke",
-    "Stachelgurken"
+    "Stachelgurken",
   ],
   "cheddar_cheese": [
-    "Cheddar"
+    "Cheddar",
   ],
   "cheese": [
-    "Käse"
+    "Käse",
   ],
   "cherimoya": [
-    "Cherimoya"
+    "Cherimoya",
   ],
   "cherry_tomato": [
     "Cherry-Tomate",
-    "Cherry-Tomaten"
+    "Cherry-Tomaten",
   ],
   "chervil": [
-    "Kerbel"
+    "Kerbel",
   ],
   "chestnut": [
     "Marone",
-    "Maronen"
+    "Maronen",
   ],
   "chewing_gum": [
-    "Kaugummi"
+    "Kaugummi",
   ],
   "chia": [
-    "Chia"
+    "Chia",
   ],
   "chicken": [
-    "Hähnchen"
+    "Hähnchen",
   ],
   "chicken_breast": [
     "Hähnchenbrust",
-    "Hähnchenbrüste"
+    "Hähnchenbrüste",
   ],
   "chicken_breast_filet": [
     "Hähnchenbrustfilet",
-    "Hähnchenbrustfilets"
+    "Hähnchenbrustfilets",
   ],
   "chicken_broth": [
-    "Hühnerbrühe"
+    "Hühnerbrühe",
   ],
   "chickpea": [
     "Kichererbse",
-    "Kichererbsen"
-  ],
-  "chicory leaves": [
-    "Chicoréeblätter"
-  ],
-  "chicory roots": [
-    "Wurzelwerk"
+    "Kichererbsen",
   ],
   "chicory": [
-    "Chicorée"
+    "Chicorée",
+  ],
+  "chicory leaves": [
+    "Chicoréeblätter",
+  ],
+  "chicory roots": [
+    "Wurzelwerk",
+  ],
+  "chili_flakes": [
+    "Chili-Flocken",
   ],
   "chilli": [
     "Chilli",
-    "Chillis"
+    "Chillis",
   ],
   "chilli_pepper": [
-    "Chillischote",
-    "Chillischoten"
+    "Chilischote",
+    "Chilischote",
   ],
   "chineese_plum": [
     "chinesiche Pflaume",
-    "chinesiche Pflaumen"
+    "chinesiche Pflaumen",
   ],
   "chinese_bayberry": [
     "chinesische Lorbeere",
-    "Chinesische Lorbeeren"
+    "Chinesische Lorbeeren",
   ],
   "chinese_broccoli": [
-    "chinesicher Brokkoli"
+    "chinesicher Brokkoli",
   ],
   "chinese_cabbage": [
-    "Chinakohl"
+    "Chinakohl",
   ],
   "chinese_chestnut": [
     "chinesische Kastanie",
-    "chinesische Kastanien"
+    "chinesische Kastanien",
   ],
   "chinese_chives": [
-    "chinesischer Schnittlauch"
+    "chinesischer Schnittlauch",
   ],
   "chinese_cinnamon": [
-    "chinesicher Zimt"
+    "chinesicher Zimt",
   ],
   "chinese_mustard": [
-    "chinesicher Senf"
+    "chinesicher Senf",
   ],
   "chinese_water_chestnut": [
     "chinesische Wasserkastanie",
-    "chinesische Wasserkastanien"
+    "chinesische Wasserkastanien",
   ],
   "chinook salmon": [
-    "Chinook-Lachs"
+    "Chinook-Lachs",
   ],
   "chives": [
-    "Schnittlauch"
+    "Schnittlauch",
   ],
   "chocolate": [
-    "Schokolade"
+    "Schokolade",
   ],
   "chocolate_mousse": [
-    "Mousse au Chocolat"
+    "Mousse au Chocolat",
   ],
   "chocolate_spread": [
-    "Schokoladenaufstrich"
+    "Schokoladenaufstrich",
   ],
   "chum salmon": [
-    "Ketalachs"
+    "Ketalachs",
   ],
   "cichlidae": [
     "Buntbarsch",
-    "Buntbarsche"
+    "Buntbarsche",
   ],
   "cinnamon": [
-    "Zimt"
+    "Zimt",
   ],
   "cisco": [
-    "Cisco"
+    "Cisco",
   ],
   "citrus": [
     "Zitrone",
-    "Zitronen"
+    "Zitronen",
   ],
   "clam": [
     "Muschel",
-    "Muscheln"
+    "Muscheln",
   ],
   "clarified_butter": [
-    "Butterschmalz"
+    "Butterschmalz",
   ],
   "clawed_lobster": [
-    "Scherenhummer"
+    "Scherenhummer",
   ],
   "clementine": [
     "Clementine",
-    "Clementinen"
+    "Clementinen",
   ],
   "climbing_bean": [
     "Kletterbohne",
-    "Kletterbohnen"
+    "Kletterbohnen",
   ],
   "cloud_ear_fungus": [
-    "Wolkenohrpilz"
+    "Wolkenohrpilz",
   ],
   "cloudberry": [
     "Moltebeere",
-    "Moltebeeren"
+    "Moltebeeren",
   ],
   "cloves": [
     "Nelke",
-    "Nelken"
+    "Nelken",
   ],
   "clupeinae": [
-    "Clupeinae"
+    "Clupeinae",
   ],
   "coalfish_pollock": [
-    "Köhler-Seelachs"
+    "Köhler-Seelachs",
   ],
   "cocktail": [
     "Cocktail",
-    "Cocktails"
+    "Cocktails",
   ],
   "cocoa_bean": [
     "Kakaobohne",
-    "Kakaobohnen"
+    "Kakaobohnen",
   ],
   "cocoa_butter": [
-    "Kakaobutter"
+    "Kakaobutter",
   ],
   "cocoa_liquor": [
-    "Kakaolikör"
+    "Kakaolikör",
   ],
   "cocoa_powder": [
-    "Kakaopulver"
+    "Kakaopulver",
   ],
   "cocoa_products": [
     "Kakaoerzeugnis",
-    "Kakaoerzeugnisse"
+    "Kakaoerzeugnisse",
   ],
   "coconut": [
     "Kokosnuss",
-    "Kokosnüsse"
+    "Kokosnüsse",
   ],
   "coconut_milk": [
-    "Kokosnussmilch"
+    "Kokosnussmilch",
   ],
   "coconut_oil": [
-    "Kokosöl"
+    "Kokosöl",
   ],
   "coffee": [
-    "Kaffee"
+    "Kaffee",
   ],
   "coffee_mocha": [
-    "Kaffee-Mokka"
+    "Kaffee-Mokka",
   ],
   "coffee_products": [
     "Kaffee-Produkt",
-    "Kaffee-Produkte"
+    "Kaffee-Produkte",
   ],
   "coffee_substitute": [
-    "Kaffeeersatz"
+    "Kaffeeersatz",
   ],
   "coho salmon": [
-    "Köhlerlachs"
+    "Köhlerlachs",
   ],
   "cold_cut": [
-    "Aufschnitt"
+    "Aufschnitt",
   ],
   "colorado_pinyon": [
     "bunte Pinie",
-    "bunte Pinien"
+    "bunte Pinien",
   ],
   "columbidae": [
     "Hummel",
-    "Hummeln"
+    "Hummeln",
   ],
   "common salsify": [
     "Schwarzwurzel",
-    "Schwarzwurzeln"
+    "Schwarzwurzeln",
   ],
   "common_bean": [
     "Stangenbohne",
-    "Stangenbohnen"
+    "Stangenbohnen",
   ],
   "common_beet": [
-    "rote Beete"
+    "rote Beete",
   ],
   "common_buckwheat": [
-    "gewöhnlicher Buchweizen"
+    "gewöhnlicher Buchweizen",
   ],
   "common_cabbage": [
-    "Wirsingkohl"
+    "Wirsingkohl",
   ],
   "common_carp": [
-    "Karpfen"
+    "Karpfen",
   ],
   "common_chokecherry": [
-    "Apfelkirsche"
+    "Apfelkirsche",
   ],
   "common_dab": [
-    "Klacks"
+    "Klacks",
   ],
   "common_grape": [
     "Weintraube",
-    "Weintrauben"
+    "Weintrauben",
   ],
   "common_hazelnut": [
     "Haselnuss",
-    "Haselnüsse"
+    "Haselnüsse",
   ],
   "common_ling": [
-    "Leng"
-  ],
-  "common_mushroom": [
-    "Pilz",
-    "Pilze"
+    "Leng",
   ],
   "common_octopus": [
-    "Oktopus"
+    "Oktopus",
   ],
   "common_oregano": [
-    "Oregano"
+    "Oregano",
   ],
   "common_pea": [
     "Platterbse",
-    "Platterbsen"
+    "Platterbsen",
   ],
   "common_persimmon": [
-    "Kakipflaume"
+    "Kakipflaume",
   ],
   "common_sage": [
-    "Salbei"
+    "Salbei",
   ],
   "common_thyme": [
-    "Thymian"
+    "Thymian",
   ],
   "common_verbena": [
-    "Verbena"
+    "Verbena",
   ],
   "common_walnut": [
     "Walnuss",
-    "Walnüsse"
+    "Walnüsse",
   ],
   "common_wheat": [
-    "Weizen"
+    "Weizen",
   ],
   "conch": [
-    "Muschel"
+    "Muschel",
   ],
   "condensed_milk": [
-    "Dosenmilch"
+    "Dosenmilch",
   ],
   "cooking_oil": [
-    "Speiseöl"
+    "Speiseöl",
   ],
   "coriander": [
-    "Koriander"
+    "Koriander",
   ],
   "corn": [
-    "Mais"
+    "Mais",
   ],
   "corn_chip": [
     "Maischip",
-    "Maischips"
+    "Maischips",
   ],
   "corn_grits": [
-    "Maisgrütze"
+    "Maisgrütze",
   ],
   "corn_oil": [
-    "Maisöl"
+    "Maisöl",
   ],
   "corn_salad": [
-    "Maissalat"
+    "Maissalat",
   ],
   "cornbread": [
-    "Maisbrot"
+    "Maisbrot",
   ],
   "cornflakes": [
-    "Cornflakes"
+    "Cornflakes",
   ],
   "cornmint": [
-    "Kornminze"
+    "Kornminze",
   ],
   "cottage_cheese": [
-    "Hüttenkässe"
+    "Hüttenkässe",
   ],
   "cottonseed": [
-    "Baumwollsamen"
+    "Baumwollsamen",
   ],
   "cottonseed_oil": [
-    "Baumwollsaatöl"
+    "Baumwollsaatöl",
   ],
   "cowpea": [
     "Kuhbonhne",
-    "Kuhbonhnen"
+    "Kuhbonhnen",
   ],
   "crab": [
     "Krabbe",
-    "Krabben"
+    "Krabben",
   ],
   "cracker": [
-    "Cracker"
+    "Cracker",
   ],
   "crayfish": [
-    "Flusskrebse"
+    "Flusskrebse",
   ],
   "cream": [
-    "Sahne"
+    "Sahne",
   ],
   "cream_substitute": [
-    "Rahmersatz"
+    "Rahmersatz",
   ],
   "crisp_bread": [
-    "Knäckebrot"
+    "Knäckebrot",
   ],
   "crosne": [
-    "Crosse"
+    "Crosse",
+  ],
+  "croutons": [
+    "Croutons",
   ],
   "crustaceans": [
     "Krustentier",
-    "Krustentiere"
+    "Krustentiere",
   ],
   "cubanelle_pepper": [
-    "cubanelle pepper"
+    "cubanelle pepper",
   ],
   "cucumber": [
     "Gurke",
-    "Gurken"
+    "Gurken",
   ],
   "cucurbita": [
-    "Kucurbita"
+    "Kucurbita",
   ],
   "cumin": [
-    "Kreuzkümmel"
+    "Kreuzkümmel",
   ],
   "curd": [
-    "Quark"
+    "Quark",
   ],
   "curry_paste": [
-    "Curry-Paste"
+    "Curry-Paste",
   ],
   "curry_powder": [
-    "Curry-Pulver"
+    "Curry-Pulver",
   ],
   "cusk": [
-    "Laugengebäck"
+    "Laugengebäck",
   ],
   "custard_apple": [
     "Zimtapfel",
-    "Zimtäpfel"
+    "Zimtäpfel",
   ],
   "cuttlefish": [
-    "Tintenfisch"
+    "Tintenfisch",
   ],
   "daikon_radish": [
-    "Daikon-Rettich"
+    "Daikon-Rettich",
   ],
   "dandelion": [
-    "Löwenzahn"
+    "Löwenzahn",
   ],
   "date": [
     "Dattel",
-    "Datteln"
+    "Datteln",
   ],
   "deer": [
-    "Rehfleisch"
+    "Rehfleisch",
   ],
   "deerberry": [
     "Hirschbeere",
-    "Hirschbeeren"
+    "Hirschbeeren",
   ],
   "dessert_wine": [
-    "Dessert-Wein"
+    "Dessert-Wein",
   ],
   "devilfish": [
-    "Teufelsfisch"
+    "Teufelsfisch",
   ],
   "dill": [
-    "Dill"
+    "Dill",
   ],
   "dock": [
-    "Hafenbecken"
+    "Hafenbecken",
   ],
   "dolphin_fish": [
-    "Delfinfisch"
+    "Delfinfisch",
   ],
   "domestic_goat": [
-    "Hausziege"
+    "Hausziege",
   ],
   "domestic_pig": [
-    "Hausschwein"
+    "Hausschwein",
   ],
   "dough": [
-    "Teig"
+    "Teig",
   ],
   "dragee": [
     "Dragee",
-    "Dragees"
+    "Dragees",
   ],
   "dried_milk": [
-    "Milchpulver"
+    "Milchpulver",
   ],
   "dripping": [
-    "Bratenfett"
+    "Bratenfett",
   ],
   "dulce_de_leche": [
-    "Milchrahm"
+    "Milchrahm",
   ],
   "dumpling": [
-    "Knödel"
+    "Knödel",
   ],
   "dungeness_crab": [
     "Langustenkrabbe",
-    "Langustenkrabben"
+    "Langustenkrabben",
   ],
   "durian": [
-    "Durian"
+    "Durian",
   ],
   "eastern_oyster": [
-    "östliche Auster"
+    "östliche Auster",
   ],
   "eddoe": [
-    "Eddoe"
+    "Eddoe",
   ],
   "edible_shell": [
-    "essbare Därme"
+    "essbare Därme",
+  ],
+  "egg": [
+    "Ei",
+    "Eier",
   ],
   "egg_substitute": [
-    "Eiersatz"
+    "Eiersatz",
   ],
   "egg_yolk": [
     "Eigelb",
-    "Eigelbe"
+    "Eigelbe",
   ],
   "eggplant": [
     "Aubergine",
-    "Auberginen"
+    "Auberginen",
   ],
   "eggs": [
     "Ei",
-    "Eier"
+    "Eier",
   ],
   "elderberry": [
-    "Holunder"
+    "Holunder",
   ],
   "elk": [
-    "Elch"
+    "Elch",
   ],
   "elliotts_blueberry": [
-    "Elliotts Blaubeere"
+    "Elliotts Blaubeere",
   ],
   "emu": [
-    "Emu"
+    "Emu",
   ],
   "endive": [
     "Endivie",
-    "Endivien"
+    "Endivien",
   ],
   "enokitake": [
-    "Enokitake"
+    "Enokitake",
   ],
   "epazote": [
     "Epazote",
-    "Epazoten"
+    "Epazoten",
   ],
   "european_anchovy": [
     "europäische Sardelle",
-    "europäische Sardellen"
+    "europäische Sardellen",
   ],
   "european_chestnut": [
     "Edelkastanie",
-    "Edelkastanien"
+    "Edelkastanien",
   ],
   "european_cranberry": [
     "europäische Preiselbeere",
-    "europäische Preiselbeeren"
+    "europäische Preiselbeeren",
   ],
   "european_plum": [
     "Pflaume",
-    "Pflaumen"
+    "Pflaumen",
   ],
   "european_rabbit": [
-    "Hase"
+    "Hase",
   ],
   "evaporated_milk": [
-    "Konensmilch"
+    "Konensmilch",
   ],
   "evening_primrose": [
     "Primel",
-    "Primeln"
+    "Primeln",
   ],
   "evergreen_blackberry": [
     "immergrüne Brombeere",
-    "immergrüne Brombeeren"
+    "immergrüne Brombeeren",
   ],
   "evergreen_huckleberry": [
     "immergrüne Heidelbeere",
-    "immergrüne Heidelbeeren"
+    "immergrüne Heidelbeeren",
+  ],
+  "falafel": [
+    "Falafel",
   ],
   "fats_oils": [
-    "Fett oder Öl"
+    "Fett oder Öl",
   ],
   "feijoa": [
-    "Feijoa"
+    "Feijoa",
   ],
   "fennel": [
-    "Fenchel"
+    "Fenchel",
   ],
   "fenugreek": [
-    "Bockshornklee"
+    "Bockshornklee",
   ],
   "fermented_milk": [
-    "fermentierte Milch"
+    "fermentierte Milch",
   ],
   "fig": [
     "Feige",
-    "Feigen"
+    "Feigen",
   ],
   "fireweed": [
-    "Feuergras"
+    "Feuergras",
   ],
   "fish_oil": [
-    "Fischöl"
+    "Fischöl",
   ],
   "fishes": [
-    "Fische"
+    "Fische",
   ],
   "flatfish": [
-    "Plattfisch"
+    "Plattfisch",
   ],
   "flaxseed": [
-    "Leinsamen"
+    "Leinsamen",
   ],
   "florida_pompano": [
-    "florida Pompano"
+    "florida Pompano",
   ],
   "flour": [
-    "Mehl"
+    "Mehl",
   ],
   "focaccia": [
-    "Focaccia"
-  ],
-  "fortified_wine": [
-    "Likörwein"
+    "Focaccia",
   ],
   "food_starch": [
-    "Speisestärke"
+    "Speisestärke",
+  ],
+  "fortified_wine": [
+    "Likörwein",
   ],
   "fox_grape": [
     "Fuchstraube",
-    "Fuchstrauben"
+    "Fuchstrauben",
   ],
   "french_plantain": [
-    "Breitwegerich"
+    "Breitwegerich",
   ],
   "french_toast": [
-    "französicher Toast"
+    "französicher Toast",
   ],
   "fresh_cream": [
-    "frische Sahne"
+    "frische Sahne",
   ],
   "freshwater_drum": [
-    "Süßwassertrommel"
+    "Süßwassertrommel",
   ],
   "freshwater_eel": [
-    "Flussaal"
+    "Flussaal",
   ],
   "frozen_yogurt": [
-    "Frozen Yogurt"
+    "Frozen Yogurt",
   ],
   "fruit-flavor_drink": [
-    "Getränk mit Fruchtgeschmack"
+    "Getränk mit Fruchtgeschmack",
   ],
   "fruit_gum": [
-    "Fruchtgummi"
+    "Fruchtgummi",
   ],
   "fruit_juice": [
-    "Fruchtsaft"
+    "Fruchtsaft",
   ],
   "fruit_preserve": [
-    "Fruchtkonfitüre"
+    "Fruchtkonfitüre",
   ],
   "fruit_salad": [
-    "Obstsalat"
+    "Obstsalat",
   ],
   "fruits": [
-    "Früchte"
+    "Früchte",
   ],
   "frybread": [
-    "Bratrbot"
+    "Bratrbot",
   ],
   "fudge": [
-    "Karamell"
+    "Karamell",
   ],
   "gadiformes": [
-    "Fadenwürmer"
+    "Fadenwürmer",
   ],
   "gadus": [
-    "Gadus"
+    "Gadus",
   ],
   "garden_cress": [
-    "Kresse"
+    "Kresse",
   ],
   "garden_onion": [
     "Gartenzwiebel",
-    "Gartenzwiebeln"
+    "Gartenzwiebeln",
   ],
   "garden_rhubarb": [
-    "Rhabarber"
+    "Rhabarber",
   ],
   "garden_tomato": [
     "Gartentomate",
-    "Gartentomaten"
+    "Gartentomaten",
   ],
   "garfish": [
-    "Hornhecht"
+    "Hornhecht",
   ],
   "garland_chrysanthemum": [
     "Chrysanthemengirlande",
-    "Chrysanthemengirlande"
+    "Chrysanthemengirlande",
   ],
   "garlic": [
-    "Knoblauch"
+    "Knoblauch",
   ],
   "garlic_glove": [
     "Knoblauchzehe",
-    "Knoblauchzehen"
+    "Knoblauchzehen",
   ],
   "garlic_powder": [
-    "Knoblauchpulver"
+    "Knoblauchpulver",
   ],
   "gelatin": [
-    "Gelantine"
+    "Gelantine",
   ],
   "gelatin_dessert": [
-    "Gelatine-Dessert"
+    "Gelatine-Dessert",
   ],
   "gentiana_lutea": [
     "Enzianwurzel",
-    "Enzianwurzeln"
+    "Enzianwurzeln",
   ],
   "german_camomile": [
-    "Kamille"
+    "Kamille",
   ],
   "giant_butterbur": [
-    "Pestwurz"
+    "Pestwurz",
   ],
   "gin": [
-    "Gin"
+    "Gin",
   ],
   "ginger": [
-    "Ingwer"
+    "Ingwer",
   ],
   "ginkgo_nuts": [
     "Ginkgonuss",
-    "Ginkgonüsse"
+    "Ginkgonüsse",
   ],
   "ginseng": [
-    "Ginseng"
+    "Ginseng",
   ],
   "globe_artichoke": [
     "Artischocke",
-    "Artischocken"
+    "Artischocken",
+  ],
+  "gnocchi": [
+    "Gnocchi",
   ],
   "goji": [
     "Goji",
-    "Gojis"
+    "Gojis",
+  ],
+  "gold_raisins": [
+    "goldene Rosinen",
   ],
   "gooseberry": [
     "Stachelbeere",
-    "Stachelbeeren"
+    "Stachelbeeren",
   ],
   "gram_bean": [
     "Kichererbse",
-    "Kichererbsen"
+    "Kichererbsen",
   ],
   "grape": [
     "Weintraube",
-    "Weintrauben"
+    "Weintrauben",
   ],
   "grape_wine": [
-    "Wein"
+    "Wein",
   ],
   "grapefruit": [
     "Grapefruit",
-    "Grapefruits"
+    "Grapefruits",
   ],
   "grapeseed_oil": [
-    "Traubenenkernöl"
+    "Traubenenkernöl",
   ],
   "grass_pea": [
     "Wicke",
-    "Wicken"
+    "Wicken",
+  ],
+  "gratin_cheese": [
+    "Gratinkäse",
   ],
   "greater_sturgeon": [
-    "großer Stör"
+    "großer Stör",
   ],
   "greek_feta_cheese": [
-    "Feta"
+    "Feta",
+  ],
+  "greek_yogurt": [
+    "griechischer Joghurt",
   ],
   "green_apple": [
     "grüner Apfel",
-    "grüne Äpfel"
+    "grüne Äpfel",
   ],
   "green_bean": [
     "grüne Bohne",
-    "grüne Bohnen"
+    "grüne Bohnen",
   ],
   "green_bell_pepper": [
-    "grüne Paprika"
+    "grüne Paprika",
   ],
   "green_cabbage": [
-    "Blaukraut"
+    "Blaukraut",
   ],
   "green_grape": [
     "grüne Weintraube",
-    "grüne Weintrauben"
+    "grüne Weintrauben",
   ],
   "green_lentil": [
     "grüne Linse",
-    "grüne Linsen"
+    "grüne Linsen",
   ],
   "green_onion": [
     "Fühlingszwiebel",
-    "Fühlingszwiebeln"
+    "Fühlingszwiebeln",
   ],
   "green_plum": [
     "grüne Pflaume",
-    "grüne Pflaumen"
+    "grüne Pflaumen",
   ],
   "green_tea": [
-    "grüner Tee"
+    "grüner Tee",
   ],
   "green_turtle": [
-    "Suppenschildkröte"
+    "Suppenschildkröte",
   ],
   "green_vegetables": [
-    "grünes Gemüse"
+    "grünes Gemüse",
   ],
   "green_zucchini": [
     "grüne Zucchini",
-    "grüne Zucchinis"
+    "grüne Zucchinis",
   ],
   "greenland_halibut": [
-    "schwarzer Heilbutt"
+    "schwarzer Heilbutt",
   ],
   "greenthread_tea": [
-    "Grünkerntee"
+    "Grünkerntee",
   ],
   "greylag_goose": [
-    "Graugans"
+    "Graugans",
   ],
   "ground_meat": [
-    "Hackfleisch"
+    "Hackfleisch",
   ],
   "groundcherry": [
     "Erdkirsche",
-    "Erdkirsche"
+    "Erdkirsche",
   ],
   "grouper": [
-    "Zackenbarsch"
+    "Zackenbarsch",
   ],
   "guarana": [
-    "Guarana"
+    "Guarana",
   ],
   "guava": [
-    "Guava"
+    "Guava",
   ],
   "guinea_hen": [
     "Perlhuhn",
-    "Perlhühner"
+    "Perlhühner",
   ],
   "haddock": [
-    "Schellfisch"
+    "Schellfisch",
   ],
   "half-highbush blueberry": [
     "halbhohe Blaubeere",
-    "halbhohe Blaubeeren"
+    "halbhohe Blaubeeren",
   ],
   "ham": [
-    "Schinken"
+    "Schinken",
   ],
   "hard_wheat": [
-    "Hartweizen"
+    "Hartweizen",
+  ],
+  "harissa": [
+    "Harissa",
   ],
   "hawthorn": [
-    "Weißdorn"
+    "Weißdorn",
   ],
   "hazelnut": [
     "Haselnuss",
-    "Haselnüsse"
+    "Haselnüsse",
   ],
   "heart_of_palm": [
     "Palmherz",
-    "Palmherzen"
+    "Palmherzen",
   ],
   "hedge_mustard": [
-    "Hecken-Senf"
+    "Hecken-Senf",
   ],
   "herb_butter": [
-    "Kräuterbutter"
+    "Kräuterbutter",
   ],
   "herbal_tea": [
-    "Kräutertee"
+    "Kräutertee",
+  ],
+  "herbs": [
+    "Kräuter",
   ],
   "herbs_spices": [
-    "Kräuter und Gewürze"
+    "Kräuter und Gewürze",
   ],
   "hibiscus_tea": [
-    "Hibiskustee"
+    "Hibiskustee",
   ],
   "hickory nut": [
     "Walnuss",
-    "Walnüsse"
+    "Walnüsse",
   ],
   "highbush_blueberry": [
     "Heidelbeere",
-    "Heilbeeren"
+    "Heilbeeren",
   ],
   "hippoglossus": [
-    "Hippoglossus"
+    "Hippoglossus",
   ],
   "honey": [
-    "Honig"
+    "Honig",
   ],
   "horchata": [
-    "Horchata"
+    "Horchata",
   ],
   "horned_melon": [
     "Zuckermelone",
-    "Zuckermelonen"
+    "Zuckermelonen",
   ],
   "horse": [
-    "Pferd"
+    "Pferd",
   ],
   "horseradish": [
-    "Meerrettich"
+    "Meerrettich",
   ],
   "horseradish_tree": [
-    "Meerrettich-Baum"
+    "Meerrettich-Baum",
   ],
   "hot_chocolate": [
-    "heiße Schokolade"
+    "heiße Schokolade",
+  ],
+  "hot_sauce": [
+    "scharfe Soße",
   ],
   "hot_water": [
-    "heißes Wasser"
+    "heißes Wasser",
+  ],
+  "hummus": [
+    "Hummus",
   ],
   "hyacinth_bean": [
     "Gartenbohne",
-    "Gartenbohnen"
+    "Gartenbohnen",
   ],
   "hyssop": [
     "Ysop",
-    "Ysopen"
+    "Ysopen",
   ],
   "ice_cream": [
-    "Eis-Creme"
+    "Eis-Creme",
   ],
   "ice_cream_cone": [
     "Eiswaffel",
-    "Eiswaffeln"
+    "Eiswaffeln",
   ],
   "iceberg_lettuce": [
-    "Eisbergsalat"
+    "Eisbergsalat",
   ],
   "icing": [
-    "Zuckerguss"
+    "Zuckerguss",
   ],
   "icing_sugar": [
-    "Puderzucker"
+    "Puderzucker",
   ],
   "irish_moss": [
-    "irisches Moos"
+    "irisches Moos",
   ],
   "italian_herbs": [
-    "italienische Kräuter"
+    "italienische Kräuter",
   ],
   "italian_oregano": [
-    "italienische Kräuter"
+    "italienische Kräuter",
   ],
   "italian_sweet_red_pepper": [
-    "italienische rote Paprika"
+    "italienische rote Paprika",
   ],
   "jackfruit": [
     "Jackfrucht",
-    "Jackfrüchte"
+    "Jackfrüchte",
+  ],
+  "jalapeno": [
+    "Jalapeno",
+    "Jalapenos",
   ],
   "jalapeno_pepper": [
-    "Jalapeno-Pfeffer"
+    "Jalapeno-Pfeffer",
   ],
   "japanese_chestnut": [
     "japanische Kastanie",
-    "japanische Kastanien"
+    "japanische Kastanien",
   ],
   "japanese_persimmon": [
-    "japanische Dattelpflaumen"
+    "japanische Dattelpflaumen",
   ],
   "japanese_pumpkin": [
     "japanischer Kürbis",
-    "japanischer Kürbis"
+    "japanischer Kürbis",
   ],
   "japanese_sea_bass": [
-    "japanischer Wolfsbarsch"
+    "japanischer Wolfsbarsch",
   ],
   "japanese_walnut": [
     "japanische Walnuss",
-    "japanische Walnüsse"
+    "japanische Walnüsse",
   ],
   "java_plum": [
     "Mirabelle",
-    "Mirabellen"
+    "Mirabellen",
   ],
   "jellyfish": [
     "Qualle",
-    "Quallen"
+    "Quallen",
   ],
   "jerusalem_artichoke": [
-    "Topinambur"
+    "Topinambur",
   ],
   "jews_ear": [
     "Judenohr",
-    "Judenohren"
+    "Judenohren",
   ],
   "jicama": [
-    "Jicama"
+    "Jicama",
   ],
   "jostaberry": [
     "Jostaberry",
-    "Jostaberries"
+    "Jostaberries",
   ],
   "jujube": [
     "Johannisbeere",
-    "Johannisbeeren"
+    "Johannisbeeren",
   ],
   "juniperus_communis": [
-    "Wacholder"
+    "Wacholder",
   ],
   "junket": [
-    "Junket"
+    "Junket",
   ],
   "jute": [
-    "Jute"
+    "Jute",
   ],
   "kai_lan": [
-    "chinesicher Brokkoli"
+    "chinesicher Brokkoli",
   ],
   "kale": [
-    "Grünkohl"
+    "Grünkohl",
   ],
   "kefir": [
-    "Kefir"
+    "Kefir",
   ],
   "kelp": [
-    "Seetang"
+    "Seetang",
   ],
   "ketchup": [
-    "Ketchup"
+    "Ketchup",
   ],
   "king_mackerel": [
-    "Königsmakrele"
+    "Königsmakrele",
   ],
   "king_prawns": [
     "Riesengarnele",
-    "Riesengarnelen"
+    "Riesengarnelen",
   ],
   "kiwi": [
     "Kiwi",
-    "Kiwis"
+    "Kiwis",
   ],
   "kohlrabi": [
-    "Kohlrabi"
+    "Kohlrabi",
   ],
   "komatsuna": [
-    "Komatsuna"
+    "Komatsuna",
   ],
   "kombu": [
-    "Kombu"
+    "Kombu",
   ],
   "kumquat": [
-    "Kumquat"
+    "Kumquat",
   ],
   "lake_trout": [
-    "Forelle"
+    "Forelle",
   ],
   "lambsquarters": [
-    "Lammviertel"
+    "Lammviertel",
   ],
   "lantern_fruit": [
     "Laternenfrucht",
-    "Laternenfrüchte"
+    "Laternenfrüchte",
   ],
   "lard": [
-    "Schmalz"
+    "Schmalz",
   ],
   "lasagna_plate": [
     "Lasagne-Platte",
-    "Lasagne-Platten"
+    "Lasagne-Platten",
   ],
   "leather_chiton": [
     "Lederchiton",
-    "Lederchitons"
+    "Lederchitons",
   ],
   "leavening_agent": [
-    "Backtriebmittel"
+    "Backtriebmittel",
   ],
   "leek": [
-    "Lauch"
+    "Lauch",
   ],
   "lemon": [
     "Zitrone",
-    "Zitronen"
+    "Zitronen",
   ],
   "lemon_balm": [
-    "Zitronenmelisse"
+    "Zitronenmelisse",
   ],
   "lemon_grass": [
-    "Zitronengrass"
+    "Zitronengrass",
   ],
   "lemon_juice": [
-    "Zitronensaft"
+    "Zitronensaft",
   ],
   "lemon_sole": [
     "Seezunge",
-    "Seezungen"
+    "Seezungen",
   ],
   "lemon_thyme": [
-    "Zitronen-Thymian"
+    "Zitronen-Thymian",
   ],
   "lemon_verbena": [
-    "lemon verbena"
+    "lemon verbena",
   ],
   "lentils": [
      "Linse",
-    "Linsen"
+    "Linsen",
   ],
   "lettuce": [
-    "Salat"
+    "Salat",
   ],
   "lichee": [
     "Lichee",
-    "Lichees"
+    "Lichees",
   ],
   "lima_bean": [
     "Limabohne",
-    "Limabohnen"
+    "Limabohnen",
   ],
   "lime": [
     "Limette",
-    "Limetten"
+    "Limetten",
   ],
   "linden": [
     "Linde",
-    "Linden"
+    "Linden",
   ],
   "lingcod": [
-    "Lingcod"
+    "Lingcod",
   ],
   "lingonberry": [
     "Preiselbeere",
-    "Preiselbeeren"
+    "Preiselbeeren",
   ],
   "linseed_oil": [
-    "Leinsamenöl"
+    "Leinsamenöl",
   ],
   "liquor": [
-    "Likör"
+    "Likör",
   ],
   "liquorice": [
-    "Lakritz"
+    "Lakritz",
   ],
   "loganberry": [
     "Loganbeere",
-    "Loganbeeren"
+    "Loganbeeren",
   ],
   "longan": [
-    "Longan"
+    "Longan",
   ],
   "loquat": [
     "Mispel",
-    "Mispeln"
+    "Mispeln",
   ],
   "lotus": [
-    "Lotos"
+    "Lotos",
   ],
   "lovage": [
-    "Liebstöckl"
+    "Liebstöckl",
   ],
   "lowbush_blueberry": [
     "niedrige Buschheidelbeere",
-    "niedrige Buschheidelbeeren"
+    "niedrige Buschheidelbeeren",
   ],
   "lowfat_quark": [
-    "Magerquark"
+    "Magerquark",
   ],
   "lumpsucker": [
-    "Lumpsucker"
+    "Lumpsucker",
   ],
   "lupine": [
     "Lupine",
-    "Lupinen"
+    "Lupinen",
   ],
   "macadamia_nut": [
     "Macadamianuss",
-    "Macadamianüsse"
+    "Macadamianüsse",
   ],
   "macroalgae": [
     "Makroalge",
-    "Makroalgen"
+    "Makroalgen",
   ],
   "madeira_wine": [
-    "Madeira-Wein"
+    "Madeira-Wein",
   ],
   "maitake": [
-    "Maitake"
+    "Maitake",
   ],
   "majoram": [
-    "Majoram"
+    "Majoram",
   ],
   "malabar plum": [
     "Malabar-Pflaume",
-    "Malabar-Pflaumen"
+    "Malabar-Pflaumen",
   ],
   "malabar_spinach": [
-    "Malabarspinat"
+    "Malabarspinat",
   ],
   "mallard_duck": [
     "Stockente",
-    "Stockenten"
+    "Stockenten",
   ],
   "malus": [
-    "Malus"
+    "Malus",
   ],
   "mamey_sapote": [
     "Mamey-Sapote",
-    "Mamey-Sapoten"
+    "Mamey-Sapoten",
   ],
   "mammee_apple": [
     "Mammee-Apfel",
-    "Mammee-Äpfel"
+    "Mammee-Äpfel",
   ],
   "mandarin_orange": [
     "Mandarine",
-    "Mandarinen"
+    "Mandarinen",
   ],
   "mango": [
     "Mango",
-    "Mangos"
+    "Mangos",
   ],
   "maple_syrup": [
-    "Ahornsirup"
+    "Ahornsirup",
   ],
   "margarine": [
-    "Margarine"
+    "Margarine",
   ],
   "margarine_like_spread": [
-    "margarineähnlicher Aufstrich"
+    "margarineähnlicher Aufstrich",
   ],
   "marine_mussel": [
     "Meeresmuschel",
-    "Meeresmuscheln"
+    "Meeresmuscheln",
   ],
   "marshmallow": [
     "Marshmallow",
-    "Marshmallows"
+    "Marshmallows",
   ],
   "marzipan": [
-    "Marzipan"
+    "Marzipan",
   ],
   "mascarpone": [
-    "Mascarpone"
+    "Mascarpone",
   ],
   "mate": [
-    "Mate"
+    "Mate",
   ],
   "meat_bouillon": [
-    "Fleischbrühe"
+    "Fleischbrühe",
   ],
   "meat_soup": [
-    "Fleischsuppe"
+    "Fleischsuppe",
   ],
   "meatball": [
     "Frikadelle",
-    "Frikadellen"
+    "Frikadellen",
   ],
   "meatloaf": [
-    "Leberkäse"
+    "Leberkäse",
   ],
   "medlar": [
-    "Medlar"
+    "Medlar",
   ],
   "mentha": [
-    "Pfefferminze"
+    "Pfefferminze",
   ],
   "meringue": [
-    "Baiser"
+    "Baiser",
   ],
   "mexican_groundcherry": [
     "mexikanische Erdkirsche",
-    "mexikanische Erdkirschen"
+    "mexikanische Erdkirschen",
   ],
   "mexican_oregano": [
-    "mexikanischer Oregano"
+    "mexikanischer Oregano",
   ],
   "mikan": [
-    "Mikan"
+    "Mikan",
   ],
   "milk": [
-    "Milch"
+    "Milch",
   ],
   "milk_human": [
-    "Muttermilch"
+    "Muttermilch",
   ],
   "milk_one_percent_fat": [
-    "fettarme Milch"
+    "fettarme Milch",
   ],
   "milk_products": [
     "milk product",
-    "milk products"
+    "milk products",
   ],
   "milk_substitute": [
-    "Milchersatz"
+    "Milchersatz",
   ],
   "milk_three_percent_fat": [
-    "Vollmilch"
+    "Vollmilch",
   ],
   "milk_two_percent_fat": [
-    "fettarme Milch"
+    "fettarme Milch",
   ],
   "milk_zero_fat": [
-    "fettfreie Milch"
+    "fettfreie Milch",
   ],
   "milkfish": [
-    "Milchfisch"
+    "Milchfisch",
   ],
   "milkshake": [
     "Milkshake",
-    "Milkshakes"
+    "Milkshakes",
   ],
   "millet": [
-    "Hirse"
+    "Hirse",
   ],
   "miso": [
-    "Miso"
+    "Miso",
   ],
   "mixed_nuts": [
-    "gemischte Nüsse"
+    "gemischte Nüsse",
   ],
   "molasses": [
-    "Sirup"
+    "Sirup",
   ],
   "mollusks": [
     "Mollusk",
-    "Mollusken"
+    "Mollusken",
   ],
   "monk_fruit": [
     "Mönchsfrucht",
-    "Mönchsfrucht"
+    "Mönchsfrucht",
   ],
   "monkfish": [
-    "Seeteufel"
+    "Seeteufel",
   ],
   "monterey_jack_cheese": [
-    "Monterey-Jack-Käse"
+    "Monterey-Jack-Käse",
   ],
   "morchella": [
-    "Morchella"
+    "Morchella",
   ],
   "more": [
-    "More"
+    "More",
   ],
   "moth_bean": [
     "Mottenbohne",
-    "Mottenbohnen"
+    "Mottenbohnen",
   ],
   "mountain_hare": [
     "Schneehase",
-    "Schneehasen"
+    "Schneehasen",
   ],
   "mountain_yam": [
-    "Bergamazone"
+    "Bergamazone",
   ],
   "mozzarella_cheese": [
-    "Mozarella"
+    "Mozarella",
   ],
   "mugwort": [
-    "Beifuß"
+    "Beifuß",
   ],
   "mulberry": [
     "Maulbeere",
-    "Maulbeeren"
+    "Maulbeeren",
   ],
   "mule_deer": [
-    "Maultierhirsch"
+    "Maultierhirsch",
   ],
   "multigrain_bread": [
-    "Mehrkornbrot"
+    "Mehrkornbrot",
   ],
   "mundu": [
-    "Mundu"
+    "Mundu",
   ],
   "mung_bean": [
-    "Mungobohne"
+    "Mungobohne",
   ],
   "muscadine_grape": [
     "Muskatellertraube",
-    "Muskatellertrauben"
+    "Muskatellertrauben",
   ],
   "mushrooms": [
     "Pilz",
-    "Pilze"
+    "Pilze",
   ],
   "muskmelon": [
     "Zuckermelone",
-    "Zuckermelonen"
+    "Zuckermelonen",
   ],
   "mustard": [
-    "Senf"
+    "Senf",
   ],
   "mustard_spinach": [
-    "Senfspinat"
+    "Senfspinat",
   ],
   "nachos": [
     "Nacho",
-    "Nachos"
+    "Nachos",
   ],
   "nance": [
-    "Nance"
+    "Nance",
   ],
   "nanking_cherry": [
     "Nanking-Kirsche",
-    "Nanking-Kirschen"
+    "Nanking-Kirschen",
   ],
   "napa_cabbage": [
-    "Napa-Kohl"
+    "Napa-Kohl",
   ],
   "naranjilla": [
     "Naranjilla",
-    "Naranjillas"
+    "Naranjillas",
   ],
   "narrowleaf_cattail": [
-    "schmalblättriger Rohrkolben"
+    "schmalblättriger Rohrkolben",
   ],
   "natal_plum": [
-    "Geburtenpflaume"
+    "Geburtenpflaume",
+  ],
+  "natron": [
+    "Natron",
   ],
   "natto": [
-    "Natto"
+    "Natto",
   ],
   "nectarine": [
     "Nektarine",
-    "Nektarinen"
+    "Nektarinen",
   ],
   "new_zealand_spinach": [
-    "neuseeländischer Spinat"
+    "neuseeländischer Spinat",
   ],
   "nopal": [
-    "Nopal"
+    "Nopal",
   ],
   "north_pacific_giant_octopus": [
-    "nordpazifischer Riesenkrake"
+    "nordpazifischer Riesenkrake",
   ],
   "northern_bluefin_tuna": [
-    "nördlicher Blauflossenthunfisch"
+    "nördlicher Blauflossenthunfisch",
   ],
   "northern_pike": [
-    "Nordhecht"
+    "Nordhecht",
   ],
   "norway_haddock": [
-    "norwegischer Schellfisch"
+    "norwegischer Schellfisch",
   ],
   "norway_lobster": [
-    "norwegischer Hummer"
+    "norwegischer Hummer",
   ],
   "norway_pout": [
-    "norwegischer Schmollmund"
+    "norwegischer Schmollmund",
   ],
   "nougat": [
-    "Nougat"
+    "Nougat",
   ],
   "nutmeg": [
-    "Muskatnuss"
+    "Muskatnuss",
   ],
   "nutritional_drink": [
     "nahrhaftes Getränk",
-    "nahrhaftes Getränk"
+    "nahrhaftes Getränk",
   ],
   "nuts": [
-    "Nüsse"
+    "Nüsse",
   ],
   "nuttall_cockle": [
     "Nussbaummuschel",
-    "Nussbaummuscheln"
+    "Nussbaummuscheln",
   ],
   "oat": [
-    "Hafer"
+    "Hafer",
   ],
   "oat_bread": [
-    "Haferbrot"
+    "Haferbrot",
   ],
   "oatmeal": [
-    "Hafermehl"
+    "Hafermehl",
   ],
   "ocean_pout": [
-    "ozeanischer Schmollmund"
+    "ozeanischer Schmollmund",
   ],
   "ohelo_berry": [
-    "Ohelobeere"
+    "Ohelobeere",
+  ],
+  "oil": [
+    "Öl",
   ],
   "oil_palm": [
-    "Ölpalme"
+    "Ölpalme",
   ],
   "oil_seed_camellia": [
-    "Ölsaat-Kamelie"
+    "Ölsaat-Kamelie",
   ],
   "okra": [
-    "Okra"
+    "Okra",
   ],
   "olive": [
     "Olive",
-    "Oliven"
+    "Oliven",
   ],
   "olive_oil": [
-    "Olivenöl"
+    "Olivenöl",
   ],
   "onion": [
     "Zwiebel",
-    "Zwiebeln"
+    "Zwiebeln",
   ],
   "onion_family_vegetables": [
-    "Zwiebelgemüse"
+    "Zwiebelgemüse",
   ],
   "opium_poppy": [
-    "Schlafmohn"
+    "Schlafmohn",
   ],
   "orange roughy": [
-    "Granatbarsch"
+    "Granatbarsch",
   ],
   "orange_bell_pepper": [
-    "orangefarbene Paprika"
+    "orangefarbene Paprika",
   ],
   "orange_juice": [
-    "Orangensaft"
+    "Orangensaft",
   ],
   "orange_mint": [
-    "Orangenminze"
+    "Orangenminze",
   ],
   "oregon_yampah": [
-    "Oregon Yampah"
+    "Oregon Yampah",
   ],
   "oriental_wheat": [
-    "orientalischer Weizen"
+    "orientalischer Weizen",
   ],
   "ostrich": [
-    "Strauß"
+    "Strauß",
   ],
   "ostrich_fern": [
-    "Straußenfarn"
+    "Straußenfarn",
   ],
   "other_alcoholic_beverage": [
-    "alkoholisches Getränk"
+    "alkoholisches Getränk",
   ],
   "other_animal_fat": [
-    "tierisches Fett"
+    "tierisches Fett",
   ],
   "other_beverage": [
-    "Getränk"
+    "Getränk",
   ],
   "other_bread": [
-    "Brot"
+    "Brot",
   ],
   "other_bread_product": [
     "Broterzeugnis",
-    "Broterzeugnisse"
+    "Broterzeugnisse",
   ],
   "other_candy": [
-    "Süßigkeiten"
+    "Süßigkeiten",
   ],
   "other_cereal_product": [
     "Getreideerzeugnis",
-    "Getreideerzeugnisse"
+    "Getreideerzeugnisse",
   ],
   "other_cocoa_product": [
-    "Kakaoerzeugnis"
+    "Kakaoerzeugnis",
   ],
   "other_fish_product": [
-    "Fisch"
+    "Fisch",
   ],
   "other_frozen_dessert": [
-    "gefrorenes Dessert"
+    "gefrorenes Dessert",
   ],
   "other_fruit_product": [
-    "Fruchterzeugnis"
+    "Fruchterzeugnis",
   ],
   "other_onion": [
     "Zwiebel",
-    "Zwiebeln"
+    "Zwiebeln",
   ],
   "other_soy_product": [
     "Soja-Produkt",
-    "Soja-Produkte"
+    "Soja-Produkte",
   ],
   "other_vegetable_product": [
-    "Gemüse"
+    "Gemüse",
   ],
   "other_wine": [
-    "Wein"
+    "Wein",
   ],
   "oval_leaf_huckleberry": [
     "Ovalblatt-Heidelbeere",
-    "Ovalblatt-Heidelbeeren"
+    "Ovalblatt-Heidelbeeren",
   ],
   "oxheart_cabbage": [
-    "Ochsenherzkraut"
+    "Ochsenherzkraut",
   ],
   "oyster_mushroom": [
     "Austernpilz",
-    "Austernpilze"
+    "Austernpilze",
   ],
   "pacific_cod": [
-    "pazifischer Kabeljau"
+    "pazifischer Kabeljau",
   ],
   "pacific_halibut": [
-    "pazifischer Heilbutt"
+    "pazifischer Heilbutt",
   ],
   "pacific_herring": [
-    "pazifischer Hering"
+    "pazifischer Hering",
   ],
   "pacific_jack_mackerel": [
-    "pazifische Stachelmakrele"
+    "pazifische Stachelmakrele",
   ],
   "pacific_ocean_perch": [
-    "pazifischer Flussbarsch"
+    "pazifischer Flussbarsch",
   ],
   "pacific_oyster": [
-    "pazifische Auster"
+    "pazifische Auster",
   ],
   "pacific_rockfish": [
-    "pazifischer Felsenfisch"
+    "pazifischer Felsenfisch",
   ],
   "pacific_salmon": [
-    "pazifischer Lachs"
+    "pazifischer Lachs",
   ],
   "pacific_sardine": [
     "pazifische Sardine",
-    "pazifische Sardinen"
+    "pazifische Sardinen",
   ],
   "painted_comber": [
-    "Schriftbarsch"
+    "Schriftbarsch",
   ],
   "pak choy": [
-    "Pak-Choi"
+    "Pak-Choi",
   ],
   "palmin": [
-    "Palmin"
+    "Palmin",
   ],
   "pan_dulce": [
-    "Pan dulce"
+    "Pan dulce",
   ],
   "papaya": [
     "Papaya",
-    "Papayas"
+    "Papayas",
   ],
   "paprika": [
     "Paprika",
-    "Paprikas"
+    "Paprikas",
   ],
   "parmesan_cheese": [
-    "Parmesan"
+    "Parmesan",
   ],
   "parsley": [
     "Petersilie",
   ],
   "parsnip": [
     "Pastinake",
-    "Pastinaken"
+    "Pastinaken",
   ],
   "partridge_berry": [
     "Rebhuhnbeere",
-    "Rebhuhnbeeren"
+    "Rebhuhnbeeren",
   ],
   "passion_fruit": [
     "Passionsfrucht",
-    "Passionsfrüchte"
+    "Passionsfrüchte",
   ],
   "pasta": [
-    "Nudeln"
+    "Nudeln",
   ],
   "pastry": [
-    "Gebäck"
+    "Gebäck",
   ],
   "pate": [
-    "Pate"
+    "Pate",
   ],
   "pea_shoots": [
-    "Erbsensprossen"
+    "Erbsensprossen",
   ],
   "peach": [
     "Pfirsich",
-    "Pfirsiche"
+    "Pfirsiche",
   ],
   "peanut": [
     "Erdnuss",
-    "Erdnüsse"
+    "Erdnüsse",
   ],
   "peanut_butter": [
-    "Erdnussbutter"
+    "Erdnussbutter",
   ],
   "peanut_oil": [
-    "Erdnussöl"
+    "Erdnussöl",
   ],
   "pear": [
     "Birne",
-    "Birnen"
+    "Birnen",
   ],
   "pecan_nut": [
     "Pekannuss",
-    "Pekannüsse"
+    "Pekannüsse",
   ],
   "pectin": [
-    "Pektin"
+    "Pektin",
   ],
   "pepper": [
-    "Pfeffer"
+    "Pfeffer",
   ],
   "pepper_spice": [
-    "Pfeffergewürz"
+    "Pfeffergewürz",
   ],
   "peppermint": [
-    "Pfefferminz"
+    "Pfefferminz",
   ],
   "perciformes": [
-    "Perciformes"
+    "Perciformes",
   ],
   "percoidei": [
-    "Percoidei"
+    "Percoidei",
   ],
   "persian_lime": [
-    "Persische Limette"
+    "Persische Limette",
   ],
   "persimmon": [
     "Dattelpflaume",
-    "Dattelpflaumen"
+    "Dattelpflaumen",
   ],
   "pheasant": [
-    "Fasan"
+    "Fasan",
   ],
   "phyllo_dough": [
-    "Phyllo-Teig"
+    "Phyllo-Teig",
   ],
   "pickle": [
     "Essiggurke",
-    "Essiggurken"
+    "Essiggurken",
   ],
   "pie": [
-    "Kuchen"
+    "Kuchen",
   ],
   "pie_crust": [
-    "Tortenboden"
+    "Tortenboden",
   ],
   "pie_filling": [
-    "Kuchenfüllung"
+    "Kuchenfüllung",
   ],
   "pigeon_pea": [
     "Straucherbse",
-    "Straucherbsen"
+    "Straucherbsen",
   ],
   "pikeperch": [
-    "Zander"
+    "Zander",
   ],
   "piki_bread": [
     "Pikibrot",
-    "Pikibrote"
+    "Pikibrote",
   ],
   "pili_nut": [
     "Pili-Nuss",
-    "Pili-Nüsse"
+    "Pili-Nüsse",
   ],
   "pine_nut": [
     "Pinienkern",
-    "Pinienkerne"
+    "Pinienkerne",
   ],
   "pineapple": [
-    "Ananas"
+    "Ananas",
   ],
   "pineappple_sage": [
-    "Ananassalbei"
+    "Ananassalbei",
   ],
   "pink salmon": [
-    "rosa Lachs"
+    "rosa Lachs",
   ],
   "pistachio": [
     "Pistazie",
-    "Pistazien"
+    "Pistazien",
   ],
   "pita_bread": [
     "Pita-Brot",
-    "Pita-Brote"
+    "Pita-Brote",
   ],
   "pitanga": [
-    "Pitanga"
+    "Pitanga",
   ],
   "pitaya": [
-    "Pitaya"
+    "Pitaya",
   ],
   "plain_cream_cheese": [
-    "reiner Frischkäse"
+    "reiner Frischkäse",
   ],
   "plains_prickly_pear": [
     "Flachland-Feigenkaktus",
-    "Flachland-Feigenkakteen"
+    "Flachland-Feigenkakteen",
   ],
   "plantain": [
-    "Wegerich"
+    "Wegerich",
   ],
   "pleuronectidae": [
-    "Pleuronectidae"
+    "Pleuronectidae",
   ],
   "pollock": [
-    "Seelachs"
+    "Seelachs",
   ],
   "pomegranate": [
-    "Granatapfel"
+    "Granatapfel",
+  ],
+  "pomegranate_seeds": [
+    "Granatapfel-Samen",
   ],
   "pomes": [
-    "Kerne"
+    "Kerne",
   ],
   "popcorn": [
-    "Popcorn"
+    "Popcorn",
   ],
   "poppy": [
-    "Mohn"
+    "Mohn",
   ],
   "pork_goulash": [
-    "Schweinegulasch"
+    "Schweinegulasch",
   ],
   "pork_mince": [
-    "Schweinehackfleisch"
+    "Schweinehackfleisch",
   ],
   "pork_tenderloin": [
     "Schweinelende",
-    "Schweinelenden"
+    "Schweinelenden",
   ],
   "port_wine": [
-    "Portwein"
+    "Portwein",
   ],
   "pot_marjoram": [
-    "Majoranblüte"
+    "Majoranblüte",
   ],
   "potato": [
     "Kartoffel",
-    "Kartoffeln"
+    "Kartoffeln",
   ],
   "potato_bread": [
     "Kartoffelbrot",
-    "Kartoffelbrote"
+    "Kartoffelbrote",
   ],
   "potato_chip": [
-    "Chips"
+    "Chips",
   ],
   "prairie_turnip": [
-    "Mohrrübe"
+    "Mohrrübe",
   ],
   "prickly_pear": [
     "Kaktusfeige",
-    "Kaktusfeigen"
+    "Kaktusfeigen",
   ],
   "processed_cheese": [
-    "Schmelzkäse"
+    "Schmelzkäse",
   ],
   "prunus": [
-    "Prunus"
+    "Prunus",
   ],
   "pudding": [
-    "Pudding"
+    "Pudding",
   ],
   "puff_pastry": [
-    "Plunderteig"
+    "Plunderteig",
   ],
   "pulses": [
     "Hülsenfrucht",
-    "Hülsenfruchte"
+    "Hülsenfruchte",
   ],
   "pummelo": [
     "Pomelo",
-    "Pomelo"
+    "Pomelo",
   ],
   "pumpkinseed_sunfish": [
-    "Kürbiskernsonnenbarsch"
+    "Kürbiskernsonnenbarsch",
   ],
   "purple_laver": [
-    "Purpurtang"
+    "Purpurtang",
   ],
   "purple_mangosteen": [
     "violette Mangostan-Frucht",
-    "violette Mangostan-Früchte"
+    "violette Mangostan-Früchte",
   ],
   "purslane": [
-    "Portulak"
+    "Portulak",
   ],
   "quail": [
     "Wachtel",
-    "Watchteln"
+    "Watchteln",
   ],
   "quills": [
     "Pinole",
-    "Pinolen"
+    "Pinolen",
   ],
   "quince": [
     "Quitte",
-    "Quitten"
+    "Quitten",
   ],
   "quinoa": [
-    "Quinoa"
+    "Quinoa",
   ],
   "rabbit": [
-    "Kaninchen"
+    "Kaninchen",
   ],
   "rabbiteye_blueberry": [
     "Kaninchenaugen-Heidelbeere",
-    "Kaninchenaugen-Heidelbeeren"
+    "Kaninchenaugen-Heidelbeeren",
   ],
   "radish": [
-    "Rettich"
+    "Rettich",
   ],
   "rainbow trout": [
     "Regenbogenforelle",
-    "Regenbogenforellen"
+    "Regenbogenforellen",
   ],
   "rainbow_smelt": [
-    "Regenbogenstint"
+    "Regenbogenstint",
   ],
   "raisin": [
     "Rosine",
-    "Rosinen"
+    "Rosinen",
   ],
   "raisin_bread": [
     "Rosinenbrot",
-    "Rosinenbrote"
+    "Rosinenbrote",
   ],
   "rambutan": [
-    "Rambutan"
+    "Rambutan",
   ],
   "rape": [
-    "Raps"
+    "Raps",
   ],
   "rapeseed_oil": [
-    "Rapsöl"
+    "Rapsöl",
   ],
   "rapini": [
-    "Rapini"
+    "Rapini",
   ],
   "ravioli": [
-    "Ravioli"
+    "Ravioli",
   ],
   "red_algae": [
     "Rotalge",
-    "Rotalgen"
+    "Rotalgen",
   ],
   "red_beetroot": [
-    "rote Bete"
+    "rote Bete",
   ],
   "red_bell_pepper": [
     "rote Paprikaschote",
-    "rote Paprikaschoten"
+    "rote Paprikaschoten",
   ],
   "red_champagne": [
-    "roter Champagner"
+    "roter Champagner",
   ],
   "red_clover": [
-    "Rotklee"
+    "Rotklee",
   ],
   "red_grape": [
     "rote Weintraube",
-    "rote Weintrauben"
+    "rote Weintrauben",
   ],
   "red_grape_juice": [
-    "roter Traubensaft"
+    "roter Traubensaft",
   ],
   "red_huckleberry": [
     "rote Heidelbeere",
-    "rote Heidelbeeren"
+    "rote Heidelbeeren",
   ],
   "red_king_crab": [
     "rote Königskrabbe",
-    "rote Königskrabben"
+    "rote Königskrabben",
   ],
   "red_onion": [
     "rote Zwiebel",
-    "rote Zwiebeln"
+    "rote Zwiebeln",
   ],
   "red_raspberry": [
     "rote Himbeere",
-    "rote Himbeeren"
+    "rote Himbeeren",
   ],
   "red_rice": [
-    "roter Reis"
+    "roter Reis",
   ],
   "red_tea": [
-    "roter Tee"
+    "roter Tee",
   ],
   "red_wine": [
-    "Rotwein"
+    "Rotwein",
   ],
   "redcurrant": [
     "rote Johannisbeere",
-    "rote Johannisbeeren"
+    "rote Johannisbeeren",
   ],
   "relish": [
-    "Würze"
+    "Würze",
   ],
   "remoulade": [
-    "Remoulade"
+    "Remoulade",
   ],
   "rice": [
-    "Reis"
+    "Reis",
   ],
   "rice_bread": [
     "Reisbrot",
-    "Reisbrote"
+    "Reisbrote",
   ],
   "rice_pudding": [
-    "Reispudding"
+    "Reispudding",
+  ],
+  "ricotta": [
+    "Ricotta",
   ],
   "ridged": [
-    "Ridged"
+    "Ridged",
   ],
   "ringed_seal": [
     "Ringelrobbe",
-    "Ringelrobben"
+    "Ringelrobben",
   ],
   "robusta_coffee": [
-    "Robusta-Kaffee"
+    "Robusta-Kaffee",
   ],
   "rock_ptarmigan": [
-    "Alpenschneehuhn"
+    "Alpenschneehuhn",
   ],
   "rocket": [
-    "Rucola"
+    "Rucola",
   ],
   "rocket_salad": [
-    "Rucolasalat"
+    "Rucolasalat",
   ],
   "roe": [
-    "Rogen"
+    "Rogen",
   ],
   "romaine_lettuce": [
-    "Römersalat"
+    "Römersalat",
   ],
   "roman_camomile": [
-    "römische Kamille"
+    "römische Kamille",
   ],
   "root_vegetables": [
-    "Wurzelgemüse"
+    "Wurzelgemüse",
   ],
   "rose hip": [
     "Hagebutte",
-    "Hagebutten"
+    "Hagebutten",
   ],
   "roselle": [
-    "Roselle"
+    "Roselle",
   ],
   "rosemary": [
-    "Rosmarin"
+    "Rosmarin",
   ],
   "rowal": [
-    "Rowal"
+    "Rowal",
   ],
   "rowanberry": [
     "Vogelbeere",
-    "Vogelbeeren"
+    "Vogelbeeren",
   ],
   "rubus": [
-    "Rubus"
+    "Rubus",
   ],
   "rum": [
-    "Rum"
+    "Rum",
   ],
   "rye": [
-    "Roggen"
+    "Roggen",
   ],
   "rye_bread": [
     "Roggenbrot",
-    "Roggenbrote"
+    "Roggenbrote",
   ],
   "sablefish": [
-    "Zobelbarsch"
+    "Zobelbarsch",
   ],
   "sacred_lotus": [
-    "heilige Lotusblume"
+    "heilige Lotusblume",
   ],
   "safflower": [
-    "Färberdistel"
+    "Färberdistel",
   ],
   "saffron": [
-    "Safran"
+    "Safran",
   ],
   "sago_palm": [
     "Sagopalme",
-    "Sagopalmen"
+    "Sagopalmen",
   ],
   "sake": [
-    "Sake"
+    "Sake",
   ],
   "salad": [
-    "Salat"
+    "Salat",
   ],
   "salad_dressing": [
-    "Salatdressing"
+    "Salatdressing",
   ],
   "salami": [
-    "Salami"
+    "Salami",
   ],
   "salmonberry": [
     "Lachsbeere",
-    "Lachsbeeren"
+    "Lachsbeeren",
   ],
   "salmonidae": [
     "Lachsfisch",
-    "Lachsfische"
+    "Lachsfische",
   ],
   "salt": [
-    "Salz"
+    "Salz",
   ],
   "salted_butter": [
-    "gesalzene Butter"
+    "gesalzene Butter",
   ],
   "sapodilla": [
-    "Sapodilla"
+    "Sapodilla",
   ],
   "saskatoon_berry": [
     "Seebeere",
-    "Seebeeren"
+    "Seebeeren",
   ],
   "sauce": [
-    "Soße"
+    "Soße",
   ],
   "sauce_binder": [
-    "Soßenbinder"
+    "Soßenbinder",
   ],
   "sausage": [
     "Wurst",
-    "Würste"
+    "Würste",
   ],
   "savoy_cabbage": [
-    "Wirsingkohl"
+    "Wirsingkohl",
   ],
   "scallop": [
     "Jakobsmuschel",
-    "Jakobsmuscheln"
+    "Jakobsmuscheln",
   ],
   "scarlet_bean": [
     "Scharlachbohne",
-    "Scharlachbohnen"
+    "Scharlachbohnen",
   ],
   "scombridae": [
-    "Scombridae"
+    "Scombridae",
   ],
   "scup": [
-    "Köhler"
+    "Köhler",
   ],
   "sea_buckthornberry": [
     "Sanddornbeere",
-    "Sanddornbeeren"
+    "Sanddornbeeren",
   ],
   "sea_cucumber": [
     "Seegurke",
-    "Seegurken"
+    "Seegurken",
   ],
   "sea_trout": [
     "Meerforelle",
-    "Meerforellen"
+    "Meerforellen",
   ],
   "semolina": [
-    "Grieß"
+    "Grieß",
   ],
   "sesame": [
-    "Sesam"
+    "Sesam",
   ],
   "sesame_oil": [
-    "Sesamöl"
+    "Sesamöl",
+  ],
+  "sesame_seeds": [
+    "Sesam Samen",
   ],
   "sesbania_flower": [
-    "Sesbania-Blüten"
+    "Sesbania-Blüten",
   ],
   "shallot": [
     "Schalotte",
-    "Schalotten"
+    "Schalotten",
   ],
   "shark": [
-    "Hai"
+    "Hai",
   ],
   "shea_tree": [
-    "Sheabaum"
+    "Sheabaum",
   ],
   "sheefish": [
-    "Sheefish"
+    "Sheefish",
   ],
   "sheep": [
-    "Schaf"
+    "Schaf",
   ],
   "sheepshead": [
     "Schafskopf",
-    "Schafsköpfe"
+    "Schafsköpfe",
   ],
   "sherry": [
-    "Sherry"
+    "Sherry",
   ],
   "shiitake": [
-    "Shiitake"
+    "Shiitake",
   ],
   "shortening": [
-    "Backfett"
+    "Backfett",
   ],
   "shrimp": [
     "Shrimp",
-    "Shrimps"
+    "Shrimps",
   ],
   "sieved_tomatoes": [
-    "passierte Tomaten"
+    "passierte Tomaten",
   ],
   "silver_linden": [
-    "Silberlinde"
+    "Silberlinde",
   ],
   "skipjack_tuna": [
-    "Bonito"
+    "Bonito",
   ],
   "skunk_currant": [
-    "Stinkmorchel"
+    "Stinkmorchel",
   ],
   "small_leaf_linden": [
-    "kleinblättrig Winterlinde"
+    "kleinblättrig Winterlinde",
   ],
   "smelt": [
-    "Stint"
+    "Stint",
   ],
   "snail": [
     "Schnecke",
-    "Schnecken"
+    "Schnecken",
   ],
   "snapper": [
-    "Schnapper"
+    "Schnapper",
   ],
   "snow_crab": [
-    "Schneekrabbe"
+    "Schneekrabbe",
   ],
   "sockeye salmon": [
-    "Sockeye-Lachs"
+    "Sockeye-Lachs",
   ],
   "soft_drink": [
     "Erfrischungsgetränk",
-    "Erfrischungsgetränke"
+    "Erfrischungsgetränke",
   ],
   "soft_necked_garlic": [
-    "Weichhalsknoblauch"
+    "Weichhalsknoblauch",
   ],
   "soft_wheat_semolina": [
-    "Weichweizengrieß"
+    "Weichweizengrieß",
   ],
   "sorghum": [
-    "Hirse"
+    "Hirse",
   ],
   "sorrel": [
-    "Sauerampfer"
+    "Sauerampfer",
   ],
   "soup": [
-    "Suppe"
+    "Suppe",
   ],
   "sour": [
-    "Sour"
+    "Sour",
   ],
   "sour_cherry": [
     "Sauerkirsche",
-    "Sauerkirschen"
+    "Sauerkirschen",
   ],
   "sour_cream": [
-    "saure Sahne"
+    "saure Sahne",
   ],
   "sour_orange": [
     "saure Orange",
-    "saure Orangen"
+    "saure Orangen",
   ],
   "sourdock": [
-    "Sourdock"
+    "Sourdock",
   ],
   "sourdough": [
-    "Sauerteig"
+    "Sauerteig",
   ],
   "soursop": [
-    "Soursop"
+    "Soursop",
   ],
   "soy_bean": [
-    "Sojabohne"
+    "Sojabohne",
   ],
   "soy_cream": [
-    "Sojasahne"
+    "Sojasahne",
   ],
   "soy_milk": [
-    "Sojamilch"
+    "Sojamilch",
   ],
   "soy_sauce": [
-    "Sojasauce"
+    "Sojasauce",
   ],
   "soy_yogurt": [
-    "Sojajoghurt"
+    "Sojajoghurt",
   ],
   "soybean_oil": [
-    "Sojaöl"
+    "Sojaöl",
   ],
   "spaghetti": [
-    "Spaghetti"
+    "Spaghetti",
   ],
   "spanish_mackerel": [
-    "spanische Makrele"
+    "spanische Makrele",
   ],
   "sparkleberry": [
-    "Sparkleberry"
-  ],
-  "split_peas": [
-    "Spalterbsen"
+    "Glitzernde Beeren",
   ],
   "spearmint": [
-    "Minze"
+    "Minze",
   ],
   "spelt": [
-    "Dinkel"
+    "Dinkel",
   ],
   "spinach": [
-    "Spinat"
+    "Spinat",
   ],
   "spiny_dogfish": [
-    "Dornhai"
+    "Dornhai",
   ],
   "spiny_lobster": [
-    "Languste"
+    "Languste",
   ],
   "spirit": [
-    "Spiritus"
+    "Spiritus",
   ],
   "spirulina": [
-    "Spirulina"
+    "Spirulina",
+  ],
+  "split_peas": [
+    "Spalterbsen",
   ],
   "spot_croaker": [
     "Makrele",
-    "Makrelen"
+    "Makrelen",
   ],
   "spotted_seal": [
-    "gefleckte Robbe"
+    "gefleckte Robbe",
   ],
   "spread": [
-    "Aufstrich"
+    "Aufstrich",
   ],
   "spring_onions": [
     "Frühlingszwiebel",
-    "Frühlingszwiebeln"
+    "Frühlingszwiebeln",
   ],
   "squab": [
     "Jungvogel",
-    "Jungvögel"
+    "Jungvögel",
   ],
   "squashberry": [
     "Kürbisbeere",
-    "Kürbisbeeren"
+    "Kürbisbeeren",
   ],
   "squid": [
     "Tintenfisch",
-    "Tintenfische"
+    "Tintenfische",
   ],
   "star_anise": [
-    "Sternanis"
+    "Sternanis",
   ],
   "star_fruit": [
     "Sternfrucht",
-    "Sternfrüchte"
+    "Sternfrüchte",
   ],
   "steller_sea_lion": [
-    "weißer Seelöwe"
+    "weißer Seelöwe",
   ],
   "strawberry": [
     "Erdbeere",
-    "Erdbeeren"
+    "Erdbeeren",
   ],
   "strawberry_guava": [
     "Erdbeer-Guave",
-    "Erdbeer-Guaven"
+    "Erdbeer-Guaven",
+  ],
+  "strip_steak": [
+    "Strip Steak",
   ],
   "striped_bass": [
-    "gestreifter Seebarsch"
+    "gestreifter Seebarsch",
   ],
   "striped_mullet": [
     "gestreifte Meerbarbe",
-    "gestreifte Meerbarben"
+    "gestreifte Meerbarben",
   ],
   "stuffing": [
-    "Füllung"
+    "Füllung",
   ],
   "sturgeon": [
-    "Störe"
+    "Störe",
   ],
   "sugar": [
-    "Zucker"
+    "Zucker",
   ],
   "sugar_apple": [
     "Zuckerapfel",
-    "Zuckeräpfel"
+    "Zuckeräpfel",
   ],
   "sugar_substitute": [
-    "Süßstoff"
+    "Süßstoff",
   ],
   "summer_grape": [
     "Sommertraube",
-    "Sommertrauben"
+    "Sommertrauben",
   ],
   "summer_savory": [
-    "Sommerbohnenkraut"
+    "Sommerbohnenkraut",
   ],
   "sunburst_squash": [
-    "Sonnenblumenkürbis"
+    "Sonnenblumenkürbis",
   ],
   "sunflower": [
     "Sonnenblume",
-    "Sonnenblumen"
+    "Sonnenblumen",
   ],
   "sunflower_oil": [
-    "Sonnenblumenöl"
+    "Sonnenblumenöl",
   ],
   "swamp_cabbage": [
-    "Moorkohl"
+    "Moorkohl",
   ],
   "swede": [
     "Kohlrübe",
-    "Kohlrüben"
+    "Kohlrüben",
   ],
   "sweet_basil": [
-    "süßes Basilikum"
+    "süßes Basilikum",
   ],
   "sweet_bay": [
-    "süße Bucht"
+    "süße Bucht",
   ],
   "sweet_cherry": [
     "Süßkirsche",
-    "Süßkirschen"
+    "Süßkirschen",
   ],
   "sweet_custard": [
-    "süße Creme"
+    "süße Creme",
   ],
   "sweet_marjoram": [
-    "süßer Majoran"
+    "süßer Majoran",
   ],
   "sweet_orange": [
     "Süßorange",
-    "Süßorangen"
+    "Süßorangen",
   ],
   "sweet_potato": [
     "Süßkartoffel",
-    "Süßkartoffeln"
+    "Süßkartoffeln",
   ],
   "sweet_rowanberry": [
     "süße Vogelbeere",
-    "süße Vogelbeeren"
+    "süße Vogelbeeren",
   ],
   "swiss_chard": [
-    "Mangold"
+    "Mangold",
   ],
   "swiss_cheese": [
-    "Emmentaler"
+    "Emmentaler",
   ],
   "swordfish": [
-    "Schwertfisch"
+    "Schwertfisch",
   ],
   "syrup": [
-    "Sirup"
+    "Sirup",
   ],
   "taco": [
     "Taco",
-    "Tacos"
+    "Tacos",
   ],
   "taco_shell": [
     "Taco-Schale",
-    "Taco-Schalen"
+    "Taco-Schalen",
+  ],
+  "tahini": [
+    "Thaini",
   ],
   "tallow": [
-    "Talg"
+    "Talg",
   ],
   "tamarind": [
-    "Tamarinde"
+    "Tamarinde",
   ],
   "tapioca_pearl": [
-    "Tapiokaperle"
+    "Tapiokaperle",
   ],
   "taro": [
-    "taro"
+    "taro",
   ],
   "tarragon": [
-    "Estragon"
+    "Estragon",
   ],
   "tartary_buckwheat": [
-    "Tatarenbuchweizen"
+    "Tatarenbuchweizen",
   ],
   "tea": [
-    "Tee"
+    "Tee",
   ],
   "tea_leaf_willow": [
-    "Teeblattweide"
+    "Teeblattweide",
   ],
   "teff": [
-    "Teff"
+    "Teff",
   ],
   "thistle": [
     "Distel",
-    "Disteln"
+    "Disteln",
   ],
   "thornless_blackberry": [
     "dornenlose Brombeere",
-    "dornenlose Brombeeren"
+    "dornenlose Brombeeren",
   ],
   "thunnus": [
-    "Thunnus"
+    "Thunnus",
   ],
   "tilefish": [
-    "Kachelfisch"
+    "Kachelfisch",
   ],
   "tinda": [
-    "Tinda"
+    "Tinda",
   ],
   "toffee": [
-    "Toffee"
+    "Toffee",
   ],
   "tofu": [
-    "Tofu"
+    "Tofu",
   ],
   "tomato": [
     "Tomate",
-    "Tomaten"
+    "Tomaten",
   ],
   "tomato_paste": [
-    "Tomatenmark"
+    "Tomatenmark",
   ],
   "topping": [
-    "Belag"
+    "Belag",
   ],
   "tortilla": [
     "Tortilla",
-    "Tortillas"
+    "Tortillas",
   ],
   "tortilla_chip": [
     "Tortilla Chip",
-    "Tortilla Chips"
+    "Tortilla Chips",
   ],
   "tostada_shell": [
     "Tostada-Schale",
-    "Tostada-Schalen"
+    "Tostada-Schalen",
   ],
   "towel_gourd": [
     "Handtuchkürbis",
-    "Handtuchkürbisse"
+    "Handtuchkürbisse",
   ],
   "trail_mix": [
-    "Studentenfutter"
+    "Studentenfutter",
   ],
   "triticale": [
-    "Triticale"
+    "Triticale",
   ],
   "tronchuda_cabbage": [
-    "Tronchuda-Kohl"
+    "Tronchuda-Kohl",
   ],
   "tropical_highland_blackberry": [
-    "tropische Hochlandbrombeere"
+    "tropische Hochlandbrombeere",
   ],
   "true_frog": [
-    "Frosch"
+    "Frosch",
   ],
   "true_oyster": [
     "Auster",
-    "Austern"
+    "Austern",
   ],
   "true_seal": [
-    "Robbe"
+    "Robbe",
   ],
   "true_sole": [
     "Seezunge",
-    "Seezungen"
+    "Seezungen",
   ],
   "tumeric": [
-    "Kurkuma"
+    "Kurkuma",
   ],
   "tuna": [
-    "Thunfisch"
+    "Thunfisch",
   ],
   "tunicate": [
-    "Tunika"
+    "Tunika",
   ],
   "turbot": [
-    "Steinbutt"
-  ],
-  "turkey_breast": [
-    "Putenbrust"
+    "Steinbutt",
   ],
   "turkey": [
-    "Truthahn"
+    "Truthahn",
+  ],
+  "turkey_breast": [
+    "Putenbrust",
   ],
   "turmeric": [
-    "Gelbwurz"
+    "Gelbwurz",
   ],
   "turnip": [
     "Rübe",
-    "Rüben"
+    "Rüben",
   ],
   "ucuhuba": [
-    "Ucuhuba"
+    "Ucuhuba",
   ],
   "vaccinium": [
-    "Vaccinium"
+    "Vaccinium",
   ],
   "vanilla": [
-    "Vanille"
+    "Vanille",
   ],
   "vanilla_sugar": [
-    "Vanillezucker"
+    "Vanillezucker",
+  ],
+  "vegetable_broth": [
+    "Gemüsebrühe",
   ],
   "vegetable_juice": [
-    "Gemüsesaft"
+    "Gemüsesaft",
   ],
   "velvet_duck": [
-    "Samtente"
+    "Samtente",
   ],
   "vermouth": [
-    "Wermut"
+    "Wermut",
   ],
   "vinegar": [
-    "Essig"
+    "Essig",
   ],
   "vodka": [
-    "Wodka"
+    "Wodka",
   ],
   "waffle": [
     "Waffel",
-    "Waffeln"
+    "Waffeln",
   ],
   "wakame": [
-    "Wakame"
+    "Wakame",
   ],
   "walleye": [
-    "Zander"
+    "Zander",
   ],
   "walnut": [
-    "Walnuss"
+    "Walnuss",
   ],
   "walrus": [
-    "Walross"
+    "Walross",
   ],
   "wampee": [
-    "Wampee"
+    "Wampee",
   ],
   "wasabi": [
-    "Wasabi"
+    "Wasabi",
   ],
   "water": [
-    "Wasser"
+    "Wasser",
   ],
   "water_spinach": [
-    "Wasserspinat"
+    "Wasserspinat",
   ],
   "watercress": [
-    "Brunnenkresse"
+    "Brunnenkresse",
   ],
   "watermelon": [
     "Wassermelone",
-    "Wassermelonen"
+    "Wassermelonen",
   ],
   "wax_apple": [
-    "Wachsapfel"
+    "Wachsapfel",
   ],
   "wax_gourd": [
     "Wachskürbis",
-    "Wachskürbisse"
+    "Wachskürbisse",
   ],
   "welsh_onion": [
     "Walisische Zwiebel",
-    "Walisische Zwiebeln"
+    "Walisische Zwiebeln",
   ],
   "wheat": [
-    "Weizen"
+    "Weizen",
   ],
   "wheat_bread": [
-    "Weizenbrot"
+    "Weizenbrot",
   ],
   "whelk": [
     "Wellhornschnecke",
-    "Wellhornschnecken"
+    "Wellhornschnecken",
   ],
   "whey": [
-    "Molke"
+    "Molke",
   ],
   "whisky": [
-    "Whisky"
+    "Whisky",
   ],
   "white_bread": [
-    "Weißbrot"
+    "Weißbrot",
   ],
   "white_cabbage": [
-    "Weißkohl"
+    "Weißkohl",
   ],
   "white_champagne": [
-    "weißer Champagner"
+    "weißer Champagner",
   ],
   "white_grape_juice": [
-    "weißer Traubensaft"
+    "weißer Traubensaft",
   ],
   "white_lupine": [
     "weiße Lupine",
-    "weiße Lupinen"
+    "weiße Lupinen",
   ],
   "white_mulberry": [
     "weiße Maulbeere",
-    "weiße Maulbeeren"
+    "weiße Maulbeeren",
   ],
   "white_mustard": [
-    "weißer Senf"
+    "weißer Senf",
   ],
   "white_onion": [
     "weiße Zwiebel",
-    "weiße Zwiebeln"
+    "weiße Zwiebeln",
   ],
   "white_sucker": [
-    "weißer Sauger"
+    "weißer Sauger",
   ],
   "white_wine": [
-    "Weißwein"
+    "Weißwein",
   ],
   "whitefish": [
-    "Weißfisch"
+    "Weißfisch",
   ],
   "whiting": [
-    "Wittling"
+    "Wittling",
   ],
   "whole_wheat_bread": [
-    "Vollkornbrot"
+    "Vollkornbrot",
   ],
   "wild_boar": [
-    "Wildschwein"
+    "Wildschwein",
   ],
   "wild_carrot": [
     "wilde Möhre",
-    "wilde Möhren"
+    "wilde Möhren",
   ],
   "wild_celery": [
-    "wilder Sellerie"
+    "wilder Sellerie",
   ],
   "wild_leek": [
-    "wilder Lauch"
+    "wilder Lauch",
   ],
   "wild_rice": [
-    "Wildreis"
+    "Wildreis",
   ],
   "winged_bean": [
-    "geflügelte Bohne"
+    "geflügelte Bohne",
   ],
   "winter_savory": [
-    "Winterbohnenkraut"
+    "Winterbohnenkraut",
   ],
   "winter_squash": [
-    "Winterkürbis"
+    "Winterkürbis",
   ],
   "wonton_wrapper": [
-    "Wonton-Blatt"
+    "Wonton-Blatt",
   ],
   "yali_pear": [
-    "Yalibirne"
+    "Yalibirne",
   ],
   "yam": [
-    "Süßkartoffel"
+    "Süßkartoffel",
   ],
   "yardlong bean": [
     "Yard-Long-Bohne",
-    "Yard-Long-Bohnen"
+    "Yard-Long-Bohnen",
   ],
   "yau_choy": [
-    "Yau Choy"
+    "Yau Choy",
   ],
   "yautia": [
-    "Yautia"
+    "Yautia",
   ],
   "yellow_bell_pepper": [
-    "gelbe Paprikaschote"
+    "gelbe Paprikaschote",
   ],
   "yellow_pond_lily": [
     "gelbe Teichlilie",
-    "gelbe Teichlilien"
+    "gelbe Teichlilien",
   ],
   "yellow_wax_bean": [
     "gelbe Wachsbohne",
-    "gelbe Wachsbohnen"
+    "gelbe Wachsbohnen",
   ],
   "yellow_zucchini": [
-    "gelbe Zucchini"
+    "gelbe Zucchini",
   ],
   "yellowfin_tuna": [
-    "Gelbflossenthunfisch"
+    "Gelbflossenthunfisch",
   ],
   "yellowtail_amberjack": [
     "Gelbschwanz-Bernsteinmakrele",
-    "Gelbschwanz-Bernsteinmakrelen"
+    "Gelbschwanz-Bernsteinmakrelen",
   ],
   "ymer": [
-    "Ymer"
+    "Ymer",
   ],
   "yogurt": [
-    "Joghurt"
+    "Joghurt",
+  ],
+  "zucchini": [
+    "Zucchini",
+    "Zucchinis",
   ],
   "zwieback": [
-    "Zwieback"
-  ]
+    "Zwieback",
+  ],
 };
 
 export default ingredients;

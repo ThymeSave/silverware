@@ -1,8 +1,31 @@
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   margin: 0;
+  background-color: #2C2C2CFF;
 }
+
+body, app-root {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+  height: 100vh;
+}
+
+div.app-loading {
+  margin: auto;
+  display: block;
+  text-align: center;
+  color: white;
+
+  img {
+    width: 300px;
+  }
+}
+

@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>{{ 'unit' | i18n }}</mat-label>
+  <mat-select [value]="selected"
+              (selectionChange)="onChange($event.value)">
+    <mat-option>none</mat-option>
+    <mat-option [value]="option.key"
+                *ngFor="let option of options | keyvalue;">
+      {{ option.value.short }} <i>({{option.value.long}})</i>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

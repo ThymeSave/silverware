@@ -20,7 +20,7 @@ describe("loadIngredientsByKey", () => {
 
   it("should load existing ingredients translation for one item", () => {
     const ingredient = loadIngredientByKey(Languages.en_US, "potato", 1);
-    expect(ingredient).toBe("potato")
+    expect(ingredient).toBe("potato");
   });
 
   it("should load existing ingredient translation for multiple items", () => {
@@ -54,8 +54,8 @@ describe("loadUnitByKey", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "gram");
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
+      long: "gram",
       short: "g",
-      long: "gram"
     });
   });
 
@@ -63,8 +63,8 @@ describe("loadUnitByKey", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "foo.bar", 1);
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
+      long: "foo.bar",
       short: "foo.bar",
-      long: "foo.bar"
     });
   });
 
@@ -72,8 +72,8 @@ describe("loadUnitByKey", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "cup", 2);
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
-      short: "c",
-      long: "cups"
+      long: "cups",
+      short: "cups",
     });
   });
 });

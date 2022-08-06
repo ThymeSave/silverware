@@ -1,63 +1,104 @@
 import { UnitTranslation } from "../../lib/model";
 
 const units: UnitTranslation = {
-  "cup": {
-    "long": [
+  clove: {
+    long: [
+      "clove",
+      "cloves",
+    ],
+    short: "clove",
+  },
+  cup: {
+    long: [
       "Tasse",
-      "Tassen"
+      "Tassen",
     ],
-    "short": "Ta"
+    short: "Ta",
   },
-  "deciliter": {
-    "long": [
-      "Deziliter"
+  deciliter: {
+    long: [
+      "Deziliter",
     ],
-    "short": "dl"
+    short: "dl",
   },
-  "gram": {
-    "long": [
-      "Gramm"
+  gram: {
+    long: [
+      "Gramm",
     ],
-    "short": "g"
+    short: "g",
   },
-  "kilogram": {
-    "long": [
-      "Kilogramm"
+  jar: {
+    long: [
+      "Glas",
+      "Gläser",
     ],
-    "short": "kg"
+    short: "Gl.",
   },
-  "liter": {
-    "long": [
-      "Liter"
+  kilogram: {
+    long: [
+      "Kilogramm",
     ],
-    "short": "l"
+    short: "kg",
   },
-  "milligram": {
-    "long": [
-      "Milligramm"
+  liter: {
+    long: [
+      "Liter",
     ],
-    "short": "mg"
+    short: "l",
   },
-  "milliliter": {
-    "long": [
-      "Milliliter"
+  milligram: {
+    long: [
+      "Milligramm",
     ],
-    "short": "ml"
+    short: "mg",
   },
-  "pack": {
-    "long": [
+  milliliter: {
+    long: [
+      "Milliliter",
+    ],
+    short: "ml",
+  },
+  ounce: {
+    long: [
+      "ounce",
+      "ounces",
+    ],
+    short: "oz",
+  },
+  pack: {
+    long: [
       "Päckchen",
-      "Packungen"
+      "Packungen",
     ],
-    "short": "Pck"
+    short: "Pck",
   },
-  "pound": {
-    "long": [
-      "Pfund",
-      "Pfunde"
+  pinch: {
+    long: [
+      "Prise",
+      "Prisen",
     ],
-    "short": "Pfund"
-  }
-}
+    short: "Prise",
+  },
+  pound: {
+    long: [
+      "Pfund",
+      "Pfunde",
+    ],
+    short: "Pfund",
+  },
+  tsp: {
+    long: [
+      "Teelöffel",
+    ],
+    short: "TL",
+  },
+  twig: {
+    long: [
+      "Zweig",
+      "Zweige",
+    ],
+    short: "Zweig(e)",
+  },
+};
 
 export default units;

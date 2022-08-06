@@ -1,0 +1,18 @@
+<div fxFlex fxLayout="column">
+  <h1 mat-dialog-title>{{ "update.heading" | i18n }}</h1>
+  <div mat-dialog-content>
+    {{ "update.description" | i18n }}
+  </div>
+  <div mat-dialog-actions fxFlex fxLayout="row" fxLayoutAlign="space-around">
+    <button mat-button
+            [mat-dialog-close]="true"
+            cdkFocusInitial>
+      {{ "ok" | i18n }}
+    </button>
+    <button mat-button
+            [mat-dialog-close]="false"
+            mat-dialog-close>
+      {{ "cancel" | i18n }}
+    </button>
+  </div>
+</div>

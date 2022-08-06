@@ -7,9 +7,22 @@
       "node"
     ],
     "paths": {
+      "@/*": [
+        "src/app/*"
+      ],
+      "@plugins/*": [
+        "src/plugins/*"
+      ],
+      "@helper/*": [
+        "src/helper/*"
+      ],
       "@thymesave/core": [
         "dist/thymesave/core/thymesave-core",
         "dist/thymesave/core"
+      ],
+      "@thymesave/core/*": [
+        "dist/thymesave/core/thymesave-core/*",
+        "dist/thymesave/core/*"
       ],
       "@thymesave/ingredients": [
         "dist/thymesave/ingredients/thymesave-ingredients",
@@ -40,7 +53,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "importHelpers": true,
-    "target": "es2017",
+    "target": "es2020",
     "module": "es2020",
     "lib": [
       "es2020",

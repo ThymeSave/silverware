@@ -1,0 +1,29 @@
+.recipe-image-wrapper {
+  min-height: 200px;
+  padding-top: 20px;
+}
+
+mat-card {
+  min-height: calc(100% - 30px);
+}
+
+mat-card-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  min-height: 30px;
+}
+
+.recipe-title {
+  text-align: center;
+}
+
+mat-card-content {
+  padding-top: 10px;
+}
+
+app-recipe-image {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
