@@ -37,8 +37,8 @@ h2 {
   font-weight: 700;
 }
 
-.recipe-header-text {
-  margin-top: 500px;
+.recipe-header {
+  margin-top: 450px;
 }
 
 .recipe-header-text,
@@ -67,7 +67,7 @@ h2 {
   z-index: -1;
 }
 
-.fallback-title-header{
+.fallback-title-header {
   align-items: center;
   justify-content: center;
   font-size: 4rem;
@@ -88,7 +88,34 @@ app-recipe-image {
 .instruction {
   display: block;
   width: 100%;
-  padding-left: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.ingredients-heading {
+  h2 {
+    margin: 0;
+  }
+
+  input[type=number],
+  mat-form-field {
+    width: 4.955ch;
+    text-align: center;
+  }
+}
+
+.ingredients-servings-calculator {
+  font-style: italic;
+}
+
+.recipe-actions {
+  button {
+    background: rgba(0, 0, 0, .8);
+  }
+
+  margin-bottom: 10px;
+
+  .button-delete {
+    color: #d35c5c;
+  }
 }

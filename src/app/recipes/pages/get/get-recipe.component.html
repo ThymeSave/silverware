@@ -21,26 +21,61 @@
          fxLayout="column">
       <div class="recipe-header"
            fxLayout="column">
-        <div fxFlex class="recipe-header-text">
+        <div fxLayout="row"
+             class="recipe-actions"
+             fxLayoutGap="10px"
+             fxLayoutAlign="end">
+          <button mat-fab><mat-icon>share</mat-icon></button>
+          <button color="warn"
+                  class="button-delete"
+                  (click)="deleteRecipe()"
+                  [matTooltip]="'delete' | i18n"
+                  mat-fab>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div fxFlex
+             class="recipe-header-text">
           <h1 class="title">{{recipe.title}}</h1>
           <p class="description">{{recipe.description}}</p>
         </div>
       </div>
       <div class="recipe-body">
-        <div>
-          <h2>{{ 'ingredients' | i18n}}</h2>
+        <div class="ingredients-heading">
+          <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <h2>{{ 'ingredients' | i18n}}</h2>
+            <div class="ingredients-servings-calculator">
+              <span>&nbsp;(</span>
+              <mat-form-field>
+                <input matInput [value]="recipe.servings"
+                       (change)="recalculateServings($event)"
+                       min="1"
+                       max="99"
+                       step="0.5"
+                       type="number">
+              </mat-form-field>
+              <span>{{ 'recipes.servings' | i18n }}</span>
+              <span>)</span>
+            </div>
+          </div>
           <div fxLayout="row wrap"
                fxLayout.lt-sm="column">
             <div class="grid-tile"
                  fxFlex="50%"
                  *ngFor="let ingredient of recipe.ingredients">
               <mat-checkbox color="primary">
-                <span class="min">{{ingredient.minAmount}}</span>
-                <ng-container *ngIf="ingredient.maxAmount && (ingredient.maxAmount !== ingredient.minAmount)">
-                  <span class="seperator" *ngIf="ingredient.maxAmount">&nbsp;-&nbsp;</span>
-                  <span class="max">{{ingredient.maxAmount}}</span>
+                <span class="min">
+                  {{ ingredient.isNumeric ? (ingredient.minAmount | number:'1.0-1':languageService.angularLocale) : ingredient.minAmount }}
+                </span>
+                <ng-container *ngIf="ingredient.isRange">
+                  <span *ngIf="ingredient.maxAmount"
+                        class="seperator">&nbsp;-&nbsp;</span>
+                  <span class="max">
+                    {{ingredient.isNumeric ? (ingredient.maxAmount | number:'1.0-1':languageService.angularLocale) : ingredient.maxAmount}}
+                  </span>
                 </ng-container>
-                <span class="unit" *ngIf="ingredient.unit">&nbsp;{{ingredient.unit | i18n:"units"}}</span>
+                <span *ngIf="ingredient.unit"
+                      class="unit">&nbsp;{{ingredient.unit | i18n:"units"}}</span>
                 {{ingredient.translationKey | i18n:'ingredients':(ingredient.minAmount)}}
               </mat-checkbox>
             </div>
@@ -51,8 +86,7 @@
         <h2>{{ 'instructions' | i18n }}</h2>
         <div class="instruction"
              *ngFor="let instruction of recipe.instructions">
-          <mat-checkbox color="primary"
-          >
+          <mat-checkbox color="primary">
             {{instruction.text}}
           </mat-checkbox>
         </div>

@@ -17,10 +17,12 @@
              fxFlex.lt-lg="33.33333%"
              fxFlex.lt-md="100%"
              *ngFor="let recipe of recipes">
-            <app-recipe-card [recipe]="recipe"
-                             class="recipe-card"
-                             (click)="openRecipe(recipe)"
-                             matRipple></app-recipe-card>
+          <app-recipe-card [recipe]="recipe"
+                           role="link"
+                           class="recipe-card"
+                           (click)="openRecipe(recipe)"
+                           matRipple>
+          </app-recipe-card>
         </div>
       </div>
     </div>

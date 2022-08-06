@@ -10,6 +10,7 @@ class TestImporter extends RecipeURLImporter {
       image: "",
       ingredients: [],
       instructions: [],
+      servings: 2,
       title: "",
       uuid: "",
     }]);

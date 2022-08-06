@@ -255,7 +255,7 @@ export class StorageService {
       .on('error', e => this.onSyncError(e as Error));
   }
 
-  public initSync() : Observable<SyncStatus> {
+  public initSync(): Observable<SyncStatus> {
     return new Observable<SyncStatus>(subscriber => {
       this.pouchLocal!!.sync(this.pouchRemote!!)
         .on("complete", () => {
@@ -284,5 +284,13 @@ export class StorageService {
         this.pouchLocal = new PouchDB('ThymeSave');
         this.initSync();
       }));
+  }
+
+  public delete<T>(document: T): Observable<boolean> {
+    return this.db$
+      .pipe(
+        switchMap(db => from(db!!.remove(document as any as PouchDB.Core.RemoveDocument))),
+        switchMap(res => res.ok ? of(true) : throwError(() => new Error(`Unable to delete document with id ${res.id} at revision ${res.rev}`))),
+      );
   }
 }

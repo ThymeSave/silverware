@@ -1,0 +1,34 @@
+/**
+Since the styles in this file ARE NOT scoped, please do changes carefully!
+ */
+.global-notification-toast {
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  color: black;
+
+  &.status-error {
+    background: #FF9D9D;
+  }
+
+  &.status-warning {
+    background: #d9a229;
+  }
+
+  &.status-success {
+    background: #47de54;
+    color: black;
+  }
+
+  animation: fade-out 6.5s;
+}

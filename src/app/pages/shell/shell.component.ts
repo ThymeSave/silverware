@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { AuthService } from "@auth0/auth0-angular";
-import { filter, first, map, switchMap, tap } from "rxjs";
+import { filter, first, switchMap, tap } from "rxjs";
 
 import { AppUpdateService } from "@/pwa/app-update.service";
 import { OnlineService } from "@/pwa/online.service";
@@ -77,10 +77,9 @@ export class ShellComponent implements OnInit {
         first(),
         filter(auth => auth),
         switchMap(_ => this.storageService.db$),
-        tap(() => this.openSyncDialog()),
         switchMap(() => this.storageService.initSync()),
       )
-      .subscribe(_ => this.closeSyncDialog());
+      .subscribe();
   }
 }
 

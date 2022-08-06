@@ -1,5 +1,5 @@
 import { ChowdownPlugin, resourceBundle } from "@plugins/chowdown/index";
-import { RawRecipe, RecipeURLImporter, ComponentContext, URLImporterPayload } from "@thymesave/core";
+import { RawRecipe, RecipeURLImporter, ComponentContext, URLImporterPayload, RecipeDefaults } from "@thymesave/core";
 import { forkJoin, from, map, Observable, switchMap } from "rxjs";
 
 abstract class BaseChowdownImporter extends RecipeURLImporter {
@@ -26,6 +26,7 @@ abstract class BaseChowdownImporter extends RecipeURLImporter {
         image,
         ingredients: ingredients,
         instructions: instructions,
+        servings: RecipeDefaults.SERVINGS,
         title: document.title,
       },
     ];

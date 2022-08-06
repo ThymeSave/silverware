@@ -1,5 +1,5 @@
 import { resourceBundle } from "@plugins/generic-homepage/index";
-import { ComponentContext, RawRecipe, RecipeURLImporter } from "@thymesave/core";
+import { ComponentContext, RawRecipe, RecipeDefaults, RecipeURLImporter } from "@thymesave/core";
 import { HowToStep, Recipe, WithContext } from "schema-dts";
 
 export class GenericHomepageImporter extends RecipeURLImporter {
@@ -71,6 +71,7 @@ export class GenericHomepageImporter extends RecipeURLImporter {
         image: (recipeSchema.image ? await this.imageURLToBase64(recipeSchema.image!!.toString()) : undefined),
         ingredients: recipeSchema.recipeIngredient as string[],
         instructions: this.convertRecipeInstructionsFromSchema(recipeSchema),
+        servings: recipeSchema.recipeYield ? parseInt(recipeSchema.recipeYield.toString()) : RecipeDefaults.SERVINGS,
         title: recipeSchema.name?.toString() ?? document.title,
       })));
     }
@@ -81,6 +82,7 @@ export class GenericHomepageImporter extends RecipeURLImporter {
         description: this.parseDescriptionFromElement(document.querySelector("[itemprop='description']") as HTMLMetaElement | undefined),
         ingredients: this.extractTextFromNodes(document.querySelectorAll("[itemprop='recipeIngredient']")),
         instructions: this.parseInstructionsFromDocument(document),
+        servings: RecipeDefaults.SERVINGS,
         title: document.title,
       },
     ];
