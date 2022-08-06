@@ -29,7 +29,7 @@ $fontConfig: (
 @include mat.core($fontConfig);
 
 body {
-  --primary-color: #0c7c5c;
+  --primary-color: #1d9e79;
   --primary-lighter-color: #b6d8ce;
   --primary-darker-color: #065f41;
   --text-primary-color: #{$light-primary-text};
@@ -38,10 +38,10 @@ body {
 }
 
 $mat-primary: (
-  main: #1d9e79,
+  main: #37bd96,
   lighter: #b6d8ce,
-  darker: #065f41,
-  200: #0c7c5c, // For slide toggle,
+  darker: #1d9e79,
+  200: #1d9e79, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
@@ -75,9 +75,9 @@ $theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
 
 
 body {
-  --warn-color: #ff0000;
-  --warn-lighter-color: #ffb3b3;
-  --warn-darker-color: #ce2323;
+  --warn-color: #FF9D9D;
+  --warn-lighter-color: #FF9D9D;
+  --warn-darker-color: #c93c37;
   --text-warn-color: #{$light-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
@@ -161,4 +161,9 @@ button.mat-warning {
 
 .mat-tooltip {
   font-size: 14px !important;
+}
+
+.mat-toolbar {
+  background: var(--primary-color);
+  color: white;
 }

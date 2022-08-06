@@ -81,6 +81,12 @@ export class ShellComponent implements OnInit {
       )
       .subscribe();
   }
+
+  public goToHome() {
+    this.router.navigate([
+      "/recipes",
+    ]);
+  }
 }
 
 @Component({
