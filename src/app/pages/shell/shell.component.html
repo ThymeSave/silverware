@@ -7,12 +7,15 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div fxLayout="row"
+         class="navbar-logo-text"
+         (click)="goToHome()"
+         role="link"
          fxLayoutAlign="start center"
          fxLayoutGap=".25em">
       <svg class="app-logo" >
         <image width="100%" xlink:href="assets/img/logo.svg"></image>
       </svg>
-      <span>ThymeSave</span>
+      <span class="logo-text">ThymeSave</span>
       <mat-icon [matTooltip]="'offline.hint' | i18n"
                 *ngIf="!online"
                 color="warning">
@@ -23,6 +26,7 @@
             *ngIf="(authService.user$ | async) as user; else logIn"
             [matMenuTriggerFor]="menu">
       <img class="user-picture"
+           alt="Profile"
            height="58"
            [src]="user?.picture ?? 'assets/img/logo.svg'">
       <mat-menu #menu="matMenu">
@@ -55,7 +59,7 @@
   </mat-sidenav-container>
 
   <ng-template #logIn>
-    <button color="primary"
+    <button
             [title]="('login' | i18n)"
             mat-icon-button
             (click)="login()">

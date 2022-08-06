@@ -16,6 +16,10 @@ mat-sidenav-content {
   margin: 10px;
 }
 
+mat-toolbar {
+  background: #0c7c5c !important;
+}
+
 mat-sidenav-content {
   min-height: calc(100vh - 84px);
 
@@ -30,12 +34,6 @@ mat-sidenav-content {
 
 .nav-active {
   background: var(--primary-color) !important;
-}
-
-.app-logo {
-  &.online {
-    color: red !important;
-  }
 }
 
 mat-toolbar {
@@ -59,4 +57,13 @@ mat-sidenav-content {
   .sync-dialog-text {
     text-align: center;
   }
+}
+
+.logo-text {
+  font-weight: 700;
+  user-select: none;
+}
+
+.navbar-logo-text {
+  cursor: pointer;
 }

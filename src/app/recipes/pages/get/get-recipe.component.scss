@@ -116,6 +116,6 @@ app-recipe-image {
   margin-bottom: 10px;
 
   .button-delete {
-    color: #d35c5c;
+    color: var(--warn-color);
   }
 }

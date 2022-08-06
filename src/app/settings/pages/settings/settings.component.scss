@@ -7,11 +7,11 @@
     width: 60%;
   }
 
-  --danger-color: #FF9D9D;
+  --danger-color: var(--warn-color);
 }
 
 .danger-zone {
-  border: 1px solid var(--danger-color);
+  border: 1px solid var(--warn-color);
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -25,11 +25,11 @@ mat-card {
 }
 
 .mat-danger {
-  color: var(--danger-color);
+  color: var(--warn-color);
   transition: all .2s;
 
   &:hover {
-    background: #c93c37;
+    background: var(--warn-darker-color);
     color: black;
   }
 
