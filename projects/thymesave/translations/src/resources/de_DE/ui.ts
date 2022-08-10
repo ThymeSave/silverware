@@ -33,6 +33,7 @@ const ui: SingleValueTranslation = {
   "max": "Max",
   "min": "Min",
   "nav.all_recipes": "Alle Rezepte",
+  "nav.all_shopping_lists": "Alle Einkaufslisten",
   "nav.new_recipe": "Neues Rezept",
   "nav.settings": "Einstellungen",
   "notifications.error.delete_recipe_failed": "Löschen des Rezept fehlgeschlagen, bitte versuche es später erneut",
