@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from "@angular/router";
 
 import { OverviewComponent } from './pages/overview/overview.component';
+import { SharedModule } from "@/shared/shared.module";
 
 const routes : Route[] = [
   {
@@ -18,6 +19,7 @@ const routes : Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    SharedModule,
   ],
 })
 export class ShoppingListsModule { }

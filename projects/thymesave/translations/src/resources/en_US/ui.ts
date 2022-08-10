@@ -82,6 +82,7 @@ const ui: SingleValueTranslation = {
   "settings.general": "General",
   "settings.user_interface": "User Interface",
   "shell.sync.text": "Synchronisiere Daten für Offline-Nutzung ...",
+  "shopping_lists.new": "New shopping list",
   "unit": "Unit",
   "update.description": "Click on Ok to install the update now, otherwise it will be installed the next time you start the app.",
   "update.heading": "Update available",

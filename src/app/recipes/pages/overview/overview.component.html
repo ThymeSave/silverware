@@ -46,14 +46,7 @@
         </button>
       </div>
     </div>
-
-    <button class="new"
-            mat-fab
-            matTooltipPosition="left"
-            [matTooltip]="'recipes.new' | i18n"
-            routerLink="/recipes/new"
-            color="primary">
-      <mat-icon>add</mat-icon>
-    </button>
+    <app-floating-button i18nLabel="recipes.new"
+                         routerLink="/recipes/new"></app-floating-button>
   </div>
 </div>

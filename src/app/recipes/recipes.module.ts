@@ -34,6 +34,7 @@ import { SearchBarComponent } from './overview/search-bar/search-bar.component';
 import { GetRecipeComponent } from './pages/get/get-recipe.component';
 import { NewRecipeComponent } from './pages/new/new-recipe.component';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { FloatingButtonComponent } from "@/shared/components/floating-button/floating-button.component";
 import { SharedModule } from "@/shared/shared.module";
 
 const routes: Routes = [
