@@ -29,3 +29,18 @@ div.app-loading {
   }
 }
 
+/*
+  Drag Animations
+ */
+.cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  background: inherit;
+  color: inherit;
+}
