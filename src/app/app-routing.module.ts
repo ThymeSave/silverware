@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'recipes',
       },
       {
+        loadChildren: () => import("@/shopping-lists/shopping-lists.module").then(m => m.ShoppingListsModule),
+        path: 'shopping-lists',
+      },
+      {
         component: NotFoundComponent,
         path: '**',
       },

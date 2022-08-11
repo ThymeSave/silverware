@@ -26,6 +26,11 @@ export class ShellComponent implements OnInit {
       title: "nav.new_recipe",
     },
     {
+      icon: "list",
+      link: "/shopping-lists/",
+      title: "nav.all_shopping_lists",
+    },
+    {
       icon: "settings",
       link: '/settings',
       title: 'nav.settings',
