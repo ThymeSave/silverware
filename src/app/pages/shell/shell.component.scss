@@ -17,7 +17,7 @@ mat-sidenav-content {
 }
 
 mat-toolbar {
-  background: #0c7c5c !important;
+  background: var(--navbar-color) !important;
 }
 
 mat-sidenav-content {

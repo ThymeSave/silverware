@@ -29,16 +29,17 @@ $fontConfig: (
 @include mat.core($fontConfig);
 
 body {
+  --navbar-color: #0c7c5c;
   --primary-color: #1d9e79;
   --primary-lighter-color: #b6d8ce;
-  --primary-darker-color: #065f41;
+  --primary-darker-color: #1d9e79;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 
 $mat-primary: (
-  main: #37bd96,
+  main: #1d9e79,
   lighter: #b6d8ce,
   darker: #1d9e79,
   200: #1d9e79, // For slide toggle,
@@ -163,7 +164,3 @@ button.mat-warning {
   font-size: 14px !important;
 }
 
-.mat-toolbar {
-  background: var(--primary-color);
-  color: white;
-}
