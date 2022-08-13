@@ -1,3 +1,5 @@
+@use "../../../../theme";
+
 .not-found {
   margin-top: 30px;
 
@@ -111,11 +113,12 @@ app-recipe-image {
 .recipe-actions {
   button {
     background: rgba(0, 0, 0, .8);
+    color: theme.get-color("primary", "darker-contrast")
   }
 
   margin-bottom: 10px;
 
   .button-delete {
-    color: var(--warn-color);
+    color: theme.get-color("warn","lighter")
   }
 }

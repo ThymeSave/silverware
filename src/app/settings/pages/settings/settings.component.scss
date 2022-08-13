@@ -1,3 +1,5 @@
+@use "../../../../theme" as theme;
+
 .settings {
   margin-top: 20px;
   margin-left: auto;
@@ -6,12 +8,10 @@
   @media(min-width: 1200px) {
     width: 60%;
   }
-
-  --danger-color: var(--warn-color);
 }
 
 .danger-zone {
-  border: 1px solid var(--warn-color);
+  border: 1px solid theme.get-color("warn","lighter");
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -22,19 +22,5 @@ button[type=submit] {
 
 mat-card {
   margin-top: 0 !important;
-}
-
-.mat-danger {
-  color: var(--warn-color);
-  transition: all .2s;
-
-  &:hover {
-    background: var(--warn-darker-color);
-    color: black;
-  }
-
-}
-
-mat-card {
   background: none;
 }

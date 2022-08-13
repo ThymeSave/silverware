@@ -96,9 +96,6 @@
       <mat-tab-group>
         <mat-tab [label]="'recipes.import.ingredients.tab_parsed' | i18n">
           <app-parsed-recipe-editor-ingredient
-            cdkDrag
-            cdkDragBoundary=".ingredients"
-            cdkDragLockAxis="y"
             *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
             [formGroup]="ingredientsFormGroup"
             (deleted)="ingredients.removeAt(i)">
@@ -129,15 +126,12 @@
               fxLayout="column">
       <mat-tab-group>
         <mat-tab [label]="'recipes.import.instructions.tab_parsed' | i18n">
-          <app-parsed-recipe-editor-instruction
-            cdkDrag
-            cdkDragBoundary=".instructions"
-            cdkDragLockAxis="y"
+            <app-parsed-recipe-editor-instruction
             *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
-            [formGroup]="instructionsFormGroup"
-            (deleted)="instructions.removeAt(i)">
-            <app-drag-handle cdkDragHandle></app-drag-handle>
-          </app-parsed-recipe-editor-instruction>
+              [formGroup]="instructionsFormGroup"
+              (deleted)="instructions.removeAt(i)">
+              <app-drag-handle cdkDragHandle></app-drag-handle>
+            </app-parsed-recipe-editor-instruction>
           <div class="add-button-container">
             <button mat-fab
                     color="blue"

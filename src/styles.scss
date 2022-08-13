@@ -1,3 +1,8 @@
+@use "./theme" as theme;
+
+/**
+  Base
+ */
 html,
 body {
   min-height: 100%;
@@ -8,7 +13,8 @@ body {
   background-color: #2C2C2CFF;
 }
 
-body, app-root {
+body,
+app-root {
   padding: 0;
   margin: 0;
   display: flex;
@@ -17,6 +23,10 @@ body, app-root {
   align-items: stretch;
   height: 100vh;
 }
+
+/**
+  Loading before angular app starts
+ */
 
 div.app-loading {
   margin: auto;
@@ -29,3 +39,48 @@ div.app-loading {
   }
 }
 
+/*
+  Drag Animations
+ */
+.cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-preview {
+  background: theme.get-color("accent", 500);
+}
+
+/**
+  Angular Material Fixes
+ */
+.mat-checkbox-layout {
+  white-space: normal !important;
+  overflow-wrap: break-word;
+}
+
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button {
+  padding: 0 1.15em;
+  margin: 0 .65em;
+  min-width: 3em;
+  line-height: 36.4px
+}
+
+.mat-standard-chip {
+  padding: .5em .85em;
+  min-height: 2.5em;
+}
+
+.material-icons {
+  font-size: 24px;
+  font-family: 'Material Icons Outlined', 'Material Icons', serif;
+}
+
+.mat-tooltip {
+  font-size: 14px !important;
+}
