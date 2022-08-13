@@ -1,8 +1,10 @@
+@use "../../../../theme" as theme;
+
 .img-placeholder{
   width: 300px;
   max-height: 260px;
   display: block;
-  background: gray;
+  background: theme.get-color("accent", 500);
   position: relative;
 
   svg {

@@ -1,9 +1,11 @@
+@use "../../../../theme";
+
 .importer-option {
   cursor: pointer;
 }
 
-.error-details {
-  background: #515152;
+mat-card.error-details {
+  background: theme.get-color("warn",'lighter') !important;
 }
 
 .screen-hint {

@@ -1,3 +1,5 @@
+@use "../../../../theme";
+
 /**
 Since the styles in this file ARE NOT scoped, please do changes carefully!
  */
@@ -18,16 +20,18 @@ Since the styles in this file ARE NOT scoped, please do changes carefully!
   color: black;
 
   &.status-error {
-    background: #FF9D9D;
+    background: theme.get-color("warn", "darker");
+    color: theme.get-color("warn", "darker-contrast")
   }
 
   &.status-warning {
-    background: #d9a229;
+    background: theme.get-color("warn", "lighter");
+    color: theme.get-color("warn", "lighter-contrast")
   }
 
   &.status-success {
-    background: #47de54;
-    color: black;
+    background: theme.get-color("primary", 700);
+    color: theme.get-color("primary", "darker-contrast")
   }
 
   animation: fade-out 6.5s;

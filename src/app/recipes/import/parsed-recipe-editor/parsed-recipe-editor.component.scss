@@ -1,3 +1,5 @@
+@use "../../../../theme" as theme;
+
 .add-button-container {
   margin-bottom: 30px;
   width: 100%;
@@ -5,13 +7,11 @@
   button {
     margin: auto;
     display: block;
-    background: var(--accent-color)
   }
 }
 
 form {
-  margin: auto;
-  margin-top: 20px;
+  margin: 20px auto auto;
 }
 
 img {
@@ -21,8 +21,6 @@ img {
   border-radius: 4px;
 }
 
-
-
 app-parsed-recipe-editor-ingredient,
 app-parsed-recipe-editor-instruction {
   padding-left: 10px;
@@ -30,7 +28,7 @@ app-parsed-recipe-editor-instruction {
 }
 
 mat-card {
-  background: #424242;
+  background: theme.get-color("accent", 800) !important;
 }
 
 .recipe-details {
