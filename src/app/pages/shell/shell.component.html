@@ -12,7 +12,7 @@
          role="link"
          fxLayoutAlign="start center"
          fxLayoutGap=".25em">
-      <svg class="app-logo" >
+      <svg class="app-logo">
         <image width="100%" xlink:href="assets/img/logo.svg"></image>
       </svg>
       <span class="logo-text">ThymeSave</span>
@@ -54,15 +54,29 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <div class="router-outlet">
+        <router-outlet *ngIf="(isFullWidth | async)"></router-outlet>
+        <div *ngIf="!(isFullWidth | async)">
+          <div fxFlex
+               fxLayoutAlign="center start">
+            <div fxFlex
+                 fxFlex.lt-md="100%"
+                 fxFlex.gt-lg="70%"
+                 fxFlex.gt-md="75%"
+                 fxLayout="column">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
   <ng-template #logIn>
     <button
-            [title]="('login' | i18n)"
-            mat-icon-button
-            (click)="login()">
+      [title]="('login' | i18n)"
+      mat-icon-button
+      (click)="login()">
       <mat-icon>login</mat-icon>
     </button>
   </ng-template>

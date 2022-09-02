@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { Router } from "@angular/router";
+import {
+  ActivatedRoute,
+  ChildActivationStart,
+  ChildrenOutletContexts,
+  NavigationEnd,
+  RouteConfigLoadStart,
+  Router,
+} from "@angular/router";
 import { AuthService } from "@auth0/auth0-angular";
-import { filter, first, switchMap, tap } from "rxjs";
+import { filter, first, firstValueFrom, map, of, startWith, switchMap, tap } from "rxjs";
 
 import { AppUpdateService } from "@/pwa/app-update.service";
 import { OnlineService } from "@/pwa/online.service";
@@ -40,9 +47,18 @@ export class ShellComponent implements OnInit {
   public online = true;
   public loading = true;
 
+  public isFullWidth = this.router
+    .events.pipe(
+      filter(e => e instanceof NavigationEnd),
+      startWith(null),
+      map(_ => this.contexts.getContext("primary")?.route?.snapshot.data),
+      map(d => d ? ('fullWidth' in d ? (d as any).fullWidth : false) : null),
+    );
+
   constructor(
+    private contexts: ChildrenOutletContexts,
     public authService: AuthService,
-    private router : Router,
+    private router: Router,
     private dialog: MatDialog,
     public storageService: StorageService,
     public appUpdateService: AppUpdateService,
