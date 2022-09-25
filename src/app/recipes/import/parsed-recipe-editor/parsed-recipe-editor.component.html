@@ -52,7 +52,7 @@
         <mat-form-field class="importer-input description"
                         appearance="fill">
           <mat-label>{{'recipes.description' | i18n}}</mat-label>
-          <textarea [rows]="(recipe?.description?.split('\n')?.length ?? 0) + 3"
+          <textarea [rows]="(recipe.description?.split('\n')?.length ?? 0) + 3"
                     formControlName="description"
                     matInput></textarea>
         </mat-form-field>
@@ -74,7 +74,7 @@
               class="photo-change-button">
         <mat-icon>add_a_photo</mat-icon>
       </button>
-      <app-recipe-image [imageAlt]="recipe?.title" [imageSrc]="recipe?.image"></app-recipe-image>
+      <app-recipe-image [imageAlt]="recipe.title" [imageSrc]="recipe.image"></app-recipe-image>
     </div>
   </div>
   <div fxFlex
