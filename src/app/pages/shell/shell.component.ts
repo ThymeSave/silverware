@@ -50,8 +50,7 @@ export class ShellComponent implements OnInit {
   public loading = true;
   public isMobile = false;
 
-  @ViewChild("sidenav")
-  private sidenav !: MatSidenav;
+  @ViewChild("sidenav") private sidenav !: MatSidenav;
 
   public isFullWidth = this.router
     .events.pipe(
