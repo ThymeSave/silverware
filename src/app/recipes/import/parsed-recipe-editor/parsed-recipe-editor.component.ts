@@ -27,10 +27,10 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   @Input()
   set recipe(value: ParsedRecipe | null) {
-    if(value == null) {
-      return;
+    if(value != null) {
+      this._recipe = value;
     }
-    this._recipe = value;
+
     this.initForm(this.recipe);
   }
 
@@ -72,6 +72,9 @@ export class ParsedRecipeEditorComponent implements OnInit {
   };
 
   private initForm(recipe: Partial<ParsedRecipe>) {
+    if(Object.keys(recipe as any).length == 0) {
+      return;
+    }
     const ingredients = recipe.ingredients ? recipe.ingredients.map(this.mapIngredientToFormGroup.bind(this)) : [];
     const instructions = recipe.instructions ? recipe.instructions.map(this.mapInstructionToFormGroup.bind(this)) : [];
 
@@ -172,7 +175,6 @@ export class ParsedRecipeEditorComponent implements OnInit {
 
   public async save() {
     const finalized = this.importerService.finalize(this.form.getRawValue());
-    debugger;
     this.saved.next(finalized);
   }
 

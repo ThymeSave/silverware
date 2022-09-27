@@ -1,5 +1,6 @@
 <img *ngIf="imageSrc; else imgPlaceholder"
      [alt]="imageAlt"
+     [style]='"width:" + width + ";height:"+height + ";object-fit:"+objectFit'
      [src]="imageSrc">
 <ng-template #imgPlaceholder>
   <div class="img-placeholder"

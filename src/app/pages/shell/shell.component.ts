@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { MatSidenav } from "@angular/material/sidenav";
 import {
   ActivatedRoute,
   ChildActivationStart,
@@ -46,6 +48,10 @@ export class ShellComponent implements OnInit {
 
   public online = true;
   public loading = true;
+  public isMobile = false;
+
+  @ViewChild("sidenav")
+  private sidenav !: MatSidenav;
 
   public isFullWidth = this.router
     .events.pipe(
@@ -63,8 +69,14 @@ export class ShellComponent implements OnInit {
     public storageService: StorageService,
     public appUpdateService: AppUpdateService,
     private onlineService: OnlineService,
+    private _breakpointObserver: BreakpointObserver,
   ) {
     onlineService.networkStatus$.subscribe(status => this.online = status);
+    this._breakpointObserver
+      .observe([Breakpoints.Handset, Breakpoints.Small,Breakpoints.Medium])
+      .subscribe((result: BreakpointState) => {
+        this.isMobile = result.matches;
+      });
   }
 
   private openSyncDialog() {
@@ -107,6 +119,12 @@ export class ShellComponent implements OnInit {
     this.router.navigate([
       "/recipes",
     ]);
+  }
+
+  closeNavOnMobile() {
+    if(this.isMobile) {
+      this.sidenav.close();
+    }
   }
 }
 

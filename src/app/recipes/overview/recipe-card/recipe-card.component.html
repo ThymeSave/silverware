@@ -5,11 +5,9 @@
     <mat-card-header fxLayoutAlign="center center">
       <mat-card-title class="recipe-title">{{ recipe.title}}</mat-card-title>
     </mat-card-header>
-    <div class="recipe-image-wrapper">
-      <app-recipe-image [imageSrc]="recipe.image" [imageAlt]="recipe.title">
+    <app-recipe-image [imageSrc]="recipe.image" [imageAlt]="recipe.title">
 
-      </app-recipe-image>
-    </div>
+    </app-recipe-image>
   </div>
   <mat-card-content>
     {{ recipe.description | excerpt }}

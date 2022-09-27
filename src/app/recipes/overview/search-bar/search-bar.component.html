@@ -5,16 +5,16 @@
   [formGroup]="form">
   <div fxLayout="row"
        fxFlexFill
-       fxLayoutGap="30px"
+       fxLayoutGap="10px"
        fxLayoutAlign="stretch center">
     <mat-form-field fxFlex>
-      <mat-label>{{ 'recipes.overview.search' | i18n }}</mat-label>
+      <mat-label><mat-icon>search</mat-icon> {{ 'recipes.overview.search' | i18n }}</mat-label>
       <input matInput
              formControlName="fullTextSearch">
     </mat-form-field>
     <button mat-raised-button
             color="primary"
-            fxFlex="20%">
+            fxFlex="150px">
       <mat-icon>search</mat-icon>
       {{ 'search' | i18n }}
     </button>

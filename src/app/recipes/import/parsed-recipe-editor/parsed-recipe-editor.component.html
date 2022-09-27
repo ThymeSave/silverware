@@ -74,7 +74,13 @@
               class="photo-change-button">
         <mat-icon>add_a_photo</mat-icon>
       </button>
-      <app-recipe-image [imageAlt]="recipe.title" [imageSrc]="recipe.image"></app-recipe-image>
+      <mat-card class="recipe-image--card">
+        <app-recipe-image
+          height="500px"
+          objectFit="scale-down"
+          [imageAlt]="recipe.title"
+          [imageSrc]="recipe.image"></app-recipe-image>
+      </mat-card>
     </div>
   </div>
   <div fxFlex
@@ -124,12 +130,12 @@
               fxLayout="column">
       <mat-tab-group>
         <mat-tab [label]="'recipes.import.instructions.tab_parsed' | i18n">
-            <app-parsed-recipe-editor-instruction
+          <app-parsed-recipe-editor-instruction
             *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
-              [formGroup]="instructionsFormGroup"
-              (deleted)="instructions.removeAt(i)">
-              <app-drag-handle cdkDragHandle></app-drag-handle>
-            </app-parsed-recipe-editor-instruction>
+            [formGroup]="instructionsFormGroup"
+            (deleted)="instructions.removeAt(i)">
+            <app-drag-handle cdkDragHandle></app-drag-handle>
+          </app-parsed-recipe-editor-instruction>
           <div class="add-button-container">
             <button mat-fab
                     color="blue"
