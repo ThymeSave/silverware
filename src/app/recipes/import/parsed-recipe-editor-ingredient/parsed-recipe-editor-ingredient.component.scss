@@ -1,3 +1,5 @@
+@use "../../../../theme";
+
 .amount-unit {
   & > * {
     display: inline-block;
@@ -19,4 +21,12 @@
 
 .optional-amount {
   opacity: .5;
+}
+
+.invalid {
+  background: rgba(theme.get-color("warn",'darker'), .2);
+}
+
+app-drag-handle {
+  margin-left: 10px;
 }

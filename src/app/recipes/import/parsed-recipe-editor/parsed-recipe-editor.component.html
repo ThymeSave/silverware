@@ -1,7 +1,5 @@
-<form [formGroup]="form" fxFlex
-      fxFlex.lt-md="100%"
-      fxFlex.gt-lg="70%"
-      fxFlex.gt-md="75%"
+<form [formGroup]="form"
+      fxFlex
       fxLayout="column">
   <div fxFlex
        class="import-actions"
@@ -54,7 +52,7 @@
         <mat-form-field class="importer-input description"
                         appearance="fill">
           <mat-label>{{'recipes.description' | i18n}}</mat-label>
-          <textarea [rows]="(recipe?.description?.split('\n')?.length ?? 0) + 3"
+          <textarea [rows]="(recipe.description?.split('\n')?.length ?? 0) + 3"
                     formControlName="description"
                     matInput></textarea>
         </mat-form-field>
@@ -76,7 +74,13 @@
               class="photo-change-button">
         <mat-icon>add_a_photo</mat-icon>
       </button>
-      <app-recipe-image [imageAlt]="recipe?.title" [imageSrc]="recipe?.image"></app-recipe-image>
+      <mat-card class="recipe-image--card">
+        <app-recipe-image
+          height="500px"
+          objectFit="scale-down"
+          [imageAlt]="recipe.title"
+          [imageSrc]="recipe.image"></app-recipe-image>
+      </mat-card>
     </div>
   </div>
   <div fxFlex
@@ -99,7 +103,6 @@
             *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
             [formGroup]="ingredientsFormGroup"
             (deleted)="ingredients.removeAt(i)">
-            <app-drag-handle cdkDragHandle></app-drag-handle>
           </app-parsed-recipe-editor-ingredient>
           <div class="add-button-container">
             <button mat-fab
@@ -126,12 +129,11 @@
               fxLayout="column">
       <mat-tab-group>
         <mat-tab [label]="'recipes.import.instructions.tab_parsed' | i18n">
-            <app-parsed-recipe-editor-instruction
+          <app-parsed-recipe-editor-instruction
             *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
-              [formGroup]="instructionsFormGroup"
-              (deleted)="instructions.removeAt(i)">
-              <app-drag-handle cdkDragHandle></app-drag-handle>
-            </app-parsed-recipe-editor-instruction>
+            [formGroup]="instructionsFormGroup"
+            (deleted)="instructions.removeAt(i)">
+          </app-parsed-recipe-editor-instruction>
           <div class="add-button-container">
             <button mat-fab
                     color="blue"

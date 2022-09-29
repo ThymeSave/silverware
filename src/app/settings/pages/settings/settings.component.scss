@@ -1,15 +1,5 @@
 @use "../../../../theme" as theme;
 
-.settings {
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media(min-width: 1200px) {
-    width: 60%;
-  }
-}
-
 .danger-zone {
   border: 1px solid theme.get-color("warn","lighter");
   margin-top: 10px;

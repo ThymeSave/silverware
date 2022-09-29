@@ -1,8 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { Router } from "@angular/router";
+import { MatSidenav } from "@angular/material/sidenav";
+import {
+  ActivatedRoute,
+  ChildActivationStart,
+  ChildrenOutletContexts,
+  NavigationEnd,
+  RouteConfigLoadStart,
+  Router,
+} from "@angular/router";
 import { AuthService } from "@auth0/auth0-angular";
-import { filter, first, switchMap, tap } from "rxjs";
+import { filter, first, firstValueFrom, map, of, startWith, switchMap, tap } from "rxjs";
 
 import { AppUpdateService } from "@/pwa/app-update.service";
 import { OnlineService } from "@/pwa/online.service";
@@ -39,16 +48,34 @@ export class ShellComponent implements OnInit {
 
   public online = true;
   public loading = true;
+  public isMobile = false;
+
+  @ViewChild("sidenav") public sidenav !: MatSidenav;
+
+  public isFullWidth = this.router
+    .events.pipe(
+      filter(e => e instanceof NavigationEnd),
+      startWith(null),
+      map(_ => this.contexts.getContext("primary")?.route?.snapshot.data),
+      map(d => d ? ('fullWidth' in d ? (d as any).fullWidth : false) : null),
+    );
 
   constructor(
+    private contexts: ChildrenOutletContexts,
     public authService: AuthService,
-    private router : Router,
+    private router: Router,
     private dialog: MatDialog,
     public storageService: StorageService,
     public appUpdateService: AppUpdateService,
     private onlineService: OnlineService,
+    private _breakpointObserver: BreakpointObserver,
   ) {
     onlineService.networkStatus$.subscribe(status => this.online = status);
+    this._breakpointObserver
+      .observe([Breakpoints.Handset, Breakpoints.Small,Breakpoints.Medium])
+      .subscribe((result: BreakpointState) => {
+        this.isMobile = result.matches;
+      });
   }
 
   private openSyncDialog() {
@@ -91,6 +118,12 @@ export class ShellComponent implements OnInit {
     this.router.navigate([
       "/recipes",
     ]);
+  }
+
+  closeNavOnMobile() {
+    if(this.isMobile) {
+      this.sidenav.close();
+    }
   }
 }
 

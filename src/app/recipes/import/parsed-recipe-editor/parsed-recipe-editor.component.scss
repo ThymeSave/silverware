@@ -46,7 +46,8 @@ mat-card {
   left: 50%;
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
-  background: rgba(0, 0, 0, 0.4)
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
 }
 
 .import-actions {
@@ -80,3 +81,10 @@ mat-form-field {
   font-size: 1.1rem;
 }
 
+.recipe-image--card {
+  width: 100%;
+}
+
+app-recipe-image {
+  display: block;
+}

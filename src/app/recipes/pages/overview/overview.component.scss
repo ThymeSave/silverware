@@ -9,14 +9,9 @@
 }
 
 app-recipe-search-bar {
-  padding: 10px;
-}
-
-@media(min-width: 1800px) {
-  .overview {
-    width: 70%;
-    margin: auto;
-  }
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .recipe-tile {

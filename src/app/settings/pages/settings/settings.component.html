@@ -1,7 +1,5 @@
-<div class="settings"
-     fxLayoutAlign="center center">
+<div class="settings">
   <form [formGroup]="settingsForm"
-        fxFlex="80%"
         (ngSubmit)="save()"
         fxLayout="column">
     <h1>{{ 'settings.general' | i18n }}</h1>
@@ -35,6 +33,5 @@
         </button>
       </div>
     </mat-card>
-
   </form>
 </div>

@@ -9,6 +9,10 @@ export class RecipeImageComponent {
   @Input() public imageSrc ?: string;
   @Input() public imageAlt ?: string;
 
+  @Input() public width : Number | string = "100%";
+  @Input() public height : Number | string = "100%";
+  @Input() public objectFit : string = "cover";
+
   constructor() {
   }
 }

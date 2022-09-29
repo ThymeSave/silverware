@@ -84,7 +84,7 @@
   <mat-step [label]="'recipes.verify' | i18n"
             completed="false"
             editable="false">
-    <app-parsed-recipe-editor *ngIf="!importFailed"
+    <app-parsed-recipe-editor *ngIf="!importFailed && !!parsedRecipe"
                               [recipe]="parsedRecipe"
                               [recipeIndex]="recipeIndex"
                               [totalRecipes]="totalRecipes"

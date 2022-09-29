@@ -44,7 +44,7 @@ export class GetRecipeComponent {
     }
 
     const textField = e.currentTarget as HTMLInputElement;
-    const newServings = parseInt(textField.value);
+    const newServings = parseFloat(textField.value);
     this.recipeService.recalculateServings(this.recipe, newServings);
   }
 

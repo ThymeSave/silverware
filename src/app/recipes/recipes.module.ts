@@ -1,32 +1,37 @@
-import {DragDropModule} from "@angular/cdk/drag-drop";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
+import { FlexLayoutModule, FlexModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MatCardModule } from "@angular/material/card";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatRippleModule } from "@angular/material/core";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
-import {MatListModule} from "@angular/material/list";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { MatListModule } from "@angular/material/list";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatStepperModule } from "@angular/material/stepper";
-import {MatTabsModule} from "@angular/material/tabs";
+import { MatTabsModule } from "@angular/material/tabs";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule, Routes } from "@angular/router";
+import { createRoutingData } from "@helper/routing";
 
 import { IngredientSelectorComponent } from './common/ingredient-selector/ingredient-selector.component';
 import { RecipeImageComponent } from './common/recipe-image/recipe-image.component';
 import { UnitSelectorComponent } from './common/unit-selector/unit-selector.component';
-import { ParsedRecipeEditorIngredientComponent } from './import/parsed-recipe-editor-ingredient/parsed-recipe-editor-ingredient.component';
-import { ParsedRecipeEditorInstructionComponent } from './import/parsed-recipe-editor-instruction/parsed-recipe-editor-instruction.component';
+import {
+  ParsedRecipeEditorIngredientComponent,
+} from './import/parsed-recipe-editor-ingredient/parsed-recipe-editor-ingredient.component';
+import {
+  ParsedRecipeEditorInstructionComponent,
+} from './import/parsed-recipe-editor-instruction/parsed-recipe-editor-instruction.component';
 import { ParsedRecipeEditorComponent } from './import/parsed-recipe-editor/parsed-recipe-editor.component';
 import { URLImporterSettingsComponent } from './import/urlimporter-settings/urlimporter-settings.component';
 import { RecipeCardComponent } from './overview/recipe-card/recipe-card.component';
@@ -34,7 +39,6 @@ import { SearchBarComponent } from './overview/search-bar/search-bar.component';
 import { GetRecipeComponent } from './pages/get/get-recipe.component';
 import { NewRecipeComponent } from './pages/new/new-recipe.component';
 import { OverviewComponent } from './pages/overview/overview.component';
-import { FloatingButtonComponent } from "@/shared/components/floating-button/floating-button.component";
 import { SharedModule } from "@/shared/shared.module";
 
 const routes: Routes = [
@@ -49,6 +53,7 @@ const routes: Routes = [
   {
     component: GetRecipeComponent,
     path: ':id',
+    ...createRoutingData({fullWidth: true}),
   },
 ];
 

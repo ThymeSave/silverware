@@ -1,11 +1,12 @@
 <div [formGroup]="formGroup"
+     [class]="formGroup.valid ? 'valid' : 'invalid'"
      cdkDrag
      cdkDragBoundary=".instructions"
      cdkDragLockAxis="y"
      fxLayoutGap="20px"
      fxLayoutAlign="center center"
      fxLayout="row">
-  <ng-content></ng-content>
+  <app-drag-handle cdkDragHandle></app-drag-handle>
   <mat-form-field class="full-width-field">
     <mat-label>instruction</mat-label>
     <textarea matInput

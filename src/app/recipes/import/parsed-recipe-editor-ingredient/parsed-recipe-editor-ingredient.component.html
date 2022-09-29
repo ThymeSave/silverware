@@ -4,8 +4,9 @@
      cdkDragLockAxis="y"
      fxLayoutGap="20px"
      fxLayoutAlign="center center"
+     [class]="formGroup.valid ? 'valid' : 'invalid'"
      [formGroup]="formGroup">
-  <ng-content></ng-content>
+  <app-drag-handle cdkDragHandle></app-drag-handle>
   <div class="amount-unit"
        fxFlex
        fxFlex.gt-lg="150px">
