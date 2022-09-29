@@ -103,7 +103,6 @@
             *ngFor="let ingredientsFormGroup of ingredients.controls; let i = index;"
             [formGroup]="ingredientsFormGroup"
             (deleted)="ingredients.removeAt(i)">
-            <app-drag-handle cdkDragHandle></app-drag-handle>
           </app-parsed-recipe-editor-ingredient>
           <div class="add-button-container">
             <button mat-fab
@@ -134,7 +133,6 @@
             *ngFor="let instructionsFormGroup of instructions.controls; let i = index;"
             [formGroup]="instructionsFormGroup"
             (deleted)="instructions.removeAt(i)">
-            <app-drag-handle cdkDragHandle></app-drag-handle>
           </app-parsed-recipe-editor-instruction>
           <div class="add-button-container">
             <button mat-fab
