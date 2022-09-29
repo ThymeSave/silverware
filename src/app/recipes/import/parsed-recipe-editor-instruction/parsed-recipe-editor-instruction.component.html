@@ -1,4 +1,5 @@
 <div [formGroup]="formGroup"
+     [class]="formGroup.valid ? 'valid' : 'invalid'"
      cdkDrag
      cdkDragBoundary=".instructions"
      cdkDragLockAxis="y"

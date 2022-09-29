@@ -1,3 +1,13 @@
+@use "../../../../theme";
+
 .full-width-field {
   width: 100%;
+}
+
+.invalid {
+  background: rgba(theme.get-color("warn",'darker'), .2);
+}
+
+app-drag-handle {
+  margin-left: 10px;
 }
