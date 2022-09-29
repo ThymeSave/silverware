@@ -37,7 +37,7 @@
       </mat-menu>
     </button>
   </mat-toolbar>
-  <mat-sidenav-container fxFlexFill [hasBackdrop]="isMobile">
+  <mat-sidenav-container fxFlexFill [hasBackdrop]="isMobile" *ngIf="(authService.isAuthenticated$ | async)">
     <mat-sidenav #sidenav
                  [autoFocus]="false"
                  [opened]="!isMobile"
