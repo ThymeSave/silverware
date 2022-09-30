@@ -7,11 +7,11 @@ export const resourceBundle = ResourceBundle.builder()
     "de_DE": [
       {
         key: "AllRecipeImporter.name",
-        translation: "Chowdown - Alle Rezepte",
+        translation: "Chowdown - Alle",
       },
       {
         key: "SingleRecipeImporter.name",
-        translation: "Chowdown - Einzelnes Rezept",
+        translation: "Chowdown - Einzelnes",
       },
     ],
     "en_US": [
