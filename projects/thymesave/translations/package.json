@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@types/string-similarity": "^4.0.0",
-    "@types/node": "^16.11.56",
+    "@types/node": "^16.11.62",
     "string-similarity": "^4.0.4"
   }
 }
