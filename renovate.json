@@ -2,5 +2,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>ThymeSave/.github:renovate-config"
-  ]
+  ],
+  "packageRules": [
+        {
+            "matchPackagePatterns":[
+                "eslint",
+                "@typescript-eslint/",
+                "@angular-eslint/"
+            ],
+            "groupName": "eslint"
+        }
+    ]
 }
