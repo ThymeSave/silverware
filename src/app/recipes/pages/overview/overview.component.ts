@@ -1,8 +1,9 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { createLogger } from "@helper/log";
 import { Recipe } from "@thymesave/core";
+import { filter, first, map, switchMap } from "rxjs";
 
 import { Search } from "@/recipes/overview/search-bar/search-bar.component";
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
@@ -22,15 +23,37 @@ export class OverviewComponent implements OnInit {
 
   private readonly logger = createLogger("OverviewComponent");
 
-  private search: Search | null = null;
+  public search: Search | null = null;
 
   constructor(public recipeService: RecipeService,
               private router: Router,
+              private route: ActivatedRoute,
               private readonly viewport: ViewportScroller) {
+    route.queryParamMap
+      .pipe(
+        first(),
+        map(params => params.get("search")),
+        filter(param => !!param),
+        map(rawSearch => this.parseSearch(rawSearch!!)),
+      )
+      .subscribe();
   }
 
-  public searchSubmitted(search: Search) {
+  private parseSearch(raw: string) {
+    try {
+      this.searchSubmitted(JSON.parse(atob(raw)) as Search);
+    } catch (e) {
+      this.logger.warn("Failed to parse search from query", raw);
+    }
+  }
+
+  public searchSubmitted(search: Search | null) {
     this.search = search;
+    this.router.navigate([], {
+      queryParams: {
+        search: btoa(JSON.stringify(search)),
+      },
+    });
     this.hydrateRecipes();
   }
 
@@ -77,11 +100,13 @@ export class OverviewComponent implements OnInit {
 
   private onPaginated(pagination: PaginationWithResult<Recipe>) {
     this.logger.debug("Paginated", pagination);
+    this.pagination = pagination;
+    this.recipes = pagination.results;
+
     if (pagination.results.length == 0) {
       return;
     }
-    this.pagination = pagination;
-    this.recipes = pagination.results;
+
     this.prevToken = pagination.prevStartToken;
     this.nextToken = pagination.nextStartToken;
   }
