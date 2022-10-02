@@ -1,7 +1,7 @@
 fail_fast: true
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.3.0
     hooks:
       - id: check-json
         exclude: tsconfig.*\.json
@@ -25,7 +25,7 @@ repos:
       - id: destroyed-symlinks
 
   - repo: https://github.com/syntaqx/git-hooks
-    rev: v0.0.16
+    rev: v0.0.17
     hooks:
       - id: circleci-config-validate
       - id: shellcheck

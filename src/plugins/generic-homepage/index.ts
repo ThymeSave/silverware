@@ -7,13 +7,13 @@ export const resourceBundle = ResourceBundle.builder()
     "de_DE": [
       {
         key: "GenericHomepageImporter.name",
-        translation: "Generische Rezept-Website",
+        translation: "Other",
       },
     ],
     "en_US": [
       {
         key: "GenericHomepageImporter.name",
-        translation: "Generic recipe website",
+        translation: "Andere",
       },
     ],
   })
