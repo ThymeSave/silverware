@@ -26,6 +26,24 @@
             "@types/jasmine"
         ],
         "groupName": "jasmine"
-    }
+      },
+      {
+        "matchPackagePatterns":[
+            "node",
+            "ts-node",
+            "@types/node"
+        ],
+        "groupName": "node.js"
+      },
+      {
+        "matchPackagePatterns":[
+            "karma",
+            "karma-chrome-launcher",
+            "karma-coverage",
+            "karma-jasmine",
+            "karma-jasmine-html-reporter"
+        ],
+        "groupName": "karma"
+      }
   ]
 }
