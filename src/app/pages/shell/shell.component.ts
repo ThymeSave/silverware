@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { MatSidenav } from "@angular/material/sidenav";
 import {
-  ActivatedRoute,
+  ActivatedRoute, ChildActivationEnd,
   ChildActivationStart,
   ChildrenOutletContexts,
   NavigationEnd,
@@ -56,7 +56,7 @@ export class ShellComponent implements OnInit {
 
   public isFullWidth = this.router
     .events.pipe(
-      filter(e => e instanceof NavigationEnd),
+      filter(e => e instanceof NavigationEnd || e instanceof ChildActivationEnd),
       startWith(null),
       map(_ => this.contexts.getContext("primary")?.route?.snapshot.data),
       map(d => d ? ('fullWidth' in d ? (d as any).fullWidth : false) : null),

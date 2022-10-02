@@ -1,10 +1,11 @@
 <div class="overview">
   <div fxLayout="column">
     <app-recipe-search-bar
-      (search)="searchSubmitted($event)">
+      [search]="search"
+      (searchTriggered)="searchSubmitted($event)">
     </app-recipe-search-bar>
     <div fxLayout="column"
-         fxLayoutAlign="center center">
+         fxLayoutAlign="center space-evenly">
       <div fxLayout="row wrap"
            fxLayoutAlign="center stretch"
            fxLayout.lt-md="column"
