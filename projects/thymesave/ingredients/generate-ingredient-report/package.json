@@ -14,7 +14,7 @@
   "devDependencies": {
     "@types/jasmine": "3.10.6",
     "@types/node": "11.15.54",
-    "jasmine": "3.99.0",
+    "jasmine": "4.4.0",
     "jasmine-node": "1.16.2",
     "ts-node": "8.10.2",
     "typescript": "3.9.10"
