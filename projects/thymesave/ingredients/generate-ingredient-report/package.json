@@ -12,12 +12,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jasmine": "^3.3.12",
-    "@types/node": "^11.13.4",
-    "jasmine": "^3.4.0",
-    "jasmine-node": "^1.16.2",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.3"
+    "@types/jasmine": "3.10.6",
+    "@types/node": "11.15.54",
+    "jasmine": "3.99.0",
+    "jasmine-node": "1.16.2",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.10"
   },
   "dependencies": {
     "@angular-devkit/architect": "0.901.7"
