@@ -50,6 +50,8 @@ export class ShellComponent implements OnInit {
   public loading = true;
   public isMobile = false;
 
+  public logoutURL : string = window.location.origin;
+
   @ViewChild("sidenav") public sidenav !: MatSidenav;
 
   public isFullWidth = this.router

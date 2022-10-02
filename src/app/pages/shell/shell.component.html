@@ -30,7 +30,7 @@
            height="58"
            [src]="user?.picture ?? 'assets/img/logo.svg'">
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="authService.logout({  })">
+        <button mat-menu-item (click)="authService.logout({ returnTo: logoutURL })">
           <mat-icon>logout</mat-icon>
           <span>{{ 'logout' | i18n}}</span>
         </button>
