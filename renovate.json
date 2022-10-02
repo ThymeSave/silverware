@@ -18,6 +18,14 @@
               "@angular-devkit/"
           ],
           "groupName": "angular"
-      }
-    ]
+      },
+      {
+        "matchPackagePatterns":[
+            "jasmine-node",
+            "jasmine",
+            "@types/jasmine"
+        ],
+        "groupName": "jasmine"
+    }
+  ]
 }
