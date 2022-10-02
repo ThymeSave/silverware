@@ -19,8 +19,8 @@ commands:
       - run:
           name: Remove lock files
           command: |
-            rm /tmp/node-project-package.json
-            rm /tmp/node-project-lockfile
+            rm /tmp/node-project-package.json || true
+            rm /tmp/node-project-lockfile || true
   install_dependencies:
     steps:
       - node/install-packages
