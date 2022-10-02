@@ -11,6 +11,13 @@
                 "@angular-eslint/"
             ],
             "groupName": "eslint"
-        }
+        },
+        {
+          "matchPackagePatterns":[
+              "@angular/",
+              "@angular-devkit/"
+          ],
+          "groupName": "angular"
+      }
     ]
 }
