@@ -4,46 +4,53 @@
     "local>ThymeSave/.github:renovate-config"
   ],
   "packageRules": [
-        {
-            "matchPackagePatterns":[
-                "eslint",
-                "@typescript-eslint/",
-                "@angular-eslint/"
-            ],
-            "groupName": "eslint"
-        },
-        {
-          "matchPackagePatterns":[
-              "@angular/",
-              "@angular-devkit/"
-          ],
-          "groupName": "angular"
-      },
-      {
-        "matchPackagePatterns":[
-            "jasmine-node",
-            "jasmine",
-            "@types/jasmine"
-        ],
-        "groupName": "jasmine"
-      },
-      {
-        "matchPackagePatterns":[
-            "node",
-            "ts-node",
-            "@types/node"
-        ],
-        "groupName": "node.js"
-      },
-      {
-        "matchPackagePatterns":[
-            "karma",
-            "karma-chrome-launcher",
-            "karma-coverage",
-            "karma-jasmine",
-            "karma-jasmine-html-reporter"
-        ],
-        "groupName": "karma"
-      }
+    {
+      "groupName": "eslint",
+      "matchPackagePatterns": [
+        "^eslint",
+        "^@typescript-eslint/",
+        "^@angular-eslint/"
+      ]
+    },
+    {
+      "groupName": "angular",
+      "matchPackagePatterns": [
+        "^@angular/",
+        "^@angular-devkit/"
+      ]
+    },
+    {
+      "groupName": "jasmine",
+      "matchPackagePatterns": [
+        "^jasmine-node",
+        "^jasmine",
+        "^@types/jasmine"
+      ]
+    },
+    {
+      "groupName": "node.js",
+      "matchPackagePatterns": [
+        "^node",
+        "^ts-node",
+        "^@types/node"
+      ]
+    },
+    {
+      "groupName": "karma",
+      "matchPackagePatterns": [
+        "^karma",
+        "^karma-chrome-launcher",
+        "^karma-coverage",
+        "^karma-jasmine",
+        "^karma-jasmine-html-reporter"
+      ]
+    },
+    {
+      "allowedVersions": "<=11.15.54",
+      "description": "pin @types/node to last working version with Buffer export",
+      "matchPackagePatterns": [
+        "^@types/node"
+      ]
+    }
   ]
 }
