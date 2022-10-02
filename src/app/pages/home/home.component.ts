@@ -11,6 +11,7 @@ export class HomeComponent {
 
   constructor(public authService: AuthService,
               private dialog : MatDialog) {
+    console.log("beam me up scotty");
   }
 
 }

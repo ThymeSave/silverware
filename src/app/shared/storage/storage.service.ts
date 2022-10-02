@@ -99,6 +99,9 @@ export class StorageService {
   }
 
   private async createIndices(db: PouchDB.Database) {
+    if(!db) {
+      return;
+    }
     try {
       this.logger.debug("Indices created", await Promise.all(indices.map(i => db.createIndex(i))));
     } catch (e) {
