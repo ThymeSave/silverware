@@ -32,7 +32,7 @@
     "@angular/platform-browser-dynamic": "14.2.4",
     "@angular/router": "14.2.4",
     "@angular/service-worker": "14.2.4",
-    "@auth0/auth0-angular": "1.10.1",
+    "@auth0/auth0-angular": "1.11.0",
     "lodash": "4.17.21",
     "pouchdb": "7.3.0",
     "pouchdb-find": "7.3.0",
