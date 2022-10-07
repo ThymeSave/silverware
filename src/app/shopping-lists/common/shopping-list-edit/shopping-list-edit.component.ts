@@ -39,7 +39,6 @@ export class ShoppingListEditComponent {
   }
 
   public handleSubmit() {
-    console.log(this.list);
     if(this.list._id) {
       return this.shoppingListService.upsert(this.list._id, (list) => {
         Object.assign(list, this.list);

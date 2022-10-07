@@ -83,6 +83,7 @@ const ui: SingleValueTranslation = {
   "settings.user_interface": "Benutzeroberfläche",
   "shell.sync.text": "Synchronisiere Daten für Offline-Nutzung ...",
   "shopping_lists.edit_list": "Einkaufliste bearbeiten",
+  "shopping_lists.icon": "Symbol",
   "shopping_lists.list_title": "Titel",
   "shopping_lists.new": "Neue Einkaufsliste",
   "unit": "Einheit",

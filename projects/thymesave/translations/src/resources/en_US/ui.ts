@@ -84,6 +84,7 @@ const ui: SingleValueTranslation = {
   "settings.user_interface": "User Interface",
   "shell.sync.text": "Synchronizing data for offline usage ...",
   "shopping_lists.edit_list": "Edit shopping list",
+  "shopping_lists.icon": "Icon",
   "shopping_lists.list_title": "Title",
   "shopping_lists.new": "New shopping list",
   "unit": "Unit",

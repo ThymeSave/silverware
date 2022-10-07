@@ -37,6 +37,9 @@ export class OverviewComponent implements OnInit {
         map(rawSearch => this.parseSearch(rawSearch!!)),
       )
       .subscribe();
+
+    recipeService.changes$
+      .subscribe(() => this.hydrateRecipes());
   }
 
   private parseSearch(raw: string) {

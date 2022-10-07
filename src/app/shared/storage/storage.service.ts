@@ -76,7 +76,12 @@ export class StorageService {
   private logger = createLogger("StorageService");
 
   private dbSubject = new BehaviorSubject<PouchDB.Database | null>(null);
-  public db$ = this.dbSubject.asObservable().pipe(filter(db => !!db));
+  public readonly db$ = this.dbSubject.asObservable()
+    .pipe(filter(db => !!db));
+
+  private changeSubject = new BehaviorSubject<BaseDocument | null>(null);
+  public readonly changes$ = this.changeSubject.asObservable()
+    .pipe(filter(change => !!change));
 
   constructor(
     private http: HttpClient,
@@ -176,7 +181,7 @@ export class StorageService {
    */
   public getForEntityType<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort = ["_id"], limit ?: number): Observable<T[]> {
     if (!limit) {
-      this.logger.warn(`Get all documents of entityType ${entityType}. Please do not use this for production as it may slow down the app!`);
+      this.logger.warn(`Get all documents of entityType ${entityType}. Please do not use this for production if you are not sure what you are doing, as it may slow down the app!`);
     }
     return this.db$
       .pipe(
@@ -260,7 +265,26 @@ export class StorageService {
         live: true,
         retry: true,
       })
+      .on("change", e => this.onChange(e))
       .on('error', e => this.onSyncError(e as Error));
+  }
+
+  public onChange(e: PouchDB.Replication.SyncResult<any>) {
+    const change = e.change;
+    if (!change.ok || change.errors.length > 0) {
+      return;
+    }
+
+    this.logger.debug("Change occurred", change);
+
+    change.docs
+      .filter(d => !!d.$entityType)
+      .forEach(d => this.changeSubject.next(d));
+
+    change.docs
+      .filter(d => d._deleted)
+      .map(d => ({...d, $entityType: d._id.split(":")[0]}))
+      .forEach(d => this.changeSubject.next(d));
   }
 
   public initSync(): Observable<SyncStatus> {

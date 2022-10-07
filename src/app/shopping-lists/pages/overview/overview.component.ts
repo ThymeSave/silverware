@@ -12,6 +12,4 @@ export class OverviewComponent {
   public selected$ = this.selected.pipe(
     filter(v => v != null),
   );
-
-  constructor() { }
 }

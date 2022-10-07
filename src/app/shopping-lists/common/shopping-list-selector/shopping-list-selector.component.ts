@@ -20,6 +20,8 @@ export class ShoppingListSelectorComponent implements OnInit {
 
   constructor(private shoppingListService: ShoppingListService) {
     this.listChanged.subscribe(list => this.activeItemUuid = list.uuid);
+    this.shoppingListService.changes$
+      .subscribe(() => this.fetchLists());
     this.fetchLists();
   }
 
@@ -28,7 +30,7 @@ export class ShoppingListSelectorComponent implements OnInit {
       .subscribe(lists => {
         this.shoppingLists = lists;
         if (lists.length > 0) {
-          this.selectItemByUuid(this.shoppingLists[0].uuid);
+          this.selectItemByUuid(!this.activeItemUuid ? this.shoppingLists[0].uuid : this.activeItemUuid);
         }
       });
   }

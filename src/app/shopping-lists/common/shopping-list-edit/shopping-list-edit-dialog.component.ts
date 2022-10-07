@@ -19,7 +19,7 @@ import { ShoppingListEditComponent } from "@/shopping-lists/common/shopping-list
 })
 export class ShoppingListEditDialogComponent {
   constructor(public fb: FormBuilder,
-              public dialogRef : DialogRef<ShoppingListEditDialogComponent>,
+              public dialogRef: DialogRef<ShoppingListEditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ShoppingList) {
   }
 
@@ -29,6 +29,9 @@ export class ShoppingListEditDialogComponent {
   });
 
   save() {
+    if (!this.form.valid) {
+      return;
+    }
     Object.assign(this.data, this.form.getRawValue());
   }
 }
