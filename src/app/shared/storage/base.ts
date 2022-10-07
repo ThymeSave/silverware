@@ -30,6 +30,10 @@ export abstract class EntityService<T extends BaseDocument> {
     });
   }
 
+  public build_id(id: string) {
+    return this.storageService.build_id(this.entityType, id);
+  }
+
   public getAll(): Observable<T[]> {
     return this.storageService.getAll(this.entityType);
   }

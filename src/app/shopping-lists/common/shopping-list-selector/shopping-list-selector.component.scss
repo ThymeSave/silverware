@@ -1,0 +1,22 @@
+@use "../../../../theme";
+
+.list-item {
+  &.active {
+    background: theme.get-color("primary", 500)
+  }
+
+  mat-icon {
+    $size: 6rem;
+    font-size: $size;
+    width: $size;
+    height: $size;
+  }
+}
+
+.wrapper {
+  display: block;
+}
+
+.add-list {
+  width: 100%;
+}

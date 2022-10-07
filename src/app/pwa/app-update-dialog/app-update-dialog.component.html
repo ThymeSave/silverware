@@ -3,16 +3,21 @@
   <div mat-dialog-content>
     {{ "update.description" | i18n }}
   </div>
-  <div mat-dialog-actions fxFlex fxLayout="row" fxLayoutAlign="space-around">
+  <div mat-dialog-actions
+       fxFlex
+       fxLayout="row"
+       fxLayoutAlign="space-around">
     <button mat-button
-            [mat-dialog-close]="true"
-            cdkFocusInitial>
-      {{ "ok" | i18n }}
-    </button>
-    <button mat-button
+            color="success"
             [mat-dialog-close]="false"
             mat-dialog-close>
       {{ "cancel" | i18n }}
+    </button>
+    <button mat-button
+            color="warn"
+            [mat-dialog-close]="true"
+            cdkFocusInitial>
+      {{ "ok" | i18n }}
     </button>
   </div>
 </div>

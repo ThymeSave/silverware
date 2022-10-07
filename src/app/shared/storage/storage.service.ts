@@ -99,7 +99,7 @@ export class StorageService {
   }
 
   private async createIndices(db: PouchDB.Database) {
-    if(!db) {
+    if (!db) {
       return;
     }
     try {
@@ -115,6 +115,11 @@ export class StorageService {
    * @param id Unique identifier for the document
    */
   public build_id(entityType: string, id: string): string {
+    // do not prefix already prefixed ids
+    if (id.startsWith(entityType)) {
+      return id;
+    }
+
     return `${entityType}:${id}`;
   }
 

@@ -82,6 +82,8 @@ const ui: SingleValueTranslation = {
   "settings.general": "Allgemein",
   "settings.user_interface": "Benutzeroberfläche",
   "shell.sync.text": "Synchronisiere Daten für Offline-Nutzung ...",
+  "shopping_lists.edit_list": "Einkaufliste bearbeiten",
+  "shopping_lists.list_title": "Titel",
   "shopping_lists.new": "Neue Einkaufsliste",
   "unit": "Einheit",
   "update.description": "Mit einem Klick auf Bestätigen jetzt aktualisieren oder erst beim nächsten Start aktualisieren.",

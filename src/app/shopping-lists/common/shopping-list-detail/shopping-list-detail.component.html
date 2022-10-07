@@ -1,0 +1,14 @@
+<div class="detail">
+  <header fxFlex
+          fxLayout="row"
+          fxLayoutGap="10px"
+          fxLayoutAlign="start center">
+    <mat-icon class="icon">{{list.icon}}</mat-icon>
+    <span class="heading mat-display-1">{{list.name}}</span>
+    <app-shopping-list-edit [list]="list">
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </app-shopping-list-edit>
+  </header>
+</div>

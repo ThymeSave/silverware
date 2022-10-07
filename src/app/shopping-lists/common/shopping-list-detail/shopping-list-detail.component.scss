@@ -1,0 +1,18 @@
+@use "../../../../theme";
+
+$heading-size: 5rem;
+
+.icon {
+  background: theme.get-color("primary", 400);
+  border-radius: 50%;
+  font-size: $heading-size !important;
+  width: $heading-size;
+  height: $heading-size;
+  padding: $heading-size / 6;
+}
+
+.heading {
+  line-height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,31 @@
+<div fxFlex
+     fxLayoutGap="20px"
+     fxLayout="column">
+  <div class="list-wrapper"
+       [fxLayout]="align"
+       fxLayoutGap="10px"
+       fxFlex>
+    <mat-card *ngFor="let shoppingList of shoppingLists"
+              (click)="select(shoppingList)"
+              class="list-item"
+              [class]="activeItemUuid === shoppingList.uuid ? 'list-item active' : 'list-item'"
+              mat-ripple>
+      <div fxFlex
+           fxLayout="column"
+           fxLayoutAlign="start center" >
+        <mat-icon>{{shoppingList.icon}}</mat-icon>
+        {{shoppingList.name}}
+      </div>
+    </mat-card>
+  </div>
+  <app-shopping-list-edit fxFlex [list]="{name: ''}"
+                          (edited)="fetchLists()">
+    <button mat-flat-button
+            class="add-list"
+            color="accent">
+      <mat-icon>add</mat-icon>
+      {{ 'shopping_lists.new' | i18n }}
+    </button>
+  </app-shopping-list-edit>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="wrapper"
+     fxFlex
+     fxLayout="column">
+  <h1 mat-dialog-title>{{ "shopping_lists.edit_list" | i18n }}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field >
+        <mat-label>{{ 'shopping_lists.list_title' | i18n }}</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ 'shopping_lists.icon' | i18n }}</mat-label>
+        <input matInput formControlName="icon">
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions fxFlex fxLayout="row" fxLayoutAlign="space-around">
+    <button mat-button
+            color="warn"
+            [mat-dialog-close]="false"
+            mat-dialog-close>
+      {{ "cancel" | i18n }}
+    </button>
+    <button mat-button
+            color="primary"
+            [disabled]="!form.valid"
+            [mat-dialog-close]="true"
+            (click)="save()"
+            cdkFocusInitial>
+      {{ "save" | i18n }}
+    </button>
+  </div>
+</div>
