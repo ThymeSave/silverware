@@ -25,7 +25,9 @@
              class="recipe-actions"
              fxLayoutGap="10px"
              fxLayoutAlign="end">
-          <button mat-fab><mat-icon>share</mat-icon></button>
+          <button mat-fab>
+            <mat-icon>share</mat-icon>
+          </button>
           <button color="warn"
                   class="button-delete"
                   (click)="deleteRecipe()"
@@ -63,10 +65,10 @@
             <div class="grid-tile"
                  fxFlex="50%"
                  *ngFor="let ingredient of recipe.ingredients">
-              <mat-checkbox color="primary">
-                <span class="min">
+              <app-checkable-text>
+                <div class="min">
                   {{ ingredient.isNumeric ? (ingredient.minAmount | number:'1.0-1':languageService.angularLocale) : ingredient.minAmount }}
-                </span>
+                </div>
                 <ng-container *ngIf="ingredient.isRange">
                   <span *ngIf="ingredient.maxAmount"
                         class="seperator">&nbsp;-&nbsp;</span>
@@ -75,9 +77,9 @@
                   </span>
                 </ng-container>
                 <span *ngIf="ingredient.unit"
-                      class="unit">&nbsp;{{ingredient.unit | i18n:"units"}}</span>
+                      class="unit">{{ingredient.unit | i18n:"units"}}</span>
                 {{ingredient.translationKey | i18n:'ingredients':(ingredient.minAmount)}}
-              </mat-checkbox>
+              </app-checkable-text>
             </div>
           </div>
         </div>
@@ -86,9 +88,9 @@
         <h2>{{ 'instructions' | i18n }}</h2>
         <div class="instruction"
              *ngFor="let instruction of recipe.instructions">
-          <mat-checkbox color="primary">
+          <app-checkable-text>
             {{instruction.text}}
-          </mat-checkbox>
+          </app-checkable-text>
         </div>
       </div>
     </div>

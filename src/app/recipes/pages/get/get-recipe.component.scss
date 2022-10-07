@@ -122,3 +122,13 @@ app-recipe-image {
     color: theme.get-color("warn","lighter")
   }
 }
+
+.min {
+  display: inline;
+}
+
+.min,
+.max,
+.unit {
+  font-weight: bold;
+}

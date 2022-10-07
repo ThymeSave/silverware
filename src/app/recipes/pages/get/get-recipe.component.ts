@@ -6,6 +6,8 @@ import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
 import { LanguageService } from "@/shared/i18n/language.service";
 import { NotificationService } from "@/shared/notifications/notification.service";
 
+type RecipeMode = "Present" | "Cook"
+
 @Component({
   selector: 'app-get-recipe',
   styleUrls: ['./get-recipe.component.scss'],
@@ -16,6 +18,8 @@ export class GetRecipeComponent {
   public recipe ?: RecipeEntity;
   public notFound: boolean = false;
 
+  public mode : RecipeMode = "Present";
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private recipeService: RecipeService,
@@ -24,6 +28,10 @@ export class GetRecipeComponent {
     this.id$ = this.route.params
       .pipe(map(params => (params as any).id as string));
     this.id$.subscribe(this.tryLoadingRecipe.bind(this));
+  }
+
+  public get isCookMode() {
+    return this.mode == "Cook";
   }
 
   public get backgroundStyle() {

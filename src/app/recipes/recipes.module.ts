@@ -23,6 +23,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule, Routes } from "@angular/router";
 import { createRoutingData } from "@helper/routing";
 
+import { CheckableTextComponent } from './common/checkable-text/checkable-text.component';
 import { IngredientSelectorComponent } from './common/ingredient-selector/ingredient-selector.component';
 import { RecipeImageComponent } from './common/recipe-image/recipe-image.component';
 import { UnitSelectorComponent } from './common/unit-selector/unit-selector.component';
@@ -71,6 +72,7 @@ const routes: Routes = [
     RecipeCardComponent,
     GetRecipeComponent,
     RecipeImageComponent,
+    CheckableTextComponent,
   ],
   imports: [
     CommonModule,
