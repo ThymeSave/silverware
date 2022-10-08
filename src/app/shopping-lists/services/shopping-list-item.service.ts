@@ -57,38 +57,56 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
     });
   }
 
+  /**
+   * Get shopping list items grouped by ingredient and unit
+   * @param items
+   */
   public groupByIngredientAndUnit(items: ShoppingListItemEntity[]): GroupedShoppingListItems[] {
     return chain(items)
+      // group by ingredient first
       .groupBy(item => item.ingredientKey)
-      .map((items, ingredientKey) => {
-        return {
-          ingredientKey,
-          perUnit: groupBy(items, item => item.unit),
-        };
-      })
-      .map((items, ingredientKey) => {
-        let results = [];
-        for (let unit in items.perUnit) {
-          const itemsPerUnit = items.perUnit[unit];
-          results.push({
-            earliestCreate: new Date(Math.min(...itemsPerUnit.map(item => new Date(item.created).getTime()))),
-            ingredientKey: items.ingredientKey,
-            items: itemsPerUnit,
-            sources: uniqBy(itemsPerUnit
-              .map(item => item.source)
-              .slice(0, 3), source => source.source),
-            sum: itemsPerUnit
-              .map(item => item.amount)
-              .reduce((a, b) => a!! + b!!)!!,
-            // lodash converts null value to string -> convert back to null since we don't want to display a unit
-            unit: unit == "null" ? null : unit,
-          });
-        }
-        return results;
-      })
+      .map((rawItems, ingredientKey) => ({
+        ingredientKey,
+        perUnit: groupBy(rawItems, item => item.unit),
+      }))
+      // group by ingredient and unit
+      .map(itemsByIngredient =>
+        Object.entries(itemsByIngredient.perUnit)
+          .map(([unit, items]) => this.mapEntryToGrouped(
+            itemsByIngredient.ingredientKey,
+            this.normalizeDictKeyToVal(unit),
+            items,
+          )),
+      )
       .flatten()
+      // make sure the order is always the same, where the newest is always on top of the list
       .sort((a, b) => b.earliestCreate.getTime() - a.earliestCreate.getTime())
       .value();
   }
 
+  /**
+   * Convert dict key from lodash to an actual value.
+   *
+   * In case the key value is undefined or null lodash stringifies it, which is not desired in some cases.
+   * @param key Key to normalize
+   * @private
+   */
+  private normalizeDictKeyToVal(key: string) {
+    return key == "null" ? null : key;
+  }
+
+  private mapEntryToGrouped(ingredientKey: string, unit: string | null, items: ShoppingListItemEntity[]) {
+    return {
+      earliestCreate: new Date(Math.min(...items.map(item => new Date(item.created).getTime()))),
+      ingredientKey: ingredientKey,
+      items: items,
+      sources: uniqBy(items
+        .map(item => item.source)
+        .slice(0, 3), source => source.source),
+      sum: items
+        .map(item => item.amount)
+        .reduce((a, b) => a!! + b!!)!!,
+      unit: unit,
+    };
+  }
 }
