@@ -233,8 +233,8 @@ export class StorageService {
       })) as Observable<PaginationWithResult<T>>;
   }
 
-  public getAll<T extends BaseDocument>(entityType: string, sort ?: PouchDBFindSort): Observable<T[]> {
-    return this.getForEntityType(entityType, {}, sort);
+  public getAll<T extends BaseDocument>(entityType: string, selector ?: PouchDB.Find.Selector, sort ?: PouchDBFindSort): Observable<T[]> {
+    return this.getForEntityType(entityType, selector || {}, sort);
   }
 
   private fetchDBName(token: string): Observable<string> {

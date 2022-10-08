@@ -5,6 +5,7 @@ import { catchError, map, Observable, of, switchMap, tap } from "rxjs";
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
 import { LanguageService } from "@/shared/i18n/language.service";
 import { NotificationService } from "@/shared/notifications/notification.service";
+import { ShoppingListItemService } from "@/shopping-lists/services/shopping-list-item.service";
 
 type RecipeMode = "Present" | "Cook"
 
@@ -23,6 +24,7 @@ export class GetRecipeComponent {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private recipeService: RecipeService,
+              private shoppingListItemService : ShoppingListItemService,
               public languageService: LanguageService,
               private notificationService: NotificationService) {
     this.id$ = this.route.params
@@ -88,5 +90,12 @@ export class GetRecipeComponent {
           });
         }
       });
+  }
+
+  public addToShoppingList() {
+    const recipe = this.recipe!!;
+    this.shoppingListItemService.addRecipeToShoppingList({
+      uuid: "d4600482-65fa-45ed-9c38-a8121f7071c3",
+    },recipe).subscribe(result => console.log(result));
   }
 }

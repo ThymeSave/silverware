@@ -132,3 +132,13 @@ app-recipe-image {
 .unit {
   font-weight: bold;
 }
+
+.ingredients-heading {
+  position: relative;
+}
+
+.add-to-shopping-list {
+  position: absolute;
+  background: theme.get-color("primary", 500);
+  right: 0;
+}

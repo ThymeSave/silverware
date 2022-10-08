@@ -44,7 +44,14 @@
       </div>
       <div class="recipe-body">
         <div class="ingredients-heading">
-          <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div fxLayout="row wrap"
+               fxLayoutAlign="start center">
+            <button mat-icon-button
+                    (click)="addToShoppingList()"
+                    [matTooltip]="'recipes.add_to_shopping_list' | i18n"
+                    class="add-to-shopping-list">
+              <mat-icon>shopping_bag</mat-icon>
+            </button>
             <h2>{{ 'ingredients' | i18n}}</h2>
             <div class="ingredients-servings-calculator">
               <span>&nbsp;(</span>

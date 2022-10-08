@@ -33,8 +33,8 @@ export abstract class EntityService<T extends BaseDocument> {
     });
   }
 
-  public getAll(): Observable<T[]> {
-    return this.storageService.getAll(this.entityType);
+  public getAll(selector ?: PouchDB.Find.Selector, sort ?: PouchDBFindSort): Observable<T[]> {
+    return this.storageService.getAll(this.entityType, selector, sort);
   }
 
   public delete(document: T) {

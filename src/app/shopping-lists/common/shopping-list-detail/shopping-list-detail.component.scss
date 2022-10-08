@@ -16,3 +16,17 @@ $heading-size: 5rem;
   margin: 0;
   padding: 0;
 }
+
+.amount {
+  background: theme.get-color("accent", 700);
+  min-width: 200px;
+  padding: 10px
+}
+
+app-drag-handle {
+  margin-left: 10px;
+}
+
+mat-card {
+  padding: 0;
+}

@@ -1,3 +1,4 @@
+import {DragDropModule} from "@angular/cdk/drag-drop";
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -35,19 +36,20 @@ const routes : Route[] = [
     ShoppingListEditComponent,
     ShoppingListEditDialogComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule,
-    FlexLayoutModule,
-    MatCardModule,
-    MatRippleModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        SharedModule,
+        FlexLayoutModule,
+        MatCardModule,
+        MatRippleModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        DragDropModule,
+    ],
 })
 export class ShoppingListsModule { }
