@@ -1,8 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ShoppingList } from "@thymesave/core";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 
-import { ShoppingListItemEntity, ShoppingListItemService } from "@/shopping-lists/services/shopping-list-item.service";
+import {
+  GroupedShoppingListItems,
+  ShoppingListItemEntity,
+  ShoppingListItemService,
+} from "@/shopping-lists/services/shopping-list-item.service";
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -11,7 +15,7 @@ import { ShoppingListItemEntity, ShoppingListItemService } from "@/shopping-list
 })
 export class ShoppingListDetailComponent {
   private _list !: ShoppingList;
-  public items$ !: Observable<ShoppingListItemEntity[]>;
+  public items$ !: Observable<GroupedShoppingListItems[]>;
 
   @Input()
   public set list(val) {
@@ -23,10 +27,11 @@ export class ShoppingListDetailComponent {
     return this._list;
   }
 
-  constructor(private shoppingListItemService : ShoppingListItemService) {
+  constructor(private shoppingListItemService: ShoppingListItemService) {
   }
 
   private loadItems() {
-     this.items$ = this.shoppingListItemService.getItems(this.list) as Observable<ShoppingListItemEntity[]>;
+    this.items$ = (this.shoppingListItemService.getItems(this.list) as Observable<ShoppingListItemEntity[]>)
+      .pipe(map(items => this.shoppingListItemService.groupByIngredientAndUnit(items))) as Observable<GroupedShoppingListItems[]>;
   }
 }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 
-import { ShoppingListItemEntity } from "@/shopping-lists/services/shopping-list-item.service";
+import { GroupedShoppingListItems, ShoppingListItemEntity } from "@/shopping-lists/services/shopping-list-item.service";
 
 @Component({
   selector: 'app-shopping-list-item',
@@ -8,7 +8,7 @@ import { ShoppingListItemEntity } from "@/shopping-lists/services/shopping-list-
   templateUrl: './shopping-list-item.component.html',
 })
 export class ShoppingListItemComponent {
-  @Input() public item !: ShoppingListItemEntity;
+  @Input() public item !: GroupedShoppingListItems;
   @Input() public enableEdit : boolean = true;
 
   constructor() {
