@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {FlexModule} from "@angular/flex-layout";
 import { MatButtonModule } from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule } from "@angular/router";
 
+import { DialogComponent } from './components/dialog/dialog.component';
 import { DragHandleComponent } from './components/drag-handle/drag-handle.component';
 import { ExcerptPipe } from './components/excerpt.pipe';
 import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
@@ -20,6 +22,7 @@ import { NotificationToastComponent } from './notifications/notification-toast/n
     ExcerptPipe,
     NotificationToastComponent,
     FloatingButtonComponent,
+    DialogComponent,
   ],
   exports: [
     I18nPipe,
@@ -27,15 +30,17 @@ import { NotificationToastComponent } from './notifications/notification-toast/n
     ExcerptPipe,
     NotificationToastComponent,
     FloatingButtonComponent,
+    DialogComponent,
   ],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    FlexModule,
-    MatButtonModule,
-    RouterModule,
-    MatTooltipModule,
-  ],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        FlexModule,
+        MatButtonModule,
+        RouterModule,
+        MatTooltipModule,
+        MatDialogModule,
+    ],
   providers: [
     LanguageService,
   ],

@@ -1,0 +1,19 @@
+@use "../../../../theme";
+
+.amount {
+  background: theme.get-color("accent", 700);
+  min-width: 200px;
+  padding: 10px
+}
+
+app-drag-handle {
+  margin-left: 10px;
+}
+
+mat-card {
+  padding: 0;
+}
+
+.source  {
+  font-style: italic;
+}

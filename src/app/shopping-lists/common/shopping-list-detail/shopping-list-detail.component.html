@@ -22,51 +22,9 @@
        fxLayout="column"
        fxLayoutAlign="center stretch"
        fxLayoutGap="10px">
-    <mat-card class="item"
-              role="listitem"
-              cdkDrag
-              cdkDragLockAxis="y"
-              cdkDragBoundary=".items"
-              fxLayout="row"
-              fxLayoutGap="20px"
-              fxLayoutAlign="start stretch"
-              *ngFor="let item of (items$ | async)">
-      <app-drag-handle fxLayout="row"
-                       cdkDragHandle
-                       fxLayoutAlign="center center">
-      </app-drag-handle>
-      <div class="ingredient"
-
-           fxLayoutAlign="start stretch"
-           fxLayout="column">
-        <strong>{{item.ingredientKey | i18n:"ingredients"}}</strong>
-        <ng-container [ngSwitch]="item.source.type">
-          <div class="source" *ngSwitchCase="'Manual'">
-            {{ 'shopping_lists.source_manual' | i18n}}
-          </div>
-          <div class="source" *ngSwitchCase="'Recipe'">
-            {{ 'shopping_lists.source_prefix' | i18n}} {{ item.source.source }}
-          </div>
-        </ng-container>
-
-      </div>
-      <div class="spacer"
-           fxFlex>
-
-      </div>
-      <div class="amount mat-h2"
-           fxLayoutAlign="end center"
-           fxLayout="row">
-        {{ item.amount }} {{ (item.unit || '') | i18n:"units"}}
-
-        <button mat-icon-button
-                role="button"
-                [attr.aria-label]="'edit' | i18n">
-          <!-- TODO Add edit callback -->
-          <mat-icon>edit</mat-icon>
-        </button>
-      </div>
-    </mat-card>
+    <app-shopping-list-item *ngFor="let item of (items$ | async)"
+                            [item]="item">
+    </app-shopping-list-item>
     <!-- TODO Add spoiler with already bought -->
   </div>
 </div>
