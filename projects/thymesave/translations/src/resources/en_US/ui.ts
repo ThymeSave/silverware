@@ -38,6 +38,7 @@ const ui: SingleValueTranslation = {
   "nav.new_recipe": "Create new recipe",
   "nav.settings": "Settings",
   "notifications.error.delete_recipe_failed": "Failed deleting recipe, please try again later",
+  "notifications.success.added_to_shopping_list": "Recipe has been added to shopping list",
   "notifications.success.recipe_deleted": "Recipe has been deleted",
   "offline.hint": "App is running offline",
   "ok": "Ok",

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Recipe, ShoppingListItem } from "@thymesave/core";
-import { forkJoin } from "rxjs";
+import { combineLatest, first, forkJoin } from "rxjs";
 
 import { BaseDocument } from "@/models/BaseDocument";
 import { EntityService } from "@/shared/storage/base";
@@ -38,7 +38,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
         uuid: this.generateUUID(),
       }))
       .map(entry => this.insert(entry as ShoppingListItemEntity));
-    return forkJoin(inserts);
+    return combineLatest(inserts);
   }
 
   public getItems(shoppingList: Partial<ShoppingListEntity>) {

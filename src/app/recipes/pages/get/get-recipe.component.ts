@@ -97,6 +97,11 @@ export class GetRecipeComponent {
     // TODO Set actual shopping list selected by user
     this.shoppingListItemService.addRecipeToShoppingList({
       uuid: "6c3092f2-5625-442d-a756-f6352f132127",
-    },recipe).subscribe(result => console.log(result));
+    },recipe).subscribe(() => {
+      this.notificationService.sendNotification({
+        message: 'notifications.success.added_to_shopping_list',
+        type: 'Success',
+      });
+    });
   }
 }
