@@ -1,4 +1,4 @@
-<app-dialog title="shopping_lists.select"
+<app-dialog [title]="'shopping_lists.select'"
             [hideOkButton]="true">
   <mat-action-list>
     <button *ngFor="let list of (all$ | async)"

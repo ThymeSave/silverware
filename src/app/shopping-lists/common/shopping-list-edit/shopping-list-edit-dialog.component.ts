@@ -2,10 +2,20 @@ import { DialogRef } from "@angular/cdk/dialog";
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { ShoppingList } from "@thymesave/core";
 
-import { ShoppingListEditComponent } from "@/shopping-lists/common/shopping-list-edit/shopping-list-edit.component";
 import { ShoppingListEntity } from "@/shopping-lists/services/shopping-list.service";
+
+const SHOPPING_LIST_ICONS: string[] = [
+  "ramen_dining",
+  "home",
+  "favorite",
+  "group",
+  "mood",
+  "shopping_cart",
+  "meeting_room",
+  "local_shipping",
+  "event",
+];
 
 @Component({
   selector: 'app-shopping-list-edit-dialog',
@@ -22,6 +32,10 @@ export class ShoppingListEditDialogComponent {
   constructor(public fb: FormBuilder,
               public dialogRef: DialogRef<ShoppingListEditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Partial<ShoppingListEntity>) {
+  }
+
+  public get shoppingListIcons() {
+    return SHOPPING_LIST_ICONS;
   }
 
   public get isEdit() {
