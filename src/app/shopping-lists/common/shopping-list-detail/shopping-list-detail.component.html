@@ -6,19 +6,24 @@
           fxLayoutGap="10px"
           fxLayoutAlign="start center">
     <mat-icon class="icon">{{list.icon}}</mat-icon>
-    <span class="heading mat-display-1">{{list.name}}</span>
+    <span class="heading mat-display-1" role="heading">{{list.name}}</span>
     <app-shopping-list-edit [list]="list">
-      <button mat-icon-button>
+      <button mat-icon-button
+              role="button"
+              [attr.aria-label]="'shopping_lists.edit_list' | i18n">
         <mat-icon>edit</mat-icon>
       </button>
     </app-shopping-list-edit>
   </header>
   <div class="items"
+       role="list"
+       [attr.aria-label]="'shopping_lists.items' | i18n "
        cdkDropList
        fxLayout="column"
        fxLayoutAlign="center stretch"
        fxLayoutGap="10px">
     <mat-card class="item"
+              role="listitem"
               cdkDrag
               cdkDragLockAxis="y"
               cdkDragBoundary=".items"
@@ -31,16 +36,17 @@
                        fxLayoutAlign="center center">
       </app-drag-handle>
       <div class="ingredient"
+
            fxLayoutAlign="start stretch"
            fxLayout="column">
+        <strong>{{item.ingredientKey | i18n:"ingredients"}}</strong>
         <ng-container [ngSwitch]="item.source.type">
-          <ng-container *ngSwitchCase="'Manual'">
+          <div class="source" *ngSwitchCase="'Manual'">
             {{ 'shopping_lists.source_manual' | i18n}}
-          </ng-container>
-          <ng-container *ngSwitchCase="'Recipe'">
-            <strong>{{item.ingredientKey | i18n:"ingredients"}}</strong>
+          </div>
+          <div class="source" *ngSwitchCase="'Recipe'">
             {{ 'shopping_lists.source_prefix' | i18n}} {{ item.source.source }}
-          </ng-container>
+          </div>
         </ng-container>
 
       </div>
@@ -48,12 +54,14 @@
            fxFlex>
 
       </div>
-      <div class="amount"
+      <div class="amount mat-h2"
            fxLayoutAlign="end center"
            fxLayout="row">
         {{ item.amount }} {{ (item.unit || '') | i18n:"units"}}
 
-        <button mat-icon-button>
+        <button mat-icon-button
+                role="button"
+                [attr.aria-label]="'edit' | i18n">
           <!-- TODO Add edit callback -->
           <mat-icon>edit</mat-icon>
         </button>

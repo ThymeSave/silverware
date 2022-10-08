@@ -52,6 +52,7 @@
   </app-ingredient-selector>
 
   <button (click)="emitDelete()"
+          [attr.aria-label]="'delete' | i18n"
           mat-icon-button>
     <mat-icon>close</mat-icon>
   </button>

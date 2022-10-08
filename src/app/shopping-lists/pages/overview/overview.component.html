@@ -1,6 +1,6 @@
 <div [fxLayout]="(isMobile$ | async) ? 'column' : 'row'"
      fxLayoutGap="30px">
-  <app-shopping-list-selector [fxFlex]="(isMobile$ | async) ? '' : '20%'"
+  <app-shopping-list-selector [fxFlex]="(isMobile$ | async) ? '' : '300px'"
                               [align]="(isMobile$ | async) ? 'row' : 'column'"
                               (listChanged)="selected.next($event)">
   </app-shopping-list-selector>

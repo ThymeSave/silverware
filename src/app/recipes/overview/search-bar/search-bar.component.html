@@ -4,12 +4,14 @@
   fxLayoutAlign="center center"
   [formGroup]="form">
   <div fxLayout="row"
+       role="search"
        fxFlexFill
        fxLayoutGap="10px"
        fxLayoutAlign="stretch center">
     <mat-form-field fxFlex>
       <mat-label><mat-icon>search</mat-icon> {{ 'recipes.overview.search' | i18n }}</mat-label>
       <input matInput
+             type="search"
              formControlName="fullTextSearch">
     </mat-form-field>
     <button mat-flat-button

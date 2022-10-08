@@ -5,10 +5,13 @@
       (searchTriggered)="searchSubmitted($event)">
     </app-recipe-search-bar>
     <div fxLayout="column"
+         role="group"
          fxLayoutAlign="center space-evenly">
       <div fxLayout="row wrap"
            fxLayoutAlign="center stretch"
            fxLayout.lt-md="column"
+           role="list"
+           [attr.aria-label]=" 'recipes' | i18n"
            *ngIf="recipes">
         <div class="recipe-tile"
              fxLayoutAlign="center stretch"
@@ -17,6 +20,7 @@
              fxFlex.lt-xl="25%"
              fxFlex.lt-lg="33.33333%"
              fxFlex.lt-md="100%"
+             role="listitem"
              *ngFor="let recipe of recipes">
           <app-recipe-card [recipe]="recipe"
                            role="link"
@@ -29,6 +33,8 @@
     </div>
 
     <div class="pagination"
+         role="group"
+         [attr.aria-label]="'pagination' | i18n"
          fxFlexFill
          fxLayoutAlign="center">
       <div fxFlexFill

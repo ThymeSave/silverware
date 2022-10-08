@@ -3,12 +3,14 @@
      class="selector-wrapper"
      [class]="(isMobile$ | async) ? 'mobile' : ''"
      fxLayout="column">
-
   <div class="list-wrapper"
+       role="list"
+       [attr.aria-label]="'nav.all_shopping_lists' | i18n"
        [fxLayout]="align"
        fxLayoutGap="10px"
        fxLayoutAlign="start stretch">
     <mat-card *ngFor="let shoppingList of shoppingLists"
+              role="listitem"
               (click)="select(shoppingList)"
               class="list-item"
               [class]="activeItemUuid === shoppingList.uuid ? 'list-item active' : 'list-item'"
@@ -21,6 +23,7 @@
       </div>
     </mat-card>
     <app-shopping-list-edit
+      role="button"
       [list]="{name: ''}">
       <button mat-flat-button
               class="add-list"

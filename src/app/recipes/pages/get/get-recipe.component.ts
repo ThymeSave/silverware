@@ -96,7 +96,7 @@ export class GetRecipeComponent {
     const recipe = this.recipe!!;
     // TODO Set actual shopping list selected by user
     this.shoppingListItemService.addRecipeToShoppingList({
-      uuid: "d4600482-65fa-45ed-9c38-a8121f7071c3",
+      uuid: "6c3092f2-5625-442d-a756-f6352f132127",
     },recipe).subscribe(result => console.log(result));
   }
 }
