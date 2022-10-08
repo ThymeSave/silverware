@@ -5,7 +5,7 @@ import { MatSidenav } from "@angular/material/sidenav";
 import {
   ActivatedRoute, ChildActivationEnd,
   ChildActivationStart,
-  ChildrenOutletContexts,
+  ChildrenOutletContexts, IsActiveMatchOptions,
   NavigationEnd,
   RouteConfigLoadStart,
   Router,
@@ -16,7 +16,7 @@ import { filter, first, firstValueFrom, map, of, startWith, switchMap, tap } fro
 import { AppUpdateService } from "@/pwa/app-update.service";
 import { OnlineService } from "@/pwa/online.service";
 import { StorageService } from '@/shared/storage/storage.service';
-import {createMobileBreakpointObserver} from "@/shared/util/breakpoint";
+import { createMobileBreakpointObserver } from "@/shared/util/breakpoint";
 
 @Component({
   selector: 'app-shell',
@@ -50,7 +50,14 @@ export class ShellComponent implements OnInit {
   public online = true;
   public isMobile = false;
 
-  public logoutURL : string = window.location.origin;
+  public routeMatchOptions : IsActiveMatchOptions = {
+    fragment: 'ignored',
+    matrixParams: 'ignored',
+    paths: 'exact',
+    queryParams: 'ignored',
+  };
+
+  public logoutURL: string = window.location.origin;
 
   @ViewChild("sidenav") public sidenav !: MatSidenav;
 
@@ -120,7 +127,7 @@ export class ShellComponent implements OnInit {
   }
 
   closeNavOnMobile() {
-    if(this.isMobile) {
+    if (this.isMobile) {
       this.sidenav.close();
     }
   }
