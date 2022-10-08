@@ -4,7 +4,6 @@ import { map, Observable } from "rxjs";
 
 import {
   GroupedShoppingListItems,
-  ShoppingListItemEntity,
   ShoppingListItemService,
 } from "@/shopping-lists/services/shopping-list-item.service";
 
@@ -31,7 +30,7 @@ export class ShoppingListDetailComponent {
   }
 
   private loadItems() {
-    this.items$ = (this.shoppingListItemService.getItems(this.list) as Observable<ShoppingListItemEntity[]>)
-      .pipe(map(items => this.shoppingListItemService.groupByIngredientAndUnit(items))) as Observable<GroupedShoppingListItems[]>;
+    this.items$ = this.shoppingListItemService.getItems(this.list)
+      .pipe(map(items => this.shoppingListItemService.groupByIngredientAndUnit(items)));
   }
 }

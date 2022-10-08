@@ -52,7 +52,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
   }
 
   public getItems(shoppingList: Partial<ShoppingListEntity>) {
-    return this.storageService.getAll(this.entityType, {
+    return this.storageService.getAll<ShoppingListItemEntity>(this.entityType, {
       'shoppingList': shoppingList.uuid,
     });
   }
