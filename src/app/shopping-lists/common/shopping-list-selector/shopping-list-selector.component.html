@@ -1,10 +1,13 @@
 <div fxFlex
-     fxLayoutGap="20px"
+     fxLayoutGap="10px"
+     class="selector-wrapper"
+     [class]="(isMobile$ | async) ? 'mobile' : ''"
      fxLayout="column">
+
   <div class="list-wrapper"
        [fxLayout]="align"
        fxLayoutGap="10px"
-       fxFlex>
+       fxLayoutAlign="start stretch">
     <mat-card *ngFor="let shoppingList of shoppingLists"
               (click)="select(shoppingList)"
               class="list-item"
@@ -17,15 +20,14 @@
         {{shoppingList.name}}
       </div>
     </mat-card>
+    <app-shopping-list-edit
+      [list]="{name: ''}">
+      <button mat-flat-button
+              class="add-list"
+              color="accent">
+        <mat-icon>add</mat-icon>
+        {{ 'shopping_lists.new' | i18n }}
+      </button>
+    </app-shopping-list-edit>
   </div>
-  <app-shopping-list-edit fxFlex
-                          [list]="{name: ''}">
-    <button mat-flat-button
-            class="add-list"
-            color="accent">
-      <mat-icon>add</mat-icon>
-      {{ 'shopping_lists.new' | i18n }}
-    </button>
-  </app-shopping-list-edit>
-
 </div>

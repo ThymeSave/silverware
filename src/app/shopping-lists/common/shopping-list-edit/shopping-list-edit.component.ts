@@ -41,7 +41,10 @@ export class ShoppingListEditComponent {
   public handleSubmit() {
     if(this.list._id) {
       return this.shoppingListService.upsert(this.list._id, (list) => {
-        Object.assign(list, this.list);
+        Object.assign(list, {
+          icon: this.list.icon,
+          name: this.list.name,
+        });
         return list;
       });
     } else {

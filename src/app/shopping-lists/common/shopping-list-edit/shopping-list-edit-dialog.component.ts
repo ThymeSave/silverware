@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ShoppingList } from "@thymesave/core";
 
 import { ShoppingListEditComponent } from "@/shopping-lists/common/shopping-list-edit/shopping-list-edit.component";
+import { ShoppingListEntity } from "@/shopping-lists/services/shopping-list.service";
 
 @Component({
   selector: 'app-shopping-list-edit-dialog',
@@ -20,7 +21,11 @@ import { ShoppingListEditComponent } from "@/shopping-lists/common/shopping-list
 export class ShoppingListEditDialogComponent {
   constructor(public fb: FormBuilder,
               public dialogRef: DialogRef<ShoppingListEditDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: ShoppingList) {
+              @Inject(MAT_DIALOG_DATA) public data: Partial<ShoppingListEntity>) {
+  }
+
+  public get isEdit() {
+    return !!this.data._id;
   }
 
   public form = this.fb.group({

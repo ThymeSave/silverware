@@ -16,6 +16,7 @@ import { filter, first, firstValueFrom, map, of, startWith, switchMap, tap } fro
 import { AppUpdateService } from "@/pwa/app-update.service";
 import { OnlineService } from "@/pwa/online.service";
 import { StorageService } from '@/shared/storage/storage.service';
+import {createMobileBreakpointObserver} from "@/shared/util/breakpoint";
 
 @Component({
   selector: 'app-shell',
@@ -47,7 +48,6 @@ export class ShellComponent implements OnInit {
   ];
 
   public online = true;
-  public loading = true;
   public isMobile = false;
 
   public logoutURL : string = window.location.origin;
@@ -70,14 +70,11 @@ export class ShellComponent implements OnInit {
     public storageService: StorageService,
     public appUpdateService: AppUpdateService,
     private onlineService: OnlineService,
-    private _breakpointObserver: BreakpointObserver,
+    private breakpointObserver: BreakpointObserver,
   ) {
     onlineService.networkStatus$.subscribe(status => this.online = status);
-    this._breakpointObserver
-      .observe([Breakpoints.Handset, Breakpoints.Small,Breakpoints.Medium])
-      .subscribe((result: BreakpointState) => {
-        this.isMobile = result.matches;
-      });
+    createMobileBreakpointObserver(this.breakpointObserver)
+      .subscribe(isMobile => this.isMobile = isMobile);
   }
 
   private openSyncDialog() {

@@ -1,5 +1,7 @@
-<div fxFlex fxLayoutGap="30px">
-  <app-shopping-list-selector fxFlex="500px"
+<div [fxLayout]="(isMobile$ | async) ? 'column' : 'row'"
+     fxLayoutGap="30px">
+  <app-shopping-list-selector [fxFlex]="(isMobile$ | async) ? '' : '500px'"
+                              [align]="(isMobile$ | async) ? 'row' : 'column'"
                               (listChanged)="selected.next($event)">
   </app-shopping-list-selector>
   <ng-container *ngIf="(selected$ | async) as active;">
@@ -8,5 +10,6 @@
     </app-shopping-list-detail>
   </ng-container>
 </div>
+
 
 <app-floating-button i18nLabel="shopping_lists.new_item"></app-floating-button>

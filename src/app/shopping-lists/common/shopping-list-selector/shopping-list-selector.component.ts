@@ -1,6 +1,8 @@
+import { BreakpointObserver } from "@angular/cdk/layout";
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ShoppingList } from "@thymesave/core";
 
+import { createMobileBreakpointObserver } from "@/shared/util/breakpoint";
 import { ShoppingListService } from "@/shopping-lists/services/shopping-list.service";
 
 @Component({
@@ -18,7 +20,10 @@ export class ShoppingListSelectorComponent implements OnInit {
   public activeItemUuid !: string;
   public shoppingLists: ShoppingList[] = [];
 
-  constructor(private shoppingListService: ShoppingListService) {
+  public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
+
+  constructor(private shoppingListService: ShoppingListService,
+              private breakPointObserver : BreakpointObserver) {
     this.listChanged.subscribe(list => this.activeItemUuid = list.uuid);
     this.shoppingListService.changes$
       .subscribe(() => this.fetchLists());
