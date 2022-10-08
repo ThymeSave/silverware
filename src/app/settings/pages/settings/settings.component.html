@@ -5,7 +5,7 @@
     <section role="region">
       <h1>{{ 'settings.general' | i18n }}</h1>
       <h2>{{ 'settings.user_interface' | i18n }}</h2>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" fxFlexFill>
         <mat-label>{{ "language" | i18n }}</mat-label>
         <mat-select formControlName="language">
           <mat-option *ngFor="let lang of availableLanguages"
@@ -15,6 +15,7 @@
         </mat-select>
       </mat-form-field>
       <button type="submit"
+              fxFlexFill
               color="primary"
               mat-raised-button>
         <mat-icon>save</mat-icon>
