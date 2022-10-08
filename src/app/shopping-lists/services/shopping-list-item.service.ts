@@ -85,6 +85,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
         return results;
       })
       .flatten()
+      .sort()
       .value();
   }
 }
