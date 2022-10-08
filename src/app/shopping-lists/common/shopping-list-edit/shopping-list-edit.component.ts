@@ -4,6 +4,7 @@ import { ShoppingList } from "@thymesave/core";
 import { filter, switchMap } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
 
+import { openActionDialog } from "@/shared/util/dialog";
 import {
   ShoppingListEditDialogComponent,
 } from "@/shopping-lists/common/shopping-list-edit/shopping-list-edit-dialog.component";
@@ -22,24 +23,23 @@ export class ShoppingListEditComponent {
   @Output() edited = new EventEmitter<void>();
 
   constructor(public dialog: MatDialog,
-              public shoppingListService : ShoppingListService) {
+              public shoppingListService: ShoppingListService) {
   }
 
   public openEditDialog() {
-    const ref = this.dialog.open(ShoppingListEditDialogComponent, {
+    openActionDialog({
+      actionCallback: () => {
+        this.handleSubmit()
+          .subscribe(() => this.edited.next());
+      },
+      component: ShoppingListEditDialogComponent,
       data: this.list,
-      width: "500px",
+      dialog: this.dialog,
     });
-    ref.afterClosed()
-      .pipe(
-        filter(res => res === true),
-        switchMap(() => this.handleSubmit()),
-      )
-      .subscribe(() => this.edited.next());
   }
 
   public handleSubmit() {
-    if(this.list._id) {
+    if (this.list._id) {
       return this.shoppingListService.upsert(this.list._id, (list) => {
         Object.assign(list, {
           icon: this.list.icon,
