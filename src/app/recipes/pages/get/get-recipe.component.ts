@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { catchError, map, Observable, of, switchMap, tap } from "rxjs";
 
+import {
+  ShoppingListSelectorComponent, ShoppingListSelectorData,
+} from "@/recipes/common/shopping-list-selector/shopping-list-selector.component";
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
 import { LanguageService } from "@/shared/i18n/language.service";
 import { NotificationService } from "@/shared/notifications/notification.service";
+import { openActionDialog } from "@/shared/util/dialog";
 import { ShoppingListItemService } from "@/shopping-lists/services/shopping-list-item.service";
 
 type RecipeMode = "Present" | "Cook"
@@ -22,6 +27,7 @@ export class GetRecipeComponent {
   public mode : RecipeMode = "Present";
 
   constructor(private route: ActivatedRoute,
+              private dialog : MatDialog,
               private router: Router,
               private recipeService: RecipeService,
               private shoppingListItemService : ShoppingListItemService,
@@ -94,14 +100,24 @@ export class GetRecipeComponent {
 
   public addToShoppingList() {
     const recipe = this.recipe!!;
-    // TODO Set actual shopping list selected by user
-    this.shoppingListItemService.addRecipeToShoppingList({
-      uuid: "6c3092f2-5625-442d-a756-f6352f132127",
-    },recipe).subscribe(() => {
-      this.notificationService.sendNotification({
-        message: 'notifications.success.added_to_shopping_list',
-        type: 'Success',
-      });
+    const data : ShoppingListSelectorData = {
+      list: null,
+    };
+    openActionDialog({
+      actionCallback: () => {
+        this.shoppingListItemService.addRecipeToShoppingList({
+          uuid: data.list!!.uuid,
+        },recipe).subscribe(() => {
+          this.notificationService.sendNotification({
+            message: 'notifications.success.added_to_shopping_list',
+            type: 'Success',
+          });
+        });
+      },
+      component: ShoppingListSelectorComponent,
+      data,
+      dialog: this.dialog,
     });
+
   }
 }

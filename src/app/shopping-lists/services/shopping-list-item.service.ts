@@ -17,7 +17,7 @@ export interface GroupedShoppingListItems {
   unit: string | null
   items: ShoppingListItemEntity[]
   sum: number
-  sources : ShoppingListItemSource[]
+  sources: ShoppingListItemSource[]
 }
 
 @Injectable({
@@ -36,6 +36,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
     const inserts = recipe.ingredients
       .map(ingredient => ({
         amount: ingredient.minAmount,
+        created: new Date(),
         done: false,
         ingredientKey: ingredient.translationKey,
         shoppingList: shoppingList.uuid!!,
@@ -70,11 +71,12 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
         for (let unit in items.perUnit) {
           const itemsPerUnit = items.perUnit[unit];
           results.push({
+            earliestCreate: new Date(Math.min(...itemsPerUnit.map(item => new Date(item.created).getTime()))),
             ingredientKey: items.ingredientKey,
             items: itemsPerUnit,
             sources: uniqBy(itemsPerUnit
               .map(item => item.source)
-              .slice(0, 3),source => source.source),
+              .slice(0, 3), source => source.source),
             sum: itemsPerUnit
               .map(item => item.amount)
               .reduce((a, b) => a!! + b!!)!!,
@@ -85,7 +87,8 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
         return results;
       })
       .flatten()
-      .sort()
+      .sort((a, b) => b.earliestCreate.getTime() - a.earliestCreate.getTime())
       .value();
   }
+
 }

@@ -1,0 +1,12 @@
+<app-dialog title="shopping_lists.select"
+            [hideOkButton]="true">
+  <mat-action-list>
+    <button *ngFor="let list of (all$ | async)"
+            [mat-dialog-close]="true"
+            (click)="selectList(list)"
+            mat-list-item>
+      <mat-icon>{{list.icon}}</mat-icon>&nbsp;
+      {{ list.name }}
+    </button>
+  </mat-action-list>
+</app-dialog>

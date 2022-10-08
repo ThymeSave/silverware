@@ -1,4 +1,5 @@
 <div [fxLayout]="(isMobile$ | async) ? 'column' : 'row'"
+     class="recipe-list"
      fxLayoutGap="30px">
   <app-shopping-list-selector [fxFlex]="(isMobile$ | async) ? '' : '300px'"
                               [align]="(isMobile$ | async) ? 'row' : 'column'"
@@ -10,6 +11,5 @@
     </app-shopping-list-detail>
   </ng-container>
 </div>
-
 
 <app-floating-button i18nLabel="shopping_lists.new_item"></app-floating-button>

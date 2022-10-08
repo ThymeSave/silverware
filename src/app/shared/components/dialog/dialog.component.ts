@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DialogComponent {
   @Input() public title !: string;
+  @Input() public hideOkButton : boolean = false;
   @Input() public submitEnabled : boolean = true;
   @Input() public okText : string = "ok";
   @Input() public cancelText : string = "cancel";

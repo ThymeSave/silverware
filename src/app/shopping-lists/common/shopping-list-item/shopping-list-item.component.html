@@ -8,11 +8,14 @@
        fxLayout="column">
     <strong>{{item.ingredientKey | i18n:"ingredients"}}</strong>
 
-    <div class="source" *ngFor="let source of item.sources; last as last">
-      <ng-container [ngSwitch]="source.type">
-        <ng-container *ngSwitchCase="'Manual'">{{ 'shopping_lists.source_manual' | i18n}}</ng-container>
-        <ng-container *ngSwitchCase="'Recipe'">{{ 'shopping_lists.source_prefix' | i18n}} {{ source.source }}</ng-container>
-        <ng-container *ngIf="!last">,</ng-container>&nbsp;
+    <div class="source">
+      {{ 'shopping_lists.source_prefix' | i18n}}
+      <ng-container *ngFor="let source of item.sources; last as last">
+        <ng-container [ngSwitch]="source.type">
+          <ng-container *ngSwitchCase="'Manual'">{{ 'shopping_lists.source_manual' | i18n}}</ng-container>
+          <ng-container *ngSwitchCase="'Recipe'">{{ source.source }}</ng-container>
+          <ng-container *ngIf="!last">,&nbsp;</ng-container>
+        </ng-container>
       </ng-container>
     </div>
   </div>
@@ -22,7 +25,8 @@
   <div class="amount mat-h2"
        fxLayoutAlign="end center"
        fxLayout="row">
-    {{ item.sum }} <ng-container *ngIf="item.unit">{{ (item.unit) | i18n:"units"}}</ng-container>
+    {{ item.sum }}
+    <ng-container *ngIf="item.unit">{{ (item.unit) | i18n:"units"}}</ng-container>
 
     <button *ngIf="enableEdit"
             mat-icon-button

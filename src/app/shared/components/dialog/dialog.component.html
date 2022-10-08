@@ -11,11 +11,13 @@
             [mat-dialog-close]="false">
       {{ cancelText | i18n }}
     </button>
-    <button mat-button
-            color="primary"
-            [disabled]="!submitEnabled"
-            [mat-dialog-close]="true"
-            (click)="clickSubmit.next($event)">
+    <button
+      *ngIf="!hideOkButton"
+      mat-button
+      color="primary"
+      [disabled]="!submitEnabled"
+      [mat-dialog-close]="true"
+      (click)="clickSubmit.next($event)">
       {{ okText | i18n }}
     </button>
   </div>
