@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { Component } from '@angular/core';
+import { ShoppingList } from "@thymesave/core";
+import { BehaviorSubject, filter } from "rxjs";
+
+import { createMobileBreakpointObserver } from "@/shared/util/breakpoint";
 
 @Component({
   selector: 'app-overview',
@@ -6,6 +11,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './overview.component.html',
 })
 export class OverviewComponent {
+  public selected = new BehaviorSubject<ShoppingList | null>(null);
+  public selected$ = this.selected.pipe(
+    filter(v => v != null),
+  );
 
-  constructor() { }
+  public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
+
+  public constructor(private breakPointObserver : BreakpointObserver) {
+  }
 }

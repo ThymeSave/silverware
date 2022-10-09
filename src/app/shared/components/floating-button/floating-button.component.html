@@ -1,6 +1,8 @@
 <button class="new"
+        role="button"
         mat-fab
         matTooltipPosition="left"
+        [attr.aria-label]="i18nLabel | i18n"
         [matTooltip]="i18nLabel | i18n"
         [routerLink]="routerLink"
         color="{{color}}">

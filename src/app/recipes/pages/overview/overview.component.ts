@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { createLogger } from "@helper/log";
 import { Recipe } from "@thymesave/core";
-import { filter, first, map, switchMap } from "rxjs";
+import { filter, first, map } from "rxjs";
 
 import { Search } from "@/recipes/overview/search-bar/search-bar.component";
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
@@ -37,6 +37,9 @@ export class OverviewComponent implements OnInit {
         map(rawSearch => this.parseSearch(rawSearch!!)),
       )
       .subscribe();
+
+    recipeService.changes$
+      .subscribe(() => this.hydrateRecipes());
   }
 
   private parseSearch(raw: string) {

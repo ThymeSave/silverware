@@ -1,6 +1,6 @@
 import { Recipe } from "@thymesave/core";
 import PouchDB from "pouchdb";
-import { map, Observable } from "rxjs";
+import { filter, map, Observable } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
 
 import { BaseDocument } from "@/models/BaseDocument";
@@ -14,6 +14,9 @@ import {
 } from "@/shared/storage/storage.service";
 
 export abstract class EntityService<T extends BaseDocument> {
+  public readonly changes$ = this.storageService.changes$
+    .pipe(filter(doc => doc!!.$entityType === this.entityType));
+
   protected constructor(public storageService: StorageService) {
   }
 
@@ -30,8 +33,8 @@ export abstract class EntityService<T extends BaseDocument> {
     });
   }
 
-  public getAll(): Observable<T[]> {
-    return this.storageService.getAll(this.entityType);
+  public getAll(selector ?: PouchDB.Find.Selector, sort ?: PouchDBFindSort): Observable<T[]> {
+    return this.storageService.getAll(this.entityType, selector, sort);
   }
 
   public delete(document: T) {

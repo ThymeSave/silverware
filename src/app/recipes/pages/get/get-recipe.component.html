@@ -44,7 +44,14 @@
       </div>
       <div class="recipe-body">
         <div class="ingredients-heading">
-          <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div fxLayout="row wrap"
+               fxLayoutAlign="start center">
+            <button mat-icon-button
+                    (click)="addToShoppingList()"
+                    [matTooltip]="'recipes.add_to_shopping_list' | i18n"
+                    class="add-to-shopping-list">
+              <mat-icon>shopping_bag</mat-icon>
+            </button>
             <h2>{{ 'ingredients' | i18n}}</h2>
             <div class="ingredients-servings-calculator">
               <span>&nbsp;(</span>
@@ -61,9 +68,11 @@
             </div>
           </div>
           <div fxLayout="row wrap"
+               role="list"
                fxLayout.lt-sm="column">
             <div class="grid-tile"
                  fxFlex="50%"
+                 role="listitem"
                  *ngFor="let ingredient of recipe.ingredients">
               <app-checkable-text>
                 <div class="min">
@@ -84,9 +93,11 @@
           </div>
         </div>
       </div>
-      <div class="recipe-body">
+      <div class="recipe-body"
+      role="list">
         <h2>{{ 'instructions' | i18n }}</h2>
         <div class="instruction"
+             role="listitem"
              *ngFor="let instruction of recipe.instructions">
           <app-checkable-text>
             {{instruction.text}}

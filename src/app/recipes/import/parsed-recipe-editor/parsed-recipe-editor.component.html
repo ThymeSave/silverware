@@ -106,6 +106,7 @@
           </app-parsed-recipe-editor-ingredient>
           <div class="add-button-container">
             <button mat-fab
+                    [attr.aria-label]="'add' | i18n"
                     color="blue"
                     (click)="addIngredient()">
               <mat-icon>add</mat-icon>
@@ -137,6 +138,7 @@
           <div class="add-button-container">
             <button mat-fab
                     color="blue"
+                    [attr.aria-label]="'add' | i18n"
                     fxLayoutAlign="center center"
                     (click)="addInstruction()">
               <mat-icon>add</mat-icon>

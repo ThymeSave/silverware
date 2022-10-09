@@ -5,4 +5,5 @@ import PouchDB from "pouchdb";
  */
 export interface BaseDocument extends Partial<PouchDB.Core.IdMeta>, Partial<PouchDB.Core.GetMeta> {
   $entityType?: string;
+  _id? : string
 }

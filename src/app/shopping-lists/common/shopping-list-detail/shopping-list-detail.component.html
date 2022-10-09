@@ -1,0 +1,30 @@
+<div class="detail"
+     fxLayoutGap="30px"
+     fxLayout="column">
+  <header fxFlex
+          fxLayout="row"
+          fxLayoutGap="10px"
+          fxLayoutAlign="start center">
+    <mat-icon class="icon">{{list.icon}}</mat-icon>
+    <span class="heading mat-display-1" role="heading">{{list.name}}</span>
+    <app-shopping-list-edit [list]="list">
+      <button mat-icon-button
+              role="button"
+              [attr.aria-label]="'shopping_lists.edit_list' | i18n">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </app-shopping-list-edit>
+  </header>
+  <div class="items"
+       role="list"
+       [attr.aria-label]="'shopping_lists.items' | i18n "
+       cdkDropList
+       fxLayout="column"
+       fxLayoutAlign="center stretch"
+       fxLayoutGap="10px">
+    <app-shopping-list-item *ngFor="let item of (items$ | async)"
+                            [item]="item">
+    </app-shopping-list-item>
+    <!-- TODO Add spoiler with already bought -->
+  </div>
+</div>

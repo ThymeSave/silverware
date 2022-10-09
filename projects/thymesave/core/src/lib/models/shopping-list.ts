@@ -7,9 +7,13 @@ export interface ShoppingList {
    */
   name: string
   /**
+   * Icon for checklist
+   */
+  icon ?: string
+  /**
    * UUID of the shopping list globally making it unique
    */
-  uuid: string
+  uuid : string
   /**
    * Date the shopping list was created
    */
@@ -49,6 +53,11 @@ export interface ShoppingListItem {
    * The item is done, this means the item has already been bought and therefore dismissed from the list
    */
   done: boolean
+
+  /**
+   * Date the item has been created
+   */
+  created : Date
 }
 
 /**

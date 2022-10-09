@@ -1,0 +1,49 @@
+@use "../../../../theme";
+
+.list-item {
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &.active {
+    background: theme.get-color("primary", 500)
+  }
+
+  mat-icon {
+    $size: 6rem;
+    font-size: $size;
+    width: $size;
+    height: $size;
+  }
+}
+
+.add-list {
+  width: 100%;
+}
+
+.mobile {
+
+  .list-wrapper {
+    width: 95vw;
+    margin-bottom: 20px;
+    overflow: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+    &:first-child {
+      margin-left: auto;
+    }
+
+    &:last-child {
+      margin-right: auto;
+    }
+
+    button {
+      height: 10rem;
+    }
+  }
+
+  mat-card {
+    min-width: 200px;
+  }
+}
+

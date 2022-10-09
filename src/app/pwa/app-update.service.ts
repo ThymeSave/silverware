@@ -5,6 +5,7 @@ import { createLogger } from "@helper/log";
 import { filter, first, from, switchMap, tap } from "rxjs";
 
 import { AppUpdateDialogComponent } from "@/pwa/app-update-dialog/app-update-dialog.component";
+import { openActionDialog } from "@/shared/util/dialog";
 
 @Injectable({
   providedIn: 'root',
@@ -27,21 +28,14 @@ export class AppUpdateService {
   }
 
   private showUpdateDialog() {
-    const ref = this.dialog.open(AppUpdateDialogComponent, {
-      data: {
-        "update": false,
+    openActionDialog({
+      actionCallback: () => {
+        from(this.swUpdate.activateUpdate())
+          .pipe(filter(updated => updated))
+          .subscribe(() => location.reload());
       },
-      width: "500px",
+      component: AppUpdateDialogComponent,
+      dialog: this.dialog,
     });
-
-    ref.afterClosed()
-      .pipe(
-        filter(doUpdate => doUpdate === true),
-        switchMap(() => from(this.swUpdate.activateUpdate())),
-        tap(res => this.logger.debug("Update result", res)),
-        filter(updated => updated === true),
-      )
-      .subscribe(_ => location.reload());
   }
-
 }
