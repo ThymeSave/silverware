@@ -26,16 +26,15 @@
             okText="save">
   <form fxLayout="column"
   role="list">
-    {{ 'shopping_lists.source.from_recipes' | i18n }}
+    <h2 class="subheading">{{ 'shopping_lists.source.from_recipes' | i18n }}</h2>
     <div class="form-group"
          role="listitem"
          *ngFor="let item of fromRecipes">
       <ng-template *ngTemplateOutlet="itemTemplate, context: { item }"></ng-template>
     </div>
 
-    {{ 'shopping_lists.source.manual' | i18n }}
+    <h2 class="subheading">{{ 'shopping_lists.source.manual' | i18n }}</h2>
     <ng-container *ngIf="fromManual.length > 0">
-
       <div class="form-group"
            role="listitem"
            *ngFor="let item of fromManual">

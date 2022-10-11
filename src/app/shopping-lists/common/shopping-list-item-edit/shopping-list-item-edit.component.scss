@@ -1,3 +1,9 @@
 .amount {
   width: 100px;
 }
+
+.subheading {
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+}
