@@ -1,0 +1,52 @@
+<ng-template #itemTemplate let-item=item>
+  <div fxLayout="row"
+       fxLayoutGap="10px"
+       fxLayoutAlign="stretch center">
+    <mat-form-field fxFlex *ngIf="item.source.type === 'Manual'">
+      <mat-label></mat-label>
+      <input matInput [(ngModel)]="item.source.source">
+    </mat-form-field>
+    <div fxFlex *ngIf="item.source.type === 'Recipe'">
+      {{ item.source.source }}
+    </div>
+    <mat-form-field class="amount">
+      <input [(ngModel)]="item.amount" type="number" matInput>
+    </mat-form-field>
+    <span *ngIf="item.unit">{{item.unit | i18n:'units':item.amount}}</span>
+    <button mat-icon-button
+            (click)="markAsDelete(item)"
+            [attr.aria-label]="'shopping_lists.remove_item' | i18n"
+            [matTooltip]="'shopping_lists.remove_item' | i18n"
+            color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</ng-template>
+<app-dialog [title]="group.ingredientKey | i18n:'ingredients'"
+            okText="save">
+  <form fxLayout="column"
+  role="list">
+    {{ 'shopping_lists.source.from_recipes' | i18n }}
+    <div class="form-group"
+         role="listitem"
+         *ngFor="let item of fromRecipes">
+      <ng-template *ngTemplateOutlet="itemTemplate, context: { item }"></ng-template>
+    </div>
+
+    {{ 'shopping_lists.source.manual' | i18n }}
+    <ng-container *ngIf="fromManual.length > 0">
+
+      <div class="form-group"
+           role="listitem"
+           *ngFor="let item of fromManual">
+        <ng-template *ngTemplateOutlet="itemTemplate, context: { item }"></ng-template>
+      </div>
+    </ng-container>
+    <button mat-flat-button
+            (click)="addManualItem()"
+            color="accent">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </form>
+</app-dialog>

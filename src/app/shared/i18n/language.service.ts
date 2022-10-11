@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Language, Languages } from "@thymesave/translations";
+import {
+  Language,
+  Languages,
+  loadIngredientByKey,
+  loadIngredientCategoryByKey, loadUITextByKey,
+  loadUnitByKey,
+} from "@thymesave/translations";
 import { BehaviorSubject, filter, map } from "rxjs";
 
 import { SettingsService } from "@/settings/settings.service";
@@ -76,5 +82,24 @@ export class LanguageService {
    */
   public get availableLanguages() {
     return Object.keys(Languages);
+  }
+
+  public localize(value: string, section ?: keyof Language, amount ?: number | string)  {
+    const lang = this.currentLanguage;
+    const amountToUse = isNaN(amount as any) ? 1 : parseFloat(amount as any);
+    switch (section) {
+      case "ingredients":
+        return loadIngredientByKey(lang, value, amountToUse);
+
+      case "ingredientCategory":
+        return loadIngredientCategoryByKey(lang, value);
+
+      case "units":
+        return loadUnitByKey(lang, value, amountToUse).short;
+
+      case "ui":
+      default:
+        return loadUITextByKey(lang, value);
+    }
   }
 }

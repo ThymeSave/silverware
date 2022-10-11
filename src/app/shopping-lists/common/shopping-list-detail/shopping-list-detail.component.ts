@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ShoppingList } from "@thymesave/core";
-import { map, Observable } from "rxjs";
+import { filter, map, Observable } from "rxjs";
 
 import {
-  GroupedShoppingListItems,
+  GroupedShoppingListItems, ShoppingListItemEntity,
   ShoppingListItemService,
 } from "@/shopping-lists/services/shopping-list-item.service";
 
@@ -27,10 +27,17 @@ export class ShoppingListDetailComponent {
   }
 
   constructor(private shoppingListItemService: ShoppingListItemService) {
+    shoppingListItemService.changes$
+      .pipe(filter(item => item.shoppingList == this._list.uuid))
+      .subscribe(docs => this.loadItems());
   }
 
   private loadItems() {
     this.items$ = this.shoppingListItemService.getItems(this.list)
       .pipe(map(items => this.shoppingListItemService.groupByIngredientAndUnit(items)));
+  }
+
+  public trackByFn(index: any, item: GroupedShoppingListItems) {
+    return item.ingredientKey + "." + item.unit;
   }
 }

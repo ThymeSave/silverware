@@ -55,4 +55,8 @@ export class ShoppingListSelectorComponent implements OnInit {
   public select(shoppingList: ShoppingList) {
     this.listChanged.next(shoppingList);
   }
+
+  public trackByFn(index : any, item : ShoppingList) {
+    return item.uuid;
+  }
 }

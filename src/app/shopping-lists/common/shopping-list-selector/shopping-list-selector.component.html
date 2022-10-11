@@ -9,7 +9,7 @@
        [fxLayout]="align"
        fxLayoutGap="10px"
        fxLayoutAlign="start stretch">
-    <mat-card *ngFor="let shoppingList of shoppingLists"
+    <mat-card *ngFor="let shoppingList of shoppingLists; trackBy: trackByFn"
               role="listitem"
               (click)="select(shoppingList)"
               class="list-item"

@@ -35,7 +35,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
   public addRecipeToShoppingList(shoppingList: Partial<ShoppingListEntity>, recipe: Recipe) {
     const inserts = recipe.ingredients
       .map(ingredient => ({
-        amount: ingredient.minAmount,
+        amount: ingredient.minAmount || 1,
         created: new Date(),
         done: false,
         ingredientKey: ingredient.translationKey,

@@ -77,7 +77,7 @@ const units: UnitTranslation = {
       "Prise",
       "Prisen",
     ],
-    short: "Prise",
+    short: "Pr.",
   },
   pound: {
     long: [

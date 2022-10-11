@@ -15,7 +15,7 @@ import {
 
 export abstract class EntityService<T extends BaseDocument> {
   public readonly changes$ = this.storageService.changes$
-    .pipe(filter(doc => doc!!.$entityType === this.entityType));
+    .pipe(filter(doc => doc!!.$entityType === this.entityType)) as Observable<T>;
 
   protected constructor(public storageService: StorageService) {
   }
