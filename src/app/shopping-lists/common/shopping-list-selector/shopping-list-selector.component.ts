@@ -13,7 +13,14 @@ import { ShoppingListService } from "@/shopping-lists/services/shopping-list.ser
 export class ShoppingListSelectorComponent implements OnInit {
 
   @Input() public align: "row" | "column" = "column";
-  @Input() public initialItemUuid !: string;
+  @Input()
+  public set initialItemUuid(val : string | null) {
+    if(!val) {
+      return;
+    }
+
+    this.activeItemUuid = val;
+  }
 
   @Output() public listChanged = new EventEmitter<ShoppingList>();
 
@@ -27,7 +34,7 @@ export class ShoppingListSelectorComponent implements OnInit {
     this.listChanged.subscribe(list => this.activeItemUuid = list.uuid);
     this.shoppingListService.changes$
       .subscribe(() => this.fetchLists());
-    this.fetchLists();
+
   }
 
   public fetchLists() {
@@ -49,7 +56,8 @@ export class ShoppingListSelectorComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.selectItemByUuid(this.initialItemUuid);
+    this.fetchLists();
+    this.selectItemByUuid(this.activeItemUuid);
   }
 
   public select(shoppingList: ShoppingList) {

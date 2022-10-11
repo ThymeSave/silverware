@@ -32,7 +32,7 @@ const routes : Route[] = [
   },
   {
     component: OverviewComponent,
-    path: ':list-uuid',
+    path: ':uuid',
   },
 ];
 
