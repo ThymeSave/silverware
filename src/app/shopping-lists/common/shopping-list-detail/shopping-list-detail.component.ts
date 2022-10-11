@@ -28,8 +28,8 @@ export class ShoppingListDetailComponent {
 
   constructor(private shoppingListItemService: ShoppingListItemService) {
     shoppingListItemService.changes$
-      .pipe(filter(item => item.shoppingList == this._list.uuid))
-      .subscribe(docs => this.loadItems());
+      .pipe(filter(item => (item as any)._deleted || item.shoppingList == this._list.uuid ))
+      .subscribe(_ => this.loadItems());
   }
 
   private loadItems() {
