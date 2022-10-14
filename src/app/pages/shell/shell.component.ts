@@ -77,7 +77,15 @@ export class ShellComponent implements OnInit {
   }
 
   private isFullWith(snapshotData: Data | undefined) {
-    return snapshotData ? ('fullWidth' in snapshotData ? (snapshotData as any).fullWidth : false) : null;
+    if (snapshotData) {
+      if ('fullWidth' in snapshotData) {
+        return (snapshotData as any).fullWidth;
+      } else {
+        return false;
+      }
+    } else {
+      return null;
+    }
   }
 
   constructor(
