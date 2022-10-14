@@ -3,7 +3,7 @@ import { ShoppingList } from "@thymesave/core";
 import { filter, map, Observable } from "rxjs";
 
 import {
-  GroupedShoppingListItems, ShoppingListItemEntity,
+  GroupedShoppingListItems,
   ShoppingListItemService,
 } from "@/shopping-lists/services/shopping-list-item.service";
 import { ShoppingListService } from "@/shopping-lists/services/shopping-list.service";

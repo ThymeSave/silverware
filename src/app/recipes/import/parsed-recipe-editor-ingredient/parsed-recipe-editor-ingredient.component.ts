@@ -16,9 +16,6 @@ export class ParsedRecipeEditorIngredientComponent implements OnInit {
   public filterByTranslationMatches = true;
   public preFilter !: PreFilterFunction;
 
-  constructor() {
-  }
-
   public ngOnInit() {
     this.createPreFilter();
   }

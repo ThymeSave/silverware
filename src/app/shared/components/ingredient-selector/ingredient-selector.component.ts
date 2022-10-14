@@ -10,7 +10,7 @@ import {
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 import { getSimilarity } from "@thymesave/translations";
 import { cloneDeep } from "lodash";
-import { BehaviorSubject, debounce, merge, Observable, of, startWith, switchMap, tap, timer } from "rxjs";
+import { BehaviorSubject, debounce, merge, Observable, of, startWith, switchMap, timer } from "rxjs";
 
 import {
   IngredientsGroupedByCategory,

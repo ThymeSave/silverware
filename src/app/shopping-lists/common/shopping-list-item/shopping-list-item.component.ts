@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
-import { clone, cloneDeep } from "lodash";
+import { cloneDeep } from "lodash";
 import { merge } from "rxjs";
 
 import { openActionDialog } from "@/shared/util/dialog";

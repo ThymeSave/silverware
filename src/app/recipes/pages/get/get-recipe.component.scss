@@ -23,10 +23,6 @@
   }
 }
 
-app-recipe-image {
-  display: inline-block;
-  margin: auto auto 20px;
-}
 
 h1 {
   font-size: 2.75rem;
@@ -79,6 +75,8 @@ h2 {
 }
 
 app-recipe-image {
+  display: inline-block;
+  margin: auto auto 20px;
   opacity: 0;
 }
 
@@ -95,6 +93,8 @@ app-recipe-image {
 }
 
 .ingredients-heading {
+  position: relative;
+
   h2 {
     margin: 0;
   }
@@ -133,9 +133,7 @@ app-recipe-image {
   font-weight: bold;
 }
 
-.ingredients-heading {
-  position: relative;
-}
+
 
 .add-to-shopping-list {
   position: absolute;

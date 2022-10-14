@@ -1,10 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {
-  loadIngredientByKey,
-  loadUITextByKey,
-  loadIngredientCategoryByKey,
   Language,
-  loadUnitByKey,
 } from "@thymesave/translations";
 
 import { LanguageService } from "./language.service";

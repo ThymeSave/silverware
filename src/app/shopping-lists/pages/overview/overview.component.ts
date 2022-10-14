@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ShoppingList } from "@thymesave/core";
-import { BehaviorSubject, filter, map, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 import { NotificationService } from "@/shared/notifications/notification.service";
 import { createMobileBreakpointObserver } from "@/shared/util/breakpoint";

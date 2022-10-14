@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { from, map, mergeMap, switchMap } from "rxjs";
+import { from, switchMap } from "rxjs";
 
 import { SettingsService } from "@/settings/settings.service";
 import { LanguageService } from "@/shared/i18n/language.service";

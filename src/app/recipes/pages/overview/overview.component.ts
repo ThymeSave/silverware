@@ -34,7 +34,7 @@ export class OverviewComponent implements OnInit {
         first(),
         map(params => params.get("search")),
         filter(param => !!param),
-        map(rawSearch => this.parseSearch(rawSearch!!)),
+        map(rawSearch => this.parseSearch(rawSearch as string)),
       )
       .subscribe();
 

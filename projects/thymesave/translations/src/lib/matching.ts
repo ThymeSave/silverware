@@ -31,7 +31,7 @@ export interface MatchOptions {
   /**
    * Min similarity any occurrence must have, defaults to .5
    */
-  minSimilarity?: Number
+  minSimilarity?: number
 
   /**
    * Maximal amount of matches to return, defaults to 10

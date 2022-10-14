@@ -14,7 +14,7 @@ import {
   loadIngredientByKey,
 } from "@thymesave/ingredients";
 import { matchIngredientByText, matchUnitByText } from "@thymesave/translations";
-import { first, intersectionWith } from "lodash";
+import { first } from "lodash";
 import { map, Observable } from "rxjs";
 
 import { LanguageService } from "@/shared/i18n/language.service";

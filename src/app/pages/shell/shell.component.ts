@@ -1,17 +1,16 @@
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { MatSidenav } from "@angular/material/sidenav";
 import {
-  ActivatedRoute, ChildActivationEnd,
-  ChildActivationStart,
-  ChildrenOutletContexts, IsActiveMatchOptions,
+  ChildActivationEnd,
+  ChildrenOutletContexts,
+  IsActiveMatchOptions,
   NavigationEnd,
-  RouteConfigLoadStart,
   Router,
 } from "@angular/router";
 import { AuthService } from "@auth0/auth0-angular";
-import { filter, first, firstValueFrom, map, of, startWith, switchMap, tap } from "rxjs";
+import { filter, first, map, startWith, switchMap, tap } from "rxjs";
 
 import { AppUpdateService } from "@/pwa/app-update.service";
 import { OnlineService } from "@/pwa/online.service";
@@ -69,9 +68,14 @@ export class ShellComponent implements OnInit {
     .events.pipe(
       filter(e => e instanceof NavigationEnd || e instanceof ChildActivationEnd),
       startWith(null),
-      map(_ => this.contexts.getContext("primary")?.route?.snapshot.data),
+      map(_ => this.getRouteSnapshotData()),
       map(d => d ? ('fullWidth' in d ? (d as any).fullWidth : false) : null),
     );
+
+  private getRouteSnapshotData() {
+    return this.contexts.getContext("primary")
+      ?.route?.snapshot.data;
+  }
 
   constructor(
     private contexts: ChildrenOutletContexts,

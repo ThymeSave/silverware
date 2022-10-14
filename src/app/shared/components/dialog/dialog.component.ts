@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dialog',
@@ -13,8 +13,4 @@ export class DialogComponent {
   @Input() public cancelText : string = "cancel";
 
   @Output() public clickSubmit = new EventEmitter();
-
-  constructor() {
-  }
-
 }

@@ -1,10 +1,8 @@
-import { Recipe } from "@thymesave/core";
 import PouchDB from "pouchdb";
 import { filter, map, Observable } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
 
 import { BaseDocument } from "@/models/BaseDocument";
-import { RecipeEntity } from "@/recipes/services/recipe.service";
 import {
   Pagination,
   PaginationWithResult,

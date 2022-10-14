@@ -47,8 +47,8 @@ export class LanguageService {
       case "de_DE":
         return "de";
 
-      default:
       case "en_US":
+      default:
         return "en-US";
     }
   }
@@ -84,7 +84,7 @@ export class LanguageService {
     return Object.keys(Languages);
   }
 
-  public localize(value: string, section ?: keyof Language, amount ?: number | string)  {
+  public localize(value: string, section ?: keyof Language, amount ?: number | string) {
     const lang = this.currentLanguage;
     const amountToUse = isNaN(amount as any) ? 1 : parseFloat(amount as any);
     switch (section) {

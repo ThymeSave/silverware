@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComponentContext, Service } from "@thymesave/core";
-import { SERVICE_NAME_FUNNEL_CORS_PROXY } from "@thymesave/core";
+import { ComponentContext, Service, SERVICE_NAME_FUNNEL_CORS_PROXY } from "@thymesave/core";
 
 import { FunnelService } from "@/shared/plugins/funnel.service";
 

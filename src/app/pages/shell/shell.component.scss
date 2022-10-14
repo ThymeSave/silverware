@@ -11,13 +11,7 @@
   height: 2em;
 }
 
-mat-sidenav {
-  width: 300px;
-}
 
-mat-sidenav-content {
-  margin: 10px;
-}
 
 mat-toolbar {
   background-color: theme.get-color('primary', 700) !important;
@@ -50,6 +44,7 @@ mat-sidenav {
   position: fixed;
   padding-top: 80px;
   height: 100%;
+  width: 300px;
 }
 
 mat-sidenav-content {

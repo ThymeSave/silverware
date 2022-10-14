@@ -14,6 +14,10 @@ import { ShoppingListItemService } from "@/shopping-lists/services/shopping-list
 
 type RecipeMode = "Present" | "Cook"
 
+interface PathParameters {
+  id : string
+}
+
 @Component({
   selector: 'app-get-recipe',
   styleUrls: ['./get-recipe.component.scss'],
@@ -34,7 +38,7 @@ export class GetRecipeComponent {
               public languageService: LanguageService,
               private notificationService: NotificationService) {
     this.id$ = this.route.params
-      .pipe(map(params => (params as any).id as string));
+      .pipe(map(params => (params as PathParameters).id as string));
     this.id$.subscribe(this.tryLoadingRecipe.bind(this));
   }
 

@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export type CheckableTextComponentMode = "Checkbox" | "ReadOnly"
 

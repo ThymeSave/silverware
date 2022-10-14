@@ -9,11 +9,12 @@ import {
   ImporterPayload,
   RawRecipe,
   ParsedRecipe,
+  URLImporterPayload,
+  Recipe,
 } from "@thymesave/core";
-import { URLImporterPayload, Recipe } from "@thymesave/core";
 import { FilterImporterByType, PluginRegistry } from "@thymesave/plugin";
 import { first as _first } from "lodash";
-import { BehaviorSubject, catchError, filter, finalize, first, from, map, of, switchMap } from "rxjs";
+import { BehaviorSubject, catchError, filter, finalize, first, from, of, switchMap } from "rxjs";
 
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
 import { RecipeService } from "@/recipes/services/recipe.service";

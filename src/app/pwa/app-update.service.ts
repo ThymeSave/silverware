@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { SwUpdate, VersionReadyEvent } from "@angular/service-worker";
 import { createLogger } from "@helper/log";
-import { filter, first, from, switchMap, tap } from "rxjs";
+import { filter, first, from, tap } from "rxjs";
 
 import { AppUpdateDialogComponent } from "@/pwa/app-update-dialog/app-update-dialog.component";
 import { openActionDialog } from "@/shared/util/dialog";

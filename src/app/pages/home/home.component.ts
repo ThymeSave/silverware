@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { AuthService } from "@auth0/auth0-angular";
 
 @Component({
@@ -9,10 +8,7 @@ import { AuthService } from "@auth0/auth0-angular";
 })
 export class HomeComponent {
 
-  constructor(public authService: AuthService,
-              private dialog : MatDialog) {
-    console.log("beam me up scotty");
+  constructor(public authService: AuthService) {
   }
 
 }
-
