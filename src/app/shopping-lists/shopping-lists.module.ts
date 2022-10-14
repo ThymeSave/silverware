@@ -16,6 +16,7 @@ import { Route, RouterModule } from "@angular/router";
 
 import { ShoppingListDetailComponent } from './common/shopping-list-detail/shopping-list-detail.component';
 import { ShoppingListEditComponent } from './common/shopping-list-edit/shopping-list-edit.component';
+import { ShoppingListItemAddComponent } from './common/shopping-list-item-add/shopping-list-item-add.component';
 import { ShoppingListItemEditComponent } from './common/shopping-list-item-edit/shopping-list-item-edit.component';
 import { ShoppingListItemComponent } from './common/shopping-list-item/shopping-list-item.component';
 import { ShoppingListSelectorComponent } from './common/shopping-list-selector/shopping-list-selector.component';
@@ -45,6 +46,7 @@ const routes : Route[] = [
     ShoppingListEditDialogComponent,
     ShoppingListItemComponent,
     ShoppingListItemEditComponent,
+    ShoppingListItemAddComponent,
   ],
   imports: [
     CommonModule,

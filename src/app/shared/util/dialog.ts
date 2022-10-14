@@ -17,7 +17,9 @@ type ActionDialogConfig<T> = {
   /**
    * Data to pass to component
    */
-  data?: any
+  data?: any,
+
+  width?: string
 }
 
 /**
@@ -25,10 +27,10 @@ type ActionDialogConfig<T> = {
  * @param config
  */
 export const openActionDialog = <T>(config: ActionDialogConfig<T>) => {
-  const {dialog, component, data, actionCallback} = config;
+  const {dialog, component, data, actionCallback, width} = config;
   const ref = dialog.open(component, {
     data,
-    width: "500px",
+    width: width ?? "500px",
   });
   ref.afterClosed()
     .pipe(

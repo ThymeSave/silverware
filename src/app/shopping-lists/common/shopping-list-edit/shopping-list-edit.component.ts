@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
-import { ShoppingList } from "@thymesave/core";
-import { filter, switchMap } from "rxjs";
-import { v4 as uuidv4 } from 'uuid';
 
 import { openActionDialog } from "@/shared/util/dialog";
 import {

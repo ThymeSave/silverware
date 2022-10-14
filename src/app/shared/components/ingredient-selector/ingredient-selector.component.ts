@@ -22,7 +22,7 @@ export type PreFilterFunction = (ingredient: FlattenedIngredient) => boolean;
 
 @Component({
   selector: 'app-ingredient-selector',
-  styleUrls: ['./ingredient-selector.component.html'],
+  styleUrls: ['./ingredient-selector.component.scss'],
   templateUrl: './ingredient-selector.component.html',
 })
 export class IngredientSelectorComponent implements ControlValueAccessor, OnInit {

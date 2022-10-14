@@ -24,7 +24,14 @@ import { createMobileBreakpointObserver } from "@/shared/util/breakpoint";
   templateUrl: './shell.component.html',
 })
 export class ShellComponent implements OnInit {
-  readonly menuItems = [
+  public routeMatchOptions: IsActiveMatchOptions = {
+    fragment: 'ignored',
+    matrixParams: 'ignored',
+    paths: 'exact',
+    queryParams: 'ignored',
+  };
+
+  public readonly menuItems = [
     {
       icon: "restaurant_menu",
       link: "/recipes/",
@@ -38,6 +45,10 @@ export class ShellComponent implements OnInit {
     {
       icon: "list",
       link: "/shopping-lists/",
+      routeMatchOptions: {
+        ...this.routeMatchOptions,
+        paths: "subset",
+      } as IsActiveMatchOptions,
       title: "nav.all_shopping_lists",
     },
     {
@@ -49,13 +60,6 @@ export class ShellComponent implements OnInit {
 
   public online = true;
   public isMobile = false;
-
-  public routeMatchOptions : IsActiveMatchOptions = {
-    fragment: 'ignored',
-    matrixParams: 'ignored',
-    paths: 'exact',
-    queryParams: 'ignored',
-  };
 
   public logoutURL: string = window.location.origin;
 

@@ -46,6 +46,7 @@ export class ShoppingListDetailComponent {
   }
 
   public deleteList() {
-    this.shoppingListService.delete(this.list).subscribe(() => this.deleted.next());
+    this.shoppingListService.delete(this.list)
+      .subscribe(() => this.deleted.next());
   }
 }

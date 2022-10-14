@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
 
-import { PreFilterFunction } from "@/recipes/common/ingredient-selector/ingredient-selector.component";
+import { PreFilterFunction } from "@/shared/components/ingredient-selector/ingredient-selector.component";
 
 @Component({
   selector: 'app-parsed-recipe-editor-ingredient',

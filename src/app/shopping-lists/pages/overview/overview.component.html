@@ -14,4 +14,6 @@
   </ng-container>
 </div>
 
-<app-floating-button i18nLabel="shopping_lists.new_item"></app-floating-button>
+<app-floating-button i18nLabel="shopping_lists.new_item"
+                     *ngIf="(selected$ | async) as list"
+                     (click)="addItemToList(list)"></app-floating-button>

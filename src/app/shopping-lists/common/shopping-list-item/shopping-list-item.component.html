@@ -11,11 +11,8 @@
     <div class="source">
       {{ 'shopping_lists.source.prefix' | i18n}}
       <ng-container *ngFor="let source of item.sources; last as last">
-        <ng-container [ngSwitch]="source.type">
-          <ng-container *ngSwitchCase="'Manual'">{{ 'shopping_lists.source.manual' | i18n}}</ng-container>
-          <ng-container *ngSwitchCase="'Recipe'">{{ source.source }}</ng-container>
-          <ng-container *ngIf="!last">,&nbsp;</ng-container>
-        </ng-container>
+        {{ source.source }}
+        <ng-container *ngIf="!last">,&nbsp;</ng-container>
       </ng-container>
     </div>
   </div>

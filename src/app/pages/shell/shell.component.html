@@ -46,7 +46,7 @@
       <mat-nav-list>
         <a *ngFor="let item of menuItems"
            [routerLink]=[item.link]
-           [routerLinkActiveOptions]="routeMatchOptions"
+           [routerLinkActiveOptions]="item.routeMatchOptions ?? routeMatchOptions"
            (click)="closeNavOnMobile()"
            routerLinkActive="nav-active"
            mat-list-item>

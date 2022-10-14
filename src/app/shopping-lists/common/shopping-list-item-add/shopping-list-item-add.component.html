@@ -1,0 +1,48 @@
+<app-dialog title="shopping_lists.add_item.dialog_heading"
+            [submitEnabled]="form.valid">
+  <form>
+    <div fxLayout="row"
+         fxLayout.lt-lg="column"
+         fxLayoutGap="10px"
+         fxLayoutAlign="center stretch"
+         *ngFor="let control of form.controls; index as index"
+         [formGroup]="control">
+      <mat-form-field>
+        <mat-label>{{ 'text' | i18n }}</mat-label>
+        <input matInput formControlName="text"/>
+      </mat-form-field>
+      <mat-form-field class="amount">
+        <mat-label>{{ 'amount' | i18n }}</mat-label>
+        <input matInput
+               type="number"
+               min="0"
+               formControlName="amount"/>
+      </mat-form-field>
+      <app-unit-selector
+        formControlName="unit">
+      </app-unit-selector>
+      <app-ingredient-selector
+        fxFlex
+        formControlName="ingredientKey">
+      </app-ingredient-selector>
+      <div>
+        <button mat-icon-button
+                class="remove-button"
+                color="warn"
+                (click)="removeItem(index)"
+                [attr.aria-label]="'delete' | i18n"
+                *ngIf="(isMobile$ | async) === false">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <button mat-raised-button
+            *ngIf="(isMobile$ | async) === false"
+            (click)="addItem()"
+            color="accent"
+            fxFlexFill>
+      <mat-icon>add</mat-icon>
+      {{ 'shopping_lists.add_item.add_more' | i18n }}
+    </button>
+  </form>
+</app-dialog>
