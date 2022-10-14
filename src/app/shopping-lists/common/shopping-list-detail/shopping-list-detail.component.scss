@@ -16,3 +16,20 @@ $heading-size: 3rem;
   margin: 0;
   padding: 0;
 }
+
+::ng-deep .mat-expansion-panel-body,
+::ng-deep .mat-expansion-panel,
+::ng-deep .mat-expansion-panel:hover,
+::ng-deep .mat-expansion-panel-header:hover,
+::ng-deep .mat-expansion-panel-content,
+::ng-deep .mat-expansion-panel-header,
+::ng-deep .mat-expansion-panel-header:hover,
+mat-expansion-panel {
+  padding: 0 !important;
+  background: theme.get-color("background", "background") !important;
+  box-shadow: none !important;
+}
+
+mat-expansion-panel .items {
+  padding-top: 10px;
+}

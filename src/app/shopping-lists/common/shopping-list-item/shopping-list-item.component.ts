@@ -20,6 +20,7 @@ import {
 export class ShoppingListItemComponent {
   @Input() public item !: GroupedShoppingListItems;
   @Input() public enableEdit: boolean = true;
+  @Input() public enableCheckbox: boolean = true;
 
   constructor(private dialog: MatDialog,
               private shoppingListItemService: ShoppingListItemService) {
@@ -64,5 +65,19 @@ export class ShoppingListItemComponent {
       data,
       dialog: this.dialog,
     });
+  }
+
+  public toggleDone(checked: boolean) {
+    const updates = this.item.items
+      .map(doc => this.shoppingListItemService.upsert(doc._id!!, docToUpdate => {
+        if (docToUpdate.done === checked) {
+          return false;
+        }
+
+        docToUpdate.done = checked;
+        return docToUpdate;
+      }));
+    merge(...updates)
+      .subscribe();
   }
 }

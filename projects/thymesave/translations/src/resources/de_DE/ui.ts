@@ -90,6 +90,7 @@ const ui: SingleValueTranslation = {
   "shell.sync.text": "Synchronisiere Daten für Offline-Nutzung ...",
   'shopping_lists.add_item.add_more': 'Weitere Zutat hinzufügen',
   "shopping_lists.add_item.dialog_heading": "Zutaten hinzufügen",
+  "shopping_lists.already_bought": "Bereits eingekauft",
   "shopping_lists.edit_list": "Einkaufliste bearbeiten",
   "shopping_lists.icon": "Symbol",
   "shopping_lists.items": "Dinge die noch eingekauft werden müssen",

@@ -21,6 +21,8 @@ export interface GroupedShoppingListItems {
   items: ShoppingListItemEntity[]
   sum: number
   sources: ShoppingListItemSource[]
+  done : boolean
+  earliestCreate : Date
 }
 
 @Injectable({
@@ -107,6 +109,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
 
   private mapEntryToGrouped(ingredientKey: string, unit: string | null, items: ShoppingListItemEntity[]) {
     return {
+      done: items.filter(item => item.done || false).length > 0,
       earliestCreate: new Date(Math.min(...items.map(item => new Date(item.created).getTime()))),
       ingredientKey: ingredientKey,
       items: items,
@@ -117,7 +120,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
         .map(item => item.amount)
         .reduce((a, b) => a!! + b!!)!!,
       unit: unit,
-    };
+    } as GroupedShoppingListItems;
   }
 
   public addManualToShoppingList(shoppingList: Partial<ShoppingListEntity>, items : ShoppingListAddDialogDataItem[]) : Observable<unknown> {

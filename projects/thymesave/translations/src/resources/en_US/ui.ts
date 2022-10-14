@@ -91,6 +91,7 @@ const ui: SingleValueTranslation = {
   "shell.sync.text": "Synchronizing data for offline usage ...",
   'shopping_lists.add_item.add_more': 'Add more ingredients',
   "shopping_lists.add_item.dialog_heading": "Add ingredients",
+  "shopping_lists.already_bought": "Already bought",
   "shopping_lists.edit_list": "Edit shopping list",
   "shopping_lists.icon": "Icon",
   "shopping_lists.items": "things left to buy",

@@ -3,6 +3,13 @@
           fxLayout="row"
           fxLayoutGap="20px"
           fxLayoutAlign="start stretch">
+  <div *ngIf="enableCheckbox"
+       fxLayout="column"
+       class="checkbox"
+       fxLayoutAlign="center center">
+    <mat-checkbox [checked]="item.done"
+                  (click)="toggleDone(!item.done)"></mat-checkbox>
+  </div>
   <div class="ingredient"
        fxLayoutAlign="start stretch"
        fxLayout="column">

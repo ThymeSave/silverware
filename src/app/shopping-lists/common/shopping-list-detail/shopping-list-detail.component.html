@@ -32,10 +32,32 @@
        fxLayout="column"
        fxLayoutAlign="center stretch"
        fxLayoutGap="10px">
-    <app-shopping-list-item *ngFor="let item of (items$ | async); trackBy: trackByFn"
-
+    <app-shopping-list-item *ngFor="let item of (openItems$ | async); trackBy: trackByFn"
+                            [enableCheckbox]="(isMobile$ | async) === false"
                             [item]="item">
     </app-shopping-list-item>
-    <!-- TODO Add spoiler with already bought -->
   </div>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header expandedHeight="40px"
+                                collapsedHeight="40px">
+      <mat-panel-title>
+        {{ 'shopping_lists.already_bought' | i18n }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="items"
+         role="list"
+         [attr.aria-label]="'shopping_lists.items' | i18n "
+         cdkDropList
+         fxLayout="column"
+         fxLayoutAlign="center stretch"
+         fxLayoutGap="10px">
+      <app-shopping-list-item *ngFor="let item of (doneItems$ | async); trackBy: trackByFn"
+                              [enableCheckbox]="(isMobile$ | async) === false"
+                              [enableEdit]="false"
+                              [item]="item">
+      </app-shopping-list-item>
+    </div>
+  </mat-expansion-panel>
+
+
 </div>
