@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ShoppingList } from "@thymesave/core";
 import { filter, map, Observable } from "rxjs";
 
@@ -6,6 +6,7 @@ import {
   GroupedShoppingListItems, ShoppingListItemEntity,
   ShoppingListItemService,
 } from "@/shopping-lists/services/shopping-list-item.service";
+import { ShoppingListService } from "@/shopping-lists/services/shopping-list.service";
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -22,11 +23,14 @@ export class ShoppingListDetailComponent {
     this.loadItems();
   }
 
+  @Output() public deleted = new EventEmitter<void>();
+
   public get list() {
     return this._list;
   }
 
-  constructor(private shoppingListItemService: ShoppingListItemService) {
+  constructor(private shoppingListItemService: ShoppingListItemService,
+              private shoppingListService : ShoppingListService) {
     shoppingListItemService.changes$
       .pipe(filter(item => (item as any)._deleted || item.shoppingList == this._list.uuid ))
       .subscribe(_ => this.loadItems());
@@ -39,5 +43,9 @@ export class ShoppingListDetailComponent {
 
   public trackByFn(index: any, item: GroupedShoppingListItems) {
     return item.ingredientKey + "." + item.unit;
+  }
+
+  public deleteList() {
+    this.shoppingListService.delete(this.list).subscribe(() => this.deleted.next());
   }
 }

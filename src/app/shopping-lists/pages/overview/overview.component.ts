@@ -17,9 +17,7 @@ interface RouteParameters {
 })
 export class OverviewComponent {
   public selected = new BehaviorSubject<ShoppingList | null>(null);
-  public selected$ = this.selected.pipe(
-    filter(v => v != null),
-  );
+  public selected$ = this.selected.pipe();
 
   public routeUuid: string | null;
 
@@ -41,5 +39,9 @@ export class OverviewComponent {
     ],{
       replaceUrl: false,
     });
+  }
+
+  public onDelete() {
+    this.selected.next(null);
   }
 }

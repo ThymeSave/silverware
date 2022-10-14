@@ -8,6 +8,7 @@
   </app-shopping-list-selector>
   <ng-container *ngIf="(selected$ | async) as active;">
     <app-shopping-list-detail fxFlex
+                              (deleted)="onDelete()"
                               [list]="active">
     </app-shopping-list-detail>
   </ng-container>

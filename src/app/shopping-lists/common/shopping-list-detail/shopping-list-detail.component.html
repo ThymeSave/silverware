@@ -7,13 +7,23 @@
           fxLayoutAlign="start center">
     <mat-icon class="icon">{{list.icon}}</mat-icon>
     <span class="heading mat-display-1" role="heading">{{list.name}}</span>
+    <div fxFlex></div>
     <app-shopping-list-edit [list]="list">
       <button mat-icon-button
               role="button"
+              [matTooltip]="'shopping_lists.edit_list' | i18n"
               [attr.aria-label]="'shopping_lists.edit_list' | i18n">
         <mat-icon>edit</mat-icon>
       </button>
     </app-shopping-list-edit>
+    <button mat-icon-button
+            color="warn"
+            (click)="deleteList()"
+            [matTooltip]="'delete' | i18n"
+            [attr.aria-label]="'delete' | i18n"
+            role="button">
+      <mat-icon>delete</mat-icon>
+    </button>
   </header>
   <div class="items"
        role="list"
