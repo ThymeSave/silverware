@@ -43,11 +43,18 @@ export class ShoppingListItemComponent {
 
         const updates = data.items.filter(item => item._id && item.amount && item.amount > 0)
           .map(doc => this.shoppingListItemService.upsert(doc._id!!, (toUpdate) => {
-            if (toUpdate.amount == doc.amount) {
-              return false;
+            let needUpdate = false;
+            if (toUpdate.amount != doc.amount) {
+              toUpdate.amount = doc.amount;
+              needUpdate = true;
             }
-            toUpdate.amount = doc.amount;
-            return toUpdate;
+
+            if (toUpdate.source.source != doc.source.source) {
+              toUpdate.source.source = doc.source.source;
+              needUpdate = true;
+            }
+
+            return needUpdate;
           }));
 
         merge(...deletes, ...inserts, ...updates)
