@@ -98,6 +98,7 @@ const ui: SingleValueTranslation = {
   "shopping_lists.list_title": "Title",
   "shopping_lists.new": "New shopping list",
   "shopping_lists.new_item": "Add to shopping list",
+  "shopping_lists.no_items": "No items in shopping list",
   "shopping_lists.remove_item": "Remove from shopping list",
   "shopping_lists.select": "Select shopping list",
   "shopping_lists.source.from_recipes": "For recipes",

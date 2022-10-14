@@ -25,39 +25,46 @@
       <mat-icon>delete</mat-icon>
     </button>
   </header>
-  <div class="items"
-       role="list"
-       [attr.aria-label]="'shopping_lists.items' | i18n "
-       cdkDropList
-       fxLayout="column"
-       fxLayoutAlign="center stretch"
-       fxLayoutGap="10px">
-    <app-shopping-list-item *ngFor="let item of (openItems$ | async); trackBy: trackByFn"
-                            [enableCheckbox]="(isMobile$ | async) === false"
-                            [item]="item">
-    </app-shopping-list-item>
-  </div>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header expandedHeight="40px"
-                                collapsedHeight="40px">
-      <mat-panel-title>
-        {{ 'shopping_lists.already_bought' | i18n }}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
+  <ng-container *ngIf="(openItems$ | async) as items">
     <div class="items"
+         *ngIf="items.length > 0; else noItems"
          role="list"
          [attr.aria-label]="'shopping_lists.items' | i18n "
          cdkDropList
          fxLayout="column"
          fxLayoutAlign="center stretch"
          fxLayoutGap="10px">
-      <app-shopping-list-item *ngFor="let item of (doneItems$ | async); trackBy: trackByFn"
+      <app-shopping-list-item *ngFor="let item of items; trackBy: trackByFn"
                               [enableCheckbox]="(isMobile$ | async) === false"
-                              [enableEdit]="false"
                               [item]="item">
       </app-shopping-list-item>
     </div>
-  </mat-expansion-panel>
 
+    <ng-template #noItems>
+      <app-sad-potato [height]="384"></app-sad-potato>
+      <h1 class="text-center">{{ 'shopping_lists.no_items' | i18n }}</h1>
+    </ng-template>
+  </ng-container>
 
+  <ng-container *ngIf="(doneItems$ | async) as items;">
+    <mat-expansion-panel *ngIf="items.length > 0">
+      <mat-expansion-panel-header expandedHeight="40px"
+                                  collapsedHeight="40px">
+        <mat-panel-title>{{ 'shopping_lists.already_bought' | i18n }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="items"
+           role="list"
+           [attr.aria-label]="'shopping_lists.items' | i18n "
+           cdkDropList
+           fxLayout="column"
+           fxLayoutAlign="center stretch"
+           fxLayoutGap="10px">
+        <app-shopping-list-item *ngFor="let item of items; trackBy: trackByFn"
+                                [enableCheckbox]="(isMobile$ | async) === false"
+                                [enableEdit]="false"
+                                [item]="item">
+        </app-shopping-list-item>
+      </div>
+    </mat-expansion-panel>
+  </ng-container>
 </div>

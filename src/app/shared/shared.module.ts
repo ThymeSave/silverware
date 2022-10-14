@@ -16,6 +16,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { DragHandleComponent } from './components/drag-handle/drag-handle.component';
 import { ExcerptPipe } from './components/excerpt.pipe';
 import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
+import { SadPotatoComponent } from './components/sad-potatoe/sad-potato.component';
 import { I18nPipe } from "./i18n/i18n.pipe";
 import { LanguageService } from "./i18n/language.service";
 import { NotificationToastComponent } from './notifications/notification-toast/notification-toast.component';
@@ -32,17 +33,19 @@ import { UnitSelectorComponent } from "@/shared/components/unit-selector/unit-se
     DialogComponent,
     UnitSelectorComponent,
     IngredientSelectorComponent,
+    SadPotatoComponent,
   ],
-  exports: [
-    I18nPipe,
-    DragHandleComponent,
-    ExcerptPipe,
-    NotificationToastComponent,
-    FloatingButtonComponent,
-    DialogComponent,
-    UnitSelectorComponent,
-    IngredientSelectorComponent,
-  ],
+    exports: [
+        I18nPipe,
+        DragHandleComponent,
+        ExcerptPipe,
+        NotificationToastComponent,
+        FloatingButtonComponent,
+        DialogComponent,
+        UnitSelectorComponent,
+        IngredientSelectorComponent,
+        SadPotatoComponent,
+    ],
   imports: [
     CommonModule,
     MatIconModule,

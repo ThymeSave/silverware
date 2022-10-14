@@ -97,6 +97,7 @@ const ui: SingleValueTranslation = {
   "shopping_lists.list_title": "Titel",
   "shopping_lists.new": "Neue Einkaufsliste",
   "shopping_lists.new_item": "Etwas zur Einkaufsliste hinzufügen",
+  "shopping_lists.no_items": "Keine Zutaten auf der Einkaufsliste",
   "shopping_lists.remove_item": "Von Einkaufsliste entfernen",
   "shopping_lists.select": "Einkaufsliste auswählen",
   "shopping_lists.source.from_recipes": "Für Rezepte",
