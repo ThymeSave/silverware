@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { MatSidenav } from "@angular/material/sidenav";
 import {
   ChildActivationEnd,
-  ChildrenOutletContexts,
+  ChildrenOutletContexts, Data,
   IsActiveMatchOptions,
   NavigationEnd,
   Router,
@@ -68,13 +68,16 @@ export class ShellComponent implements OnInit {
     .events.pipe(
       filter(e => e instanceof NavigationEnd || e instanceof ChildActivationEnd),
       startWith(null),
-      map(_ => this.getRouteSnapshotData()),
-      map(d => d ? ('fullWidth' in d ? (d as any).fullWidth : false) : null),
+      map(() => this.isFullWith(this.getRouteSnapshotData())),
     );
 
   private getRouteSnapshotData() {
     return this.contexts.getContext("primary")
       ?.route?.snapshot.data;
+  }
+
+  private isFullWith(snapshotData: Data | undefined) {
+    return snapshotData ? ('fullWidth' in snapshotData ? (snapshotData as any).fullWidth : false) : null;
   }
 
   constructor(

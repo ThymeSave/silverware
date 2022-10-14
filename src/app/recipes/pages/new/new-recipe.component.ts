@@ -154,7 +154,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     this.importLoading = true;
     this.completeCurrentStep();
 
-    this.importerService.runRecipeImporter(this.importer as any as Importer<RawRecipe>, payload)
+    this.importerService.runRecipeImporter(this.importer as unknown as Importer<RawRecipe>, payload)
       .pipe(
         finalize(() => this.importLoading = false),
         catchError(err => this.failImport(err)),

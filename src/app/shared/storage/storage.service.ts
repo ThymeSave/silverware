@@ -204,13 +204,13 @@ export class StorageService {
       selector = {
         ...selector,
         [paginateField]: {
-          [reverse == true ? "$lt" : "$gt"]: startToken,
+          [Boolean(reverse) ? "$lt" : "$gt"]: startToken,
         },
       };
     }
 
     sort!!.push({
-      [paginateField]: reverse == true ? "desc" : "asc",
+      [paginateField]: Boolean(reverse) ? "desc" : "asc",
     });
 
     return this.getForEntityType(entityType, selector, sort, pageSizeToFetch)
@@ -250,7 +250,7 @@ export class StorageService {
         if (!fallbackDbName) {
           return throwError(() => new Error("No fallback database found"));
         }
-        return of(fallbackDbName as string);
+        return of(fallbackDbName);
       }),
     );
   }

@@ -12,13 +12,9 @@
 }
 
 
-
-mat-toolbar {
-  background-color: theme.get-color('primary', 700) !important;
-}
-
 mat-sidenav-content {
   min-height: calc(100vh - 84px);
+  margin: 0;
 
   @media(max-width: 500px) {
     min-height: calc(100vh - 76px);
@@ -38,6 +34,7 @@ mat-toolbar {
   position: -webkit-sticky; /* For macOS/iOS Safari */
   top: 0; /* Sets the sticky toolbar to be on top */
   z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  background-color: theme.get-color('primary', 700) !important;
 }
 
 mat-sidenav {
@@ -47,9 +44,6 @@ mat-sidenav {
   width: 300px;
 }
 
-mat-sidenav-content {
-  margin: 0;
-}
 
 .sync-dialog {
   .sync-dialog-text {
