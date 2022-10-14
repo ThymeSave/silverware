@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { createLogger } from "@helper/log";
 import { CACHE_DB_NAME, saveValue } from "@helper/simpleStorage";
-import { sortBy } from "lodash";
+import { chain, sortBy } from "lodash";
 import PouchDB from 'pouchdb';
 import findPlugin from "pouchdb-find";
 import upsertPlugin from 'pouchdb-upsert';
@@ -197,6 +197,18 @@ export class StorageService {
       ) as Observable<T[]>;
   }
 
+  private getSortOperator(reverseResults: boolean) {
+    return reverseResults ? "$lt" : "$gt";
+  }
+
+  private getSortOrder(reverseResults: boolean) {
+    return reverseResults ? "desc" : "asc";
+  }
+
+  private getPaginateField(result: BaseDocument, paginateField: string) {
+    return (result as Record<string, string>)[paginateField];
+  }
+
   public paginate<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort, pagination: Pagination<T>): Observable<PaginationWithResult<T>> {
     const {startToken, paginateField, pageSize, reverse, firstToken} = pagination;
     let pageSizeToFetch = pageSize + 1;
@@ -204,33 +216,57 @@ export class StorageService {
       selector = {
         ...selector,
         [paginateField]: {
-          [Boolean(reverse) ? "$lt" : "$gt"]: startToken,
+          [this.getSortOperator(Boolean(reverse))]: startToken,
         },
       };
     }
 
     sort!!.push({
-      [paginateField]: Boolean(reverse) ? "desc" : "asc",
+      [paginateField]: this.getSortOrder(Boolean(reverse)),
     });
 
     return this.getForEntityType(entityType, selector, sort, pageSizeToFetch)
       .pipe(switchMap(results => {
         const resultCount = results.length;
-        results = sortBy(results.slice(0, pageSize), r => (r as any)[paginateField]);
+        const hasResults = results.length > 0;
+        const canPaginate = resultCount > pageSize;
+
+        // first result always without sorting
+        const firstResultPaginateField = hasResults ? this.getPaginateField(results[0], paginateField) : undefined;
+
+        // prepare results
+        results = chain(results)
+          // remove preflight result
+          .slice(0, pageSize)
+          // sort by paginate field also if we go reverse
+          .sortBy(r => (r as any)[paginateField])
+          .value();
+
+        // we need to get the last result after sorting
+        const lastResultPaginateField = hasResults ? this.getPaginateField(results[results.length - 1], paginateField) : undefined;
+
+        // store if we are on the first page possible
+        const isFirstPage = firstToken == firstResultPaginateField;
+
+        // if reverse or can paginate -> enable forward
+        const canGoForward = reverse || canPaginate;
+
+        // if reverse and can paginate or can go forward we can go back
+        const canGoBack = (reverse && canPaginate) || !reverse;
+
         return of({
-          firstToken: firstToken ?? (results.length > 0 ? (results[0] as any)[paginateField] : undefined),
-          nextStartToken: (reverse || resultCount > pageSize)
-          && results.length > 0 ? (results[results.length - 1] as any)[paginateField] : undefined,
+          // pass initial firstToken or seed with first db result if this is the first paginate call
+          firstToken: firstToken ?? firstResultPaginateField,
+          // for next page if we have any result left to paginate
+          nextStartToken: canGoForward ? lastResultPaginateField : undefined,
           pageSize,
           paginateField,
-          prevStartToken: startToken
-          && ((reverse && resultCount > pageSize) || !reverse)
-          && results.length > 0
-          && firstToken != (results[0] as any)[paginateField] ? (results[0] as any)[paginateField] : undefined,
+          // for previous page, if there are any, or we are in reverse mode and are not already at the start
+          prevStartToken: startToken && canGoBack && !isFirstPage ? firstResultPaginateField : undefined,
           results,
           startToken,
-        });
-      })) as Observable<PaginationWithResult<T>>;
+        } as PaginationWithResult<T>);
+      }));
   }
 
   public getAll<T extends BaseDocument>(entityType: string, selector ?: PouchDB.Find.Selector, sort ?: PouchDBFindSort): Observable<T[]> {
@@ -247,10 +283,9 @@ export class StorageService {
       tap(dbName => saveValue(CACHE_DB_NAME, dbName)),
       catchError(_ => {
         const fallbackDbName = localStorage.getItem(CACHE_DB_NAME);
-        if (!fallbackDbName) {
-          return throwError(() => new Error("No fallback database found"));
-        }
-        return of(fallbackDbName);
+        return fallbackDbName
+          ? of(fallbackDbName)
+          : throwError(() => new Error("No fallback database found"));
       }),
     );
   }
