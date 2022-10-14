@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { createLogger } from "@helper/log";
 import { CACHE_DB_NAME, saveValue } from "@helper/simpleStorage";
-import { chain, sortBy } from "lodash";
+import { chain } from "lodash";
 import PouchDB from 'pouchdb';
 import findPlugin from "pouchdb-find";
 import upsertPlugin from 'pouchdb-upsert';
@@ -167,7 +167,7 @@ export class StorageService {
 
   private async find<T>(db: PouchDB.Database, filter: PouchDB.Find.FindRequest<any>): Promise<T[]> {
     const results = await db.find(filter);
-    return results.docs as any as T[];
+    return results.docs as unknown as T[];
   }
 
   /**
@@ -239,7 +239,7 @@ export class StorageService {
           // remove preflight result
           .slice(0, pageSize)
           // sort by paginate field also if we go reverse
-          .sortBy(r => (r as any)[paginateField])
+          .sortBy(result => this.getPaginateField(result, paginateField))
           .value();
 
         // we need to get the last result after sorting
