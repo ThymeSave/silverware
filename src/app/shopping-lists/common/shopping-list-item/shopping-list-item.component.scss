@@ -2,7 +2,7 @@
 
 .amount {
   background: theme.get-color("accent", 700);
-  min-width: 200px;
+  min-width: 180px;
   padding: 10px;
 }
 
@@ -20,7 +20,7 @@ mat-card {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 50vw;
+  max-width: 33vw;
 }
 
 .checkbox {

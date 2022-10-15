@@ -1,0 +1,24 @@
+.wrapper {
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+
+.wrapper>* {
+  flex-shrink: 0;
+}
+
+.action {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: fade;
+
+
+  opacity: .3;
+
+}
+
+.trigger-action-threshold-reached {
+  .action {
+    opacity: 1;
+  }
+}

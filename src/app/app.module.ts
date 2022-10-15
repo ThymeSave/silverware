@@ -16,11 +16,12 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AuthClientConfig, AuthModule } from '@auth0/auth0-angular';
 
+import { MyHammerConfig } from "../hammerjs";
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from '@/app.component';
 import { HomeComponent } from '@/pages/home/home.component';
@@ -73,12 +74,17 @@ registerLocaleData(localeDe);
     MatTooltipModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    HammerModule,
   ],
   providers: [
     {
       provide: 'funnelConfig',
       // @ts-ignore Load value set in main.ts after fetching from API
       useFactory: () => window.funnelConfig,
+    },
+    {
+      provide:HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig,
     },
   ],
 })

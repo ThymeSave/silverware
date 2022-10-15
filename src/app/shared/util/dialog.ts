@@ -30,7 +30,7 @@ export const openActionDialog = <T>(config: ActionDialogConfig<T>) => {
   const {dialog, component, data, actionCallback, width} = config;
   const ref = dialog.open(component, {
     data,
-    width: width ?? "500px",
+    width: width ?? "600px",
   });
   ref.afterClosed()
     .pipe(

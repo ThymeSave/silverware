@@ -1,0 +1,31 @@
+<div fxLayout="row"
+     #contentRoot
+     [style]="contentRootStyle"
+     class="wrapper"
+     [class]="contentRootClasses"
+     fxLayoutAlign="start stretch">
+  <div class="action left"
+       [fxFlex]="distance"
+       [style]="leftActionStyle"
+       fxLayoutAlign="center center"
+       *ngIf="direction === 'right'">
+    <ng-content select="[leftAction]"></ng-content>
+  </div>
+  <div class="element"
+       (panright)="onPanRight($event)"
+       (panleft)="onPanLeft($event)"
+       (panend)="onPanEnd()"
+       fxFlexFill
+       [style]="elementStyle"
+       >
+    <ng-content select="[element]"></ng-content>
+  </div>
+  <div class="action right"
+       fxLayout="row"
+       fxFlex
+       [style]="rightActionStyle"
+       fxLayoutAlign="center center"
+       *ngIf="direction === 'left'">
+    <ng-content select="[rightAction]"></ng-content>
+  </div>
+</div>

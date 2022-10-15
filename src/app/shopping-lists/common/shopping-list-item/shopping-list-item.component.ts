@@ -64,6 +64,7 @@ export class ShoppingListItemComponent {
       component: ShoppingListItemEditComponent,
       data,
       dialog: this.dialog,
+      width: "600px",
     });
   }
 
