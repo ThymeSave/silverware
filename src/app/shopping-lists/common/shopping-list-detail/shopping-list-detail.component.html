@@ -36,6 +36,7 @@
          fxLayoutGap="10px">
       <app-shopping-list-item *ngFor="let item of items; trackBy: trackByFn"
                               [enableCheckbox]="(isMobile$ | async) === false"
+                              [enableEditButton]="(isMobile$ | async) === false"
                               [item]="item">
       </app-shopping-list-item>
     </div>

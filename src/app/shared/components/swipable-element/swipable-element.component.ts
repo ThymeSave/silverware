@@ -5,7 +5,6 @@ import {
   Component,
   ElementRef, EventEmitter,
   Input,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -103,7 +102,10 @@ export class SwipableElementComponent implements AfterViewInit {
   }
 
   public onPanRight(e: any) {
-    if(!this.enableLeftAction) return;
+    if(this.isScrollPan(e) || !this.enableLeftAction) {
+      e.preventDefault();
+      return;
+    }
 
     if (this.isActivePanTo("left")) {
       this.updatePanState(Math.abs(e.deltaX), "left");
@@ -113,8 +115,12 @@ export class SwipableElementComponent implements AfterViewInit {
   }
 
   public onPanLeft(e: any) {
-    if(!this.enableRightAction) return;
 
+    if(this.isScrollPan(e) || !this.enableRightAction)  {
+      e.preventDefault();
+      return;
+    }
+    console.log(e);
     if (this.isActivePanTo("right")) {
       this.updatePanState(e.deltaX, "right");
     } else {
@@ -129,6 +135,11 @@ export class SwipableElementComponent implements AfterViewInit {
       emitter.next();
     }
     this.resetPanState();
+  }
+
+  private isScrollPan(e : any) {
+    const angle = Math.abs(e.angle);
+    return (angle >= 90 && angle < 150) || (angle > 30 && angle < 90);
   }
 
   private updatePanState(distance: number | null, direction: SwipeDirection) {

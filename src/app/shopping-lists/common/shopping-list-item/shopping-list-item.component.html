@@ -10,7 +10,8 @@
   <mat-icon leftAction>
     {{ item.done ? 'undo' : 'done' }}
   </mat-icon>
-  <mat-card element class="item"
+  <mat-card element
+            class="item"
             role="listitem"
             fxLayout="row"
             fxLayoutGap="20px"
@@ -44,7 +45,7 @@
       {{ item.sum }}
       <ng-container *ngIf="!!item.unit && item.unit !== 'undefined'">{{ (item.unit) | i18n:"units":item.sum}}</ng-container>
 
-      <button *ngIf="enableEdit"
+      <button *ngIf="enableEdit && enableEditButton"
               mat-icon-button
               role="button"
               (click)="openEditDialog(item)"

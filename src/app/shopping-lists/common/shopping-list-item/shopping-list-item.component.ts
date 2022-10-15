@@ -20,6 +20,7 @@ import {
 export class ShoppingListItemComponent {
   @Input() public item !: GroupedShoppingListItems;
   @Input() public enableEdit: boolean = true;
+  @Input() public enableEditButton : boolean = true;
   @Input() public enableCheckbox: boolean = true;
 
   constructor(private dialog: MatDialog,
