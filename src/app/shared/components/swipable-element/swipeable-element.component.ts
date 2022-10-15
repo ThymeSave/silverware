@@ -12,11 +12,11 @@ import {
 type SwipeDirection = "right" | "left"
 
 @Component({
-  selector: 'app-swipable-element',
-  styleUrls: ['./swipable-element.component.scss'],
-  templateUrl: './swipable-element.component.html',
+  selector: 'app-swipeable-element',
+  styleUrls: ['./swipeable-element.component.scss'],
+  templateUrl: './swipeable-element.component.html',
 })
-export class SwipableElementComponent implements AfterViewInit {
+export class SwipeableElementComponent implements AfterViewInit {
   private _distance: number | null = null;
 
   @Input() public leftBackgroundColor ?: string;
