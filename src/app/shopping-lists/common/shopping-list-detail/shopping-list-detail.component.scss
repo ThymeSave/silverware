@@ -37,3 +37,20 @@ mat-expansion-panel .items {
 .text-center {
   text-align: center;
 }
+
+// TODO Use animation
+@keyframes gelatine {
+  from, to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+

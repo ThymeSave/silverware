@@ -22,18 +22,29 @@ export class SwipeableElementComponent implements AfterViewInit {
   @Input() public leftBackgroundColor ?: string;
   @Input() public rightBackgroundColor ?: string;
 
-  @Input() public enableRightAction : boolean = true;
-  @Input() public enableLeftAction : boolean = true;
+  @Input() public enableRightAction: boolean = true;
+  @Input() public enableLeftAction: boolean = true;
 
   @Output() public leftActionTriggered = new EventEmitter<void>();
   @Output() public rightActionTriggered = new EventEmitter<void>();
 
   public get leftActionStyle() {
-    return this.leftBackgroundColor ? `background:${this.leftBackgroundColor}` : "";
+    return {
+      'background': this.leftBackgroundColor ?? "",
+      'flex': `1 1 ${this.isPanLeft ? 0 : (this.distance ?? 0)}`,
+      'transition': this.transitionStyle,
+    };
+  }
+
+  private get transitionStyle() {
+    return this.isInPan ? 'none' : '.3s ease-in-out';
   }
 
   public get rightActionStyle() {
-    return this.rightBackgroundColor ? `background:${this.rightBackgroundColor}` : "";
+    return {
+      'background': this.rightBackgroundColor ?? "",
+      'transition': this.transitionStyle,
+    };
   }
 
   public get distance(): string | null {
@@ -41,24 +52,29 @@ export class SwipeableElementComponent implements AfterViewInit {
       return null;
     }
 
-    let distance = this._distance;
-    if (this._distance > this.wrapperMaxWidth) {
-      distance = this.wrapperMaxWidth;
-    }
-
-    return `${distance}px`;
+    return `${this._distance}px`;
   }
 
   private get isInPan() {
     return this._distance != null;
   }
 
+  private get isPanRight() {
+    return this.direction == "right";
+  }
+
+  private get isPanLeft() {
+    return this.direction == "left";
+  }
+
   private get isOverTriggerThreshold() {
     if (this._distance == null) {
       return false;
     }
-
-    return this._distance > (this.wrapperMaxWidth / 100 * 25);
+    if (this.isPanRight) {
+      return this._distance > (this.wrapperMaxWidth * 0.25);
+    }
+    return this._distance > (this.wrapperMaxWidth * 0.5);
   }
 
   public direction: SwipeDirection | null = null;
@@ -74,10 +90,13 @@ export class SwipeableElementComponent implements AfterViewInit {
   }
 
   public get elementStyle() {
-    return this.isInPan && this.direction == "left" ? 'margin-left: -' + this.distance : "";
+    return {
+      'margin-left': this.isPanLeft ? `-${this.distance}` : 0,
+      'transition': this.transitionStyle,
+    };
   }
 
-  @ViewChild("contentRoot") contentRoot !: ElementRef;
+  @ViewChild("contentRoot") contentRoot !: ElementRef<HTMLElement>;
 
   public constructor(private viewPortRuler: ViewportRuler,
                      private ref: ChangeDetectorRef) {
@@ -88,6 +107,7 @@ export class SwipeableElementComponent implements AfterViewInit {
   private setContentRootWidth() {
     const contentRootNode = this.contentRoot.nativeElement as HTMLDivElement;
     this.wrapperMaxWidth = contentRootNode.clientWidth;
+    console.log(contentRootNode.clientWidth, contentRootNode.scrollWidth, contentRootNode.offsetWidth);
 
     // prevent NG0100
     this.ref.detectChanges();
@@ -102,48 +122,53 @@ export class SwipeableElementComponent implements AfterViewInit {
   }
 
   public onPanRight(e: any) {
-    if(this.isScrollPan(e) || !this.enableLeftAction) {
+    if (this.isScrollPan(e) || !this.enableLeftAction) {
       e.preventDefault();
       return;
     }
 
     if (this.isActivePanTo("left")) {
-      this.updatePanState(Math.abs(e.deltaX), "left");
+      this.updatePanState(e, "left");
     } else {
-      this.updatePanState(e.distance, "right");
+      this.updatePanState(e, "right");
     }
   }
 
   public onPanLeft(e: any) {
-
-    if(this.isScrollPan(e) || !this.enableRightAction)  {
+    if (this.isScrollPan(e) || !this.enableRightAction) {
       e.preventDefault();
       return;
     }
-    console.log(e);
+
     if (this.isActivePanTo("right")) {
-      this.updatePanState(e.deltaX, "right");
+      this.updatePanState(e, "right");
     } else {
-      this.updatePanState(e.distance, "left");
+      this.updatePanState(e, "left");
     }
   }
 
   public onPanEnd() {
     if (this.isOverTriggerThreshold) {
-      const emitter = this.direction == "left" ? this.rightActionTriggered : this.leftActionTriggered;
+      const emitter = this.isPanLeft ? this.rightActionTriggered : this.leftActionTriggered;
       console.debug("Trigger", this.direction);
       emitter.next();
     }
     this.resetPanState();
   }
 
-  private isScrollPan(e : any) {
+  private isScrollPan(e: any) {
     const angle = Math.abs(e.angle);
     return (angle >= 90 && angle < 150) || (angle > 30 && angle < 90);
   }
 
-  private updatePanState(distance: number | null, direction: SwipeDirection) {
-    this._distance = distance;
+  private updatePanState(e: any | null, direction: SwipeDirection) {
+    let distance = e.distance;
+
+    if (distance != null && distance > this.wrapperMaxWidth) {
+      distance = this.wrapperMaxWidth;
+    }
+
+    this._distance = (distance ?? 0) < 0 ? 0 : distance;
     this.direction = direction;
   }
 

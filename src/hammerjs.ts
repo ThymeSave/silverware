@@ -5,6 +5,7 @@ export class MyHammerConfig extends HammerGestureConfig {
   override overrides = <any>{
     swipe: {
       direction: Hammer.DIRECTION_HORIZONTAL,
+      threshold:	0,
     },
   };
 

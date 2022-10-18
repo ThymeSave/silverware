@@ -51,7 +51,7 @@
     <mat-expansion-panel *ngIf="items.length > 0">
       <mat-expansion-panel-header expandedHeight="40px"
                                   collapsedHeight="40px">
-        <mat-panel-title>{{ 'shopping_lists.already_bought' | i18n }}</mat-panel-title>
+        <mat-panel-title>{{ 'shopping_lists.already_bought' | i18n }} (<span class="count">{{items.length}}</span>)</mat-panel-title>
       </mat-expansion-panel-header>
       <div class="items"
            role="list"

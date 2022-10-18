@@ -3,18 +3,14 @@
   flex-wrap: nowrap;
 }
 
-.wrapper>* {
-  flex-shrink: 0;
+.element {
+  flex: 1 1 100%;
 }
 
 .action {
-  width: 100%;
   overflow: hidden;
   text-overflow: fade;
-
-
   opacity: .3;
-
 }
 
 .trigger-action-threshold-reached {
