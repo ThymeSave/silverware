@@ -25,7 +25,9 @@
              class="recipe-actions"
              fxLayoutGap="10px"
              fxLayoutAlign="end">
-          <button mat-fab><mat-icon>share</mat-icon></button>
+          <button mat-fab>
+            <mat-icon>share</mat-icon>
+          </button>
           <button color="warn"
                   class="button-delete"
                   (click)="deleteRecipe()"
@@ -42,7 +44,14 @@
       </div>
       <div class="recipe-body">
         <div class="ingredients-heading">
-          <div fxLayout="row wrap" fxLayoutAlign="start center">
+          <div fxLayout="row wrap"
+               fxLayoutAlign="start center">
+            <button mat-icon-button
+                    (click)="addToShoppingList()"
+                    [matTooltip]="'recipes.add_to_shopping_list' | i18n"
+                    class="add-to-shopping-list">
+              <mat-icon>shopping_bag</mat-icon>
+            </button>
             <h2>{{ 'ingredients' | i18n}}</h2>
             <div class="ingredients-servings-calculator">
               <span>&nbsp;(</span>
@@ -59,14 +68,16 @@
             </div>
           </div>
           <div fxLayout="row wrap"
+               role="list"
                fxLayout.lt-sm="column">
             <div class="grid-tile"
                  fxFlex="50%"
+                 role="listitem"
                  *ngFor="let ingredient of recipe.ingredients">
-              <mat-checkbox color="primary">
-                <span class="min">
+              <app-checkable-text>
+                <div class="min">
                   {{ ingredient.isNumeric ? (ingredient.minAmount | number:'1.0-1':languageService.angularLocale) : ingredient.minAmount }}
-                </span>
+                </div>
                 <ng-container *ngIf="ingredient.isRange">
                   <span *ngIf="ingredient.maxAmount"
                         class="seperator">&nbsp;-&nbsp;</span>
@@ -75,20 +86,22 @@
                   </span>
                 </ng-container>
                 <span *ngIf="ingredient.unit"
-                      class="unit">&nbsp;{{ingredient.unit | i18n:"units"}}</span>
+                      class="unit">{{ingredient.unit | i18n:"units"}}</span>
                 {{ingredient.translationKey | i18n:'ingredients':(ingredient.minAmount)}}
-              </mat-checkbox>
+              </app-checkable-text>
             </div>
           </div>
         </div>
       </div>
-      <div class="recipe-body">
+      <div class="recipe-body"
+      role="list">
         <h2>{{ 'instructions' | i18n }}</h2>
         <div class="instruction"
+             role="listitem"
              *ngFor="let instruction of recipe.instructions">
-          <mat-checkbox color="primary">
+          <app-checkable-text>
             {{instruction.text}}
-          </mat-checkbox>
+          </app-checkable-text>
         </div>
       </div>
     </div>
@@ -107,11 +120,7 @@
          fxLayoutAlign="center center"
          fxLayoutGap="80px"
          class="not-found">
-      <div>
-        <img height="256"
-             alt="Sad potato"
-             src="assets/img/sad_potatoe.svg">
-      </div>
+      <app-sad-potato [height]="384"></app-sad-potato>
       <div>
         <h1>{{ 'recipes.not_found.heading' | i18n }}</h1>
         <p>{{'recipes.not_found.text' | i18n}}</p>

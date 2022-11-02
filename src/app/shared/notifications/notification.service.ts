@@ -26,9 +26,6 @@ export class NotificationService {
     this.notificationsSubject.asObservable(),
   ).pipe(map(([_, notification]) => notification));
 
-  constructor() {
-  }
-
   /**
    * Adds a new notification to the message queue
    */

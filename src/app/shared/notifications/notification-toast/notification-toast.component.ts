@@ -30,9 +30,9 @@ export class NotificationToastComponent implements OnInit {
       return 0;
     }
 
-    const closeDate = new Date(this.messageOpened!!.getTime());
+    const closeDate = new Date(this.messageOpened.getTime());
     // Add the visibility timeout in seconds again and 1 second for smooth fade out
-    closeDate?.setSeconds(this.messageOpened!!.getSeconds() + this.VISIBILITY_TIMEOUT_SECONDS + 1);
+    closeDate?.setSeconds(this.messageOpened.getSeconds() + this.VISIBILITY_TIMEOUT_SECONDS + 1);
     this.logger.debug("Show notification at", closeDate);
     return closeDate;
   }

@@ -46,7 +46,7 @@
       <mat-nav-list>
         <a *ngFor="let item of menuItems"
            [routerLink]=[item.link]
-           [routerLinkActiveOptions]="{exact: true}"
+           [routerLinkActiveOptions]="item.routeMatchOptions ?? routeMatchOptions"
            (click)="closeNavOnMobile()"
            routerLinkActive="nav-active"
            mat-list-item>
@@ -57,9 +57,12 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="router-outlet">
-        <router-outlet *ngIf="(isFullWidth | async)"></router-outlet>
-        <div *ngIf="(isFullWidth | async) === false">
-          <div fxFlex
+        <ng-template #fullWidth>
+          <router-outlet></router-outlet>
+        </ng-template>
+        <div *ngIf="(isFullWidth | async) === false; else fullWidth">
+          <div class="router-outlet-wrapper"
+               fxFlex
                fxLayoutAlign="center start">
             <div fxFlex
                  fxFlex.lt-lg="95%"

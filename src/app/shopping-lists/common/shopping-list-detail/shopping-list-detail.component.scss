@@ -1,0 +1,56 @@
+@use "../../../../theme";
+
+$heading-size: 3rem;
+
+.icon {
+  background: theme.get-color("primary", 400);
+  border-radius: 50%;
+  font-size: $heading-size !important;
+  width: $heading-size;
+  height: $heading-size;
+  padding: $heading-size / 6;
+}
+
+.heading {
+  line-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+::ng-deep .mat-expansion-panel-body,
+::ng-deep .mat-expansion-panel,
+::ng-deep .mat-expansion-panel:hover,
+::ng-deep .mat-expansion-panel-header:hover,
+::ng-deep .mat-expansion-panel-content,
+::ng-deep .mat-expansion-panel-header,
+::ng-deep .mat-expansion-panel-header:hover,
+mat-expansion-panel {
+  padding: 0 !important;
+  background: theme.get-color("background", "background") !important;
+  box-shadow: none !important;
+}
+
+mat-expansion-panel .items {
+  padding-top: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// TODO Use animation
+@keyframes gelatine {
+  from, to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+

@@ -9,11 +9,12 @@ import {
   ImporterPayload,
   RawRecipe,
   ParsedRecipe,
+  URLImporterPayload,
+  Recipe,
 } from "@thymesave/core";
-import { URLImporterPayload, Recipe } from "@thymesave/core";
 import { FilterImporterByType, PluginRegistry } from "@thymesave/plugin";
 import { first as _first } from "lodash";
-import { BehaviorSubject, catchError, filter, finalize, first, from, map, of, switchMap } from "rxjs";
+import { BehaviorSubject, catchError, filter, finalize, first, from, of, switchMap } from "rxjs";
 
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
 import { RecipeService } from "@/recipes/services/recipe.service";
@@ -153,7 +154,7 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     this.importLoading = true;
     this.completeCurrentStep();
 
-    this.importerService.runRecipeImporter(this.importer as any as Importer<RawRecipe>, payload)
+    this.importerService.runRecipeImporter(this.importer as unknown as Importer<RawRecipe>, payload)
       .pipe(
         finalize(() => this.importLoading = false),
         catchError(err => this.failImport(err)),

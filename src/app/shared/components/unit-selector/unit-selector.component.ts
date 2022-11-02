@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ControlValueAccessor, NgControl } from "@angular/forms";
-import { UnitTranslation } from "@thymesave/translations";
 import { UnitTranslationDetail } from "@thymesave/translations";
 
 import { LanguageService } from "@/shared/i18n/language.service";
@@ -13,7 +12,7 @@ import { LanguageService } from "@/shared/i18n/language.service";
 export class UnitSelectorComponent implements ControlValueAccessor {
   public selected: UnitTranslationDetail | null = null;
 
-  public onChange = (val: UnitTranslationDetail) => {
+  public onChange = (_: UnitTranslationDetail) => {
   };
   private onTouched = () => {
   };

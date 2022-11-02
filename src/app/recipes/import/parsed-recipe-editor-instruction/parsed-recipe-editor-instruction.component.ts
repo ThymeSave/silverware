@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
@@ -7,11 +7,8 @@ import { FormControl, FormGroup } from "@angular/forms";
   templateUrl: './parsed-recipe-editor-instruction.component.html',
 })
 export class ParsedRecipeEditorInstructionComponent {
-
   @Input() public formGroup !: FormGroup;
   @Output() public deleted = new EventEmitter<void>();
-
-  constructor() { }
 
   public get text() {
     return this.formGroup.controls['text'] as FormControl;

@@ -10,7 +10,7 @@ import {
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 import { getSimilarity } from "@thymesave/translations";
 import { cloneDeep } from "lodash";
-import { BehaviorSubject, debounce, merge, Observable, of, startWith, switchMap, tap, timer } from "rxjs";
+import { BehaviorSubject, debounce, merge, Observable, of, startWith, switchMap, timer } from "rxjs";
 
 import {
   IngredientsGroupedByCategory,
@@ -22,7 +22,7 @@ export type PreFilterFunction = (ingredient: FlattenedIngredient) => boolean;
 
 @Component({
   selector: 'app-ingredient-selector',
-  styleUrls: ['./ingredient-selector.component.html'],
+  styleUrls: ['./ingredient-selector.component.scss'],
   templateUrl: './ingredient-selector.component.html',
 })
 export class IngredientSelectorComponent implements ControlValueAccessor, OnInit {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Recipe } from "@thymesave/core";
 
 @Component({
@@ -8,8 +8,4 @@ import { Recipe } from "@thymesave/core";
 })
 export class RecipeCardComponent {
   @Input() public recipe!: Recipe;
-
-  constructor() {
-  }
-
 }

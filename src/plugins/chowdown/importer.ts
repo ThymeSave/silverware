@@ -1,4 +1,4 @@
-import { ChowdownPlugin, resourceBundle } from "@plugins/chowdown/index";
+import { resourceBundle } from "@plugins/chowdown/index";
 import { RawRecipe, RecipeURLImporter, ComponentContext, URLImporterPayload, RecipeDefaults } from "@thymesave/core";
 import { forkJoin, from, map, Observable, switchMap } from "rxjs";
 

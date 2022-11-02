@@ -8,6 +8,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatRippleModule } from "@angular/material/core";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatIconModule } from "@angular/material/icon";
@@ -23,9 +24,9 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule, Routes } from "@angular/router";
 import { createRoutingData } from "@helper/routing";
 
-import { IngredientSelectorComponent } from './common/ingredient-selector/ingredient-selector.component';
+import { CheckableTextComponent } from './common/checkable-text/checkable-text.component';
 import { RecipeImageComponent } from './common/recipe-image/recipe-image.component';
-import { UnitSelectorComponent } from './common/unit-selector/unit-selector.component';
+import { ShoppingListSelectorComponent } from './common/shopping-list-selector/shopping-list-selector.component';
 import {
   ParsedRecipeEditorIngredientComponent,
 } from './import/parsed-recipe-editor-ingredient/parsed-recipe-editor-ingredient.component';
@@ -65,12 +66,12 @@ const routes: Routes = [
     ParsedRecipeEditorComponent,
     ParsedRecipeEditorIngredientComponent,
     ParsedRecipeEditorInstructionComponent,
-    UnitSelectorComponent,
-    IngredientSelectorComponent,
     SearchBarComponent,
     RecipeCardComponent,
     GetRecipeComponent,
     RecipeImageComponent,
+    CheckableTextComponent,
+    ShoppingListSelectorComponent,
   ],
   imports: [
     CommonModule,
@@ -98,6 +99,7 @@ const routes: Routes = [
     MatTabsModule,
     MatProgressSpinnerModule,
     MatGridListModule,
+    MatDialogModule,
   ],
 })
 export class RecipesModule {

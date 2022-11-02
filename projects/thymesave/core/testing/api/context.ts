@@ -6,10 +6,9 @@ import {
   FunnelCORSProxySuccessResponse,
   ImporterPayload,
   Importer,
-  RawRecipe,
   SERVICE_NAME_FUNNEL_CORS_PROXY,
 } from "@thymesave/core";
-import { Observable, of, throwError } from "rxjs";
+import { Observable, of } from "rxjs";
 
 import { runImporter } from "./importer";
 

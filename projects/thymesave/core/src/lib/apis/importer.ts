@@ -5,7 +5,7 @@ import { imageToBase64 } from "./image";
 import { SERVICE_NAME_FUNNEL_CORS_PROXY, FunnelCorsService } from "./services";
 
 import { FunnelCORSProxyErrorResponse, FunnelCORSProxySuccessResponse } from "../models/funnel";
-import { RawRecipe, Recipe } from "../models/recipe";
+import { RawRecipe } from "../models/recipe";
 
 export enum ImporterType {
   /**

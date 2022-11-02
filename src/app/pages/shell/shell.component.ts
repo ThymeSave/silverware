@@ -1,21 +1,21 @@
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { MatSidenav } from "@angular/material/sidenav";
 import {
-  ActivatedRoute, ChildActivationEnd,
-  ChildActivationStart,
-  ChildrenOutletContexts,
+  ChildActivationEnd,
+  ChildrenOutletContexts, Data,
+  IsActiveMatchOptions,
   NavigationEnd,
-  RouteConfigLoadStart,
   Router,
 } from "@angular/router";
 import { AuthService } from "@auth0/auth0-angular";
-import { filter, first, firstValueFrom, map, of, startWith, switchMap, tap } from "rxjs";
+import { filter, first, map, startWith, switchMap, tap } from "rxjs";
 
 import { AppUpdateService } from "@/pwa/app-update.service";
 import { OnlineService } from "@/pwa/online.service";
 import { StorageService } from '@/shared/storage/storage.service';
+import { createMobileBreakpointObserver } from "@/shared/util/breakpoint";
 
 @Component({
   selector: 'app-shell',
@@ -23,7 +23,14 @@ import { StorageService } from '@/shared/storage/storage.service';
   templateUrl: './shell.component.html',
 })
 export class ShellComponent implements OnInit {
-  readonly menuItems = [
+  public routeMatchOptions: IsActiveMatchOptions = {
+    fragment: 'ignored',
+    matrixParams: 'ignored',
+    paths: 'exact',
+    queryParams: 'ignored',
+  };
+
+  public readonly menuItems = [
     {
       icon: "restaurant_menu",
       link: "/recipes/",
@@ -37,6 +44,10 @@ export class ShellComponent implements OnInit {
     {
       icon: "list",
       link: "/shopping-lists/",
+      routeMatchOptions: {
+        ...this.routeMatchOptions,
+        paths: "subset",
+      } as IsActiveMatchOptions,
       title: "nav.all_shopping_lists",
     },
     {
@@ -47,10 +58,9 @@ export class ShellComponent implements OnInit {
   ];
 
   public online = true;
-  public loading = true;
   public isMobile = false;
 
-  public logoutURL : string = window.location.origin;
+  public logoutURL: string = window.location.origin;
 
   @ViewChild("sidenav") public sidenav !: MatSidenav;
 
@@ -58,9 +68,25 @@ export class ShellComponent implements OnInit {
     .events.pipe(
       filter(e => e instanceof NavigationEnd || e instanceof ChildActivationEnd),
       startWith(null),
-      map(_ => this.contexts.getContext("primary")?.route?.snapshot.data),
-      map(d => d ? ('fullWidth' in d ? (d as any).fullWidth : false) : null),
+      map(() => this.isFullWith(this.getRouteSnapshotData())),
     );
+
+  private getRouteSnapshotData() {
+    return this.contexts.getContext("primary")
+      ?.route?.snapshot.data;
+  }
+
+  private isFullWith(snapshotData: Data | undefined) {
+    if (snapshotData) {
+      if ('fullWidth' in snapshotData) {
+        return (snapshotData as any).fullWidth;
+      } else {
+        return false;
+      }
+    } else {
+      return null;
+    }
+  }
 
   constructor(
     private contexts: ChildrenOutletContexts,
@@ -70,14 +96,11 @@ export class ShellComponent implements OnInit {
     public storageService: StorageService,
     public appUpdateService: AppUpdateService,
     private onlineService: OnlineService,
-    private _breakpointObserver: BreakpointObserver,
+    private breakpointObserver: BreakpointObserver,
   ) {
     onlineService.networkStatus$.subscribe(status => this.online = status);
-    this._breakpointObserver
-      .observe([Breakpoints.Handset, Breakpoints.Small,Breakpoints.Medium])
-      .subscribe((result: BreakpointState) => {
-        this.isMobile = result.matches;
-      });
+    createMobileBreakpointObserver(this.breakpointObserver)
+      .subscribe(isMobile => this.isMobile = isMobile);
   }
 
   private openSyncDialog() {
@@ -123,7 +146,7 @@ export class ShellComponent implements OnInit {
   }
 
   closeNavOnMobile() {
-    if(this.isMobile) {
+    if (this.isMobile) {
       this.sidenav.close();
     }
   }

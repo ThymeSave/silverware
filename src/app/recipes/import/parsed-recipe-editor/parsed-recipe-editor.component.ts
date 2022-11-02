@@ -150,13 +150,13 @@ export class ParsedRecipeEditorComponent implements OnInit {
         input.click();
         input.addEventListener("change", () => {
           const fileReader = new FileReader();
-          fileReader.readAsDataURL(input!!.files!![0]);
+          fileReader.readAsDataURL(input.files!![0]);
           fileReader.onerror = reject;
           fileReader.onload = async () => {
             try {
               const blob = await fetch(fileReader.result as string)
                 .then(r => r.blob());
-              const image = await imageToBase64(blob as Blob);
+              const image = await imageToBase64(blob);
               this.form.patchValue({
                 image,
               });

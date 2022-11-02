@@ -23,10 +23,6 @@
   }
 }
 
-app-recipe-image {
-  display: inline-block;
-  margin: auto auto 20px;
-}
 
 h1 {
   font-size: 2.75rem;
@@ -79,6 +75,8 @@ h2 {
 }
 
 app-recipe-image {
+  display: inline-block;
+  margin: auto auto 20px;
   opacity: 0;
 }
 
@@ -95,6 +93,8 @@ app-recipe-image {
 }
 
 .ingredients-heading {
+  position: relative;
+
   h2 {
     margin: 0;
   }
@@ -121,4 +121,22 @@ app-recipe-image {
   .button-delete {
     color: theme.get-color("warn","lighter")
   }
+}
+
+.min {
+  display: inline;
+}
+
+.min,
+.max,
+.unit {
+  font-weight: bold;
+}
+
+
+
+.add-to-shopping-list {
+  position: absolute;
+  background: theme.get-color("primary", 500);
+  right: 0;
 }

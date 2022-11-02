@@ -27,10 +27,11 @@
   <mat-step [label]="'recipes.choose_importer' | i18n"
             completed="false"
             editable="false">
-    <mat-list>
+    <mat-list role="listbox">
       <!-- Import by URL -->
       <div mat-subheader>{{ 'recipes.import.url' | i18n }}</div>
       <mat-list-item matRipple
+                     role="option"
                      (click)="selectImporter(importer)"
                      class="importer-option"
                      *ngFor="let importer of urlImporter">

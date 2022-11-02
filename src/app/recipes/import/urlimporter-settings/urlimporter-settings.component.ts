@@ -15,9 +15,6 @@ export class URLImporterSettingsComponent {
   @Output() public saved = new EventEmitter<URLImporterPayload>();
   @Output() public canceled = new EventEmitter();
 
-  constructor() {
-  }
-
   private urlValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       try {

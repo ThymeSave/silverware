@@ -1,0 +1,27 @@
+<app-dialog [title]="isEdit ? 'shopping_lists.edit_list' : 'shopping_lists.new'"
+            [submitEnabled]="form.valid"
+            (clickSubmit)="save()"
+            cancelText="cancel"
+            okText="save">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>{{ 'shopping_lists.list_title' | i18n }}</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'shopping_lists.icon' | i18n }}</mat-label>
+      <input matInput
+             [matAutocomplete]="auto"
+             formControlName="icon">
+      <mat-icon matSuffix>{{ form.controls['icon'].value }}</mat-icon>
+    </mat-form-field>
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of shoppingListIcons"
+                  [value]="option">
+        <mat-icon>{{option}}</mat-icon>
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+</app-dialog>

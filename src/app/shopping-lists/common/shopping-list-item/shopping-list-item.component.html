@@ -1,0 +1,57 @@
+<app-swipeable-element
+  (rightActionTriggered)="openEditDialog(item)"
+  (leftActionTriggered)="toggleDone(!item.done)"
+  [enableRightAction]="!item.done"
+  leftBackgroundColor="#115e48"
+  rightBackgroundColor="#666666">
+  <mat-icon rightAction>
+    edit
+  </mat-icon>
+  <mat-icon leftAction>
+    {{ item.done ? 'undo' : 'done' }}
+  </mat-icon>
+  <mat-card element
+            class="item"
+            role="listitem"
+            fxLayout="row"
+            fxLayoutGap="20px"
+            fxLayoutAlign="start stretch">
+    <div *ngIf="enableCheckbox"
+         fxLayout="column"
+         class="checkbox"
+         fxLayoutAlign="center center">
+      <mat-checkbox [checked]="item.done"
+                    (click)="toggleDone(!item.done)"></mat-checkbox>
+    </div>
+    <div class="ingredient"
+         fxLayoutAlign="start stretch"
+         fxLayout="column">
+      <strong>{{item.ingredientKey | i18n:"ingredients"}}</strong>
+
+      <div class="source">
+        {{ 'shopping_lists.source.prefix' | i18n}}
+        <ng-container *ngFor="let source of item.sources; last as last">
+          {{ source.source }}
+          <ng-container *ngIf="!last">,&nbsp;</ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="spacer"
+         fxFlex>
+    </div>
+    <div class="amount mat-h2"
+         fxLayoutAlign="end center"
+         fxLayout="row">
+      {{ item.sum }}
+      <ng-container *ngIf="!!item.unit && item.unit !== 'undefined'">{{ (item.unit) | i18n:"units":item.sum}}</ng-container>
+
+      <button *ngIf="enableEdit && enableEditButton"
+              mat-icon-button
+              role="button"
+              (click)="openEditDialog(item)"
+              [attr.aria-label]="'edit' | i18n">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</app-swipeable-element>

@@ -1,0 +1,17 @@
+<!-- Store content slot as template -->
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+
+<!-- ReadOnly -->
+<ng-container *ngIf="mode === 'ReadOnly'; else checkbox">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+</ng-container>
+
+<!-- Checkbox -->
+<ng-template #checkbox>
+  <mat-checkbox color="primary"
+                [checked]="checked">
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </mat-checkbox>
+</ng-template>
