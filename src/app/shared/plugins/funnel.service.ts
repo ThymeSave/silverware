@@ -14,8 +14,7 @@ export class FunnelError extends Error {
   providedIn: 'root',
 })
 export class FunnelService implements FunnelCorsService {
-
-  constructor(private http: HttpClient,
+  public constructor(private http: HttpClient,
               private authService: AuthService) {
   }
 

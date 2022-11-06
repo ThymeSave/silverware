@@ -29,7 +29,12 @@ const SHOPPING_LIST_ICONS: string[] = [
   templateUrl: './shopping-list-edit-dialog.component.html',
 })
 export class ShoppingListEditDialogComponent {
-  constructor(public fb: FormBuilder,
+  public form = this.fb.group({
+    'icon': this.fb.control(this.data.icon, Validators.required),
+    'name': this.fb.control(this.data.name, Validators.required),
+  });
+
+  public constructor(public fb: FormBuilder,
               public dialogRef: DialogRef<ShoppingListEditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Partial<ShoppingListEntity>) {
   }
@@ -42,12 +47,7 @@ export class ShoppingListEditDialogComponent {
     return !!this.data._id;
   }
 
-  public form = this.fb.group({
-    'icon': this.fb.control(this.data.icon, Validators.required),
-    'name': this.fb.control(this.data.name, Validators.required),
-  });
-
-  save() {
+  public save() {
     if (!this.form.valid) {
       return;
     }

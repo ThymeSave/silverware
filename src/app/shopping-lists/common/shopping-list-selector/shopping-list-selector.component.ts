@@ -29,12 +29,20 @@ export class ShoppingListSelectorComponent implements OnInit {
 
   public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
 
-  constructor(private shoppingListService: ShoppingListService,
+  public constructor(private shoppingListService: ShoppingListService,
               private breakPointObserver : BreakpointObserver) {
     this.listChanged.subscribe(list => this.activeItemUuid = list.uuid);
     this.shoppingListService.changes$
       .subscribe(() => this.fetchLists());
 
+  }
+
+  private selectItemByUuid(uuid : string) {
+    this.activeItemUuid = uuid;
+    const selected = this.shoppingLists.find(l => l.uuid == this.activeItemUuid);
+    if (selected) {
+      this.listChanged.next(selected);
+    }
   }
 
   public fetchLists() {
@@ -45,14 +53,6 @@ export class ShoppingListSelectorComponent implements OnInit {
           this.selectItemByUuid(!this.activeItemUuid ? this.shoppingLists[0].uuid : this.activeItemUuid);
         }
       });
-  }
-
-  private selectItemByUuid(uuid : string) {
-    this.activeItemUuid = uuid;
-    const selected = this.shoppingLists.find(l => l.uuid == this.activeItemUuid);
-    if (selected) {
-      this.listChanged.next(selected);
-    }
   }
 
   public ngOnInit(): void {

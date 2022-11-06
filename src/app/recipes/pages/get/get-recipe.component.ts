@@ -30,7 +30,7 @@ export class GetRecipeComponent {
 
   public mode : RecipeMode = "Present";
 
-  constructor(private route: ActivatedRoute,
+  public constructor(private route: ActivatedRoute,
               private dialog : MatDialog,
               private router: Router,
               private recipeService: RecipeService,

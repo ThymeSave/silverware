@@ -16,10 +16,10 @@ import { ShoppingListEntity, ShoppingListService } from "@/shopping-lists/servic
   `,
 })
 export class ShoppingListEditComponent {
-  @Input() list !: Partial<ShoppingListEntity>;
-  @Output() edited = new EventEmitter<void>();
+  @Input() public list !: Partial<ShoppingListEntity>;
+  @Output() public edited = new EventEmitter<void>();
 
-  constructor(public dialog: MatDialog,
+  public constructor(public dialog: MatDialog,
               public shoppingListService: ShoppingListService) {
   }
 

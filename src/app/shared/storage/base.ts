@@ -18,6 +18,12 @@ export abstract class EntityService<T extends BaseDocument> {
   protected constructor(public storageService: StorageService) {
   }
 
+  protected onDatabaseAvailable(callback: Function) {
+    this.storageService.db$.pipe(
+      map(() => callback()))
+      .subscribe();
+  }
+
   public abstract get entityType(): string
 
   public upsert(id: string, diffFunc: UpsertDiffFunc<T>) {
@@ -41,12 +47,6 @@ export abstract class EntityService<T extends BaseDocument> {
 
   public getPaginated(selector: PouchDB.Find.Selector, pagination: Pagination<T>, sort: PouchDBFindSort = []): Observable<PaginationWithResult<T>> {
     return this.storageService.paginate(this.entityType, selector, sort, pagination);
-  }
-
-  protected onDatabaseAvailable(callback: Function) {
-    this.storageService.db$.pipe(
-      map(() => callback()))
-      .subscribe();
   }
 
   public getLatest(id: string): Observable<T> {

@@ -60,14 +60,14 @@ export const loadUnitByKey = (language: Language, translationKey: string, amount
   // not found -> translation key
   if (typeof translation == "string") {
     return {
-      short: translationKey,
       long: translationKey,
+      short: translationKey,
     };
   }
 
   const unitDetails = translation as UnitTranslationDetail;
   return {
-    short: unitDetails.short,
     long: pluralize(unitDetails.long, amount),
+    short: unitDetails.short,
   };
 };

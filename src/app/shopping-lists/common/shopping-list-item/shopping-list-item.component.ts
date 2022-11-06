@@ -23,7 +23,7 @@ export class ShoppingListItemComponent {
   @Input() public enableEditButton : boolean = true;
   @Input() public enableCheckbox: boolean = true;
 
-  constructor(private dialog: MatDialog,
+  public constructor(private dialog: MatDialog,
               private shoppingListItemService: ShoppingListItemService) {
   }
 

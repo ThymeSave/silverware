@@ -37,6 +37,34 @@
             "type": "attribute"
           }
         ],
+        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "private-field",
+              "protected-field",
+              "public-field",
+              "public-constructor",
+              "protected-constructor",
+              "private-constructor",
+              "signature",
+              "method",
+              "private-static-method",
+              "private-decorated-method",
+              "private-instance-method",
+              "private-abstract-method",
+              "protected-static-method",
+              "protected-instance-method",
+              "protected-abstract-method",
+              "protected-decorated-method",
+              "public-static-method",
+              "public-decorated-method",
+              "public-instance-method",
+              "public-abstract-method"
+            ]
+          }
+        ],
         "comma-dangle": [
           "error",
           "always-multiline"

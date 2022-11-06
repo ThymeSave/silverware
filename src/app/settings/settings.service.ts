@@ -14,11 +14,11 @@ export class SettingsService extends EntityService<Settings> {
     .asObservable()
     .pipe(filter(s => !!s));
 
-  get entityType(): string {
+  public get entityType(): string {
     return "settings";
   }
 
-  constructor(storageService: StorageService) {
+  public constructor(storageService: StorageService) {
     super(storageService);
     this.onDatabaseAvailable(() =>
       this.getLatest("default")

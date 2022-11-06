@@ -46,7 +46,7 @@ const VULGAR_MAP: Record<string, string> = {
 export class IngredientParseError extends Error {
   public readonly raw: string;
 
-  constructor(raw: string) {
+  public constructor(raw: string) {
     super(`Failed to parse ingredient from '${raw}'`);
     this.raw = raw;
   }

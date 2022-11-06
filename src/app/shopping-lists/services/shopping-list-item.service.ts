@@ -33,7 +33,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
     super(storageService);
   }
 
-  get entityType(): string {
+  public get entityType(): string {
     return "shopping-list-item";
   }
 
@@ -45,6 +45,33 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
       done: false,
       uuid: this.generateUUID(),
     } as ShoppingListItem;
+  }
+
+  /**
+   * Convert dict key from lodash to an actual value.
+   *
+   * In case the key value is undefined or null lodash stringifies it, which is not desired in some cases.
+   * @param key Key to normalize
+   * @private
+   */
+  private normalizeDictKeyToVal(key: string) {
+    return key == "null" ? null : key;
+  }
+
+  private mapEntryToGrouped(ingredientKey: string, unit: string | null, items: ShoppingListItemEntity[]) {
+    return {
+      done: items.filter(item => item.done || false).length > 0,
+      earliestCreate: new Date(Math.min(...items.map(item => new Date(item.created).getTime()))),
+      ingredientKey: ingredientKey,
+      items: items,
+      sources: uniqBy(items
+        .map(item => item.source)
+        .slice(0, 3), source => source.source),
+      sum: items
+        .map(item => item.amount)
+        .reduce((a, b) => a!! + b!!)!!,
+      unit: unit,
+    } as GroupedShoppingListItems;
   }
 
   public addRecipeToShoppingList(shoppingList: Partial<ShoppingListEntity>, recipe: Recipe) {
@@ -94,33 +121,6 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
       // make sure the order is always the same, where the newest is always on top of the list
       .sort((a, b) => b.earliestCreate.getTime() - a.earliestCreate.getTime())
       .value();
-  }
-
-  /**
-   * Convert dict key from lodash to an actual value.
-   *
-   * In case the key value is undefined or null lodash stringifies it, which is not desired in some cases.
-   * @param key Key to normalize
-   * @private
-   */
-  private normalizeDictKeyToVal(key: string) {
-    return key == "null" ? null : key;
-  }
-
-  private mapEntryToGrouped(ingredientKey: string, unit: string | null, items: ShoppingListItemEntity[]) {
-    return {
-      done: items.filter(item => item.done || false).length > 0,
-      earliestCreate: new Date(Math.min(...items.map(item => new Date(item.created).getTime()))),
-      ingredientKey: ingredientKey,
-      items: items,
-      sources: uniqBy(items
-        .map(item => item.source)
-        .slice(0, 3), source => source.source),
-      sum: items
-        .map(item => item.amount)
-        .reduce((a, b) => a!! + b!!)!!,
-      unit: unit,
-    } as GroupedShoppingListItems;
   }
 
   public addManualToShoppingList(shoppingList: Partial<ShoppingListEntity>, items : ShoppingListAddDialogDataItem[]) : Observable<unknown> {

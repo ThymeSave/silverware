@@ -13,7 +13,7 @@ import { openActionDialog } from "@/shared/util/dialog";
 export class AppUpdateService {
   private logger = createLogger("AppUpdateService");
 
-  constructor(private readonly swUpdate: SwUpdate,
+  public constructor(private readonly swUpdate: SwUpdate,
               public dialog: MatDialog) {
     this.swUpdate.versionUpdates
       .pipe(

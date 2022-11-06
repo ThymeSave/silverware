@@ -16,7 +16,7 @@ export type IngredientsGroupedByCategory = { name: string, ingredients: Flattene
 export class IngredientService {
   private _grouped !: IngredientsGroupedByCategory;
 
-  constructor(private languageService: LanguageService) {
+  public constructor(private languageService: LanguageService) {
     languageService.language$
       .pipe(startWith(languageService.currentLanguage))
       .subscribe((lang) => {

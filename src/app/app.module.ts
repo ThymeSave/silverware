@@ -89,7 +89,7 @@ registerLocaleData(localeDe);
   ],
 })
 export class AppModule {
-  constructor(@Inject("funnelConfig") funnelConfig: FunnelConfig, config: AuthClientConfig) {
+  public constructor(@Inject("funnelConfig") funnelConfig: FunnelConfig, config: AuthClientConfig) {
     // Modify auth0 config with actual values
     config.set({
       cacheLocation: 'localstorage',

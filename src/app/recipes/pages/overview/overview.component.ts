@@ -15,17 +15,15 @@ import { Pagination, PaginationWithResult } from "@/shared/storage/storage.servi
   templateUrl: './overview.component.html',
 })
 export class OverviewComponent implements OnInit {
-  public recipes ?: RecipeEntity[];
-
   private pagination !: Pagination<Recipe>;
-  public nextToken ?: string;
-  public prevToken ?: string;
-
   private readonly logger = createLogger("OverviewComponent");
 
+  public recipes ?: RecipeEntity[];
+  public nextToken ?: string;
+  public prevToken ?: string;
   public search: Search | null = null;
 
-  constructor(public recipeService: RecipeService,
+  public constructor(public recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute,
               private readonly viewport: ViewportScroller) {
@@ -48,6 +46,29 @@ export class OverviewComponent implements OnInit {
     } catch (e) {
       this.logger.warn("Failed to parse search from query", raw);
     }
+  }
+
+  private onPaginated(pagination: PaginationWithResult<Recipe>) {
+    this.logger.debug("Paginated", pagination);
+    this.pagination = pagination;
+    this.recipes = pagination.results;
+
+    if (pagination.results.length == 0) {
+      return;
+    }
+
+    this.prevToken = pagination.prevStartToken;
+    this.nextToken = pagination.nextStartToken;
+  }
+
+  private hydrateRecipes() {
+    this.recipeService
+      .getPaginated(this.selector, {
+        pageSize: 24,
+        paginateField: "title",
+        reverse: false,
+      })
+      .subscribe(this.onPaginated.bind(this));
   }
 
   public searchSubmitted(search: Search | null) {
@@ -99,29 +120,6 @@ export class OverviewComponent implements OnInit {
         this.onPaginated(pagination);
         this.scrollToTop();
       });
-  }
-
-  private onPaginated(pagination: PaginationWithResult<Recipe>) {
-    this.logger.debug("Paginated", pagination);
-    this.pagination = pagination;
-    this.recipes = pagination.results;
-
-    if (pagination.results.length == 0) {
-      return;
-    }
-
-    this.prevToken = pagination.prevStartToken;
-    this.nextToken = pagination.nextStartToken;
-  }
-
-  private hydrateRecipes() {
-    this.recipeService
-      .getPaginated(this.selector, {
-        pageSize: 24,
-        paginateField: "title",
-        reverse: false,
-      })
-      .subscribe(this.onPaginated.bind(this));
   }
 
   public ngOnInit(): void {

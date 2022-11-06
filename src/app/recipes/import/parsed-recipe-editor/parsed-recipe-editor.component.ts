@@ -21,13 +21,14 @@ import { RecipeImporterService } from "@/recipes/services/recipe-importer.servic
   templateUrl: './parsed-recipe-editor.component.html',
 })
 export class ParsedRecipeEditorComponent implements OnInit {
-  public logger = createLogger("ParsedRecipeEditorComponent");
-
   private _recipe !: ParsedRecipe;
 
+  public logger = createLogger("ParsedRecipeEditorComponent");
+  public form !: FormGroup;
+
   @Input()
-  set recipe(value: ParsedRecipe | null) {
-    if(value != null) {
+  public set recipe(value: ParsedRecipe | null) {
+    if (value != null) {
       this._recipe = value;
     }
 
@@ -41,29 +42,15 @@ export class ParsedRecipeEditorComponent implements OnInit {
   @Output() public canceled = new EventEmitter<void>();
   @Output() public saved = new EventEmitter<Recipe>();
 
-  get recipe(): ParsedRecipe {
+  public get recipe(): ParsedRecipe {
     return this._recipe;
   }
 
-  constructor(private fb: FormBuilder,
+  public constructor(private fb: FormBuilder,
               public router: Router,
               private ingredientService: IngredientService,
               private ref: ChangeDetectorRef,
               private importerService: RecipeImporterService) {
-  }
-
-  public form !: FormGroup;
-
-  get ingredients() {
-    return this.form.controls["ingredients"] as any as FormArray<FormGroup>;
-  }
-
-  get instructions() {
-    return this.form.controls["instructions"] as any as FormArray<FormGroup>;
-  }
-
-  public ngOnInit() {
-    this.initForm({});
   }
 
   private translationKeyValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
@@ -72,7 +59,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
   };
 
   private initForm(recipe: Partial<ParsedRecipe>) {
-    if(Object.keys(recipe as any).length == 0) {
+    if (Object.keys(recipe as any).length == 0) {
       return;
     }
     const ingredients = recipe.ingredients ? recipe.ingredients.map(this.mapIngredientToFormGroup.bind(this)) : [];
@@ -83,7 +70,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
       image: this.fb.control(recipe.image),
       ingredients: this.fb.array(ingredients, [Validators.required]),
       instructions: this.fb.array(instructions, [Validators.required]),
-      servings: this.fb.control(recipe.servings,[Validators.required,Validators.min(1),Validators.max(99)]),
+      servings: this.fb.control(recipe.servings, [Validators.required, Validators.min(1), Validators.max(99)]),
       title: this.fb.control(recipe.title, [Validators.required]),
     });
 
@@ -114,6 +101,31 @@ export class ParsedRecipeEditorComponent implements OnInit {
     });
   }
 
+  private swapFormArrayEntry(formArray: FormArray<FormGroup>, previousIndex: number, newIndex: number) {
+    let tempVal = formArray.at(previousIndex);
+    formArray.removeAt(previousIndex);
+    formArray.insert(newIndex, tempVal);
+  }
+
+  private createImageFileInput() {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    return input;
+  }
+
+  public get ingredients() {
+    return this.form.controls["ingredients"] as any as FormArray<FormGroup>;
+  }
+
+  public get instructions() {
+    return this.form.controls["instructions"] as any as FormArray<FormGroup>;
+  }
+
+  public ngOnInit() {
+    this.initForm({});
+  }
+
   public addIngredient() {
     this.ingredients.push(this.mapIngredientToFormGroup({}));
   }
@@ -122,25 +134,12 @@ export class ParsedRecipeEditorComponent implements OnInit {
     this.instructions.push(this.mapInstructionToFormGroup({}));
   }
 
-  private swapFormArrayEntry(formArray: FormArray<FormGroup>, previousIndex: number, newIndex: number) {
-    let tempVal = formArray.at(previousIndex);
-    formArray.removeAt(previousIndex);
-    formArray.insert(newIndex, tempVal);
-  }
-
   public droppedIngredient(event: CdkDragDrop<any[]>) {
     this.swapFormArrayEntry(this.ingredients, event.previousIndex, event.currentIndex);
   }
 
   public droppedInstruction(event: CdkDragDrop<any[]>) {
     this.swapFormArrayEntry(this.instructions, event.previousIndex, event.currentIndex);
-  }
-
-  private createImageFileInput() {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    return input;
   }
 
   public async uploadPhoto() {

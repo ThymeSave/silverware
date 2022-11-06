@@ -12,27 +12,28 @@ import { LanguageService } from "@/shared/i18n/language.service";
 export class UnitSelectorComponent implements ControlValueAccessor {
   public selected: UnitTranslationDetail | null = null;
 
-  public onChange = (_: UnitTranslationDetail) => {
-  };
-  private onTouched = () => {
-  };
+  public options = this.languageService.currentLanguage.units;
 
-  constructor(private languageService: LanguageService,
+  public constructor(private languageService: LanguageService,
               public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
   }
 
-  public options = this.languageService.currentLanguage.units;
+  private onTouched() {
+  };
 
-  registerOnChange(fn: any): void {
+  public onChange(_: UnitTranslationDetail) {
+  };
+
+  public registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  writeValue(obj: any): void {
+  public writeValue(obj: any): void {
     this.selected = obj;
   }
 }

@@ -17,7 +17,7 @@ export interface PluginDescriptorInformation {
    * Globally unique identifier for the plugin.
    * Recommendation is to use your in reverse appending your plugin e. g. com.example.MyPlugin
    */
-  identifier : string
+  identifier: string
 
   /**
    * Short informational description about what it provides and it is useful for
@@ -50,7 +50,7 @@ export function PluginDescriptor(descriptor: PluginDescriptorInformation) {
     }
 
     return class extends target {
-      constructor() {
+      public constructor() {
         super();
         Object.assign(this, descriptor);
       }
@@ -76,7 +76,7 @@ export class Plugin implements PluginDescriptorInformation {
    * Globally unique identifier for the plugin.
    * Recommendation is to use your in reverse appending your plugin e. g. com.example.MyPlugin
    */
-  public identifier : string = "";
+  public identifier: string = "";
 
   /**
    * Version of the plugin
@@ -86,14 +86,14 @@ export class Plugin implements PluginDescriptorInformation {
   /**
    * List with importers provided
    */
-  get importer(): Importer<RawRecipe>[] {
+  public get importer(): Importer<RawRecipe>[] {
     return [];
   }
 
   /**
    * List with services provided
    */
-  get services(): Array<Service> {
+  public get services(): Array<Service> {
     return [];
   }
 }

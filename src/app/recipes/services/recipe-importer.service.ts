@@ -24,10 +24,9 @@ import { ContextService } from "@/shared/plugins/context.service";
   providedIn: 'root',
 })
 export class RecipeImporterService {
-
   private logger = createLogger("RecipeImporterService");
 
-  constructor(private contextService: ContextService,
+  public constructor(private contextService: ContextService,
               private languageService: LanguageService) {
   }
 

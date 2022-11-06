@@ -96,7 +96,7 @@ export class SwipeableElementComponent implements AfterViewInit {
     };
   }
 
-  @ViewChild("contentRoot") contentRoot !: ElementRef<HTMLElement>;
+  @ViewChild("contentRoot") public contentRoot !: ElementRef<HTMLElement>;
 
   public constructor(private viewPortRuler: ViewportRuler,
                      private ref: ChangeDetectorRef) {
@@ -113,12 +113,29 @@ export class SwipeableElementComponent implements AfterViewInit {
     this.ref.detectChanges();
   }
 
-  public ngAfterViewInit() {
-    this.setContentRootWidth();
-  }
-
   private isActivePanTo(direction: string) {
     return this.isInPan && this.direction == direction;
+  }
+
+  private isScrollPan(e: any) {
+    const angle = Math.abs(e.angle);
+    return (angle >= 90 && angle < 150) || (angle > 30 && angle < 90);
+  }
+
+  private updatePanState(e: any | null, direction: SwipeDirection) {
+    let distance = e.distance;
+
+    if (distance != null && distance > this.wrapperMaxWidth) {
+      distance = this.wrapperMaxWidth;
+    }
+
+    this._distance = (distance ?? 0) < 0 ? 0 : distance;
+    this.direction = direction;
+  }
+
+  public resetPanState() {
+    this.direction = null;
+    this._distance = null;
   }
 
   public onPanRight(e: any) {
@@ -156,24 +173,8 @@ export class SwipeableElementComponent implements AfterViewInit {
     this.resetPanState();
   }
 
-  private isScrollPan(e: any) {
-    const angle = Math.abs(e.angle);
-    return (angle >= 90 && angle < 150) || (angle > 30 && angle < 90);
+  public ngAfterViewInit() {
+    this.setContentRootWidth();
   }
 
-  private updatePanState(e: any | null, direction: SwipeDirection) {
-    let distance = e.distance;
-
-    if (distance != null && distance > this.wrapperMaxWidth) {
-      distance = this.wrapperMaxWidth;
-    }
-
-    this._distance = (distance ?? 0) < 0 ? 0 : distance;
-    this.direction = direction;
-  }
-
-  public resetPanState() {
-    this.direction = null;
-    this._distance = null;
-  }
 }

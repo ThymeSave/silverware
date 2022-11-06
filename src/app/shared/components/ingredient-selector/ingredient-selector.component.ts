@@ -26,16 +26,14 @@ export type PreFilterFunction = (ingredient: FlattenedIngredient) => boolean;
   templateUrl: './ingredient-selector.component.html',
 })
 export class IngredientSelectorComponent implements ControlValueAccessor, OnInit {
+  private filterChanged = new BehaviorSubject(null);
+  private _allCopy = cloneDeep(this.ingredientService.groupedByCategory);
 
   @ViewChild("matAutocomplete") private autocomplete !: MatAutocomplete;
 
   @Input() public validateOnInit ?: boolean;
-
   @Input() public selected: string | null = null;
 
-  /**
-   * Prefilter all ingredients by this function
-   */
   @Input()
   @Optional()
   public set preFilter(value: PreFilterFunction | undefined) {
@@ -54,21 +52,11 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
     this.searchControl.setParent(formParent);
   }
 
-  private filterChanged = new BehaviorSubject(null);
   public filterChanged$ = this.filterChanged.asObservable();
   public filteredOptions !: Observable<IngredientsGroupedByCategory>;
-
   public searchControl = new FormControl("", [Validators.required]);
 
-  public onChange = (_: string) => {
-  };
-  private onTouched = () => {
-  };
-  private _preFilter = (_: FlattenedIngredient) => true;
-
-  private _allCopy = cloneDeep(this.ingredientService.groupedByCategory);
-
-  constructor(public ingredientService: IngredientService,
+  public constructor(public ingredientService: IngredientService,
               private ref: ChangeDetectorRef,
               @Optional() public ngControl ?: NgControl) {
     if (this.ngControl) {
@@ -92,6 +80,16 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
       })
       .filter(c => c.ingredients.length > 0);
   }
+
+  private onTouched() {
+  };
+
+  private _preFilter(_: FlattenedIngredient) {
+    return true;
+  };
+
+  public onChange(_: string) {
+  };
 
   public ngOnInit() {
     this.filteredOptions = merge(

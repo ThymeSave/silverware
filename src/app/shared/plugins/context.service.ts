@@ -21,7 +21,7 @@ class ComponentContextImpl implements ComponentContext {
 export class ContextService {
   private globalComponentContext = new ComponentContextImpl();
 
-  constructor(private funnelService : FunnelService) {
+  public constructor(private funnelService : FunnelService) {
     this.globalComponentContext.register(SERVICE_NAME_FUNNEL_CORS_PROXY, funnelService);
   }
 

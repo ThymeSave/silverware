@@ -12,11 +12,11 @@ import { StorageService } from "@/shared/storage/storage.service";
   templateUrl: './settings.component.html',
 })
 export class SettingsComponent implements OnInit {
-  settingsForm = new FormGroup({
+  public settingsForm = new FormGroup({
     language: new FormControl(""),
   });
 
-  constructor(private languageService: LanguageService,
+  public constructor(private languageService: LanguageService,
               public settingsService: SettingsService,
               private storageService: StorageService) {
   }
@@ -27,14 +27,6 @@ export class SettingsComponent implements OnInit {
 
   public get languageIcons() {
     return this.languageService.languageIcons;
-  }
-
-  public ngOnInit() {
-    this.settingsService.settings$?.subscribe(settings => {
-      this.settingsForm.patchValue({
-        language: settings!!.language,
-      });
-    });
   }
 
   private getDirtyValues() {
@@ -56,6 +48,14 @@ export class SettingsComponent implements OnInit {
       });
 
     return dirtyValues;
+  }
+
+  public ngOnInit() {
+    this.settingsService.settings$?.subscribe(settings => {
+      this.settingsForm.patchValue({
+        language: settings!!.language,
+      });
+    });
   }
 
   public save() {
