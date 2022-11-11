@@ -1,14 +1,14 @@
 <app-swipeable-element
   (rightActionTriggered)="openEditDialog(item)"
-  (leftActionTriggered)="toggleDone(!item.done)"
-  [enableRightAction]="!item.done"
+  (leftActionTriggered)="toggleDone(!done)"
+  [enableRightAction]="!done"
   leftBackgroundColor="#115e48"
   rightBackgroundColor="#666666">
   <mat-icon rightAction>
     edit
   </mat-icon>
   <mat-icon leftAction>
-    {{ item.done ? 'undo' : 'done' }}
+    {{ done ? 'undo' : 'done' }}
   </mat-icon>
   <mat-card element
             class="item"
@@ -20,8 +20,8 @@
          fxLayout="column"
          class="checkbox"
          fxLayoutAlign="center center">
-      <mat-checkbox [checked]="item.done"
-                    (click)="toggleDone(!item.done)"></mat-checkbox>
+      <mat-checkbox [checked]="done"
+                    (click)="toggleDone(!done)"></mat-checkbox>
     </div>
     <div class="category-icon"
          fxLayout="column"
@@ -46,9 +46,8 @@
     <div class="amount mat-h2"
          fxLayoutAlign="end center"
          fxLayout="row">
-      {{ item.sum }}
-      <ng-container
-        *ngIf="!!item.unit && item.unit !== 'undefined'">{{ (item.unit) | i18n:"units":item.sum}}</ng-container>
+      {{ sum }}
+      <ng-container *ngIf="!!item.unit && item.unit !== 'undefined'">{{ (item.unit) | i18n:"units":sum}}</ng-container>
 
       <button *ngIf="enableEdit && enableEditButton"
               mat-icon-button

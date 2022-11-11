@@ -1,18 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Recipe, ShoppingListItem, ShoppingListItemSource } from "@thymesave/core";
-import { chain, flatten, groupBy, uniqBy } from "lodash";
+import { chain, groupBy, sum, uniqBy } from "lodash";
 import {
-  combineLatest,
-  concatAll,
-  distinct, flatMap, forkJoin,
-  map,
   merge,
-  mergeAll,
-  mergeMap,
   Observable,
-  of,
   switchMap,
-  toArray,
 } from "rxjs";
 
 import { BaseDocument } from "@/models/BaseDocument";
@@ -36,6 +28,8 @@ export interface GroupedShoppingListItems {
   sources: ShoppingListItemSource[]
   done: boolean
   earliestCreate: Date
+  doneSum: number
+  openSum: number
 }
 
 @Injectable({
@@ -74,15 +68,20 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
   private mapEntryToGrouped(ingredientKey: string, unit: string | null, items: ShoppingListItemEntity[]) {
     return {
       done: items.filter(item => item.done || false).length > 0,
+      doneSum: sum(items
+        .filter(i => i.done)
+        .map(item => item.amount)),
       earliestCreate: new Date(Math.min(...items.map(item => new Date(item.created).getTime()))),
       ingredientKey: ingredientKey,
       items: items,
+      openSum: sum(items
+        .filter(i => !i.done)
+        .map(item => item.amount)),
       sources: uniqBy(items
         .map(item => item.source)
         .slice(0, 3), source => source.source),
-      sum: items
-        .map(item => item.amount)
-        .reduce((a, b) => a!! + b!!)!!,
+      sum: sum( items
+        .map(item => item.amount)),
       unit: unit,
     } as GroupedShoppingListItems;
   }
