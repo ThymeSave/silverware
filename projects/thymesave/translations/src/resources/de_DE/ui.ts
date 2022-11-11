@@ -86,6 +86,8 @@ const ui: SingleValueTranslation = {
   "settings.danger_zone.purge_database.button": "Datenbank löschen",
   "settings.danger_zone.purge_database.description": "Löscht alle Daten aus der Datenbank, auch vom Server, was bedeutet das all deine Daten verloren gehen!",
   "settings.general": "Allgemein",
+  "settings.shopping_list": "Einkaufsliste",
+  "settings.shopping_list.ignore": "Nicht automatisch auf Einkaufsliste setzen",
   "settings.user_interface": "Benutzeroberfläche",
   "shell.sync.text": "Synchronisiere Daten für Offline-Nutzung ...",
   'shopping_lists.add_item.add_more': 'Weitere Zutat hinzufügen',

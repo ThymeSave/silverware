@@ -1,0 +1,7 @@
+@use "../../../../theme" as theme;
+
+.danger-zone {
+  border: 1px solid theme.get-color("warn", "lighter");
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

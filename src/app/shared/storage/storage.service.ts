@@ -210,7 +210,11 @@ export class StorageService {
   public getLatest<T extends BaseDocument>(entityType: string, id: string): Observable<T> {
     this.logger.debug(`Get latest doc of entityType ${entityType} with id ${id}`);
     return this.db$
-      .pipe(switchMap(db => from(db!.get(this.build_id(entityType, id), {latest: true})))) as Observable<T>;
+      .pipe(
+        switchMap(db => from(db!.get(this.build_id(entityType, id), {latest: true}))
+          .pipe(catchError(e => throwError(e))),
+        ),
+      ) as Observable<T>;
   }
 
   /**
