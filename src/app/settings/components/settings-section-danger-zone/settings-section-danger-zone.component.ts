@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { from, switchMap } from "rxjs";
 
 import { StorageService } from "@/shared/storage/storage.service";
