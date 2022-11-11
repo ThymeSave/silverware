@@ -1,7 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Recipe, ShoppingListItem, ShoppingListItemSource } from "@thymesave/core";
-import { chain, groupBy, uniqBy } from "lodash";
-import { combineLatest, merge, Observable } from "rxjs";
+import { chain, flatten, groupBy, uniqBy } from "lodash";
+import {
+  combineLatest,
+  concatAll,
+  distinct, flatMap, forkJoin,
+  map,
+  merge,
+  mergeAll,
+  mergeMap,
+  Observable,
+  of,
+  switchMap,
+  toArray,
+} from "rxjs";
 
 import { BaseDocument } from "@/models/BaseDocument";
 import { EntityService } from "@/shared/storage/base";
@@ -9,6 +21,7 @@ import { StorageService } from "@/shared/storage/storage.service";
 import {
   ShoppingListAddDialogDataItem,
 } from "@/shopping-lists/common/shopping-list-item-add/shopping-list-item-add.component";
+import { ShoppingListFilterService } from "@/shopping-lists/services/shopping-list-filter.service";
 import { ShoppingListEntity } from "@/shopping-lists/services/shopping-list.service";
 
 export interface ShoppingListItemEntity extends ShoppingListItem, BaseDocument {
@@ -21,15 +34,15 @@ export interface GroupedShoppingListItems {
   items: ShoppingListItemEntity[]
   sum: number
   sources: ShoppingListItemSource[]
-  done : boolean
-  earliestCreate : Date
+  done: boolean
+  earliestCreate: Date
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShoppingListItemService extends EntityService<ShoppingListItemEntity> {
-  public constructor(storageService: StorageService) {
+  public constructor(storageService: StorageService, private readonly shoppingListFilterService: ShoppingListFilterService) {
     super(storageService);
   }
 
@@ -37,7 +50,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
     return "shopping-list-item";
   }
 
-  private setNewItemDefaults(shoppingListItem : Partial<ShoppingListItem>) : ShoppingListItem {
+  private setNewItemDefaults(shoppingListItem: Partial<ShoppingListItem>): ShoppingListItem {
     return {
       ...shoppingListItem,
       amount: shoppingListItem.amount || 1,
@@ -75,7 +88,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
   }
 
   public addRecipeToShoppingList(shoppingList: Partial<ShoppingListEntity>, recipe: Recipe) {
-    const inserts = recipe.ingredients
+    const shoppingListItems = recipe.ingredients
       .map(ingredient => this.setNewItemDefaults({
         amount: ingredient.isNumeric ? ingredient.minAmount as number : undefined,
         ingredientKey: ingredient.translationKey,
@@ -85,9 +98,13 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
           type: "Recipe",
         },
         unit: ingredient.unit ?? undefined,
-      }))
-      .map(entry => this.insert(entry as ShoppingListItemEntity));
-    return combineLatest(inserts);
+      })) as ShoppingListItem[];
+
+    return this.shoppingListFilterService.filterItems(shoppingListItems)
+      .pipe(
+        switchMap(items => items),
+        switchMap(entity => this.insert(entity)),
+      );
   }
 
   public getItems(shoppingList: Partial<ShoppingListEntity>) {
@@ -123,20 +140,20 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
       .value();
   }
 
-  public addManualToShoppingList(shoppingList: Partial<ShoppingListEntity>, items : ShoppingListAddDialogDataItem[]) : Observable<unknown> {
-      const inserts = items
-        .map(item => this.setNewItemDefaults({
-          amount: item.amount,
-          ingredientKey: item.ingredientKey,
-          shoppingList: shoppingList.uuid!!,
-          source: {
-            source: item.text,
-            type: 'Manual',
-          },
-          unit: item.unit,
-        } as ShoppingListItem))
-        .map(entity => this.insert(entity));
+  public addManualToShoppingList(shoppingList: Partial<ShoppingListEntity>, items: ShoppingListAddDialogDataItem[]): Observable<unknown> {
+    const inserts = items
+      .map(item => this.setNewItemDefaults({
+        amount: item.amount,
+        ingredientKey: item.ingredientKey,
+        shoppingList: shoppingList.uuid!!,
+        source: {
+          source: item.text,
+          type: 'Manual',
+        },
+        unit: item.unit,
+      } as ShoppingListItem))
+      .map(entity => this.insert(entity));
 
-      return merge(...inserts);
+    return merge(...inserts);
   }
 }

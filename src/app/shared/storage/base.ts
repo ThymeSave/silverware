@@ -30,8 +30,8 @@ export abstract class EntityService<T extends BaseDocument> {
     return this.storageService.upsert(this.entityType, id, diffFunc);
   }
 
-  public insert(entity: T) {
-    return this.upsert(this.generateUUID(), doc => {
+  public insert(entity: T, id: string | null = null) {
+    return this.upsert(id ?? this.generateUUID(), doc => {
       Object.assign(doc, entity);
       return doc;
     });

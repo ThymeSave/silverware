@@ -87,6 +87,8 @@ const ui: SingleValueTranslation = {
   "settings.danger_zone.purge_database.button": "Purge database",
   "settings.danger_zone.purge_database.description": "Purging the database removes all your data and removes it from the remote as well, which means all your data will be lost!",
   "settings.general": "General",
+  "settings.shopping_list": "Shopping list",
+  "settings.shopping_list.ignore": "Dont automatically add to shopping list",
   "settings.user_interface": "User Interface",
   "shell.sync.text": "Synchronizing data for offline usage ...",
   'shopping_lists.add_item.add_more': 'Add more ingredients',

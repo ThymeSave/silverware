@@ -107,7 +107,6 @@ export class SwipeableElementComponent implements AfterViewInit {
   private setContentRootWidth() {
     const contentRootNode = this.contentRoot.nativeElement as HTMLDivElement;
     this.wrapperMaxWidth = contentRootNode.clientWidth;
-    console.log(contentRootNode.clientWidth, contentRootNode.scrollWidth, contentRootNode.offsetWidth);
 
     // prevent NG0100
     this.ref.detectChanges();
