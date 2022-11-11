@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ShoppingListItem } from "@thymesave/core";
-import { ShoppingListFilter } from "@thymesave/core";
+import { ShoppingListItem, ShoppingListFilter } from "@thymesave/core";
 import { catchError, map, switchMap, throwError } from "rxjs";
 
 import { BaseDocument } from "@/models/BaseDocument";
