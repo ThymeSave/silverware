@@ -57,7 +57,7 @@
     "@angular/compiler-cli": "14.2.10",
     "@types/hammerjs": "2.0.41",
     "@types/jasmine": "4.3.0",
-    "@types/lodash": "4.14.188",
+    "@types/lodash": "4.14.189",
     "@types/node": "15.6.1",
     "@types/pouchdb": "6.4.0",
     "@types/pouchdb-upsert": "2.2.6",
