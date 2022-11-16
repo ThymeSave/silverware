@@ -16,7 +16,8 @@
       "groupName": "angular",
       "matchPackagePatterns": [
         "^@angular/",
-        "^@angular-devkit/"
+        "^@angular-devkit/",
+        "ng-packagr"
       ]
     },
     {
