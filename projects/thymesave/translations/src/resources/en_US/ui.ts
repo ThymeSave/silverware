@@ -96,6 +96,7 @@ const ui: SingleValueTranslation = {
   "shopping_lists.already_bought": "Already bought",
   "shopping_lists.edit_list": "Edit shopping list",
   "shopping_lists.icon": "Icon",
+  "shopping_lists.ignore_ingredients_button": "Manage ignored ingredients",
   "shopping_lists.items": "things left to buy",
   "shopping_lists.list_title": "Title",
   "shopping_lists.new": "New shopping list",

@@ -13,9 +13,10 @@ import { ShoppingListService } from "@/shopping-lists/services/shopping-list.ser
 export class ShoppingListSelectorComponent implements OnInit {
 
   @Input() public align: "row" | "column" = "column";
+
   @Input()
-  public set initialItemUuid(val : string | null) {
-    if(!val) {
+  public set initialItemUuid(val: string | null) {
+    if (!val) {
       return;
     }
 
@@ -30,14 +31,14 @@ export class ShoppingListSelectorComponent implements OnInit {
   public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
 
   public constructor(private shoppingListService: ShoppingListService,
-              private breakPointObserver : BreakpointObserver) {
+                     private breakPointObserver: BreakpointObserver) {
     this.listChanged.subscribe(list => this.activeItemUuid = list.uuid);
     this.shoppingListService.changes$
       .subscribe(() => this.fetchLists());
 
   }
 
-  private selectItemByUuid(uuid : string) {
+  public selectItemByUuid(uuid: string) {
     this.activeItemUuid = uuid;
     const selected = this.shoppingLists.find(l => l.uuid == this.activeItemUuid);
     if (selected) {
@@ -64,7 +65,11 @@ export class ShoppingListSelectorComponent implements OnInit {
     this.listChanged.next(shoppingList);
   }
 
-  public trackByFn(index : any, item : ShoppingList) {
+  public trackByFn(index: any, item: ShoppingList) {
     return item.uuid;
+  }
+
+  public deselect() {
+    this.activeItemUuid = "";
   }
 }

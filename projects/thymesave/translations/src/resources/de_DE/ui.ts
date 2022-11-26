@@ -95,6 +95,7 @@ const ui: SingleValueTranslation = {
   "shopping_lists.already_bought": "Bereits eingekauft",
   "shopping_lists.edit_list": "Einkaufliste bearbeiten",
   "shopping_lists.icon": "Symbol",
+  "shopping_lists.ignore_ingredients_button": "Ignorierte Zutaten verwalten",
   "shopping_lists.items": "Dinge die noch eingekauft werden müssen",
   "shopping_lists.list_title": "Titel",
   "shopping_lists.new": "Neue Einkaufsliste",

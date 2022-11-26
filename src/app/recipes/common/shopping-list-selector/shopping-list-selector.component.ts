@@ -22,4 +22,8 @@ export class ShoppingListSelectorComponent {
   public selectList(list: ShoppingListEntity) {
     this.data.list = list;
   }
+
+  public deselect() {
+
+  }
 }
