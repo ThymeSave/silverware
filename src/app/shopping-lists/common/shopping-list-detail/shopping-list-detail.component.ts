@@ -40,7 +40,7 @@ export class ShoppingListDetailComponent {
               private shoppingListService: ShoppingListService,
               private breakPointObserver: BreakpointObserver) {
     shoppingListItemService.changes$
-      .pipe(filter(item => (item as any)._deleted || item.shoppingList == this._list.uuid))
+      .pipe(filter(item =>  (item as any)._deleted || this._list && item.shoppingList == this._list.uuid))
       .subscribe(_ => this.loadItems());
   }
 

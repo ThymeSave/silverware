@@ -15,7 +15,7 @@ import { BehaviorSubject, debounce, merge, Observable, of, startWith, switchMap,
 import {
   IngredientsGroupedByCategory,
   IngredientService,
-  FlattenedIngredient,
+  FlattenedIngredient, FrozenIngredientsGroupedByCategory,
 } from "@/recipes/services/ingredient.service";
 
 export type PreFilterFunction = (ingredient: FlattenedIngredient) => boolean;
@@ -27,7 +27,7 @@ export type PreFilterFunction = (ingredient: FlattenedIngredient) => boolean;
 })
 export class IngredientSelectorComponent implements ControlValueAccessor, OnInit {
   private filterChanged = new BehaviorSubject(null);
-  private _allCopy = cloneDeep(this.ingredientService.groupedByCategory);
+  private _allCopy !: FrozenIngredientsGroupedByCategory;
 
   @ViewChild("matAutocomplete") private autocomplete !: MatAutocomplete;
 
@@ -92,7 +92,19 @@ export class IngredientSelectorComponent implements ControlValueAccessor, OnInit
   };
 
   public ngOnInit() {
+    this._allCopy =  cloneDeep(this.ingredientService.groupedByCategory);
+
+    // Copy items over in case language changes e.g selector is loaded before evaluation of language
+    this.ingredientService.grouped$.subscribe(copy => {
+      this._allCopy = copy;
+    });
+
+    // Make sure filtered options trigger
+    // - on ingredient change
+    // - on filter change (from outside)
+    // - on change of input field
     this.filteredOptions = merge(
+      this.ingredientService.grouped$,
       this.searchControl.valueChanges
         .pipe(
           debounce(() => timer(50)),

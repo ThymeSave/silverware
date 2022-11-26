@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
 import { URLImporterPayload } from "@thymesave/core";
 
+import { ThymeSaveValidators } from "@/validators";
+
 @Component({
   selector: 'app-url-importer-settings',
   styleUrls: ['./urlimporter-settings.component.scss'],
@@ -9,22 +11,11 @@ import { URLImporterPayload } from "@thymesave/core";
 })
 export class URLImporterSettingsComponent {
   public form = new FormGroup({
-    url: new FormControl("", [Validators.required, this.urlValidator()]),
+    url: new FormControl("", [Validators.required, ThymeSaveValidators.url]),
   });
 
   @Output() public saved = new EventEmitter<URLImporterPayload>();
   @Output() public canceled = new EventEmitter();
-
-  private urlValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      try {
-        new URL(control.value);
-        return null;
-      } catch (e) {
-        return {forbiddenUrl: {value: control.value}};
-      }
-    };
-  }
 
   public save() {
     this.saved.emit(this.form.getRawValue() as URLImporterPayload);

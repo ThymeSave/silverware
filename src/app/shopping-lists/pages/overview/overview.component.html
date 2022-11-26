@@ -1,17 +1,42 @@
 <div [fxLayout]="(isMobile$ | async) ? 'column' : 'row'"
      class="recipe-list"
      fxLayoutGap="30px">
-  <app-shopping-list-selector [fxFlex]="(isMobile$ | async) ? '' : '300px'"
-                              [align]="(isMobile$ | async) ? 'row' : 'column'"
-                              [initialItemUuid]="routeUuid"
-                              (listChanged)="selected.next($event)">
-  </app-shopping-list-selector>
+  <div fxLayout="column">
+    <div>
+      <app-shopping-list-selector [fxFlex]="(isMobile$ | async) ? '' : '300px'"
+                                  #selector
+                                  style="display:block;"
+                                  [align]="(isMobile$ | async) ? 'row' : 'column'"
+                                  [initialItemUuid]="routeUuid"
+                                  (listChanged)="selected.next($event)">
+      </app-shopping-list-selector>
+    </div>
+    <div  [className]="(isMobile$ | async) ? 'ignore-items-button-container mobile' : 'ignore-items-button-container'">
+      <button color="primary"
+              (click)="hideIgnoreList()"
+              mat-raised-button
+              *ngIf="editIgnoreList; else activeIgnoreListButton">
+        <mat-icon>no_food</mat-icon>
+        {{ 'shopping_lists.ignore_ingredients_button' | i18n }}
+      </button>
+      <ng-template  #activeIgnoreListButton>
+        <button mat-stroked-button
+                (click)="showIgnoreList()">
+          <mat-icon>no_food</mat-icon>
+          {{ 'shopping_lists.ignore_ingredients_button' | i18n }}
+        </button>
+      </ng-template>
+    </div>
+
+  </div>
+
   <ng-container *ngIf="(selected$ | async) as active;">
     <app-shopping-list-detail fxFlex
                               (deleted)="onDelete()"
                               [list]="active">
     </app-shopping-list-detail>
   </ng-container>
+  <app-shopping-list-ignore-item-settings *ngIf="editIgnoreList"></app-shopping-list-ignore-item-settings>
 </div>
 
 <app-floating-button i18nLabel="shopping_lists.new_item"

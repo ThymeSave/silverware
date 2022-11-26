@@ -50,7 +50,10 @@ enum MeatCategory {
   Meat = 'meat',
   Beef = 'beef',
   Chicken = 'chicken',
-  Pork = 'pork',
+  Pork = 'pork'
+}
+
+enum FishCategory {
   Aquatic = "aquatic",
 }
 
@@ -75,6 +78,7 @@ export const IngredientCategory = {
   ...AlcoholCategory,
   ...BakingCategory,
   ...CondimentCategory,
+  ...FishCategory,
 };
 
 export const categoryIcons = mapMetaData([
@@ -87,6 +91,7 @@ export const categoryIcons = mapMetaData([
   [AlcoholCategory, "cocktail"],
   [BakingCategory, "cake"],
   [CondimentCategory, "spoon"],
+  [FishCategory, "fish"],
 ]);
 
 export const ingredients: { [key: string]: Ingredient } = {

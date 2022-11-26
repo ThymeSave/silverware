@@ -1,0 +1,17 @@
+<h1>{{ 'settings.shopping_list' | i18n }}</h1>
+<h2>{{ 'settings.shopping_list.ignore' | i18n }}</h2>
+<div *ngIf="(filter$ | async) as filter">
+  <ul>
+    <li *ngFor="let ignoredIngredient of filter.alwaysIgnore">
+      {{ignoredIngredient | i18n:"ingredients"}}
+    </li>
+  </ul>
+</div>
+<div fxLayout
+     fxLayoutGap="10px"
+     fxLayoutAlign="start center">
+  <app-ingredient-selector [(ngModel)]="ingredientToIgnore" fxFlex></app-ingredient-selector>
+  <button (click)="addIngredient()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

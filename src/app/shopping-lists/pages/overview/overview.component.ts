@@ -1,5 +1,5 @@
 import { BreakpointObserver } from "@angular/cdk/layout";
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { MatIconRegistry } from "@angular/material/icon";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -13,6 +13,9 @@ import {
   ShoppingListAddDialogData,
   ShoppingListItemAddComponent,
 } from "@/shopping-lists/common/shopping-list-item-add/shopping-list-item-add.component";
+import {
+  ShoppingListSelectorComponent,
+} from "@/shopping-lists/common/shopping-list-selector/shopping-list-selector.component";
 import { ShoppingListItemService } from "@/shopping-lists/services/shopping-list-item.service";
 
 interface RouteParameters {
@@ -32,6 +35,10 @@ export class OverviewComponent {
 
   public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
 
+  public editIgnoreList: boolean = false;
+
+  @ViewChild("selector") public selector !: ShoppingListSelectorComponent;
+
   public constructor(private breakPointObserver: BreakpointObserver,
                      private activatedRoute: ActivatedRoute,
                      private shoppingListItemService: ShoppingListItemService,
@@ -42,7 +49,28 @@ export class OverviewComponent {
     this.matIconRegistry.registerFontClassAlias("food", "material-food-icons");
 
     this.routeUuid = (activatedRoute.snapshot.params as RouteParameters).uuid || null;
-    this.selected$.subscribe(list => this.updateRoute(list?.uuid));
+    this.selected$.subscribe(newItem => {
+      if (newItem) {
+        this.updateRoute(newItem?.uuid);
+        this.hideIgnoreList();
+      }
+    });
+    this.activatedRoute.params
+      .subscribe(parameter => this.routeUuid = parameter['uuid']);
+  }
+
+  public showIgnoreList() {
+    this.editIgnoreList = true;
+    this.selected.next(null);
+    this.selector.deselect();
+  }
+
+  public hideIgnoreList() {
+    if (!this.editIgnoreList) {
+      return;
+    }
+    this.editIgnoreList = false;
+    this.selector.selectItemByUuid(this.routeUuid!!);
   }
 
   public updateRoute(uuid ?: string) {
