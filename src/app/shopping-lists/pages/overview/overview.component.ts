@@ -1,6 +1,7 @@
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { Component } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
+import { MatIconRegistry } from "@angular/material/icon";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ShoppingList } from "@thymesave/core";
 import { BehaviorSubject } from "rxjs";
@@ -36,7 +37,10 @@ export class OverviewComponent {
                      private shoppingListItemService: ShoppingListItemService,
                      private notificationService: NotificationService,
                      private dialog: MatDialog,
-                     private router: Router) {
+                     private router: Router,
+                     private matIconRegistry: MatIconRegistry) {
+    this.matIconRegistry.registerFontClassAlias("food", "material-food-icons");
+
     this.routeUuid = (activatedRoute.snapshot.params as RouteParameters).uuid || null;
     this.selected$.subscribe(list => this.updateRoute(list?.uuid));
   }

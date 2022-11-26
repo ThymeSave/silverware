@@ -1,11 +1,19 @@
 import { Ingredient } from "@thymesave/core";
 
+import { mapMetaData } from "./util";
+
 enum VegetableCategory {
   Vegetable = "vegetable",
-  Herb = "herbs",
   Nuts = "nuts",
   Cereals = "cereals",
   Gourds = "gourds",
+}
+
+enum CondimentCategory {
+  Herbs = "herbs",
+  Salt = "salt",
+  Sugar = "sugar",
+  Spice = "spice",
 }
 
 enum FruitCategory {
@@ -22,17 +30,20 @@ enum MilkCategory {
 enum MiscCategory {
   Coffee = "coffee",
   Tea = "teas",
-  Baking = "baking",
-  Eggs = "eggs",
   Confectioneries = "confectioneries",
   Dough = "dough",
   Soup = "soup",
-  Spice = "spice",
   Snack = "snack",
   Afters = "afters",
   Pasta = "pasta",
   Fluids = "fluids",
   Dip = "dip"
+}
+
+enum BakingCategory {
+  Baking = "baking",
+  Eggs = "eggs",
+  Flour = "flour",
 }
 
 enum MeatCategory {
@@ -44,13 +55,14 @@ enum MeatCategory {
 }
 
 enum FatCategory {
-  VegetableFat = "vegetable_fat",
-  AnimalFat = "animal_fat",
+  Vegetable_Fat = "vegetable_fat",
+  Animal_Fat = "animal_fat",
   Fat = "fat",
 }
 
 enum AlcoholCategory {
-  Liquor = "liquor"
+  Liquor = "liquor",
+  Rum = "rum",
 }
 
 export const IngredientCategory = {
@@ -61,7 +73,21 @@ export const IngredientCategory = {
   ...MilkCategory,
   ...FatCategory,
   ...AlcoholCategory,
+  ...BakingCategory,
+  ...CondimentCategory,
 };
+
+export const categoryIcons = mapMetaData([
+  [VegetableCategory, "tomato"],
+  [MeatCategory, "sausage"],
+  [FruitCategory, "apple"],
+  [MiscCategory, "jar"],
+  [MilkCategory, "milk_carton"],
+  [FatCategory, "frypan"],
+  [AlcoholCategory, "cocktail"],
+  [BakingCategory, "cake"],
+  [CondimentCategory, "spoon"],
+]);
 
 export const ingredients: { [key: string]: Ingredient } = {
   "abalone": {
@@ -133,7 +159,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "alfalfa": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "allium": {
@@ -141,7 +167,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "allspice": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "almond": {
@@ -157,7 +183,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "amaranth": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "american_butterfish": {
@@ -193,7 +219,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "angelica": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "anguilliformes": {
@@ -201,7 +227,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "anise": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "annual_wild_rice": {
@@ -248,7 +274,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "asparagus_fern": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "asparagus_racemosus": {
@@ -300,11 +326,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "avocado_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "babassu_palm": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "bacon": {
@@ -328,7 +354,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: false,
   },
   "balsamic": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "bamboo_shoots": {
@@ -344,11 +370,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "basil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "bay_laurel": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "bayberry": {
@@ -500,7 +526,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "borage": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "bowhead_whale": {
@@ -524,7 +550,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "breadnut_tree_seed": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "breakfast_cereal": {
@@ -616,11 +642,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "canola": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "canola_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cantaloupe_melon": {
@@ -632,15 +658,15 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "capers": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "caraway": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cardamom": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cardoon": {
@@ -700,7 +726,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "celery leaves": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "celery_stalks": {
@@ -716,7 +742,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "ceylon_cinnamon": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "channel_catfish": {
@@ -752,7 +778,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "chervil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "chestnut": {
@@ -764,7 +790,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "chia": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "chicken": {
@@ -832,11 +858,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "chinese_chives": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "chinese_cinnamon": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "chinese_mustard": {
@@ -852,7 +878,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "chives": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "chocolate": {
@@ -876,7 +902,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "cinnamon": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cisco": {
@@ -892,7 +918,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "clarified_butter": {
-    category: IngredientCategory.AnimalFat,
+    category: IngredientCategory.Animal_Fat,
     scalable: true,
   },
   "clawed_lobster": {
@@ -916,7 +942,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "cloves": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "clupeinae": {
@@ -936,7 +962,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "cocoa_butter": {
-    category: IngredientCategory.VegetableFat,
+    category: IngredientCategory.Vegetable_Fat,
     scalable: true,
   },
   "cocoa_liquor": {
@@ -944,7 +970,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "cocoa_powder": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cocoa_products": {
@@ -960,7 +986,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "coconut_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "coffee": {
@@ -1044,7 +1070,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "common_oregano": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "common_pea": {
@@ -1056,15 +1082,15 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "common_sage": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "common_thyme": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "common_verbena": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "common_walnut": {
@@ -1088,7 +1114,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "coriander": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "corn": {
@@ -1104,7 +1130,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "corn_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "corn_salad": {
@@ -1120,7 +1146,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "cornmint": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cottage_cheese": {
@@ -1128,11 +1154,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "cottonseed": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cottonseed_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cowpea": {
@@ -1188,7 +1214,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "cumin": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "curd": {
@@ -1196,11 +1222,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "curry_paste": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "curry_powder": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "cusk": {
@@ -1220,7 +1246,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "dandelion": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "date": {
@@ -1244,11 +1270,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "dill": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "dock": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "dolphin_fish": {
@@ -1276,7 +1302,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "dripping": {
-    category: IngredientCategory.AnimalFat,
+    category: IngredientCategory.Animal_Fat,
     scalable: true,
   },
   "dulce_de_leche": {
@@ -1348,7 +1374,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "epazote": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "european_anchovy": {
@@ -1376,7 +1402,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "evening_primrose": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "evergreen_blackberry": {
@@ -1400,11 +1426,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "fennel": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "fenugreek": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "fermented_milk": {
@@ -1416,11 +1442,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "fireweed": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "fish_oil": {
-    category: IngredientCategory.AnimalFat,
+    category: IngredientCategory.Animal_Fat,
     scalable: true,
   },
   "fishes": {
@@ -1432,7 +1458,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "flaxseed": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "florida_pompano": {
@@ -1440,7 +1466,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "flour": {
-    category: IngredientCategory.Cereals,
+    category: IngredientCategory.Flour,
     scalable: true,
   },
   "focaccia": {
@@ -1548,15 +1574,15 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "garlic": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "garlic_glove": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "garlic_powder": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "gelatin": {
@@ -1572,7 +1598,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "german_camomile": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "giant_butterbur": {
@@ -1588,11 +1614,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "ginkgo_nuts": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "ginseng": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "globe_artichoke": {
@@ -1632,7 +1658,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "grapeseed_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "grass_pea": {
@@ -1728,7 +1754,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "guarana": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "guava": {
@@ -1772,11 +1798,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "hedge_mustard": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "herb_butter": {
-    category: IngredientCategory.AnimalFat,
+    category: IngredientCategory.Animal_Fat,
     scalable: false,
   },
   "herbal_tea": {
@@ -1784,11 +1810,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "herbs": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "herbs_spices": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "hibiscus_tea": {
@@ -1824,7 +1850,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "horseradish": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "horseradish_tree": {
@@ -1852,7 +1878,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "hyssop": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "ice_cream": {
@@ -1872,7 +1898,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "icing_sugar": {
-    category: IngredientCategory.Baking,
+    category: IngredientCategory.Sugar,
     scalable: true,
   },
   "irish_moss": {
@@ -1880,11 +1906,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "italian_herbs": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "italian_oregano": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "italian_sweet_red_pepper": {
@@ -2024,7 +2050,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "lard": {
-    category: IngredientCategory.AnimalFat,
+    category: IngredientCategory.Animal_Fat,
     scalable: true,
   },
   "lasagna_plate": {
@@ -2048,15 +2074,15 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "lemon_balm": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "lemon_grass": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "lemon_juice": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "lemon_sole": {
@@ -2064,11 +2090,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "lemon_thyme": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "lemon_verbena": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "lentils": {
@@ -2092,7 +2118,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "linden": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "lingcod": {
@@ -2104,7 +2130,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "linseed_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "liquor": {
@@ -2128,11 +2154,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "lotus": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "lovage": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "lowbush_blueberry": {
@@ -2168,7 +2194,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "majoram": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "malabar plum": {
@@ -2208,11 +2234,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "margarine": {
-    category: IngredientCategory.VegetableFat,
+    category: IngredientCategory.Vegetable_Fat,
     scalable: true,
   },
   "margarine_like_spread": {
-    category: IngredientCategory.VegetableFat,
+    category: IngredientCategory.Vegetable_Fat,
     scalable: true,
   },
   "marine_mussel": {
@@ -2232,7 +2258,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "mate": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "meat_bouillon": {
@@ -2256,7 +2282,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "mentha": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "meringue": {
@@ -2268,7 +2294,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "mexican_oregano": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "mikan": {
@@ -2372,7 +2398,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "mugwort": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "mulberry": {
@@ -2492,7 +2518,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "nutmeg": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "nutritional_drink": {
@@ -2532,11 +2558,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "oil_palm": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "oil_seed_camellia": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "okra": {
@@ -2548,7 +2574,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "olive_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "onion": {
@@ -2560,7 +2586,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "opium_poppy": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "orange roughy": {
@@ -2576,7 +2602,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "orange_mint": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "oregon_yampah": {
@@ -2600,7 +2626,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "other_animal_fat": {
-    category: IngredientCategory.AnimalFat,
+    category: IngredientCategory.Animal_Fat,
     scalable: true,
   },
   "other_beverage": {
@@ -2624,7 +2650,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "other_cocoa_product": {
-    category: IngredientCategory.VegetableFat,
+    category: IngredientCategory.Vegetable_Fat,
     scalable: true,
   },
   "other_fish_product": {
@@ -2712,7 +2738,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "palmin": {
-    category: IngredientCategory.VegetableFat,
+    category: IngredientCategory.Vegetable_Fat,
     scalable: true,
   },
   "pan_dulce": {
@@ -2732,7 +2758,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "parsley": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "parsnip": {
@@ -2772,11 +2798,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "peanut_butter": {
-    category: IngredientCategory.VegetableFat,
+    category: IngredientCategory.Vegetable_Fat,
     scalable: true,
   },
   "peanut_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "pear": {
@@ -2796,11 +2822,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "pepper_spice": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "peppermint": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "perciformes": {
@@ -2868,7 +2894,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "pineappple_sage": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "pink salmon": {
@@ -2928,7 +2954,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "poppy": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "pork_goulash": {
@@ -2948,7 +2974,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "pot_marjoram": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "potato": {
@@ -3008,7 +3034,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "purslane": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "quail": {
@@ -3024,7 +3050,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "quinoa": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "rabbit": {
@@ -3064,7 +3090,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "rapeseed_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "rapini": {
@@ -3092,7 +3118,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "red_clover": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "red_grape": {
@@ -3192,7 +3218,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "roman_camomile": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "root_vegetables": {
@@ -3200,19 +3226,19 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "rose hip": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "roselle": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "rosemary": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "rowal": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "rowanberry": {
@@ -3224,7 +3250,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "rum": {
-    category: IngredientCategory.Beverage,
+    category: IngredientCategory.Rum,
     scalable: true,
   },
   "rye": {
@@ -3244,15 +3270,15 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "safflower": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "saffron": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sago_palm": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sake": {
@@ -3280,7 +3306,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "salt": {
-    category: IngredientCategory.Baking,
+    category: IngredientCategory.Salt,
     scalable: false,
   },
   "salted_butter": {
@@ -3296,7 +3322,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sauce": {
-    category: IngredientCategory.Baking,
+    category: IngredientCategory.Soup,
     scalable: true,
   },
   "sauce_binder": {
@@ -3344,11 +3370,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sesame": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sesame_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sesame_seeds": {
@@ -3368,7 +3394,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "shea_tree": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sheefish": {
@@ -3404,7 +3430,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "silver_linden": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "skipjack_tuna": {
@@ -3416,7 +3442,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "small_leaf_linden": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "smelt": {
@@ -3444,7 +3470,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "soft_necked_garlic": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "soft_wheat_semolina": {
@@ -3456,7 +3482,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sorrel": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "soup": {
@@ -3480,7 +3506,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sourdock": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sourdough": {
@@ -3512,7 +3538,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "soybean_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "spaghetti": {
@@ -3528,7 +3554,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "spearmint": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "spelt": {
@@ -3588,7 +3614,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "star_anise": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "star_fruit": {
@@ -3628,7 +3654,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sugar": {
-    category: IngredientCategory.Baking,
+    category: IngredientCategory.Sugar,
     scalable: true,
   },
   "sugar_apple": {
@@ -3644,7 +3670,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "summer_savory": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sunburst_squash": {
@@ -3652,11 +3678,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sunflower": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sunflower_oil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "swamp_cabbage": {
@@ -3668,11 +3694,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sweet_basil": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sweet_bay": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sweet_cherry": {
@@ -3684,7 +3710,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "sweet_marjoram": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "sweet_orange": {
@@ -3728,7 +3754,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "tallow": {
-    category: IngredientCategory.VegetableFat,
+    category: IngredientCategory.Vegetable_Fat,
     scalable: true,
   },
   "tamarind": {
@@ -3744,7 +3770,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "tarragon": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "tartary_buckwheat": {
@@ -3756,11 +3782,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "tea_leaf_willow": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "teff": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "thistle": {
@@ -3852,7 +3878,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "tumeric": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: false,
   },
   "tuna": {
@@ -3876,15 +3902,15 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "turmeric": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "turnip": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "ucuhuba": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "vaccinium": {
@@ -3892,7 +3918,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "vanilla": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "vanilla_sugar": {
@@ -3948,7 +3974,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "wasabi": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "water": {
@@ -3960,7 +3986,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "watercress": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "watermelon": {
@@ -3976,7 +4002,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "welsh_onion": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "wheat": {
@@ -4020,11 +4046,11 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "white_mulberry": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "white_mustard": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "white_onion": {
@@ -4060,7 +4086,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "wild_celery": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "wild_leek": {
@@ -4076,7 +4102,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: true,
   },
   "winter_savory": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "winter_squash": {
@@ -4112,7 +4138,7 @@ export const ingredients: { [key: string]: Ingredient } = {
     scalable: false,
   },
   "yellow_pond_lily": {
-    category: IngredientCategory.Herb,
+    category: IngredientCategory.Herbs,
     scalable: true,
   },
   "yellow_wax_bean": {

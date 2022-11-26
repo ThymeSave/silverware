@@ -77,8 +77,12 @@ div.app-loading {
 }
 
 .material-icons {
-  font-size: 24px;
   font-family: 'Material Icons Outlined', 'Material Icons', serif;
+}
+
+.material-food-icons,
+.material-icons {
+  font-size: 24px;
 }
 
 .mat-tooltip {

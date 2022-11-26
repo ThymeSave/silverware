@@ -16,6 +16,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { Route, RouterModule } from "@angular/router";
 
+import { CategoryIconPipe } from './common/category-icon.pipe';
 import { ShoppingListDetailComponent } from './common/shopping-list-detail/shopping-list-detail.component';
 import { ShoppingListEditComponent } from './common/shopping-list-edit/shopping-list-edit.component';
 import { ShoppingListItemAddComponent } from './common/shopping-list-item-add/shopping-list-item-add.component';
@@ -49,6 +50,7 @@ const routes : Route[] = [
     ShoppingListItemComponent,
     ShoppingListItemEditComponent,
     ShoppingListItemAddComponent,
+    CategoryIconPipe,
   ],
   imports: [
     CommonModule,
