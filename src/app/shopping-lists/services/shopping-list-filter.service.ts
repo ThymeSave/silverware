@@ -65,4 +65,17 @@ export class ShoppingListFilterService extends EntityService<ShoppingListFilterE
       return doc;
     });
   }
+
+  public removeIgnore(ingredientKey: string) {
+    return this.upsert("default", doc => {
+      let index = -1;
+      do {
+        index = doc.alwaysIgnore.indexOf(ingredientKey);
+        if (index !== -1) {
+          doc.alwaysIgnore.splice(index, 1);
+        }
+      } while (index != -1);
+      return doc;
+    });
+  }
 }

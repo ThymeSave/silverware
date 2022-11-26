@@ -3,18 +3,22 @@ import { Ingredient } from "@thymesave/core";
 import { ingredients } from "@thymesave/ingredients";
 import { loadIngredientByKey } from "@thymesave/translations";
 import { flatMap, chain } from "lodash";
-import { startWith } from "rxjs";
+import { startWith, Subject } from "rxjs";
 
 import { LanguageService } from "@/shared/i18n/language.service";
+import { Notification } from "@/shared/notifications/notification.service";
 
 export type FlattenedIngredient = { category: string, scalable: boolean, name: string, localized: string }
 export type IngredientsGroupedByCategory = { name: string, ingredients: FlattenedIngredient[] }[]
+export type FrozenIngredientsGroupedByCategory = readonly { name: string, ingredients: FlattenedIngredient[] }[]
 
 @Injectable({
   providedIn: 'root',
 })
 export class IngredientService {
   private _grouped !: IngredientsGroupedByCategory;
+  private groupedSubject = new Subject<FrozenIngredientsGroupedByCategory>();
+  public grouped$ = this.groupedSubject.asObservable();
 
   public constructor(private languageService: LanguageService) {
     languageService.language$
@@ -31,6 +35,7 @@ export class IngredientService {
             name: key,
           }))
           .value();
+        this.groupedSubject.next(this._grouped);
       });
 
   }
@@ -47,7 +52,7 @@ export class IngredientService {
     return Object.freeze(Object.keys(ingredients));
   }
 
-  public get groupedByCategory() {
+  public get groupedByCategory(): FrozenIngredientsGroupedByCategory {
     return Object.freeze(this._grouped);
   }
 }

@@ -14,6 +14,7 @@ import { Instruction, ParsedRecipe, Recipe, ParsedRecipeIngredient, imageToBase6
 
 import { IngredientService } from "@/recipes/services/ingredient.service";
 import { RecipeImporterService } from "@/recipes/services/recipe-importer.service";
+import { ThymeSaveValidators } from "@/validators";
 
 @Component({
   selector: 'app-parsed-recipe-editor',
@@ -53,11 +54,6 @@ export class ParsedRecipeEditorComponent implements OnInit {
               private importerService: RecipeImporterService) {
   }
 
-  private translationKeyValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-    const value = control.getRawValue();
-    return this.ingredientService.allKeys.indexOf(value) == -1 ? {translationKey: false} : null;
-  };
-
   private initForm(recipe: Partial<ParsedRecipe>) {
     if (Object.keys(recipe as any).length == 0) {
       return;
@@ -95,7 +91,7 @@ export class ParsedRecipeEditorComponent implements OnInit {
       "isRange": this.fb.control(ingredient.isRange ?? false),
       "maxAmount": this.fb.control(ingredient.maxAmount ?? ""),
       "minAmount": this.fb.control(ingredient.minAmount ?? ""),
-      "translationKey": this.fb.control(translationKey, [Validators.required, this.translationKeyValidator]),
+      "translationKey": this.fb.control(translationKey, [Validators.required, ThymeSaveValidators.translationKey(this.ingredientService)]),
       "translationMatches": this.fb.array(translationMatches),
       "unit": this.fb.control(ingredient.unit ?? null),
     });

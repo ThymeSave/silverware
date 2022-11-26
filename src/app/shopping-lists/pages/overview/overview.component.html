@@ -36,6 +36,7 @@
                               [list]="active">
     </app-shopping-list-detail>
   </ng-container>
+  <app-shopping-list-ignore-item-settings *ngIf="editIgnoreList"></app-shopping-list-ignore-item-settings>
 </div>
 
 <app-floating-button i18nLabel="shopping_lists.new_item"
