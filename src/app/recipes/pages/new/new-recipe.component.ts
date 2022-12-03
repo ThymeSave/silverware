@@ -27,35 +27,102 @@ import { LanguageService } from "@/shared/i18n/language.service";
 })
 export class NewRecipeComponent implements OnInit, AfterViewInit {
   private logger = createLogger("NewComponent");
+  private isManualImporter = false;
+
+  private readonly importerSubject = new BehaviorSubject<Importer<RawRecipe> | null>(null);
+  private readonly parsedRecipesSubject = new BehaviorSubject<ParsedRecipe[]>([]);
 
   @ViewChild("stepper") private stepper !: MatStepper;
 
-  private readonly importerSubject = new BehaviorSubject<Importer<RawRecipe> | null>(null);
   public readonly importer$ = this.importerSubject.asObservable();
+  public readonly parsedRecipes$ = this.parsedRecipesSubject.asObservable();
+
   public importer: Importer<RawRecipe> | null = null;
   public isURLImporter = false;
   public urlImporter !: RecipeImporterList;
   public manualImporter !: RecipeImporterList;
-  private isManualImporter = false;
   public importLoading = false;
   public importFailed = false;
   public importFailedErr !: Error;
-
-  private readonly parsedRecipesSubject = new BehaviorSubject<ParsedRecipe[]>([]);
-  public readonly parsedRecipes$ = this.parsedRecipesSubject.asObservable();
   public parsedRecipes: ParsedRecipe[] = [];
   public parsedRecipe: ParsedRecipe | null = null;
   public recipeIndex = 1;
   public totalRecipes = 1;
-
   public forceUsageOnMobile = false;
 
-  constructor(private router: Router,
+  public constructor(private router: Router,
               private route: ActivatedRoute,
               private importerService: RecipeImporterService,
               private recipeService: RecipeService,
               public languageService: LanguageService,
               private ref: ChangeDetectorRef) {
+  }
+
+  private findImporterByName(identifier: string): Importer<RawRecipe> | undefined {
+    return _first(PluginRegistry
+      .getImporter()
+      .filter(i => i.identifier == identifier),
+    )?.importer;
+  }
+
+  private setImporter(importer: Importer<RawRecipe> | null) {
+    this.logger.debug("Selected importer", importer);
+
+    this.importLoading = false;
+    this.importFailed = false;
+
+    this.importer = importer;
+
+    this.isManualImporter = importer?.type == ImporterType.MANUAL;
+    this.isURLImporter = importer?.type == ImporterType.URL;
+  }
+
+  private setParsedRecipes(parsedRecipes: ParsedRecipe[]) {
+    this.parsedRecipes = parsedRecipes;
+    if (this.parsedRecipes.length > 0) {
+      this.parsedRecipe = parsedRecipes[0];
+    }
+
+    this.recipeIndex = 1;
+    this.totalRecipes = parsedRecipes.length;
+  }
+
+  private runImportStep(payload: ImporterPayload) {
+    this.importLoading = true;
+    this.completeCurrentStep();
+
+    this.importerService.runRecipeImporter(this.importer as unknown as Importer<RawRecipe>, payload)
+      .pipe(
+        finalize(() => this.importLoading = false),
+        catchError(err => this.failImport(err)),
+        filter(r => r != null),
+      )
+      .subscribe((recipes: ParsedRecipe[] | null) => this.succeedImport(recipes!!));
+  }
+
+  private succeedImport(recipes: ParsedRecipe[]) {
+    this.logger.debug("Imported", recipes);
+
+    if (recipes.length == 0) {
+      this.failImport(new Error("no_recipe_found"));
+      return;
+    }
+
+    this.parsedRecipesSubject.next(recipes);
+
+    this.completeCurrentStep();
+  }
+
+  private completeCurrentStep() {
+    this.stepper.selected!!.completed = true;
+    this.stepper.next();
+  }
+
+  private failImport(err: Error) {
+    this.importFailed = true;
+    this.importFailedErr = err;
+    this.logger.error(`Import failed`, err);
+    return of(null);
   }
 
   public get hasMultipleRecipes() {
@@ -93,13 +160,6 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
       });
   }
 
-  private findImporterByName(identifier: string): Importer<RawRecipe> | undefined {
-    return _first(PluginRegistry
-      .getImporter()
-      .filter(i => i.identifier == identifier),
-    )?.importer;
-  }
-
   public async save() {
     await this.router.navigate(["/recipes"]);
   }
@@ -124,63 +184,8 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
     this.loadImporterFromURL();
   }
 
-  private setImporter(importer: Importer<RawRecipe> | null) {
-    this.logger.debug("Selected importer", importer);
-
-    this.importLoading = false;
-    this.importFailed = false;
-
-    this.importer = importer;
-
-    this.isManualImporter = importer?.type == ImporterType.MANUAL;
-    this.isURLImporter = importer?.type == ImporterType.URL;
-  }
-
-  private setParsedRecipes(parsedRecipes: ParsedRecipe[]) {
-    this.parsedRecipes = parsedRecipes;
-    if(this.parsedRecipes.length > 0) {
-      this.parsedRecipe = parsedRecipes[0];
-    }
-
-    this.recipeIndex = 1;
-    this.totalRecipes = parsedRecipes.length;
-  }
-
   public urlImporterSaved(urlImporterPayload: URLImporterPayload) {
     this.runImportStep(urlImporterPayload);
-  }
-
-  private runImportStep(payload: ImporterPayload) {
-    this.importLoading = true;
-    this.completeCurrentStep();
-
-    this.importerService.runRecipeImporter(this.importer as unknown as Importer<RawRecipe>, payload)
-      .pipe(
-        finalize(() => this.importLoading = false),
-        catchError(err => this.failImport(err)),
-        filter(r => r != null),
-      )
-      .subscribe((recipes: ParsedRecipe[] | null) => this.succeedImport(recipes!!));
-  }
-
-  private succeedImport(recipes: ParsedRecipe[]) {
-    this.logger.debug("Imported", recipes);
-
-    if (recipes.length == 0) {
-      this.failImport(new Error("no_recipe_found"));
-      return;
-    }
-
-    this.parsedRecipesSubject.next(recipes);
-
-    this.completeCurrentStep();
-  }
-
-  private failImport(err: Error) {
-    this.importFailed = true;
-    this.importFailedErr = err;
-    this.logger.error(`Import failed`, err);
-    return of(null);
   }
 
   public cancel() {
@@ -215,11 +220,6 @@ export class NewRecipeComponent implements OnInit, AfterViewInit {
         }
       }))
       .subscribe();
-  }
-
-  private completeCurrentStep() {
-    this.stepper.selected!!.completed = true;
-    this.stepper.next();
   }
 
   public selectImporter(importer: Importer<RawRecipe>) {

@@ -13,15 +13,15 @@ export interface RecipeEntity extends Recipe, BaseDocument {
   providedIn: 'root',
 })
 export class RecipeService extends EntityService<RecipeEntity> {
-  get entityType(): string {
+  public get entityType(): string {
     return "recipes";
   }
 
-  constructor(storageService: StorageService) {
+  public constructor(storageService: StorageService) {
     super(storageService);
   }
 
-  public recalculateServings(recipe: Recipe, newServings : number) {
+  public recalculateServings(recipe: Recipe, newServings: number) {
     const currentServings = recipe.servings ?? RecipeDefaults.SERVINGS;
     recipe.ingredients.forEach(ingredient => {
       if (!ingredient.scalable) {

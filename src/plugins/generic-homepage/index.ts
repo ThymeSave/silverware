@@ -26,7 +26,7 @@ export const resourceBundle = ResourceBundle.builder()
   version: "builtin",
 })
 export class GenericHomepagePlugin extends Plugin {
-  override get importer() {
+  public override get importer() {
     return [
       new GenericHomepageImporter(),
     ];

@@ -7,8 +7,6 @@ import { AuthService } from "@auth0/auth0-angular";
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-
-  constructor(public authService: AuthService) {
+  public constructor(public authService: AuthService) {
   }
-
 }

@@ -22,6 +22,7 @@ import {
 } from 'rxjs';
 
 import { BaseDocument } from '@/models/BaseDocument';
+import indices from "@/shared/storage/indices";
 
 import { environment } from '@/../environments/environment';
 
@@ -49,23 +50,6 @@ export interface PaginationWithResult<T> extends Pagination<T> {
 
 export type SyncStatus = "Success" | "Failure";
 
-const indices: PouchDB.Find.CreateIndexOptions[] = [
-  {
-    index: {
-      ddoc: "idx_entityType",
-      fields: ["$entityType"],
-      name: "idx_entityType",
-    },
-  },
-  {
-    index: {
-      ddoc: "idx_title",
-      fields: ["title"],
-      name: "idx_title",
-    },
-  },
-];
-
 @Injectable({
   providedIn: 'root',
 })
@@ -76,14 +60,14 @@ export class StorageService {
   private logger = createLogger("StorageService");
 
   private dbSubject = new BehaviorSubject<PouchDB.Database | null>(null);
+  private changeSubject = new BehaviorSubject<BaseDocument | null>(null);
+
   public readonly db$ = this.dbSubject.asObservable()
     .pipe(filter(db => !!db));
-
-  private changeSubject = new BehaviorSubject<BaseDocument | null>(null);
   public readonly changes$ = this.changeSubject.asObservable()
     .pipe(filter(change => !!change));
 
-  constructor(
+  public constructor(
     private http: HttpClient,
     private authService: AuthService,
   ) {
@@ -112,6 +96,70 @@ export class StorageService {
     } catch (e) {
       this.logger.warn("Index creation failed", e);
     }
+  }
+
+  private async find<T>(db: PouchDB.Database, filter: PouchDB.Find.FindRequest<any>): Promise<T[]> {
+    const results = await db.find(filter);
+    return results.docs as unknown as T[];
+  }
+
+  private getSortOperator(reverseResults: boolean) {
+    return reverseResults ? "$lt" : "$gt";
+  }
+
+  private getSortOrder(reverseResults: boolean) {
+    return reverseResults ? "desc" : "asc";
+  }
+
+  private getPaginateField(result: BaseDocument, paginateField: string) {
+    return (result as Record<string, string>)[paginateField];
+  }
+
+  private fetchDBName(token: string): Observable<string> {
+    return this.http.put<DbInitializeResponse>(`${environment.funnelBaseUrl}/self-service/db`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).pipe(
+      map(response => response.dbName),
+      tap(dbName => saveValue(CACHE_DB_NAME, dbName)),
+      catchError(_ => {
+        const fallbackDbName = localStorage.getItem(CACHE_DB_NAME);
+        return fallbackDbName
+          ? of(fallbackDbName)
+          : throwError(() => new Error("No fallback database found"));
+      }),
+    );
+  }
+
+  private initPouchDB(token: string): Observable<string> {
+    return this.fetchDBName(token)
+      .pipe(tap(dbName => {
+        this.pouchRemote = new PouchDB(`${environment.funnelBaseUrl}/service/couchdb/${dbName}`, {
+          fetch(url, options) {
+            const optionsToPatch = options ?? {};
+            optionsToPatch.credentials = 'omit';
+            (optionsToPatch.headers as Headers).set('Authorization', `Bearer ${token}`);
+            return PouchDB.fetch(url, options);
+          },
+        });
+        this.pouchLocal = new PouchDB('ThymeSave');
+        this.initSync();
+      }));
+  }
+
+  private onSyncError(e: Error) {
+    this.logger.warn("Error while syncing", e);
+  }
+
+  private setUpContinuousSync() {
+    this.pouchLocal!!
+      .sync(this.pouchRemote!!, {
+        live: true,
+        retry: true,
+      })
+      .on("change", e => this.onChange(e))
+      .on('error', e => this.onSyncError(e as Error));
   }
 
   /**
@@ -162,12 +210,11 @@ export class StorageService {
   public getLatest<T extends BaseDocument>(entityType: string, id: string): Observable<T> {
     this.logger.debug(`Get latest doc of entityType ${entityType} with id ${id}`);
     return this.db$
-      .pipe(switchMap(db => from(db!.get(this.build_id(entityType, id), {latest: true})))) as Observable<T>;
-  }
-
-  private async find<T>(db: PouchDB.Database, filter: PouchDB.Find.FindRequest<any>): Promise<T[]> {
-    const results = await db.find(filter);
-    return results.docs as unknown as T[];
+      .pipe(
+        switchMap(db => from(db!.get(this.build_id(entityType, id), {latest: true}))
+          .pipe(catchError(e => throwError(e))),
+        ),
+      ) as Observable<T>;
   }
 
   /**
@@ -195,18 +242,6 @@ export class StorageService {
           },
         )) as any),
       ) as Observable<T[]>;
-  }
-
-  private getSortOperator(reverseResults: boolean) {
-    return reverseResults ? "$lt" : "$gt";
-  }
-
-  private getSortOrder(reverseResults: boolean) {
-    return reverseResults ? "desc" : "asc";
-  }
-
-  private getPaginateField(result: BaseDocument, paginateField: string) {
-    return (result as Record<string, string>)[paginateField];
   }
 
   public paginate<T extends BaseDocument>(entityType: string, selector: PouchDB.Find.Selector, sort: PouchDBFindSort, pagination: Pagination<T>): Observable<PaginationWithResult<T>> {
@@ -273,37 +308,6 @@ export class StorageService {
     return this.getForEntityType(entityType, selector || {}, sort);
   }
 
-  private fetchDBName(token: string): Observable<string> {
-    return this.http.put<DbInitializeResponse>(`${environment.funnelBaseUrl}/self-service/db`, {}, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).pipe(
-      map(response => response.dbName),
-      tap(dbName => saveValue(CACHE_DB_NAME, dbName)),
-      catchError(_ => {
-        const fallbackDbName = localStorage.getItem(CACHE_DB_NAME);
-        return fallbackDbName
-          ? of(fallbackDbName)
-          : throwError(() => new Error("No fallback database found"));
-      }),
-    );
-  }
-
-  private onSyncError(e: Error) {
-    this.logger.warn("Error while syncing", e);
-  }
-
-  private setUpContinuousSync() {
-    this.pouchLocal!!
-      .sync(this.pouchRemote!!, {
-        live: true,
-        retry: true,
-      })
-      .on("change", e => this.onChange(e))
-      .on('error', e => this.onSyncError(e as Error));
-  }
-
   public onChange(e: PouchDB.Replication.SyncResult<any>) {
     const change = e.change;
     if (!change.ok || change.errors.length > 0) {
@@ -337,22 +341,6 @@ export class StorageService {
     });
   }
 
-  private initPouchDB(token: string): Observable<string> {
-    return this.fetchDBName(token)
-      .pipe(tap(dbName => {
-        this.pouchRemote = new PouchDB(`${environment.funnelBaseUrl}/service/couchdb/${dbName}`, {
-          fetch(url, options) {
-            const optionsToPatch = options ?? {};
-            optionsToPatch.credentials = 'omit';
-            (optionsToPatch.headers as Headers).set('Authorization', `Bearer ${token}`);
-            return PouchDB.fetch(url, options);
-          },
-        });
-        this.pouchLocal = new PouchDB('ThymeSave');
-        this.initSync();
-      }));
-  }
-
   public delete<T>(document: T): Observable<boolean> {
     return this.db$
       .pipe(
@@ -360,4 +348,5 @@ export class StorageService {
         switchMap(res => res.ok ? of(true) : throwError(() => new Error(`Unable to delete document with id ${res.id} at revision ${res.rev}`))),
       );
   }
+
 }

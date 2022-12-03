@@ -24,10 +24,9 @@ import { ContextService } from "@/shared/plugins/context.service";
   providedIn: 'root',
 })
 export class RecipeImporterService {
-
   private logger = createLogger("RecipeImporterService");
 
-  constructor(private contextService: ContextService,
+  public constructor(private contextService: ContextService,
               private languageService: LanguageService) {
   }
 
@@ -77,6 +76,8 @@ export class RecipeImporterService {
 
           if (ingredient.unit) {
             ingredient.unit = this.parseUnit(ingredient.unit);
+          } else {
+            ingredient.unit = null;
           }
 
           ingredient.minAmount = ingredient.minAmount == 0 ? "" : ingredient.minAmount;
@@ -107,7 +108,7 @@ export class RecipeImporterService {
   private parseUnit(unit: string) {
     const language = this.languageService.currentLanguage;
     const matches = matchUnitByText(language, unit, {});
-    return matches.length > 0 ? matches[0].key : unit;
+    return matches.length > 0 ? matches[0].key : null;
   }
 
   private parseRecipe(raw: RawRecipe): ParsedRecipe {

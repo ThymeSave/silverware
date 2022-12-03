@@ -21,9 +21,7 @@ export class ShoppingListDetailComponent {
   private items$ = this.items.asObservable();
 
   public openItems$ = this.withDoneTransformer(this.items$, false);
-
   public doneItems$ = this.withDoneTransformer(this.items$, true);
-
   public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
 
   @Input()
@@ -38,6 +36,14 @@ export class ShoppingListDetailComponent {
     return this._list;
   }
 
+  public constructor(private shoppingListItemService: ShoppingListItemService,
+              private shoppingListService: ShoppingListService,
+              private breakPointObserver: BreakpointObserver) {
+    shoppingListItemService.changes$
+      .pipe(filter(item =>  (item as any)._deleted || this._list && item.shoppingList == this._list.uuid))
+      .subscribe(_ => this.loadItems());
+  }
+
   private withDoneTransformer(observable: Observable<GroupedShoppingListItems[]>, doneState: boolean): Observable<GroupedShoppingListItems[]> {
     return observable.pipe(
       map(group => group
@@ -48,14 +54,6 @@ export class ShoppingListDetailComponent {
         .filter(g => g.items.length > 0),
       ),
     );
-  }
-
-  constructor(private shoppingListItemService: ShoppingListItemService,
-              private shoppingListService: ShoppingListService,
-              private breakPointObserver: BreakpointObserver) {
-    shoppingListItemService.changes$
-      .pipe(filter(item => (item as any)._deleted || item.shoppingList == this._list.uuid))
-      .subscribe(_ => this.loadItems());
   }
 
   private loadItems() {

@@ -13,7 +13,7 @@ import { LanguageService } from "./language.service";
   pure: false,
 })
 export class I18nPipe implements PipeTransform {
-  constructor(private languageService: LanguageService) {
+  public constructor(private languageService: LanguageService) {
   }
 
   public transform(value: string, section ?: keyof Language, amount ?: number | string): string {

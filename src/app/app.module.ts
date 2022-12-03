@@ -29,6 +29,7 @@ import { NotFoundComponent } from '@/pages/not-found/not-found.component';
 import { ShellComponent, ShellSyncDialogComponent } from '@/pages/shell/shell.component';
 import { PwaModule } from "@/pwa/pwa.module";
 import { SettingsComponent } from '@/settings/pages/settings/settings.component';
+import { SettingsModule } from "@/settings/settings.module";
 import { SharedModule } from "@/shared/shared.module";
 
 import { environment } from '@/../environments/environment';
@@ -75,6 +76,7 @@ registerLocaleData(localeDe);
     MatCardModule,
     MatProgressSpinnerModule,
     HammerModule,
+    SettingsModule,
   ],
   providers: [
     {
@@ -89,7 +91,7 @@ registerLocaleData(localeDe);
   ],
 })
 export class AppModule {
-  constructor(@Inject("funnelConfig") funnelConfig: FunnelConfig, config: AuthClientConfig) {
+  public constructor(@Inject("funnelConfig") funnelConfig: FunnelConfig, config: AuthClientConfig) {
     // Modify auth0 config with actual values
     config.set({
       cacheLocation: 'localstorage',

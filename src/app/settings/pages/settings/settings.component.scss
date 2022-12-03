@@ -1,16 +1,4 @@
-@use "../../../../theme" as theme;
-
-.danger-zone {
-  border: 1px solid theme.get-color("warn","lighter");
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-button[type=submit] {
-  margin-bottom: 30px;
-}
-
-mat-card {
-  margin-top: 0 !important;
-  background: none;
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

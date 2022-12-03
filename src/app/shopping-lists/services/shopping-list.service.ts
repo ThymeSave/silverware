@@ -17,7 +17,7 @@ export class ShoppingListService extends EntityService<ShoppingListEntity> {
     super(storageService);
   }
 
-  get entityType(): string {
+  public get entityType(): string {
     return "shopping-list";
   }
 }

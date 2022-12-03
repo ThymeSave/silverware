@@ -13,9 +13,10 @@ import { ShoppingListService } from "@/shopping-lists/services/shopping-list.ser
 export class ShoppingListSelectorComponent implements OnInit {
 
   @Input() public align: "row" | "column" = "column";
+
   @Input()
-  public set initialItemUuid(val : string | null) {
-    if(!val) {
+  public set initialItemUuid(val: string | null) {
+    if (!val) {
       return;
     }
 
@@ -29,12 +30,20 @@ export class ShoppingListSelectorComponent implements OnInit {
 
   public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
 
-  constructor(private shoppingListService: ShoppingListService,
-              private breakPointObserver : BreakpointObserver) {
+  public constructor(private shoppingListService: ShoppingListService,
+                     private breakPointObserver: BreakpointObserver) {
     this.listChanged.subscribe(list => this.activeItemUuid = list.uuid);
     this.shoppingListService.changes$
       .subscribe(() => this.fetchLists());
 
+  }
+
+  public selectItemByUuid(uuid: string) {
+    this.activeItemUuid = uuid;
+    const selected = this.shoppingLists.find(l => l.uuid == this.activeItemUuid);
+    if (selected) {
+      this.listChanged.next(selected);
+    }
   }
 
   public fetchLists() {
@@ -47,14 +56,6 @@ export class ShoppingListSelectorComponent implements OnInit {
       });
   }
 
-  private selectItemByUuid(uuid : string) {
-    this.activeItemUuid = uuid;
-    const selected = this.shoppingLists.find(l => l.uuid == this.activeItemUuid);
-    if (selected) {
-      this.listChanged.next(selected);
-    }
-  }
-
   public ngOnInit(): void {
     this.fetchLists();
     this.selectItemByUuid(this.activeItemUuid);
@@ -64,7 +65,11 @@ export class ShoppingListSelectorComponent implements OnInit {
     this.listChanged.next(shoppingList);
   }
 
-  public trackByFn(index : any, item : ShoppingList) {
+  public trackByFn(index: any, item: ShoppingList) {
     return item.uuid;
+  }
+
+  public deselect() {
+    this.activeItemUuid = "";
   }
 }

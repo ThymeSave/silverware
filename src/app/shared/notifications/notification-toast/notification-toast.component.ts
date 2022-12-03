@@ -15,14 +15,17 @@ import { Notification, NotificationService, NotificationType } from "@/shared/no
   templateUrl: './notification-toast.component.html',
 })
 export class NotificationToastComponent implements OnInit {
+  private logger = createLogger("NotificationToastComponent");
+  private readonly VISIBILITY_TIMEOUT_SECONDS = 5;
 
   @ViewChild('panelTemplate', {static: true}) public panelTemplate !: TemplateRef<any>;
   public notification !: Notification;
   public messageOpened: Date | null = null;
 
-  private logger = createLogger("NotificationToastComponent");
+  public constructor(private notificationService: NotificationService,
+              private snackBar: MatSnackBar) {
 
-  private readonly VISIBILITY_TIMEOUT_SECONDS = 5;
+  }
 
   private calcClose() {
     if (this.messageOpened == null) {
@@ -35,11 +38,6 @@ export class NotificationToastComponent implements OnInit {
     closeDate?.setSeconds(this.messageOpened.getSeconds() + this.VISIBILITY_TIMEOUT_SECONDS + 1);
     this.logger.debug("Show notification at", closeDate);
     return closeDate;
-  }
-
-  constructor(private notificationService: NotificationService,
-              private snackBar: MatSnackBar) {
-
   }
 
   public panelClassFromType(type: NotificationType) {
@@ -68,7 +66,7 @@ export class NotificationToastComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.notificationService.notifications$
       .pipe(delayWhen(_ => timer(this.calcClose())))
       .subscribe(notification => {
@@ -89,7 +87,7 @@ export class NotificationToastComponent implements OnInit {
       });
   }
 
-  close() {
+  public close() {
     this.logger.debug("Manually dismissed");
     this.snackBar._openedSnackBarRef?.dismiss();
   }

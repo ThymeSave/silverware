@@ -8,7 +8,7 @@ import { createMobileBreakpointObserver } from "@/shared/util/breakpoint";
 
 export interface ShoppingListAddDialogDataItem {
   text: string
-  unit ?: string
+  unit?: string
   ingredientKey: string
   amount: number
 }
@@ -29,6 +29,16 @@ export class ShoppingListItemAddComponent {
 
   public isMobile$ = createMobileBreakpointObserver(this.breakPointObserver);
 
+  public constructor(private fb: FormBuilder,
+              private breakPointObserver: BreakpointObserver,
+              private languageService: LanguageService,
+              @Inject(MAT_DIALOG_DATA) public data: ShoppingListAddDialogData) {
+    this.form.valueChanges
+      .subscribe(() => {
+        this.data.items = this.form.getRawValue() as unknown as ShoppingListAddDialogDataItem[];
+      });
+  }
+
   private createItem() {
     return this.fb.group({
       amount: this.fb.control(null, [Validators.required]),
@@ -38,21 +48,11 @@ export class ShoppingListItemAddComponent {
     });
   }
 
-  constructor(private fb: FormBuilder,
-              private breakPointObserver: BreakpointObserver,
-              private languageService : LanguageService,
-              @Inject(MAT_DIALOG_DATA) public data: ShoppingListAddDialogData) {
-    this.form.valueChanges
-      .subscribe(() => {
-        this.data.items = this.form.getRawValue() as unknown as ShoppingListAddDialogDataItem[];
-      });
-  }
-
   public addItem() {
     this.form.push(this.createItem());
   }
 
-  public removeItem(index : number) {
+  public removeItem(index: number) {
     this.form.removeAt(index);
   }
 }

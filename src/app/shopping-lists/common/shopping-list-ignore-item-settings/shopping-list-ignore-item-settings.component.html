@@ -1,0 +1,42 @@
+<h1>{{ 'shopping-lists.ignore-items.heading' | i18n}}</h1>
+<p>{{ 'shopping-lists.ignore-items.description' | i18n }}</p>
+
+<form fxLayout
+      [formGroup]="ignoreFormGroup"
+      fxLayoutGap="10px"
+      fxLayoutAlign="start center">
+  <app-ingredient-selector formControlName="ingredientKey"
+                           *ngIf="!addingItem"
+                           fxFlex></app-ingredient-selector>
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    (click)="addIngredient()"
+    [disabled]="!ignoreFormGroup.valid">
+    <mat-icon>add</mat-icon>
+    {{ 'add' | i18n }}
+  </button>
+</form>
+
+<div fxLayout="column"
+     role="list"
+     [attr.aria-label]="'shopping-lists.ignore-items.heading' | i18n"
+     class="ignore-list"
+     fxLayoutGap="10px">
+  <mat-card fxLayout="row"
+            role="listitem"
+            fxLayoutAlign="start center"
+            fxLayoutGap="30px"
+            *ngFor="let ignoredIngredient of (filter$ | async)?.alwaysIgnore ?? []; trackBy: trackByFn">
+    <mat-icon class="category-icon" fontSet="food">{{ ignoredIngredient | categoryIcon }}</mat-icon>
+    <div>{{ignoredIngredient | i18n:"ingredients"}}</div>
+    <div fxFlex></div>
+    <button color="warn"
+            [attr.aria-label]="'delete' | i18n"
+            mat-icon-button
+            (click)="removeIngredient(ignoredIngredient)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card>
+</div>

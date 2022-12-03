@@ -12,12 +12,12 @@ export interface Search {
   templateUrl: './search-bar.component.html',
 })
 export class SearchBarComponent {
+  private readonly logger = createLogger("SearchBarComponent");
+  private _search !: Search | null;
+
   public form = new FormGroup({
     fullTextSearch: new FormControl(""),
   });
-
-  private readonly logger = createLogger("SearchBarComponent");
-  private _search !: Search | null;
 
   @Input()
   public set search(val: Search | null) {
@@ -28,7 +28,7 @@ export class SearchBarComponent {
 
   @Output() public searchTriggered = new EventEmitter<Search | null>();
 
-  constructor() {
+  public constructor() {
     this.searchTriggered.asObservable()
       .subscribe(triggered => this._search = triggered);
   }

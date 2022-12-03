@@ -80,3 +80,13 @@ export interface ShoppingListItemSource {
    */
   source?: string;
 }
+
+/**
+ * Filter to change the behaviour for updating shopping lists from recipes
+ */
+export interface ShoppingListFilter {
+  /**
+   * List of ingredient translation keys to always ignore for shopping list adding
+   */
+  alwaysIgnore: string[]
+}

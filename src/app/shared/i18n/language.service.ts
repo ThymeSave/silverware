@@ -14,14 +14,14 @@ import { SettingsService } from "@/settings/settings.service";
   providedIn: 'root',
 })
 export class LanguageService {
+  private readonly languageSubject = new BehaviorSubject<Language | null>(null);
+
   public currentLanguageIdentifier = "";
   public currentLanguage = this.getLanguageByIdentifier(this.defaultLanguage);
-
-  private readonly languageSubject = new BehaviorSubject<Language | null>(null);
   public readonly language$ = this.languageSubject
     .pipe(filter(v => !!v));
 
-  constructor(private settingsService: SettingsService) {
+  public constructor(private settingsService: SettingsService) {
     this.settingsService.settings$
       .pipe(map(s => {
         this.currentLanguageIdentifier = s?.language!!;

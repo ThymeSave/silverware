@@ -31,7 +31,7 @@ export class ShoppingListItemEditComponent {
       .filter(i => i.source.type == 'Manual');
   }
 
-  constructor(@Inject(MAT_DIALOG_DATA) public group: GroupedShoppingListItems,
+  public constructor(@Inject(MAT_DIALOG_DATA) public group: GroupedShoppingListItems,
               private shoppingListItemService: ShoppingListItemService,
               private languageService: LanguageService) {
   }

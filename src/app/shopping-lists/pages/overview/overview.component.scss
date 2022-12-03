@@ -1,3 +1,19 @@
 .recipe-list {
   margin-bottom: 80px;
 }
+
+.ignore-items-button-container {
+  margin-top: 40px;
+
+  &.mobile {
+    margin-top: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+app-shopping-list-ignore-item-settings {
+  width: 100%;
+}

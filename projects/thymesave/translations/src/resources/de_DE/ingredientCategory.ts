@@ -16,6 +16,7 @@ const ingredientCategory: SingleValueTranslation = {
   dough: "Teig",
   eggs: "Eier",
   fat: "Fett",
+  fish: "Fisch",
   fluids: "Flüssigkeit",
   fruits: "Früchte",
   gourds: "Kürbisgewächse",

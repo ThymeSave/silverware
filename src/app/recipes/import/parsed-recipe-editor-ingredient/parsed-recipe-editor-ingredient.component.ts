@@ -9,12 +9,19 @@ import { PreFilterFunction } from "@/shared/components/ingredient-selector/ingre
   templateUrl: './parsed-recipe-editor-ingredient.component.html',
 })
 export class ParsedRecipeEditorIngredientComponent implements OnInit {
-
   @Input() public formGroup !: FormGroup;
   @Output() public deleted = new EventEmitter<void>();
 
   public filterByTranslationMatches = true;
   public preFilter !: PreFilterFunction;
+
+  private createPreFilter() {
+    if (this.filterByTranslationMatches && this.hasTranslationMatches) {
+      this.preFilter = (i) => this.translationMatches.value.indexOf(i.name) !== -1;
+    } else {
+      this.preFilter = _ => true;
+    }
+  }
 
   public ngOnInit() {
     this.createPreFilter();
@@ -40,16 +47,8 @@ export class ParsedRecipeEditorIngredientComponent implements OnInit {
     return this.translationMatches.length > 0;
   }
 
-  private createPreFilter() {
-    if (this.filterByTranslationMatches && this.hasTranslationMatches) {
-      this.preFilter = (i) => this.translationMatches.value.indexOf(i.name) !== -1;
-    } else {
-      this.preFilter = _ => true;
-    }
-  }
-
   public toggleTranslationMatchButton() {
-    if(!this.hasTranslationMatches) {
+    if (!this.hasTranslationMatches) {
       return;
     }
 

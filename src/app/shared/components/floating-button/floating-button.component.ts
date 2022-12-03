@@ -12,7 +12,7 @@ export class FloatingButtonComponent implements OnInit {
   @Input() public color: string = "primary";
   @Input() public routerLink ?: any[] | string | null;
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if (!this.i18nLabel) {
       throw new TypeError("i18nLabel is required");
     }

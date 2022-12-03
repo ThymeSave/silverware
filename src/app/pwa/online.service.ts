@@ -8,11 +8,11 @@ export class OnlineService {
   private networkStatus = new BehaviorSubject<boolean>(navigator.onLine);
   public networkStatus$ = this.networkStatus.asObservable();
 
-  constructor() {
+  public constructor() {
     this.registerNetworkCheck();
   }
 
-  registerNetworkCheck() {
+  public registerNetworkCheck() {
     merge(
       of(null),
       fromEvent(window, 'online'),

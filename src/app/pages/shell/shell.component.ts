@@ -71,6 +71,21 @@ export class ShellComponent implements OnInit {
       map(() => this.isFullWith(this.getRouteSnapshotData())),
     );
 
+  public constructor(
+    private contexts: ChildrenOutletContexts,
+    public authService: AuthService,
+    private router: Router,
+    private dialog: MatDialog,
+    public storageService: StorageService,
+    public appUpdateService: AppUpdateService,
+    private onlineService: OnlineService,
+    private breakpointObserver: BreakpointObserver,
+  ) {
+    onlineService.networkStatus$.subscribe(status => this.online = status);
+    createMobileBreakpointObserver(this.breakpointObserver)
+      .subscribe(isMobile => this.isMobile = isMobile);
+  }
+
   private getRouteSnapshotData() {
     return this.contexts.getContext("primary")
       ?.route?.snapshot.data;
@@ -86,21 +101,6 @@ export class ShellComponent implements OnInit {
     } else {
       return null;
     }
-  }
-
-  constructor(
-    private contexts: ChildrenOutletContexts,
-    public authService: AuthService,
-    private router: Router,
-    private dialog: MatDialog,
-    public storageService: StorageService,
-    public appUpdateService: AppUpdateService,
-    private onlineService: OnlineService,
-    private breakpointObserver: BreakpointObserver,
-  ) {
-    onlineService.networkStatus$.subscribe(status => this.online = status);
-    createMobileBreakpointObserver(this.breakpointObserver)
-      .subscribe(isMobile => this.isMobile = isMobile);
   }
 
   private openSyncDialog() {
@@ -145,7 +145,7 @@ export class ShellComponent implements OnInit {
     ]);
   }
 
-  closeNavOnMobile() {
+  public closeNavOnMobile() {
     if (this.isMobile) {
       this.sidenav.close();
     }
@@ -158,6 +158,6 @@ export class ShellComponent implements OnInit {
   templateUrl: '../shell/sync-dialog.html',
 })
 export class ShellSyncDialogComponent {
-  constructor(public dialogRef: MatDialogRef<ShellSyncDialogComponent>) {
+  public constructor(public dialogRef: MatDialogRef<ShellSyncDialogComponent>) {
   }
 }

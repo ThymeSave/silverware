@@ -22,9 +22,18 @@ export class ShoppingListItemComponent {
   @Input() public enableEdit: boolean = true;
   @Input() public enableEditButton : boolean = true;
   @Input() public enableCheckbox: boolean = true;
+  @Input() public showAsOpen : boolean = false;
 
-  constructor(private dialog: MatDialog,
+  public constructor(private dialog: MatDialog,
               private shoppingListItemService: ShoppingListItemService) {
+  }
+
+  public get done() {
+    return this.showAsOpen ? false : this.item.done;
+  }
+
+  public get sum() {
+    return this.showAsOpen ? this.item.openSum : this.item.doneSum;
   }
 
   public openEditDialog(item: GroupedShoppingListItems) {

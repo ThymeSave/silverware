@@ -15,11 +15,15 @@ export interface ShoppingListSelectorData {
 export class ShoppingListSelectorComponent {
   public all$ = this.shoppingListService.getAll();
 
-  constructor(private shoppingListService: ShoppingListService,
+  public constructor(private shoppingListService: ShoppingListService,
               @Inject(MAT_DIALOG_DATA) public data: ShoppingListSelectorData) {
   }
 
   public selectList(list: ShoppingListEntity) {
     this.data.list = list;
+  }
+
+  public deselect() {
+
   }
 }

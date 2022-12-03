@@ -3,10 +3,6 @@ import { ComponentContext, RawRecipe, RecipeDefaults, RecipeURLImporter } from "
 import { HowToStep, Recipe, WithContext } from "schema-dts";
 
 export class GenericHomepageImporter extends RecipeURLImporter {
-  public override getName(languageCode: string): string {
-    return resourceBundle.getTranslation(languageCode, `${this.identifier}.name`);
-  }
-
   private parseRecipeJsonSchemas(document: Document): WithContext<Recipe>[] {
     return this.extractTextFromNodes(document.querySelectorAll("script[type='application/ld+json']"))
       .map(scriptContent => JSON.parse(scriptContent))
@@ -52,7 +48,7 @@ export class GenericHomepageImporter extends RecipeURLImporter {
       instructions = instructions
         .map(i => i.split("\n"))
         .flat();
-      if(instructions.length == 1) {
+      if (instructions.length == 1) {
         return instructions[0].split(/\.\b/);
       }
     }
@@ -60,7 +56,7 @@ export class GenericHomepageImporter extends RecipeURLImporter {
     return [];
   }
 
-  override async parseFromHTML(context: ComponentContext, rawHTML: string, url: URL): Promise<RawRecipe[]> {
+  public override async parseFromHTML(context: ComponentContext, rawHTML: string, url: URL): Promise<RawRecipe[]> {
     const document = this.createDocument(url, rawHTML);
 
     // Parse as ld+json
@@ -91,5 +87,9 @@ export class GenericHomepageImporter extends RecipeURLImporter {
 
   public override get identifier(): string {
     return "GenericHomepageImporter";
+  }
+
+  public override getName(languageCode: string): string {
+    return resourceBundle.getTranslation(languageCode, `${this.identifier}.name`);
   }
 }
