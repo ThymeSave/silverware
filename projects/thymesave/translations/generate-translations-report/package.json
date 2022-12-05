@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jasmine": "4.3.0",
+    "@types/jasmine": "4.3.1",
     "@types/node": "11.15.54",
     "jasmine": "4.5.0",
     "jasmine-node": "3.0.0",
