@@ -23,6 +23,7 @@ import {
 
 import { BaseDocument } from '@/models/BaseDocument';
 import indices from "@/shared/storage/indices";
+import views, { stringifyView, ViewSpecification } from "@/shared/storage/views";
 
 import { environment } from '@/../environments/environment';
 
@@ -83,7 +84,7 @@ export class StorageService {
         this.dbSubject.next(dbValue);
         return dbValue;
       }),
-      switchMap(db => from(this.createIndices(db!!))),
+      switchMap(db => from(Promise.all([this.createIndices(db!!), this.createViews(db!!)]))),
     ).subscribe();
   }
 
@@ -91,11 +92,62 @@ export class StorageService {
     if (!db) {
       return;
     }
+
     try {
       this.logger.debug("Indices created", await Promise.all(indices.map(i => db.createIndex(i))));
     } catch (e) {
       this.logger.warn("Index creation failed", e);
     }
+  }
+
+  private async createViews(db: PouchDB.Database) {
+    if (!db) {
+      return;
+    }
+
+    try {
+      this.logger.debug("Views created", await Promise.all(views.map(view => this.createView(db, view))));
+    } catch (e) {
+      this.logger.warn("View creation failed", e);
+    }
+  }
+
+  private async createView(db: PouchDB.Database, view: ViewSpecification) {
+    const finalViewDoc: { [key: string]: string } = {
+      map: stringifyView(view.map),
+    };
+
+    if (view.reduce) {
+      finalViewDoc['reduce'] = stringifyView(view.reduce);
+    }
+
+    const finalDesignDoc = {
+      views: {
+        [view.name]: finalViewDoc,
+      },
+    };
+
+    return await db.upsert(`_design/view/${view.name}`, (designDoc: { [key: string]: any }) => {
+      const viewDoc = (designDoc['views'] || {})[view.name];
+
+      // if no view exists, nothing to update, always create new one
+      if (!viewDoc) {
+        return finalDesignDoc;
+      }
+
+      // in case there is a reduce, for the view, update if has changed
+      if ('reduce' in finalViewDoc && finalViewDoc['reduce'] != viewDoc['reduce']) {
+        return finalDesignDoc;
+      }
+
+      // map is always there for a view, update if has changed
+      if (finalViewDoc['map'] != viewDoc['map']) {
+        return finalDesignDoc;
+      }
+
+      // no changes, no update
+      return false;
+    });
   }
 
   private async find<T>(db: PouchDB.Database, filter: PouchDB.Find.FindRequest<any>): Promise<T[]> {
@@ -161,6 +213,8 @@ export class StorageService {
       .on("change", e => this.onChange(e))
       .on('error', e => this.onSyncError(e as Error));
   }
+
+  // TODO: Create helper method for querying views
 
   /**
    * Build document id by entity type and id
