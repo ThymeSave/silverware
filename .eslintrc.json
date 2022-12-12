@@ -54,7 +54,6 @@
                 "private-static-method",
                 "private-decorated-method",
                 "private-instance-method",
-                "private-abstract-method",
                 "protected-static-method",
                 "protected-instance-method",
                 "protected-abstract-method",
