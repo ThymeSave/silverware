@@ -34,7 +34,8 @@
         "^node",
         "^ts-node",
         "^@types/node"
-      ]
+      ],
+      "allowedVersions": "<19"
     },
     {
       "groupName": "karma",
