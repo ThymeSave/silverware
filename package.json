@@ -44,7 +44,7 @@
     "string-similarity": "4.0.4",
     "tslib": "2.4.1",
     "uuid": "9.0.0",
-    "zone.js": "0.11.8"
+    "zone.js": "0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/architect": "0.1500.4",
@@ -64,8 +64,8 @@
     "@types/pouchdb-upsert": "2.2.6",
     "@types/string-similarity": "4.0.0",
     "@types/uuid": "9.0.0",
-    "@typescript-eslint/eslint-plugin": "5.46.1",
-    "@typescript-eslint/parser": "5.46.1",
+    "@typescript-eslint/eslint-plugin": "5.47.0",
+    "@typescript-eslint/parser": "5.47.0",
     "eslint": "8.30.0",
     "eslint-plugin-decorator-position": "5.0.1",
     "eslint-plugin-import": "2.26.0",
