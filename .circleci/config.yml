@@ -70,7 +70,7 @@ jobs:
           name: Run translation report script
           command: |
             sudo npm install -g typescript
-            npm run generate-translation-report
+            sudo npm run generate-translation-report
       - store_artifacts:
           path: scripts/translation-report/report.html
           destination: reports/translations.html
