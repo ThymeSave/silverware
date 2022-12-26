@@ -1,4 +1,4 @@
-import { calculateUtilization, convertAmount, unitConversionFactor, UnitIdentifier } from "./unit";
+import { calculateUtilization, convertAmount } from "./unit";
 
 describe("convertUnit", () => {
   it("should convert successfully when source and target are there", () => {
