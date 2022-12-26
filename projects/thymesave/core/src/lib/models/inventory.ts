@@ -1,4 +1,4 @@
-import { UnitIdentifier } from "@thymesave/core";
+import { UnitIdentifier } from "./unit";
 
 /**
  * Represent a change to the inventory. There are two changes that can occure:
