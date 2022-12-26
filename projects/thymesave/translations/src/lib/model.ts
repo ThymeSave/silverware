@@ -1,3 +1,4 @@
+import { UnitIdentifier } from "@thymesave/core";
 
 /**
  * Key value map for translations
@@ -21,7 +22,12 @@ export interface UnitTranslationDetail {
 /**
  * Key value map for unit translations
  */
-export type UnitTranslation = { [key: string]: UnitTranslationDetail }
+/**
+ * Key value map for unit translations
+ */
+export type UnitTranslation = {
+  [key in UnitIdentifier]: UnitTranslationDetail;
+};
 
 /**
  * Represents a localized and resolved translation
@@ -30,11 +36,11 @@ export interface ResolvedUnitTranslation {
   /**
    * Short unit; in most cases this is the symbol
    */
-  short : string
+  short: string
   /**
    * Long text, specific to the specified amount at resolution time
    */
-  long : string
+  long: string
 }
 
 /**
@@ -43,6 +49,6 @@ export interface ResolvedUnitTranslation {
 export interface Language {
   ui: SingleValueTranslation,
   ingredients: PluralizableTranslation,
-  ingredientCategory : SingleValueTranslation,
+  ingredientCategory: SingleValueTranslation,
   units: UnitTranslation,
 }

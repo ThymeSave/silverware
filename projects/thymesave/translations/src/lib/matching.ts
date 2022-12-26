@@ -1,3 +1,4 @@
+import { UnitIdentifier } from "@thymesave/core";
 import stringSimilarity from "string-similarity";
 
 import { Language, PluralizableTranslation } from "./model";
@@ -113,7 +114,7 @@ export const matchUnitByText = (language: Language, text: string, options: Match
   const variants: MatchSourceVariants = {};
 
   for (let i = 0; i < keyLength; i++) {
-    const key = keys[i];
+    const key = keys[i] as UnitIdentifier;
     const unit = language.units[key];
 
     variants[key] = [
