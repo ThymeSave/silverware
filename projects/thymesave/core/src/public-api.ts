@@ -7,6 +7,7 @@ export * from "./lib/models/instruction";
 export * from "./lib/models/ingredient";
 export * from "./lib/models/shopping-list";
 export * from "./lib/models/unit";
+export * from "./lib/models/inventory";
 export * from "./lib/apis/importer";
 export * from "./lib/apis/services";
 export * from "./lib/apis/context";
