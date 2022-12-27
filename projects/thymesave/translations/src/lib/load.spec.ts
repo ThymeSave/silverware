@@ -59,15 +59,6 @@ describe("loadUnitByKey", () => {
     });
   });
 
-  it("should return the translation key in each property of the returned object in case of an non existing unit", () => {
-    const unitDetails = loadUnitByKey(Languages.en_US, "gram", 1);
-    expect(unitDetails).not.toBeNull();
-    expect(unitDetails).toEqual({
-      long: "gram",
-      short: "gram",
-    });
-  });
-
   it("should return the correct plural long term", () => {
     const unitDetails = loadUnitByKey(Languages.en_US, "cup", 2);
     expect(unitDetails).not.toBeNull();
