@@ -60,11 +60,11 @@ describe("loadUnitByKey", () => {
   });
 
   it("should return the translation key in each property of the returned object in case of an non existing unit", () => {
-    const unitDetails = loadUnitByKey(Languages.en_US, "foo.bar", 1);
+    const unitDetails = loadUnitByKey(Languages.en_US, "gram", 1);
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
-      long: "foo.bar",
-      short: "foo.bar",
+      long: "gram",
+      short: "gram",
     });
   });
 
