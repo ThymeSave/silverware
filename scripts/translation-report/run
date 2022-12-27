@@ -1,27 +1,28 @@
 #!/bin/bash
 cd "$(dirname "${BASH_SOURCE[0]}")"
 cd ../..
-root="${PWD}"
-
+root="${PWD}/"
 set -ex
+
+echo "[META] Using root folder ${root}"
 
 echo "[BUILD] Build generate-translations architect ..."
 # Link core to translations
-cd "${root}/projects/thymesave/translations/"
-npm link ../../../dist/thymesave/core
+cd "${root}projects/thymesave/translations/"
+npm link ${root}dist/thymesave/core
 # Link core to translations report generator
 cd "${root}projects/thymesave/translations/generate-translations-report"
-npm link ../../../../dist/thymesave/core
+npm link ${root}dist/thymesave/core
 # Compile script
 tsc
 
 echo "[BUILD] Build generate-ingredient architect ..."
 # Link core to ingredients
-cd "${root}/projects/thymesave/ingredients/"
-npm link ../../../dist/thymesave/core
+cd "${root}projects/thymesave/ingredients/"
+npm link ${root}dist/thymesave/core
 # Link core to ingredient report generator
 cd generate-ingredient-report
-npm link ../../../../dist/thymesave/core
+npm link ${root}dist/thymesave/core
 # Compile script
 tsc
 
