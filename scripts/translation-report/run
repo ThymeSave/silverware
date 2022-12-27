@@ -1,7 +1,9 @@
 #!/bin/bash
-set -ex
-
+cd "$(dirname "${BASH_SOURCE[0]}")"
+cd ..
 root="${PWD}"
+
+set -ex
 
 echo "[BUILD] Build generate-translations architect ..."
 # Link core to translations
