@@ -8,7 +8,7 @@ echo "[BUILD] Build generate-translations architect ..."
 cd "${root}/projects/thymesave/translations/"
 npm link ../../../dist/thymesave/core
 # Link core to translations report generator
-cd projects/thymesave/translations/generate-translations-report
+cd "${root}projects/thymesave/translations/generate-translations-report"
 npm link ../../../../dist/thymesave/core
 # Compile script
 tsc
