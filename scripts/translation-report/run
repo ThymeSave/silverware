@@ -15,6 +15,10 @@ cd generate-ingredient-report
 npm link ../../../../dist/thymesave/core
 tsc
 
+echo "[BUILD] Build translations package ..."
+cd "${root}/projects/thymesave/translations/"
+npm link ../../../dist/thymesave/core
+
 echo "[BUILD] Compile report script ..."
 cd "${root}"
 tsc
