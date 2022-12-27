@@ -11,6 +11,10 @@ tsc
 echo "[BUILD] Build generate-ingredient architect ..."
 cd "${root}/projects/thymesave/ingredients/"
 npm link ../../../dist/thymesave/core
+
+cd "${root}/projects/thymesave/translations/"
+npm link ../../../dist/thymesave/core
+
 cd generate-ingredient-report
 npm link ../../../../dist/thymesave/core
 tsc

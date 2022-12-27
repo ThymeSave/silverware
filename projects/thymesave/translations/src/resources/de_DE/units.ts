@@ -1,13 +1,6 @@
 import { UnitTranslation } from "../../lib/model";
 
 const units: UnitTranslation = {
-  clove: {
-    long: [
-      "clove",
-      "cloves",
-    ],
-    short: "clove",
-  },
   cup: {
     long: [
       "Tasse",
@@ -85,6 +78,12 @@ const units: UnitTranslation = {
       "Pfunde",
     ],
     short: "Pfund",
+  },
+  tbsp: {
+    long: [
+      "Esslöffel",
+    ],
+    short: "EL",
   },
   tsp: {
     long: [

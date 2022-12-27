@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UnitIdentifier } from "@thymesave/core";
 import {
   Language,
   Languages,
@@ -92,10 +93,10 @@ export class LanguageService {
         return loadIngredientByKey(lang, value, amountToUse);
 
       case "ingredientCategory":
-        return loadIngredientCategoryByKey(lang, value);
+        return loadIngredientCategoryByKey(lang, value as UnitIdentifier);
 
       case "units":
-        return loadUnitByKey(lang, value, amountToUse).short;
+        return loadUnitByKey(lang, value as UnitIdentifier, amountToUse).short;
 
       case "ui":
       default:
