@@ -5,6 +5,7 @@ import { createLogger } from "@helper/log";
 import { Recipe } from "@thymesave/core";
 import { filter, first, map } from "rxjs";
 
+import { InventoryChangeService } from "@/inventory/services/inventory-change.service";
 import { Search } from "@/recipes/overview/search-bar/search-bar.component";
 import { RecipeEntity, RecipeService } from "@/recipes/services/recipe.service";
 import { Pagination, PaginationWithResult } from "@/shared/storage/storage.service";
@@ -24,9 +25,12 @@ export class OverviewComponent implements OnInit {
   public search: Search | null = null;
 
   public constructor(public recipeService: RecipeService,
+              public inventoryChangeService : InventoryChangeService,
               private router: Router,
               private route: ActivatedRoute,
               private readonly viewport: ViewportScroller) {
+    inventoryChangeService.queryInventory()
+      .subscribe(res => console.log(res));
     route.queryParamMap
       .pipe(
         first(),

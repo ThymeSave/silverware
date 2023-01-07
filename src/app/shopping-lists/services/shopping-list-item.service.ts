@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Recipe, ShoppingListItem, ShoppingListItemSource } from "@thymesave/core";
 import { chain, groupBy, sum, uniqBy } from "lodash";
 import {
-  merge,
+  merge, mergeMap,
   Observable,
-  switchMap,
+  switchMap, tap,
 } from "rxjs";
 
+import { InventoryChangeEntity, InventoryChangeService } from "@/inventory/services/inventory-change.service";
 import { BaseDocument } from "@/models/BaseDocument";
 import { EntityService } from "@/shared/storage/base";
 import { StorageService } from "@/shared/storage/storage.service";
@@ -15,6 +16,8 @@ import {
 } from "@/shopping-lists/common/shopping-list-item-add/shopping-list-item-add.component";
 import { ShoppingListFilterService } from "@/shopping-lists/services/shopping-list-filter.service";
 import { ShoppingListEntity } from "@/shopping-lists/services/shopping-list.service";
+
+import { UnitIdentifier } from "../../../../projects/thymesave/core/src/lib/models/unit";
 
 export interface ShoppingListItemEntity extends ShoppingListItem, BaseDocument {
 
@@ -36,7 +39,9 @@ export interface GroupedShoppingListItems {
   providedIn: 'root',
 })
 export class ShoppingListItemService extends EntityService<ShoppingListItemEntity> {
-  public constructor(storageService: StorageService, private readonly shoppingListFilterService: ShoppingListFilterService) {
+  public constructor(storageService: StorageService,
+                     private readonly inventoryChangeService: InventoryChangeService,
+                     private readonly shoppingListFilterService: ShoppingListFilterService) {
     super(storageService);
   }
 
@@ -80,7 +85,7 @@ export class ShoppingListItemService extends EntityService<ShoppingListItemEntit
       sources: uniqBy(items
         .map(item => item.source)
         .slice(0, 3), source => source.source),
-      sum: sum( items
+      sum: sum(items
         .map(item => item.amount)),
       unit: unit,
     } as GroupedShoppingListItems;

@@ -112,6 +112,10 @@ export class StorageService {
     }
   }
 
+  private buildViewDocumentName(viewName: string): string {
+    return `view_${viewName}`;
+  }
+
   private async createView(db: PouchDB.Database, view: ViewSpecification) {
     const finalViewDoc: { [key: string]: string } = {
       map: stringifyView(view.map),
@@ -123,12 +127,12 @@ export class StorageService {
 
     const finalDesignDoc = {
       views: {
-        [view.name]: finalViewDoc,
+        [this.buildViewDocumentName(view.name)]: finalViewDoc,
       },
     };
 
-    return await db.upsert(`_design/view/${view.name}`, (designDoc: { [key: string]: any }) => {
-      const viewDoc = (designDoc['views'] || {})[view.name];
+    return await db.upsert(`_design/${this.buildViewDocumentName(view.name)}`, (designDoc: { [key: string]: any }) => {
+      const viewDoc = (designDoc['views'] || {})[this.buildViewDocumentName(view.name)];
 
       // if no view exists, nothing to update, always create new one
       if (!viewDoc) {
@@ -294,7 +298,16 @@ export class StorageService {
             },
             sort,
           },
-        )) as any),
+        ) as any)),
+      ) as Observable<T[]>;
+  }
+
+  public query<T>(viewName: string): Observable<T[]> {
+    return this.db$
+      .pipe(
+        mergeMap(db => from(db!!.query(this.buildViewDocumentName(viewName), {
+          group: true,
+        }) as any)),
       ) as Observable<T[]>;
   }
 

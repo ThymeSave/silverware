@@ -1,4 +1,5 @@
 export type UnitIdentifier =
+  "" |
   "cup" |
   "deciliter" |
   "gram" |
@@ -75,6 +76,10 @@ export const unitConversionFactor: {
     conversions: { [key in UnitIdentifier]?: number }
   }
 } = {
+  "": {
+    conversions: {},
+    estimated: true,
+  },
   cup: {
     conversions: {
       gram: 125,
@@ -142,6 +147,7 @@ export const unitConversionFactor: {
     },
     estimated: false,
   },
+
   pack: {
     conversions: {},
     estimated: true,
