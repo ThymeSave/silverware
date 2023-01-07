@@ -218,8 +218,6 @@ export class StorageService {
       .on('error', e => this.onSyncError(e as Error));
   }
 
-  // TODO: Create helper method for querying views
-
   /**
    * Build document id by entity type and id
    * @param entityType Entity type to use

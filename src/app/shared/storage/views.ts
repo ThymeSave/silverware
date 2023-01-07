@@ -1,4 +1,4 @@
-import { InventoryChangeEntity, InventoryChangeService } from "@/inventory/services/inventory-change.service";
+import { InventoryChangeEntity } from "@/inventory/services/inventory-change.service";
 import { BaseDocument } from "@/models/BaseDocument";
 import { ShoppingListItemEntity } from "@/shopping-lists/services/shopping-list-item.service";
 
