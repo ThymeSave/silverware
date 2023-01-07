@@ -1,6 +1,10 @@
 import { UnitTranslation } from "../../lib/model";
 
 const units: UnitTranslation = {
+  "": {
+    long: [""],
+    short: "",
+  },
   cup: {
     long: [
       "cup",
