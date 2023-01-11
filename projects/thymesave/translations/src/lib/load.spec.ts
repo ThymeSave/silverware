@@ -64,7 +64,7 @@ describe("loadUnitByKey", () => {
     expect(unitDetails).not.toBeNull();
     expect(unitDetails).toEqual({
       long: "gram",
-      short: "gram",
+      short: "g",
     });
   });
 
