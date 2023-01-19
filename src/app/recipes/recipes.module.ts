@@ -27,13 +27,13 @@ import { createRoutingData } from "@helper/routing";
 import { CheckableTextComponent } from './common/checkable-text/checkable-text.component';
 import { RecipeImageComponent } from './common/recipe-image/recipe-image.component';
 import { ShoppingListSelectorComponent } from './common/shopping-list-selector/shopping-list-selector.component';
+import { ParsedRecipeEditorComponent } from './import/parsed-recipe-editor/parsed-recipe-editor.component';
 import {
   ParsedRecipeEditorIngredientComponent,
 } from './import/parsed-recipe-editor-ingredient/parsed-recipe-editor-ingredient.component';
 import {
   ParsedRecipeEditorInstructionComponent,
 } from './import/parsed-recipe-editor-instruction/parsed-recipe-editor-instruction.component';
-import { ParsedRecipeEditorComponent } from './import/parsed-recipe-editor/parsed-recipe-editor.component';
 import { URLImporterSettingsComponent } from './import/urlimporter-settings/urlimporter-settings.component';
 import { RecipeCardComponent } from './overview/recipe-card/recipe-card.component';
 import { SearchBarComponent } from './overview/search-bar/search-bar.component';
