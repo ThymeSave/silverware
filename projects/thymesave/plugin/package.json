@@ -2,6 +2,6 @@
   "name": "@thymesave/plugin",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "2.4.1"
+    "tslib": "2.5.0"
   }
 }
