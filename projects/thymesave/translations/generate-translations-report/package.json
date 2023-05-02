@@ -20,6 +20,6 @@
     "typescript": "4.8.4"
   },
   "dependencies": {
-    "@angular-devkit/architect": "0.1502.1"
+    "@angular-devkit/architect": "0.1502.7"
   }
 }
