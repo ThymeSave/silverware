@@ -3,7 +3,7 @@
   "description": "Translation functionality for ThymeSave",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "2.5.3"
+    "tslib": "2.6.0"
   },
   "peerDependencies": {
     "string-similarity": "^4.0.4"
